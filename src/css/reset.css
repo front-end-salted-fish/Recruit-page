@@ -106,6 +106,6 @@ body {
 #banner-container,
 #tv-introduction,
 #banner li,
-#detail-pages section{
+#detail-pages .page{
     width:100%;
 }
