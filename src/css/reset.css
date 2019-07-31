@@ -97,3 +97,15 @@ html,body{ -moz-user-select: -moz-none; -moz-user-select: none; -o-user-select:n
  
 
 
+/* 公共样式更新 */
+body {
+    width:100vw;
+    min-width: 980px;
+}
+
+#banner-container,
+#tv-introduction,
+#banner li,
+#detail-pages section{
+    width:100%;
+}

@@ -1,59 +1,93 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>TopView</title>
-		<link rel="stylesheet" href="css/index.css">
-		<link rel="stylesheet" href="src/css/reset.css"> 
-	</head>
-	<body>
-		<header id="loading-module">
-			<h1>Welcome to TopView</h1>
-		</header>
-		<!-- tv总介绍 -->
-		<section id="tv-introduction">
-			<!-- 表示继续的按钮 -->
-			<button id="go-ahead-btn"></button>
-		</section>
-		<!-- 部门轮播图 -->
-		<section id="banner">
-			<section id="front-end"></section>
-			<section id="android"></section>
-			<section id="back-stage"></section>
-			<section id="ios"></section>
-			<section id="machine-learning"></section>
-			<!-- 上一页按钮 -->
-			<button class="switch-btn pre-btn"></button>
-			<!-- 下一页按钮 -->
-			<button class="switch-btn next-btn"></button>
-		</section>
-		<!-- 部门详情介绍页 -->
-		<section id="detail-pages">
-			<!-- 跳转菜单 -->
-			<section id="menu"></section>
-			<!-- 王菲板块 -->
-			<section id="front-end"></section>
-			<!-- 卓伦模块 -->
-			<section id="android"></section>
-			<!-- 锋哥模块 -->
-			<section id="back-stage"></section>
-			<!-- 青姐模块 -->
-			<section id="ios"></section>
-			<!-- 基你太美模块 -->
-			<section id="machine-learning"></section>
-			<!-- 关闭按钮 -->
-			<section id="close-btn"></section>
-			<!-- 上一页按钮 -->
-			<button class="switch-btn pre-btn"></button>
-			<!-- 下一页按钮 -->
-			<button class="switch-btn next-btn"></button>
-		</section>
-		<!-- 3d按钮 -->
-		<button id="3d-btn"></button>
-		<!-- 表单 -->
-		<section id="form-page">
-		</section>
-		<script src="src/js/jquery-1.12.4.min.js"></script>
-		<script src="js/index.js"></script>
-	</body>
+
+<head>
+	<meta charset="utf-8">
+	<title>TopView</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="src/css/reset.css">
+</head>
+
+<body>
+	<header id="loading-module">
+		<h1>Welcome to TopView</h1>
+	</header>
+	<!-- tv总介绍 -->
+	<section id="tv-introduction">
+		<!-- 表示继续的按钮 -->
+		<button id="go-ahead-btn"></button>
+	</section>
+	<!-- 部门轮播图容器 -->
+	<section id="banner-container">
+		<!-- 轮播图ul -->
+		<ul id="banner">
+			<li id="front-end">
+				<!-- 轮播图文字 -->
+				<!-- <img src="img/front-end/banner-frontend-font.png" alt="">
+					<img src="img/front-end/banner-frontend-font-border.png" alt=""> -->
+				<section>
+					<!-- 轮播图主图片 -->
+				</section>
+			</li>
+			<li id="android">
+				<!-- 轮播图文字→自己去引入 -->
+				<section>
+					<!-- 轮播图主图片 -->
+				</section>
+			</li>
+			<li id="back-stage">
+				<!-- 轮播图文字→自己去引入 -->
+				<section>
+					<!-- 轮播图主图片 -->
+				</section>
+			</li>
+			<li id="ios">
+				<!-- 轮播图文字→自己去引入 -->
+				<section>
+					<!-- 轮播图主图片 -->
+				</section>
+			</li>
+			<li id="machine-learning">
+				<!-- 轮播图文字→自己去引入 -->
+				<section>
+					<!-- 轮播图主图片 -->
+				</section>
+			</li>
+		</ul>
+		<!-- 上一页按钮 -->
+		<button class="switch-btn pre-btn"></button>
+		<!-- 下一页按钮 -->
+		<button class="switch-btn next-btn"></button>
+	</section>
+	<!-- 部门详情介绍页 -->
+	<section id="detail-pages">
+		<!-- 王菲板块 -->
+		<section id="front-end"></section>
+		<!-- 卓伦模块 -->
+		<section id="android"></section>
+		<!-- 锋哥模块 -->
+		<section id="back-stage"></section>
+		<!-- 青姐模块 -->
+		<section id="ios"></section>
+		<!-- 基你太美模块 -->
+		<section id="machine-learning"></section>
+
+		<!-- 跳转菜单 -->
+		<div id="menu"></div>
+		<!-- 关闭按钮 -->
+		<div id="close-btn"></div>
+		<!-- 上一页按钮 -->
+		<button class="switch-btn pre-btn"></button>
+		<!-- 下一页按钮 -->
+		<button class="switch-btn next-btn"></button>
+	</section>
+	<!-- 3d按钮 -->
+	<button id="3d-btn"></button>
+	<!-- 表单 -->
+	<section id="form-page">
+	</section>
+	<script src="src/js/jquery-1.12.4.min.js"></script>
+	<script src="js/index.js"></script>
+</body>
+
 </html>
