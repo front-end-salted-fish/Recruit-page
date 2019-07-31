@@ -36,3 +36,65 @@
   text-align: center;
   text-shadow: 2px 2px 9px black;
 }
+#detail-pages {
+  position: relative;
+}
+#android {
+  position: absolute;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  perspective: 1px;
+  height: 100vh;
+  top: -24px;
+  background: #333;
+}
+#android .pers-one {
+  transform: translate3d(0, 0, -6px) scale(7);
+  width: 100%;
+}
+#android .pers-one .one {
+  filter: blur(1px);
+}
+#android .pers-one .font-bg {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.27);
+}
+#android img {
+  width: 100%;
+}
+#android .pers-two {
+  position: relative;
+  transform: translate3d(0, 200%, -2px) scale(3);
+  width: 100%;
+}
+#android .pers-two .describe {
+  right: 20px;
+  top: 30%;
+  color: #9ca8ab;
+  width: 33%;
+}
+#android .pers-three {
+  position: relative;
+  transform: translate3d(0, 185%, 0) scale(1);
+  width: 100%;
+}
+#android .pers-three .describe {
+  width: 23%;
+  right: 38%;
+  bottom: 6%;
+  color: white;
+  border-radius: 10px 10px;
+  box-shadow: 0 0 5px black;
+  text-shadow: 2px 2px 9px black;
+  text-indent: 1em;
+}
+#android .describe {
+  position: absolute;
+  z-index: 4;
+  font-size: 24px;
+  line-height: 48px;
+}

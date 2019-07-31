@@ -101,6 +101,7 @@ html,body{ -moz-user-select: -moz-none; -moz-user-select: none; -o-user-select:n
 body {
     width:100vw;
     min-width: 980px;
+    /* overflow-y: hidden; */
 }
 
 #banner-container,

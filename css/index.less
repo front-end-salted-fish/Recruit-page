@@ -41,3 +41,67 @@
     }
 
 }
+#detail-pages {
+  position: relative;
+}
+#android {
+  position: absolute;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  perspective: 1px;
+  height: 100vh;
+  top: -24px;
+  background: #333;
+  .pers-one {
+    
+    transform: translate3d(0,0,-6px) scale(7);
+    width: 100%;
+    .one {
+      filter: blur(1px);
+    }
+    .font-bg {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.27);
+    }
+  }
+  img {
+    width: 100%;
+  }
+  .pers-two {
+    position: relative;
+    transform: translate3d(0,200%,-2px) scale(3);
+    width: 100%;
+    .describe {
+      right: 20px;
+      top: 30%;
+      color: #9ca8ab;
+      width: 33%;
+
+    }
+  }
+  .pers-three {
+    position: relative;
+    transform: translate3d(0,185%,0) scale(1);
+    width: 100%;
+    .describe {
+      width: 23%;
+      right: 38%;
+      bottom: 6%;
+      color: white;
+      border-radius: 10px 10px;
+      box-shadow: 0 0 5px black;
+      text-shadow: 2px 2px 9px black;
+      text-indent: 1em;
+    }
+  }
+  .describe {
+    position: absolute;
+    z-index: 4;
+    font-size: 24px;
+    line-height: 48px;
+  }
+}
