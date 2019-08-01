@@ -1,3 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body,
+html {
+  width: 100%;
+  background-color: black;
+  min-width: 9;
+}
 #menu {
   position: fixed;
   right: 20px;
@@ -16,7 +26,12 @@
   position: absolute;
   left: 0;
   top: 0;
-  border-radius: 60%;
+  width: 50px;
+  height: 50px;
+  background: url(../img/logo/logo.png);
+  border-radius: 50%;
+  transition: 1s;
+  box-shadow: 0px 0px 5px #333;
 }
 #menu #home {
   position: absolute;
@@ -37,7 +52,150 @@
   text-align: center;
   text-shadow: 2px 2px 9px black;
 }
-#machine-learning {
+#menu img {
+  width: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#ios {
+  /* 滚动容器高度是视口高度 */
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  /* 宽度为视口宽度 */
+  width: 100vw;
+  /* 不占用宽度的滚动条 */
+  overflow-y: overlay;
+  overflow-x: hidden;
+  /* 关键一行 */
+  perspective: 1px;
+  min-width: 1500px;
+}
+#ios .pre-one {
+  transform: translateZ(-6px) scale(7);
+}
+#ios .pre-one .bg {
+  filter: brightness(80%);
+}
+#ios .pre-one .header-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.27);
+  z-index: 2;
+  box-shadow: 0px 0px 0px;
+}
+#ios .pre-one #directionDetails {
+  font-size: 0.5em;
+}
+#ios .pre-one sup {
+  top: 0.5em;
+  font-size: 90%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  color: blanchedalmond;
+}
+#ios .pre-one .ios-box {
+  position: fixed;
+  top: 10%;
+  left: 5%;
+}
+#ios .pre-one .ios-box h3 {
+  font-size: xx-large;
+  color: blanchedalmond;
+}
+#ios .pre-two {
+  transform: translate3D(0px, 1000px, -1px) scale(2);
+}
+#ios .pre-two .cd-container.infor-font {
+  font-size: 2em;
+}
+#ios .pre-two .cd-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  color: #f1bfbf;
+  font-size: 2.5em;
+  text-align: center;
+}
+#ios .pre-two .infor-font {
+  font-size: 1.5em;
+  color: #6d7584;
+}
+#ios .pre-three {
+  transform: translate3D(0px, 1000px, 0px) scale(1);
+}
+#ios .pre-three .cd-container.infor-font {
+  font-size: 2em;
+}
+#ios .pre-three .cd-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  color: #f1bfbf;
+  font-size: 2.5em;
+  text-align: center;
+}
+#ios .pre-three .infor-font {
+  font-size: 1.5em;
+  color: #6d7584;
+}
+#ios img {
+  width: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#front-end {
+  display: none;
+  background-color: #333;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  perspective: 1px;
+}
+#front-end img {
+  width: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#front-end .per-one {
+  transform: translateZ(-6px) scale(7);
+  position: relative;
+  display: flex;
+}
+#front-end .per-one .title {
+  width: 30%;
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  z-index: 9;
+  box-shadow: none;
+}
+#front-end .per-two {
+  transform: translate3d(0px, 90%, -1px) scale(2);
+  position: relative;
+  display: flex;
+}
+#front-end .per-two .article {
+  z-index: 2;
+  position: absolute;
+}
+#front-end .per-three {
+  transform: translate3d(0px, 70%, 0px) scale(1);
+}
+#front-end #machine-learning {
   position: absolute;
   top: 0;
   overflow-y: overlay;
@@ -46,33 +204,33 @@
   perspective: 1px;
   height: 100vh;
 }
-#machine-learning .per-one {
+#front-end #machine-learning .per-one {
   width: 100%;
   transform: translateZ(-2px) scale(3);
 }
-#machine-learning .per-one .bg {
+#front-end #machine-learning .per-one .bg {
   width: 100%;
   filter: brightness(60%);
 }
-#machine-learning .per-one .header-font {
+#front-end #machine-learning .per-one .header-font {
   position: absolute;
   z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.27);
 }
-#machine-learning .per-two {
+#front-end #machine-learning .per-two {
   width: 100%;
   transform: translateZ(0px) scale(1);
   background-color: #fff5e6;
   box-shadow: 0px 0px 100px #333;
 }
-#machine-learning .per-two .txt-container {
+#front-end #machine-learning .per-two .txt-container {
   height: 800px;
   text-align: center;
   padding-top: 100px;
 }
-#machine-learning .per-two .txt-container span {
+#front-end #machine-learning .per-two .txt-container span {
   display: block;
   position: relative;
   font-size: 30px;
@@ -82,10 +240,13 @@
   transition: all 0.7s;
   top: 30px;
 }
-#machine-learning .per-two img {
+#front-end #machine-learning .per-two img {
   width: 50%;
 }
-#detail-pages svg {
+#front-end #detail-pages {
+  position: relative;
+}
+#front-end #detail-pages svg {
   position: absolute;
   stroke: #fff;
   top: 50%;
@@ -95,43 +256,40 @@
   transition: transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   cursor: pointer;
 }
-#detail-pages svg:hover circle {
+#front-end #detail-pages svg:hover circle {
   transform: translate(80px);
   /* 神奇属性居然能设置 */
   r: 0;
   opacity: 0;
 }
-#detail-pages svg:hover g {
+#front-end #detail-pages svg:hover g {
   transform: translate(20px, 9px);
 }
-#detail-pages svg circle {
+#front-end #detail-pages svg circle {
   fill: none;
   transform: translate(40px);
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#detail-pages svg g {
+#front-end #detail-pages svg g {
   transform: translate(10px, 9px);
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#detail-pages svg g path {
+#front-end #detail-pages svg g path {
   transform: translateX(43px);
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#detail-pages svg g line {
+#front-end #detail-pages svg g line {
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#detail-pages svg[data-left] {
+#front-end #detail-pages svg[data-left] {
   transform: translateY(-50%) scale(-1.3, 1.3);
   left: 10px;
 }
-#detail-pages svg[data-right] {
+#front-end #detail-pages svg[data-right] {
   transform: translateY(-50%) scale(1.3, 1.3);
   right: 10px;
 }
-#detail-pages {
-  position: relative;
-}
-#android {
+#front-end #android {
   position: absolute;
   width: 100%;
   overflow-y: scroll;
@@ -140,46 +298,46 @@
   height: 100vh;
   background: #333;
 }
-#android .pers-one {
+#front-end #android .pers-one {
   transform: translate3d(0, 0, -6px) scale(7);
   width: 100%;
 }
-#android .pers-one .one {
+#front-end #android .pers-one .one {
   filter: blur(1px);
 }
-#android .pers-one .font-bg {
+#front-end #android .pers-one .font-bg {
   position: absolute;
   z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.27);
 }
-#android img {
+#front-end #android img {
   width: 100%;
 }
-#android .pers-two {
+#front-end #android .pers-two {
   position: relative;
   box-shadow: 0 -8px 10px #2e2e2e;
   transform: translate3d(0, 200%, -2px) scale(3);
   width: 100%;
 }
-#android .pers-two .describe {
+#front-end #android .pers-two .describe {
   right: 3%;
   top: 10%;
   color: #9ca8ab;
   width: 33%;
 }
-#android .pers-two .describe .item {
+#front-end #android .pers-two .describe .item {
   font-size: 24px;
   color: #9ca8ab;
 }
-#android .pers-three {
+#front-end #android .pers-three {
   position: relative;
   box-shadow: 0 -8px 10px #383838;
   transform: translate3d(0, 210%, 0) scale(1);
   width: 100%;
 }
-#android .pers-three .describe {
+#front-end #android .pers-three .describe {
   width: 23%;
   right: 38%;
   bottom: 0;
@@ -194,11 +352,11 @@
   color: black;
   background-color: #b3b3b3;
 }
-#android .pers-three .describe:hover {
+#front-end #android .pers-three .describe:hover {
   background-color: #2e2e2e;
   color: white;
 }
-#android .describe {
+#front-end #android .describe {
   position: absolute;
   z-index: 4;
   font-size: 24px;
