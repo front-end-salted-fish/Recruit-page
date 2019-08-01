@@ -1,5 +1,29 @@
 $(function () {
 	console.log('Welcome to TopView!');
+	//幕布函数
+	/* function curtainUp() {
+		//$bars.css("z-index", 9);
+		$($bar[0]).animate({ height: '100vh' }, 80);
+		$($bar[1]).animate({ height: '100vh' }, 240);
+		$($bar[2]).animate({ height: '100vh' }, 400);
+		$($bar[3]).animate({ height: '100vh' }, 560);
+		$($bar[4]).animate({ height: '100vh' }, 720);
+	}
+	function curtainDown() {
+		$($bar[0]).animate({ height: '0vh' }, 80);
+		$($bar[1]).animate({ height: '0vh' }, 240);
+		$($bar[2]).animate({ height: '0vh' }, 400);
+		$($bar[3]).animate({ height: '0vh' }, 560);
+		$($bar[4]).animate({ height: '0vh' }, 720);
+		//$bars.css("z-index", 0);
+	} */
+	// 轮播图切换幕布
+	!(() => {
+		const $btns = $("#menu-list img");
+		const $bars = $(".bars");
+		const $bar = $(".bar");
+		
+	})()
 	// 旋转菜单模块
 	!(() => {
 		const $home = $('#home');
@@ -76,36 +100,36 @@ $(function () {
 			//逐行显示//not a function//包装成$()
 			if ($frontEnd.scrollTop() > 500) {
 				$($article[0]).fadeIn("4000");
-			} 
-			else {$($article[0]).fadeOut();}
+			}
+			else { $($article[0]).fadeOut(); }
 			if ($frontEnd.scrollTop() > 570) {
 				$($article[1]).fadeIn("4000");
-			} 
-			else {$($article[1]).fadeOut();}
+			}
+			else { $($article[1]).fadeOut(); }
 			if ($frontEnd.scrollTop() > 640) {
 				$($article[2]).fadeIn("4000");
-			} 
-			else {$($article[2]).fadeOut();}
+			}
+			else { $($article[2]).fadeOut(); }
 
 			if ($frontEnd.scrollTop() > 706) {
 				$($article[3]).fadeIn("4000");
-			} 
-			else {$($article[3]).fadeOut();}
+			}
+			else { $($article[3]).fadeOut(); }
 
 			if ($frontEnd.scrollTop() > 780) {
 				$($article[4]).fadeIn("4000");
-			} 
-			else {$($article[4]).fadeOut();}
+			}
+			else { $($article[4]).fadeOut(); }
 
 			if ($frontEnd.scrollTop() > 840) {
 				$($article[5]).fadeIn("4000");
-			} 
-			else {$($article[5]).fadeOut();}
+			}
+			else { $($article[5]).fadeOut(); }
 
 			if ($frontEnd.scrollTop() > 940) {
 				$($article[6]).fadeIn("4000");
-			} 
-			else {$($article[6]).fadeOut();}
+			}
+			else { $($article[6]).fadeOut(); }
 
 
 		})
