@@ -1,8 +1,9 @@
 $(function () {
 	console.log('Welcome to TopView!');
 	//幕布函数
-	/* function curtainUp() {
+	function curtainUp() {
 		//$bars.css("z-index", 9);
+		const $bar = $(".bar");
 		$($bar[0]).animate({ height: '100vh' }, 80);
 		$($bar[1]).animate({ height: '100vh' }, 240);
 		$($bar[2]).animate({ height: '100vh' }, 400);
@@ -16,13 +17,14 @@ $(function () {
 		$($bar[3]).animate({ height: '0vh' }, 560);
 		$($bar[4]).animate({ height: '0vh' }, 720);
 		//$bars.css("z-index", 0);
-	} */
+	}
 	// 轮播图切换幕布
 	!(() => {
-		const $btns = $("#menu-list img");
+		//const $btns = $("#menu-list img");
+		//const $btns = $(".switch-btn");
 		const $bars = $(".bars");
-		const $bar = $(".bar");
-		
+		/* $($btns[0]).on("click", curtainUp);
+		$($btns[1]).on("click", curtainDown); */
 	})()
 	// 旋转菜单模块
 	!(() => {
