@@ -117,4 +117,25 @@ $(function() {
 
 		})
 	})();
-})
+
+	// 伦哥模块
+	!(() => {
+		// 获取页面元素
+		const $android = $('#android');
+		const $fontBg = $('.font-bg');
+		const $persOne = $('.pers-one');
+		// 监听滚动条事件
+		$android.on('scroll', function() {
+			// console.log($persOne.get(0).clientHeight)
+			// console.log(this.scrollTop)
+			let scale = this.scrollTop/$persOne.get(0).clientHeight - 1;
+			console.log(scale)
+			if (scale > 0) {
+				$fontBg.css({
+					opacity: 1-scale
+				});
+			}
+		})
+	})();
+
+});
