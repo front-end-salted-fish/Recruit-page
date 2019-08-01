@@ -68,6 +68,12 @@
 }
 #front-end .per-two {
   transform: translate3d(0px, 90%, -1px) scale(2);
+  position: relative;
+  display: flex;
+}
+#front-end .per-two .article {
+  z-index: 2;
+  position: absolute;
 }
 #front-end .per-three {
   transform: translate3d(0px, 70%, 0px) scale(1);

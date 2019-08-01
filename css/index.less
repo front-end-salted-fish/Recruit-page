@@ -75,6 +75,12 @@
   }
   .per-two {
     transform: translate3d(0px, 90%, -1px) scale(2);
+    position: relative;
+    display: flex;
+    .article {
+      z-index: 2;
+      position: absolute;
+    }
   }
   .per-three {
     transform: translate3d(0px, 70%, 0px) scale(1); 
