@@ -316,48 +316,58 @@ html {
   overflow-x: hidden;
   perspective: 1px;
   height: 100vh;
+  top: -24px;
   background: #333;
 }
 #android .pers-one {
   transform: translate3d(0, 0, -6px) scale(7);
   width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  perspective: 1px;
+  height: 100vh;
+  background: #333;
 }
-#android .pers-one .one {
+#android .pers-one .pers-one {
+  transform: translate3d(0, 0, -6px) scale(7);
+  width: 100%;
+}
+#android .pers-one .pers-one .one {
   filter: blur(1px);
 }
-#android .pers-one .font-bg {
+#android .pers-one .pers-one .font-bg {
   position: absolute;
   z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.27);
 }
-#android img {
+#android .pers-one img {
   width: 100%;
 }
-#android .pers-two {
+#android .pers-one .pers-two {
   position: relative;
   box-shadow: 0 -8px 10px #2e2e2e;
   transform: translate3d(0, 200%, -2px) scale(3);
   width: 100%;
 }
-#android .pers-two .describe {
+#android .pers-one .pers-two .describe {
   right: 3%;
   top: 10%;
   color: #9ca8ab;
   width: 33%;
 }
-#android .pers-two .describe .item {
+#android .pers-one .pers-two .describe .item {
   font-size: 24px;
   color: #9ca8ab;
 }
-#android .pers-three {
+#android .pers-one .pers-three {
   position: relative;
   box-shadow: 0 -8px 10px #383838;
   transform: translate3d(0, 210%, 0) scale(1);
   width: 100%;
 }
-#android .pers-three .describe {
+#android .pers-one .pers-three .describe {
   width: 23%;
   right: 38%;
   bottom: 0;
@@ -372,9 +382,15 @@ html {
   color: black;
   background-color: #b3b3b3;
 }
-#android .pers-three .describe:hover {
+#android .pers-one .pers-three .describe:hover {
   background-color: #2e2e2e;
   color: white;
+}
+#android .pers-one .describe {
+  position: absolute;
+  z-index: 4;
+  font-size: 24px;
+  line-height: 48px;
 }
 #android .describe {
   position: absolute;

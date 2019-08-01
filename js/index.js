@@ -61,23 +61,52 @@ $(function () {
 		const $perTwo = $(".per-two");
 		const $article = $(".article p");
 		$frontEnd.on("scroll", function () {
-			//console.log($frontEnd.scrollTop())
+			console.log($frontEnd.scrollTop())
 
 			$perOne.css("opacity", (1 - $frontEnd.scrollTop() / 2500));
 			if ($frontEnd.scrollTop() > 1850) {
 				$perTwo.css("opacity", (1 - ($frontEnd.scrollTop() - 1850) / 1000));
 			}
-			if ($frontEnd.scrollTop() > 1000) {
+			/* if ($frontEnd.scrollTop() > 1000) {
 				$article.fadeIn("4000");
 			}
 			if ($frontEnd.scrollTop() < 700) {
 				$article.fadeOut("4000");
-			}
-			//逐行显示//not a function
-			/* if ($frontEnd.scrollTop() > 446) {
-				$article[0].fadeIn("4000");
 			} */
-			//else {$article[0].fadeOut("slow");}
+			//逐行显示//not a function//包装成$()
+			if ($frontEnd.scrollTop() > 500) {
+				$($article[0]).fadeIn("4000");
+			} 
+			else {$($article[0]).fadeOut();}
+			if ($frontEnd.scrollTop() > 570) {
+				$($article[1]).fadeIn("4000");
+			} 
+			else {$($article[1]).fadeOut();}
+			if ($frontEnd.scrollTop() > 640) {
+				$($article[2]).fadeIn("4000");
+			} 
+			else {$($article[2]).fadeOut();}
+
+			if ($frontEnd.scrollTop() > 706) {
+				$($article[3]).fadeIn("4000");
+			} 
+			else {$($article[3]).fadeOut();}
+
+			if ($frontEnd.scrollTop() > 780) {
+				$($article[4]).fadeIn("4000");
+			} 
+			else {$($article[4]).fadeOut();}
+
+			if ($frontEnd.scrollTop() > 840) {
+				$($article[5]).fadeIn("4000");
+			} 
+			else {$($article[5]).fadeOut();}
+
+			if ($frontEnd.scrollTop() > 940) {
+				$($article[6]).fadeIn("4000");
+			} 
+			else {$($article[6]).fadeOut();}
+
 
 		})
 	})();
