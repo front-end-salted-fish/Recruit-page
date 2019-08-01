@@ -262,31 +262,37 @@ html {
     /* 开启透视 */
     perspective: 1px;
     height: 100vh;
+
     // transform: scale(0.5);
     .per-one {
-        width:100%;
+        width: 100%;
         transform: translateZ(-2px) scale(3);
+
         .bg {
-            width: 100%;   
+            width: 100%;
             filter: brightness(60%);
         }
+
         .header-font {
             position: absolute;
             z-index: 3;
-            top:50%;
-            left:50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%) scale(0.27);
         }
     }
+
     .per-two {
-        width:100%;
+        width: 100%;
         transform: translateZ(0px) scale(1);
         background-color: rgb(255, 245, 230);
         box-shadow: 0px 0px 100px #333;
+
         .txt-container {
             height: 800px;
             text-align: center;
-            padding-top:100px;
+            padding-top: 100px;
+
             span {
                 display: block;
                 position: relative;
@@ -298,6 +304,7 @@ html {
                 top: 30px;
             }
         }
+
         img {
             width: 50%;
         }
@@ -312,45 +319,53 @@ html {
         top: 50%;
         display: block;
         opacity: 1;
-        transition: transform .5s cubic-bezier(.455, .03, .515, .955), 
-                    opacity .5s cubic-bezier(.455, .03, .515, .955);
+        z-index: 10;
+        transition: transform .5s cubic-bezier(.455, .03, .515, .955),
+            opacity .5s cubic-bezier(.455, .03, .515, .955);
         cursor: pointer;
-        &:hover{
+
+        &:hover {
             circle {
                 transform: translate(80px);
                 /* 神奇属性居然能设置 */
-                r:0; 
-                opacity: 0;  
+                r: 0;
+                opacity: 0;
             }
+
             g {
-                transform: translate(20px,9px);
+                transform: translate(20px, 9px);
             }
         }
+
         circle {
             fill: none;
             transform: translate(40px);
-            transition: all .5s cubic-bezier(.455,.03,.515,.955);
+            transition: all .5s cubic-bezier(.455, .03, .515, .955);
         }
+
         g {
-            transform: translate(10px,9px);
-            transition: all .5s cubic-bezier(.455,.03,.515,.955);
+            transform: translate(10px, 9px);
+            transition: all .5s cubic-bezier(.455, .03, .515, .955);
+
             path {
                 transform: translateX(43px);
-                transition: all .5s cubic-bezier(.455,.03,.515,.955);
+                transition: all .5s cubic-bezier(.455, .03, .515, .955);
             }
+
             line {
-                transition: all .5s cubic-bezier(.455,.03,.515,.955);
+                transition: all .5s cubic-bezier(.455, .03, .515, .955);
             }
         }
     }
+
     svg[data-left] {
-        transform: translateY(-50%) scale(-1.3,1.3);
-        left:10px;
+        transform: translateY(-50%) scale(-1.3, 1.3);
+        left: 10px;
     }
-  
+
     svg[data-right] {
-        transform:translateY(-50%) scale(1.3,1.3);
-        right:10px;
+        transform: translateY(-50%) scale(1.3, 1.3);
+        right: 10px;
     }
 }
 
@@ -367,60 +382,88 @@ html {
   .pers-one {
     transform: translate3d(0,0,-6px) scale(7);
     width: 100%;
-    .one {
-      filter: blur(1px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    perspective: 1px;
+    height: 100vh;
+    // top: -24px;
+    background: #333;
+
+    .pers-one {
+        transform: translate3d(0, 0, -6px) scale(7);
+        width: 100%;
+
+        .one {
+            filter: blur(1px);
+        }
+
+        .font-bg {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.27);
+        }
     }
-    .font-bg {
-      position: absolute;
-      z-index: 2;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.27);
+
+    img {
+        width: 100%;
     }
-  }
-  img {
-    width: 100%;
-  }
-  .pers-two {
-    position: relative;
-    box-shadow: 0 -8px #2e2e2e;
-    transform: translate3d(0,200%,-2px) scale(3);
-    width: 100%;
+
+    .pers-two {
+        position: relative;
+        box-shadow: 0 -8px 10px #2e2e2e;
+        transform: translate3d(0, 200%, -2px) scale(3);
+        width: 100%;
+
+        .describe {
+            right: 3%;
+            top: 10%;
+            color: #9ca8ab;
+            width: 33%;
+
+            .item {
+                font-size: 24px;
+                color: #9ca8ab;
+            }
+        }
+    }
+
+    .pers-three {
+        position: relative;
+        box-shadow: 0 -8px 10px #383838;
+        transform: translate3d(0, 210%, 0) scale(1);
+        width: 100%;
+
+        .describe {
+            width: 23%;
+            right: 38%;
+            bottom: 0;
+            border-radius: 10px 10px;
+            box-shadow: 0 0 20px black;
+            text-shadow: 2px 2px 9px black;
+            padding: 20px;
+            text-align: center;
+            line-height: 38px;
+            cursor: pointer;
+            transition: 1s;
+            color: black;
+            background-color: #b3b3b3;
+
+            &:hover {
+                background-color: #2e2e2e;
+                color: white;
+            }
+
+        }
+
+    }
+
     .describe {
-      right: 3%;
-      top: 10%;
-      color: #9ca8ab;
-      width: 33%;
-      .item {
+        position: absolute;
+        z-index: 4;
         font-size: 24px;
-        color: #9ca8ab;
-       }
-    }
-  }
-  .pers-three {
-    position: relative;
-    box-shadow: 0 -8px #383838;
-    transform: translate3d(0,210%,0) scale(1);
-    width: 100%;
-    .describe {
-      width: 23%;
-      right: 38%;
-      bottom: 0;
-      border-radius: 10px 10px;
-      box-shadow: 0 0 20px black;
-      text-shadow: 2px 2px 9px black;
-      padding: 20px;
-      text-align: center;
-      line-height: 38px;
-      cursor: pointer;
-      transition: 1s;
-      color: black;
-      background-color: #b3b3b3;
-      &:hover {
-        background-color: #2e2e2e;
-        color: white;
-      }
-     
+        line-height: 48px;
     }
     
   }

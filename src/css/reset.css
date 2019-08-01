@@ -112,6 +112,11 @@ body {
     width:100%;
 }
 
+#banner-container,
+#tv-introduction {
+    position: absolute;
+}
+
 #detail-pages {
     position: absolute;
     width:100%;

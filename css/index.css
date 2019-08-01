@@ -271,6 +271,7 @@ html {
   top: 50%;
   display: block;
   opacity: 1;
+  z-index: 10;
   transition: transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   cursor: pointer;
 }
@@ -315,7 +316,6 @@ html {
   overflow-x: hidden;
   perspective: 1px;
   height: 100vh;
-  top: -24px;
   background: #333;
 }
 #android .pers-one {
@@ -337,7 +337,7 @@ html {
 }
 #android .pers-two {
   position: relative;
-  box-shadow: 0 -8px #2e2e2e;
+  box-shadow: 0 -8px 10px #2e2e2e;
   transform: translate3d(0, 200%, -2px) scale(3);
   width: 100%;
 }
@@ -353,7 +353,7 @@ html {
 }
 #android .pers-three {
   position: relative;
-  box-shadow: 0 -8px #383838;
+  box-shadow: 0 -8px 10px #383838;
   transform: translate3d(0, 210%, 0) scale(1);
   width: 100%;
 }
