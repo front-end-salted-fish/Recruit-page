@@ -29,7 +29,7 @@
       background: url(../img/logo/logo.png);
       border-radius: 50%;
       transition: 1s;
-      box-shadow: 0px 0px 15px #333;
+      box-shadow: 0px 0px 5px #333;
     }
     .des {
       position: absolute;
@@ -40,4 +40,43 @@
     	text-shadow:2px 2px 9px black;
     }
 
+}
+#front-end{
+  display: none;
+  background-color: #333;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top:0;//WHY
+  height: 100vh;
+  width: 100vw;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  perspective: 1px;
+  // transform-style: preserve-3d;
+  
+  img{
+    width: 100%;
+    box-shadow: 0px 0px 100px #2f1e1e;
+  }
+  .per-one {
+    transform: translateZ(-6px) scale(7);
+    position: relative;
+    display: flex;
+    .title {
+      width: 30%;
+      position: absolute;
+      top: 30%;
+      left: 35%;
+      //margin: auto;
+      z-index: 9;
+      box-shadow: none;
+    }
+  }
+  .per-two {
+    transform: translate3d(0px, 90%, -1px) scale(2);
+  }
+  .per-three {
+    transform: translate3d(0px, 70%, 0px) scale(1); 
+  }
 }

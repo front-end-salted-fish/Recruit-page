@@ -1,7 +1,7 @@
 $(function() {
 	console.log('Welcome to TopView!');
 	// 旋转菜单模块
-	(() => {
+	!(() => {
 		const $home = $('#home');
 		const $imgs = $('#menu-list img');
 		let c = 130;
@@ -52,6 +52,18 @@ $(function() {
 				}
 			}
 			flag=!flag;
+		})
+	})()
+	//front-end
+	!(() => {
+		const $frontEnd = $("#front-end");
+		const $perOne = $(".per-one");
+		const $perTwo = $(".per-two");
+		$frontEnd.on("scroll", function(){
+			$perOne.css("opacity", (1-$frontEnd.scrollTop() / 2500));
+			if($frontEnd.scrollTop() > 1850) {
+				$perTwo.css("opacity", (1-($frontEnd.scrollTop()-1850) / 1000));
+			}
 		})
 	})()
 })

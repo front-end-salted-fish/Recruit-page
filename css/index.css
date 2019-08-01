@@ -26,7 +26,7 @@
   background: url(../img/logo/logo.png);
   border-radius: 50%;
   transition: 1s;
-  box-shadow: 0px 0px 15px #333;
+  box-shadow: 0px 0px 5px #333;
 }
 #menu .des {
   position: absolute;
@@ -35,4 +35,40 @@
   color: white;
   text-align: center;
   text-shadow: 2px 2px 9px black;
+}
+#front-end {
+  display: none;
+  background-color: #333;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  perspective: 1px;
+}
+#front-end img {
+  width: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#front-end .per-one {
+  transform: translateZ(-6px) scale(7);
+  position: relative;
+  display: flex;
+}
+#front-end .per-one .title {
+  width: 30%;
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  z-index: 9;
+  box-shadow: none;
+}
+#front-end .per-two {
+  transform: translate3d(0px, 90%, -1px) scale(2);
+}
+#front-end .per-three {
+  transform: translate3d(0px, 70%, 0px) scale(1);
 }
