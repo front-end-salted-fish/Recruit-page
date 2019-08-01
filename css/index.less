@@ -2,42 +2,179 @@
 //   color: aliceblue;
 //   background: red;
 // }
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body,
+html {
+  width: 100%;
+  background-color: black;
+  min-width: 9;
+}
+
 #menu {
   position: fixed;
-	right: 20px;
-	bottom: 20px;
-	width: 50px;
-	height: 50px;
-    #menu-list {
-      position: relative;
-			width: 42px;
-			height: 42px;
-      margin: 4px;
-      img{
-				position: absolute;
-				left: 0;
-				top: 0;
-				border-radius:60% ;
-			}
-    }
-    #home{
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+
+  #menu-list {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    margin: 4px;
+
+    img {
       position: absolute;
       left: 0;
       top: 0;
-      width: 50px;
-      height: 50px;
-      background: url(../img/logo/logo.png);
-      border-radius: 50%;
-      transition: 1s;
-      box-shadow: 0px 0px 15px #333;
+      border-radius: 60%;
     }
-    .des {
+  }
+
+  #home {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: url(../img/logo/logo.png);
+    border-radius: 50%;
+    transition: 1s;
+    box-shadow: 0px 0px 15px #333;
+  }
+
+  .des {
+    position: absolute;
+    left: 8px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 9px black;
+  }
+
+}
+
+#ios {
+  /* 滚动容器高度是视口高度 */
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  /* 宽度为视口宽度 */
+  width: 100vw;
+  /* 不占用宽度的滚动条 */
+  overflow-y: overlay;
+  overflow-x: hidden;
+  /* 关键一行 */
+  perspective: 1px;
+  min-width: 1500px;
+
+  .pre-one {
+    transform: translateZ(-6px) scale(7);
+    .bg {
+      filter: brightness(80%);
+    }
+    .header-icon {
       position: absolute;
-      left: 8px;
-      font-weight: bold;
-      color: white;
-	    text-align:center; 
-    	text-shadow:2px 2px 9px black;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.27);
+      z-index: 2;
+      box-shadow: 0px 0px 0px;
+    }
+    #directionDetails {
+      font-size: 0.5em;
     }
 
+    sup {
+      top: 0.5em;
+      font-size: 90%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline;
+      color: blanchedalmond;
+    }
+
+    .ios-box {
+      position: fixed;
+      top: 10%;
+      left: 5%;
+
+      h3 {
+
+
+        font-size: xx-large;
+        color: blanchedalmond;
+      }
+    }
+
+
+  }
+
+  .pre-two {
+    transform: translate3D(0px, 1000px, -1px) scale(2);
+
+    .cd-container.infor-font {
+      font-size: 2em;
+    }
+
+    .cd-container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      color: rgb(241, 191, 191);
+      font-size: 2.5em;
+      text-align: center;
+    }
+
+    .infor-font {
+      font-size: 1.5em;
+      color: #6d7584;
+    }
+  }
+
+  .pre-three {
+    transform: translate3D(0px, 1000px, 0px) scale(1);
+
+    .cd-container.infor-font {
+      font-size: 2em;
+    }
+
+    .cd-container {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      color: rgb(241, 191, 191);
+      font-size: 2.5em;
+      text-align: center;
+    }
+
+    .infor-font {
+      font-size: 1.5em;
+      color: #6d7584;
+    }
+  }
+
+  img {
+    width: 100%;
+    box-shadow: 0px 0px 100px #2f1e1e;
+  }
+
+}
+
+/* 滚动条宽度为0 */
+::-webkit-scrollbar {
+  width: 0 !important;
 }

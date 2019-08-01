@@ -53,5 +53,17 @@ $(function() {
 			}
 			flag=!flag;
 		})
-	})()
+	})();
+	(() => {
+	 const $ios = $("#ios");
+	 const $img1 = $(".pre-one>img");
+	 const $img2 = $(".pre-two>img");
+	 $ios.on("scroll", function () {
+		console.log($ios.scrollTop());
+		$img1.css("opacity", (1 - $ios.scrollTop() / 2500));
+		if($ios.scrollTop() > 1850) {
+		  $img2.css("opacity", (1 - ($ios.scrollTop() - 1850) / 1000));
+		}
+	  });
+	})();
 })

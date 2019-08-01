@@ -1,3 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body,
+html {
+  width: 100%;
+  background-color: black;
+  min-width: 9;
+}
 #menu {
   position: fixed;
   right: 20px;
@@ -15,7 +25,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  border-radius: 60% ;
+  border-radius: 60%;
 }
 #menu #home {
   position: absolute;
@@ -35,4 +45,105 @@
   color: white;
   text-align: center;
   text-shadow: 2px 2px 9px black;
+}
+#ios {
+  /* 滚动容器高度是视口高度 */
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  /* 宽度为视口宽度 */
+  width: 100vw;
+  /* 不占用宽度的滚动条 */
+  overflow-y: overlay;
+  overflow-x: hidden;
+  /* 关键一行 */
+  perspective: 1px;
+  min-width: 1500px;
+}
+#ios .pre-one {
+  transform: translateZ(-6px) scale(7);
+}
+#ios .pre-one .bg {
+  filter: brightness(80%);
+}
+#ios .pre-one .header-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.27);
+  z-index: 2;
+  box-shadow: 0px 0px 0px;
+}
+#ios .pre-one #directionDetails {
+  font-size: 0.5em;
+}
+#ios .pre-one sup {
+  top: 0.5em;
+  font-size: 90%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  color: blanchedalmond;
+}
+#ios .pre-one .ios-box {
+  position: fixed;
+  top: 10%;
+  left: 5%;
+}
+#ios .pre-one .ios-box h3 {
+  font-size: xx-large;
+  color: blanchedalmond;
+}
+#ios .pre-two {
+  transform: translate3D(0px, 1000px, -1px) scale(2);
+}
+#ios .pre-two .cd-container.infor-font {
+  font-size: 2em;
+}
+#ios .pre-two .cd-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  color: #f1bfbf;
+  font-size: 2.5em;
+  text-align: center;
+}
+#ios .pre-two .infor-font {
+  font-size: 1.5em;
+  color: #6d7584;
+}
+#ios .pre-three {
+  transform: translate3D(0px, 1000px, 0px) scale(1);
+}
+#ios .pre-three .cd-container.infor-font {
+  font-size: 2em;
+}
+#ios .pre-three .cd-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  color: #f1bfbf;
+  font-size: 2.5em;
+  text-align: center;
+}
+#ios .pre-three .infor-font {
+  font-size: 1.5em;
+  color: #6d7584;
+}
+#ios img {
+  width: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+/* 滚动条宽度为0 */
+::-webkit-scrollbar {
+  width: 0 !important;
 }
