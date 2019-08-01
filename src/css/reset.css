@@ -101,6 +101,8 @@ html,body{ -moz-user-select: -moz-none; -moz-user-select: none; -o-user-select:n
 body {
     width:100vw;
     min-width: 980px;
+    overflow-x: hidden;
+    position: relative;
 }
 
 #banner-container,
@@ -109,3 +111,12 @@ body {
 #detail-pages .page{
     width:100%;
 }
+
+#detail-pages {
+    position: absolute;
+    width:100%;
+    top:0;
+    height: 100vh;
+}
+
+/* 自定义滚动条 */

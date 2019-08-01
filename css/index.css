@@ -14,6 +14,7 @@ html {
   bottom: 20px;
   width: 50px;
   height: 50px;
+  cursor: pointer;
 }
 #menu #menu-list {
   position: relative;
@@ -146,4 +147,171 @@ html {
 /* 滚动条宽度为0 */
 ::-webkit-scrollbar {
   width: 0 !important;
+}
+#machine-learning {
+  position: absolute;
+  top: 0;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  /* 开启透视 */
+  perspective: 1px;
+  height: 100vh;
+}
+#machine-learning .per-one {
+  width: 100%;
+  transform: translateZ(-2px) scale(3);
+}
+#machine-learning .per-one .bg {
+  width: 100%;
+  filter: brightness(60%);
+}
+#machine-learning .per-one .header-font {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.27);
+}
+#machine-learning .per-two {
+  width: 100%;
+  transform: translateZ(0px) scale(1);
+  background-color: #fff5e6;
+  box-shadow: 0px 0px 100px #333;
+}
+#machine-learning .per-two .txt-container {
+  height: 800px;
+  text-align: center;
+  padding-top: 100px;
+}
+#machine-learning .per-two .txt-container span {
+  display: block;
+  position: relative;
+  font-size: 30px;
+  color: #222;
+  opacity: 0;
+  line-height: 55px;
+  transition: all 0.7s;
+  top: 30px;
+}
+#machine-learning .per-two img {
+  width: 50%;
+}
+#detail-pages svg {
+  position: absolute;
+  stroke: #fff;
+  top: 50%;
+  display: block;
+  opacity: 1;
+  transition: transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  cursor: pointer;
+}
+#detail-pages svg:hover circle {
+  transform: translate(80px);
+  /* 神奇属性居然能设置 */
+  r: 0;
+  opacity: 0;
+}
+#detail-pages svg:hover g {
+  transform: translate(20px, 9px);
+}
+#detail-pages svg circle {
+  fill: none;
+  transform: translate(40px);
+  transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+#detail-pages svg g {
+  transform: translate(10px, 9px);
+  transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+#detail-pages svg g path {
+  transform: translateX(43px);
+  transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+#detail-pages svg g line {
+  transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+#detail-pages svg[data-left] {
+  transform: translateY(-50%) scale(-1.3, 1.3);
+  left: 10px;
+}
+#detail-pages svg[data-right] {
+  transform: translateY(-50%) scale(1.3, 1.3);
+  right: 10px;
+}
+#detail-pages {
+  position: relative;
+}
+#android {
+  position: absolute;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  perspective: 1px;
+  height: 100vh;
+  top: -24px;
+  background: #333;
+}
+#android .pers-one {
+  transform: translate3d(0, 0, -6px) scale(7);
+  width: 100%;
+}
+#android .pers-one .one {
+  filter: blur(1px);
+}
+#android .pers-one .font-bg {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.27);
+}
+#android img {
+  width: 100%;
+}
+#android .pers-two {
+  position: relative;
+  box-shadow: 0 -8px #2e2e2e;
+  transform: translate3d(0, 200%, -2px) scale(3);
+  width: 100%;
+}
+#android .pers-two .describe {
+  right: 3%;
+  top: 10%;
+  color: #9ca8ab;
+  width: 33%;
+}
+#android .pers-two .describe .item {
+  font-size: 24px;
+  color: #9ca8ab;
+}
+#android .pers-three {
+  position: relative;
+  box-shadow: 0 -8px #383838;
+  transform: translate3d(0, 210%, 0) scale(1);
+  width: 100%;
+}
+#android .pers-three .describe {
+  width: 23%;
+  right: 38%;
+  bottom: 0;
+  border-radius: 10px 10px;
+  box-shadow: 0 0 20px black;
+  text-shadow: 2px 2px 9px black;
+  padding: 20px;
+  text-align: center;
+  line-height: 38px;
+  cursor: pointer;
+  transition: 1s;
+  color: black;
+  background-color: #b3b3b3;
+}
+#android .pers-three .describe:hover {
+  background-color: #2e2e2e;
+  color: white;
+}
+#android .describe {
+  position: absolute;
+  z-index: 4;
+  font-size: 24px;
+  line-height: 48px;
 }
