@@ -154,8 +154,7 @@ html {
   box-shadow: 0px 0px 100px #2f1e1e;
 }
 #front-end {
-  display: none;
-  background-color: #333;
+  background-color: black;
   margin: 0px;
   padding: 0px;
   position: absolute;
@@ -183,19 +182,39 @@ html {
   z-index: 9;
   box-shadow: none;
 }
+#front-end .per-one .per {
+  filter: brightness(0.7);
+}
 #front-end .per-two {
+  background-color: #383838;
   transform: translate3d(0px, 90%, -1px) scale(2);
   position: relative;
-  display: flex;
+  width: 100%;
+  height: 200%;
 }
 #front-end .per-two .article {
+  top: 10%;
   z-index: 2;
   position: absolute;
+}
+#front-end .per-two .article p {
+  font-size: 25px;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: none;
+}
+#front-end .per-two .icon {
+  z-index: 9;
+  width: 40%;
+  position: absolute;
+  top: 30%;
+  right: 0;
 }
 #front-end .per-three {
   transform: translate3d(0px, 70%, 0px) scale(1);
 }
-#front-end #machine-learning {
+#machine-learning {
+  display: none;
   position: absolute;
   top: 0;
   overflow-y: overlay;
@@ -204,33 +223,33 @@ html {
   perspective: 1px;
   height: 100vh;
 }
-#front-end #machine-learning .per-one {
+#machine-learning .per-one {
   width: 100%;
   transform: translateZ(-2px) scale(3);
 }
-#front-end #machine-learning .per-one .bg {
+#machine-learning .per-one .bg {
   width: 100%;
   filter: brightness(60%);
 }
-#front-end #machine-learning .per-one .header-font {
+#machine-learning .per-one .header-font {
   position: absolute;
   z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.27);
 }
-#front-end #machine-learning .per-two {
+#machine-learning .per-two {
   width: 100%;
   transform: translateZ(0px) scale(1);
   background-color: #fff5e6;
   box-shadow: 0px 0px 100px #333;
 }
-#front-end #machine-learning .per-two .txt-container {
+#machine-learning .per-two .txt-container {
   height: 800px;
   text-align: center;
   padding-top: 100px;
 }
-#front-end #machine-learning .per-two .txt-container span {
+#machine-learning .per-two .txt-container span {
   display: block;
   position: relative;
   font-size: 30px;
@@ -240,13 +259,13 @@ html {
   transition: all 0.7s;
   top: 30px;
 }
-#front-end #machine-learning .per-two img {
+#machine-learning .per-two img {
   width: 50%;
 }
-#front-end #detail-pages {
+#detail-pages {
   position: relative;
 }
-#front-end #detail-pages svg {
+#detail-pages svg {
   position: absolute;
   stroke: #fff;
   top: 50%;
@@ -255,40 +274,41 @@ html {
   transition: transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   cursor: pointer;
 }
-#front-end #detail-pages svg:hover circle {
+#detail-pages svg:hover circle {
   transform: translate(80px);
   /* 神奇属性居然能设置 */
   r: 0;
   opacity: 0;
 }
-#front-end #detail-pages svg:hover g {
+#detail-pages svg:hover g {
   transform: translate(20px, 9px);
 }
-#front-end #detail-pages svg circle {
+#detail-pages svg circle {
   fill: none;
   transform: translate(40px);
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#front-end #detail-pages svg g {
+#detail-pages svg g {
   transform: translate(10px, 9px);
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#front-end #detail-pages svg g path {
+#detail-pages svg g path {
   transform: translateX(43px);
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#front-end #detail-pages svg g line {
+#detail-pages svg g line {
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#front-end #detail-pages svg[data-left] {
+#detail-pages svg[data-left] {
   transform: translateY(-50%) scale(-1.3, 1.3);
   left: 10px;
 }
-#front-end #detail-pages svg[data-right] {
+#detail-pages svg[data-right] {
   transform: translateY(-50%) scale(1.3, 1.3);
   right: 10px;
 }
-#front-end #android {
+#android {
+  display: none;
   position: absolute;
   width: 100%;
   overflow-y: scroll;
@@ -298,46 +318,46 @@ html {
   top: -24px;
   background: #333;
 }
-#front-end #android .pers-one {
+#android .pers-one {
   transform: translate3d(0, 0, -6px) scale(7);
   width: 100%;
 }
-#front-end #android .pers-one .one {
+#android .pers-one .one {
   filter: blur(1px);
 }
-#front-end #android .pers-one .font-bg {
+#android .pers-one .font-bg {
   position: absolute;
   z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.27);
 }
-#front-end #android img {
+#android img {
   width: 100%;
 }
-#front-end #android .pers-two {
+#android .pers-two {
   position: relative;
   box-shadow: 0 -8px #2e2e2e;
   transform: translate3d(0, 200%, -2px) scale(3);
   width: 100%;
 }
-#front-end #android .pers-two .describe {
+#android .pers-two .describe {
   right: 3%;
   top: 10%;
   color: #9ca8ab;
   width: 33%;
 }
-#front-end #android .pers-two .describe .item {
+#android .pers-two .describe .item {
   font-size: 24px;
   color: #9ca8ab;
 }
-#front-end #android .pers-three {
+#android .pers-three {
   position: relative;
   box-shadow: 0 -8px #383838;
   transform: translate3d(0, 210%, 0) scale(1);
   width: 100%;
 }
-#front-end #android .pers-three .describe {
+#android .pers-three .describe {
   width: 23%;
   right: 38%;
   bottom: 0;
@@ -352,11 +372,11 @@ html {
   color: black;
   background-color: #b3b3b3;
 }
-#front-end #android .pers-three .describe:hover {
+#android .pers-three .describe:hover {
   background-color: #2e2e2e;
   color: white;
 }
-#front-end #android .describe {
+#android .describe {
   position: absolute;
   z-index: 4;
   font-size: 24px;
