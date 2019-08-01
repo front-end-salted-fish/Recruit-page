@@ -2,103 +2,138 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<title>TopView</title>
-	<link rel="stylesheet" href="css/index.css">
-	<link rel="stylesheet" href="src/css/reset.css">
+    <meta charset="utf-8">
+    <title>TopView</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="src/css/reset.css">
 </head>
 
 <body>
-	<header id="loading-module">
-		<h1>Welcome to TopView</h1>
-	</header>
-	<!-- tv总介绍 -->
-	<section id="tv-introduction">
-		<!-- 表示继续的按钮 -->
-		<button id="go-ahead-btn"></button>
-	</section>
-	<!-- 部门轮播图容器 -->
-	<section id="banner-container">
-		<!-- 轮播图ul -->
-		<ul id="banner">
-			<li id="front-end">
-				<!-- 轮播图文字 -->
-				<!-- <img src="img/front-end/banner-frontend-font.png" alt="">
+    <header id="loading-module">
+        <h1>Welcome to TopView</h1>
+    </header>
+    <!-- tv总介绍 -->
+    <section id="tv-introduction">
+        <!-- 表示继续的按钮 -->
+        <button id="go-ahead-btn"></button>
+    </section>
+    <!-- 部门轮播图容器 -->
+    <section id="banner-container">
+        <!-- 轮播图ul -->
+        <ul id="banner">
+            <li class="banner-page">
+                <!-- 轮播图文字 -->
+                <!-- <img src="img/front-end/banner-frontend-font.png" alt="">
 					<img src="img/front-end/banner-frontend-font-border.png" alt=""> -->
-				<section>
-					<!-- 轮播图主图片 -->
-				</section>
-			</li>
-			<li id="android">
-				<!-- 轮播图文字→自己去引入 -->
-				<section>
-					<!-- 轮播图主图片 -->
-				</section>
-			</li>
-			<li id="back-stage">
-				<!-- 轮播图文字→自己去引入 -->
-				<section>
-					<!-- 轮播图主图片 -->
-				</section>
-			</li>
-			<li id="ios">
-				<!-- 轮播图文字→自己去引入 -->
-				<section>
-					<!-- 轮播图主图片 -->
-				</section>
-			</li>
-			<li id="machine-learning">
-				<!-- 轮播图文字→自己去引入 -->
-				<section>
-					<!-- 轮播图主图片 -->
-				</section>
-			</li>
-		</ul>
-		<!-- 上一页按钮 -->
-		<button class="switch-btn pre-btn"></button>
-		<!-- 下一页按钮 -->
-		<button class="switch-btn next-btn"></button>
-	</section>
-	<!-- 部门详情介绍页 -->
-	<section id="detail-pages">
-		<!-- 王菲板块 -->
-		<section id="front-end" class="page"></section>
-		<!-- 卓伦模块 -->
-		<section id="android" class="page"></section>
-		<!-- 锋哥模块 -->
-		<section id="back-stage" class="page"></section>
-		<!-- 青姐模块 -->
-		<section id="ios" class="page"></section>
-		<!-- 基你太美模块 -->
-		<section id="machine-learning" class="page"></section>
+                <section>
+                    <!-- 轮播图主图片 -->
+                </section>
+            </li>
+            <li class="banner-page">
+                <!-- 轮播图文字→自己去引入 -->
+                <section>
+                    <!-- 轮播图主图片 -->
+                </section>
+            </li>
+            <li class="banner-page">
+                <!-- 轮播图文字→自己去引入 -->
+                <section>
+                    <!-- 轮播图主图片 -->
+                </section>
+            </li>
+            <li class="banner-page">
+                <!-- 轮播图文字→自己去引入 -->
+                <section>
+                    <!-- 轮播图主图片 -->
+                </section>
+            </li>
+            <li class="banner-page">
+                <!-- 轮播图文字→自己去引入 -->
+                <section>
+                    <!-- 轮播图主图片 -->
+                </section>
+            </li>
+        </ul>
+        <!-- 上一页按钮 -->
+        <button class="switch-btn pre-btn"></button>
+        <!-- 下一页按钮 -->
+        <button class="switch-btn next-btn"></button>
+    </section>
+    <!-- 部门详情介绍页 -->
+    <section id="detail-pages">
+        <!-- 王菲板块 -->
+        <section id="front-end" class="page"></section>
+        <!-- 卓伦模块 -->
+        <section id="android" class="page"></section>
+        <!-- 锋哥模块 -->
+        <section id="back-stage" class="page"></section>
+        <!-- 青姐模块 -->
+        <section id="ios" class="page"></section>
+        <!-- 基你太美模块 -->
+        <section id="machine-learning" class="page">
+            <section class="per-one">
+                <img src="img/machine-learning/banner-machine-font.png" alt="" class="header-font">
+                <img src="img/machine-learning/机器学习3.jpg" alt="" class="bg">
+            </section>
+            <section class="per-two">
+                <div class="txt-container">
+                    <span class="span1">TopView 机器学习组是16年成立的新组</span>
+                    <span class="span2">我们关注机器学习算法模型</span>
+                    <span class="span3">在理论学习的同时</span>
+                    <span class="span4">也包含对工程项目的实践</span>
+                </div>
+                <img src="img/machine-learning/机器学习详情页.jpg" alt="">
+            </section>
+            <!-- <section class="per-three"> -->
+            <!-- <img src="img/machine-learning/机器学习4.jpg" alt=""> -->
+            <!-- </section> -->
+        </section>
 
-		<!-- 跳转菜单 -->
-		<section id="menu">
-			<section id="menu-list">
-				<img src="img/android/WechatIMG11.png"/>
-				<img src="img/back-stage/WechatIMG10.png"/>
-				<img src="img/front-end/WechatIMG9.png"/>
-				<img src="img/ios/WechatIMG12.png"/>
-				<img src="img/machine-learning/WechatIMG13.png"/>
-			</section>
-			<section id="home" class="home">
-				
-			</section>
-			<h2 class="des">Menu</h2>
-		<!-- 关闭按钮 -->
-		<section id="close-btn"></section>
-		<!-- 上一页按钮 -->
-		<button class="switch-btn pre-btn"></button>
-		<!-- 下一页按钮 -->
-		<button class="switch-btn next-btn"></button>
-	</section>
-	<!-- 3d按钮 -->
-	<button id="3d-btn"></button>
-	<!-- 表单 -->
-	<section id="form-page">
-	</section>
-	<script src="src/js/jquery-1.12.4.min.js"></script>
-	<script src="js/index.js"></script>
+        <!-- 跳转菜单 -->
+        <section id="menu">
+            <section id="menu-list">
+                <img src="img/android/WechatIMG11.png" />
+                <img src="img/back-stage/WechatIMG10.png" />
+                <img src="img/front-end/WechatIMG9.png" />
+                <img src="img/ios/WechatIMG12.png" />
+                <img src="img/machine-learning/WechatIMG13.png" />
+            </section>
+            <section id="home" class="home">
+            </section>
+        </section>
+        <h2 class="des">Menu</h2>
+        <!-- 关闭按钮 -->
+        <section id="close-btn"></section>
+        <!-- 上一页按钮 -->
+        <svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle data-left="" cx="15" cy="15" r="14"></circle>
+            <g data-left="">
+                <path data-left=""
+                    d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+                    stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+                <line data-left="" x1="0" y1="7" x2="50" y2="7"></line>
+            </g>
+        </svg>
+        <!-- 下一页按钮 -->
+        <svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
+            xmlns="http://www.w3.org/2000/svg">
+            <circle data-right="" cx="15" cy="15" r="14"></circle>
+            <g data-right="">
+                <path data-right=""
+                    d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+                    stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+                <line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
+            </g>
+        </svg>
+    </section>
+    <!-- 3d按钮 -->
+    <button id="3d-btn"></button>
+    <!-- 表单 -->
+    <section id="form-page">
+    </section>
+    <script src="src/js/jquery-1.12.4.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
