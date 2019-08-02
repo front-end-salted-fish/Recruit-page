@@ -18,20 +18,19 @@ html {
 }
 #menu #menu-list {
   position: relative;
-  width: 42px;
-  height: 42px;
-  margin: 4px;
+  height: 50px;
 }
 #menu #menu-list img {
   position: absolute;
   left: 0;
   top: 0;
-  width: 50px;
-  height: 50px;
+  width: 43px;
+  height: 43px;
   background: url(../img/logo/logo.png);
   border-radius: 50%;
   transition: 1s;
   box-shadow: 0px 0px 5px #333;
+  margin: 4px;
 }
 #menu #home {
   position: absolute;
@@ -51,10 +50,42 @@ html {
   color: white;
   text-align: center;
   text-shadow: 2px 2px 9px black;
+  line-height: 30px;
 }
 #menu img {
   width: 100%;
   box-shadow: 0px 0px 100px #2f1e1e;
+}
+#banner-container .bars {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  z-index: 9;
+}
+#banner-container .bars .bar {
+  width: 20%;
+  background-color: #001732;
+  height: 0px;
+  position: absolute;
+  bottom: 0px;
+  transition: all 1s ease 0s;
+}
+#banner-container .bars .bar1 {
+  left: 0%;
+}
+#banner-container .bars .bar2 {
+  left: 20%;
+}
+#banner-container .bars .bar3 {
+  left: 40%;
+}
+#banner-container .bars .bar4 {
+  left: 60%;
+}
+#banner-container .bars .bar5 {
+  left: 80%;
 }
 #ios {
   /* 滚动容器高度是视口高度 */
@@ -154,6 +185,7 @@ html {
   box-shadow: 0px 0px 100px #2f1e1e;
 }
 #front-end {
+  display: none;
   background-color: black;
   margin: 0px;
   padding: 0px;
@@ -341,7 +373,6 @@ html {
   right: 10px;
 }
 #android {
-  display: none;
   position: absolute;
   width: 100%;
   overflow-y: scroll;
@@ -354,58 +385,48 @@ html {
 #android .pers-one {
   transform: translate3d(0, 0, -6px) scale(7);
   width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  perspective: 1px;
-  height: 100vh;
-  background: #333;
 }
-#android .pers-one .pers-one {
-  transform: translate3d(0, 0, -6px) scale(7);
-  width: 100%;
-}
-#android .pers-one .pers-one .one {
+#android .pers-one .one {
   filter: blur(1px);
 }
-#android .pers-one .pers-one .font-bg {
+#android .pers-one .font-bg {
   position: absolute;
   z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.27);
 }
-#android .pers-one img {
+#android img {
   width: 100%;
 }
-#android .pers-one .pers-two {
+#android .pers-two {
   position: relative;
-  box-shadow: 0 -8px 10px #2e2e2e;
+  box-shadow: 0 -8px #2e2e2e;
   transform: translate3d(0, 200%, -2px) scale(3);
   width: 100%;
 }
-#android .pers-one .pers-two .describe {
+#android .pers-two .describe {
   right: 3%;
   top: 10%;
   color: #9ca8ab;
   width: 33%;
 }
-#android .pers-one .pers-two .describe .item {
+#android .pers-two .describe .item {
   font-size: 24px;
   color: #9ca8ab;
 }
-#android .pers-one .pers-three {
+#android .pers-three {
   position: relative;
-  box-shadow: 0 -8px 10px #383838;
-  transform: translate3d(0, 210%, 0) scale(1);
+  box-shadow: 0 -8px #383838;
+  transform: translate3d(0, 190%, 0) scale(1);
   width: 100%;
 }
-#android .pers-one .pers-three .describe {
+#android .pers-three .describe {
   width: 23%;
   right: 38%;
   bottom: 0;
   border-radius: 10px 10px;
   box-shadow: 0 0 20px black;
-  text-shadow: 2px 2px 9px black;
   padding: 20px;
   text-align: center;
   line-height: 38px;
@@ -414,15 +435,9 @@ html {
   color: black;
   background-color: #b3b3b3;
 }
-#android .pers-one .pers-three .describe:hover {
+#android .pers-three .describe:hover {
   background-color: #2e2e2e;
   color: white;
-}
-#android .pers-one .describe {
-  position: absolute;
-  z-index: 4;
-  font-size: 24px;
-  line-height: 48px;
 }
 #android .describe {
   position: absolute;
