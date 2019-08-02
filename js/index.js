@@ -8,7 +8,7 @@ $(function () {
 		let $bars = $(".bars");
 		var p = new Promise(function(resolve, reject) {
 			setTimeout(function() {
-				$($bars).css("z-index", 9);
+				$($bar).css("z-index", 9);
 		        $($bar[0]).animate({ height: '100vh' }, 80);
 		        $($bar[1]).animate({ height: '100vh' }, 240);
 		        $($bar[2]).animate({ height: '100vh' }, 400);
@@ -86,6 +86,7 @@ $(function () {
 		        $($bar[2]).animate({ height: '0vh' }, 400);
 		        $($bar[3]).animate({ height: '0vh' }, 560);
 				$($bar[4]).animate({ height: '0vh' }, 720);
+				
 				//更改按钮display
 				resolve();
 			}, 0);
@@ -97,11 +98,14 @@ $(function () {
 	!(() => {
 		//左右按钮切换
 		const $btns = $("#detail-pages svg");
+		const $bars = $(".bars");
 		$($btns[0]).on("click", function() {
 			curtainUp().then(prePage).then(curtainDown);
+			
 		})
 		$($btns[1]).on("click", function() {
 			curtainUp().then(nextPage).then(curtainDown);
+			
 		})
 	})()
 	// 旋转菜单模块

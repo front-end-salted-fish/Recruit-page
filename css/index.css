@@ -62,7 +62,6 @@ html {
   height: 100vh;
   top: 0px;
   left: 0px;
-  z-index: 9;
 }
 #banner-container .bars .bar {
   width: 20%;
