@@ -1,30 +1,108 @@
 $(function () {
 	console.log('Welcome to TopView!');
 	//幕布函数
+	const $preBtn = $(".pre-btn");
+	const $nextBtn = $(".next-btn");
 	function curtainUp() {
-		//$bars.css("z-index", 9);
-		const $bar = $(".bar");
-		$($bar[0]).animate({ height: '100vh' }, 80);
-		$($bar[1]).animate({ height: '100vh' }, 240);
-		$($bar[2]).animate({ height: '100vh' }, 400);
-		$($bar[3]).animate({ height: '100vh' }, 560);
-		$($bar[4]).animate({ height: '100vh' }, 720);
+		let $bar = $(".bar");
+		let $bars = $(".bars");
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($bars).css("z-index", 9);
+		        $($bar[0]).animate({ height: '100vh' }, 80);
+		        $($bar[1]).animate({ height: '100vh' }, 240);
+		        $($bar[2]).animate({ height: '100vh' }, 400);
+		        $($bar[3]).animate({ height: '100vh' }, 560);
+				$($bar[4]).animate({ height: '100vh' }, 720);
+				//更改按钮display
+				resolve("true");
+			}, 0);
+		});
+		return p;
 	}
-	function curtainDown() {
-		$($bar[0]).animate({ height: '0vh' }, 80);
-		$($bar[1]).animate({ height: '0vh' }, 240);
-		$($bar[2]).animate({ height: '0vh' }, 400);
-		$($bar[3]).animate({ height: '0vh' }, 560);
-		$($bar[4]).animate({ height: '0vh' }, 720);
-		//$bars.css("z-index", 0);
+	// 轮播图点击触发函数
+	let detailIndex = 0;
+	const $pages = $(".page");
+	function showPage(index){
+		detailIndex = index;
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($pages[detailIndex]).css(display, "block").siblings().css(display, "none");
+				resolve("true");
+			}, 720);
+		});
+		return p;
 	}
-	// 轮播图切换幕布
+	function prePage() {
+		detailIndex--;
+		//console.log(detailIndex)
+		if(detailIndex == 0) {
+			$($preBtn).css("display", "none");
+		}
+		else {$($preBtn).css("display", "block");}
+		if (detailIndex == 4) {
+			$($nextBtn).css("display", "none");
+		}
+		else {$($nextBtn).css("display", "block")}
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($pages).css("display", "none");
+				$($pages[detailIndex]).css("display", "block");
+				
+				resolve("true");
+			}, 1700);
+		});
+		return p; 
+	}
+	function nextPage() {
+		detailIndex++;
+		console.log(detailIndex)
+		if(detailIndex == 0) {
+			$($preBtn).css("display", "none");
+		}
+		else {$($preBtn).css("display", "block");}
+		if(detailIndex == 4) {
+			$($nextBtn).css("display", "none");
+		}
+		else {$($nextBtn).css("display", "block")}
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($pages).css("display", "none");
+				$($pages[detailIndex]).css("display", "block");
+				resolve("true");
+			}, 1700);
+		});
+		return p;
+	}
+	function curtainDown(data) {
+		let $bar = $(".bar");
+		let $bars = $(".bars");
+		if(data == "true") {
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($bars).css("z-index", 9);
+		        $($bar[0]).animate({ height: '0vh' }, 80);
+		        $($bar[1]).animate({ height: '0vh' }, 240);
+		        $($bar[2]).animate({ height: '0vh' }, 400);
+		        $($bar[3]).animate({ height: '0vh' }, 560);
+				$($bar[4]).animate({ height: '0vh' }, 720);
+				//更改按钮display
+				resolve();
+			}, 0);
+		});
+		return p;
+	    }
+	}
+	// 切换幕布
 	!(() => {
-		//const $btns = $("#menu-list img");
-		//const $btns = $(".switch-btn");
-		const $bars = $(".bars");
-		/* $($btns[0]).on("click", curtainUp);
-		$($btns[1]).on("click", curtainDown); */
+		//左右按钮切换
+		const $btns = $("#detail-pages svg");
+		$($btns[0]).on("click", function() {
+			curtainUp().then(prePage).then(curtainDown);
+		})
+		$($btns[1]).on("click", function() {
+			curtainUp().then(nextPage).then(curtainDown);
+		})
 	})()
 	// 旋转菜单模块
 	!(() => {
@@ -87,7 +165,7 @@ $(function () {
 		const $perTwo = $(".per-two");
 		const $article = $(".article p");
 		$frontEnd.on("scroll", function () {
-			console.log($frontEnd.scrollTop())
+			//console.log($frontEnd.scrollTop())
 
 			$perOne.css("opacity", (1 - $frontEnd.scrollTop() / 2500));
 			if ($frontEnd.scrollTop() > 1850) {

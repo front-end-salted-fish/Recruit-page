@@ -56,37 +56,6 @@ html {
   width: 100%;
   box-shadow: 0px 0px 100px #2f1e1e;
 }
-#banner-container .bars {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  top: 0px;
-  left: 0px;
-  z-index: 9;
-}
-#banner-container .bars .bar {
-  width: 20%;
-  background-color: #001732;
-  height: 0px;
-  position: absolute;
-  bottom: 0px;
-  transition: all 1s ease 0s;
-}
-#banner-container .bars .bar1 {
-  left: 0%;
-}
-#banner-container .bars .bar2 {
-  left: 20%;
-}
-#banner-container .bars .bar3 {
-  left: 40%;
-}
-#banner-container .bars .bar4 {
-  left: 60%;
-}
-#banner-container .bars .bar5 {
-  left: 80%;
-}
 #ios {
   /* 滚动容器高度是视口高度 */
   display: none;
@@ -185,7 +154,6 @@ html {
   box-shadow: 0px 0px 100px #2f1e1e;
 }
 #front-end {
-  display: none;
   background-color: black;
   margin: 0px;
   padding: 0px;
@@ -211,7 +179,7 @@ html {
   position: absolute;
   top: 30%;
   left: 35%;
-  z-index: 9;
+  z-index: 8;
   box-shadow: none;
 }
 #front-end .per-one .per {
@@ -297,13 +265,44 @@ html {
 #detail-pages {
   position: relative;
 }
+#detail-pages .bars {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+}
+#detail-pages .bars .bar {
+  width: 20%;
+  background-color: #001732;
+  height: 0px;
+  position: absolute;
+  bottom: 0px;
+  transition: all 1s ease 0s;
+}
+#detail-pages .bars .bar1 {
+  left: 0%;
+}
+#detail-pages .bars .bar2 {
+  left: 20%;
+}
+#detail-pages .bars .bar3 {
+  left: 40%;
+}
+#detail-pages .bars .bar4 {
+  left: 60%;
+}
+#detail-pages .bars .bar5 {
+  left: 80%;
+}
 #detail-pages svg {
   position: absolute;
   stroke: #fff;
   top: 50%;
   display: block;
   opacity: 1;
-  z-index: 10;
+  z-index: 100;
   transition: transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   cursor: pointer;
 }
@@ -335,6 +334,7 @@ html {
 #detail-pages svg[data-left] {
   transform: translateY(-50%) scale(-1.3, 1.3);
   left: 10px;
+  display: none;
 }
 #detail-pages svg[data-right] {
   transform: translateY(-50%) scale(1.3, 1.3);
