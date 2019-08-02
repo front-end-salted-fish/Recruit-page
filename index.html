@@ -2,14 +2,14 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>TopView</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="src/css/reset.css">
+	<meta charset="utf-8">
+	<title>TopView</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="src/css/reset.css">
 </head>
 
 <body>
-    <!-- <header id="loading-module">
+	<!-- <header id="loading-module">
 		<h1>Welcome to TopView</h1>
 	</header> -->
 	<!-- tv总介绍 -->
@@ -21,47 +21,75 @@
 	<section id="banner-container">
 		<!-- 轮播图ul -->
 		<ul id="banner">
-			<li class="banner-page">
-				<!-- 轮播图文字 -->
-				<!-- <img src="img/front-end/banner-frontend-font.png" alt="">
-				<img src="img/front-end/banner-frontend-font-border.png" alt=""> -->
-				<section>
-					<!-- 轮播图主图片 -->
-					<!-- <img src="img/front-end/007.jpg" alt=""> -->
+			<li class="">
+				<!-- 实心字体 -->
+				<img src="" alt="" class="banner-font">
+				<!-- 字体边框 -->
+				<img src="" alt="" class="banner-border">
+				<section class="outer-mask">
+					<section class="inner-mask">
+						<!-- 轮播图 -->
+						<img>
+					</section>
 				</section>
 			</li>
-			<li class="banner-page">
-				<!-- 轮播图文字→自己去引入 -->
-				<section>
-					<!-- 轮播图主图片 -->
+			<li class="">
+				<!-- 实心字体 -->
+				<img src="" alt="" class="banner-font">
+				<!-- 字体边框 -->
+				<img src="" alt="" class="banner-border">
+				<section class="outer-mask">
+					<section class="inner-mask">
+						<!-- 轮播图 -->
+						<img>
+					</section>
 				</section>
 			</li>
-			<li class="banner-page">
-				<!-- 轮播图文字→自己去引入 -->
-				<section>
-					<!-- 轮播图主图片 -->
+			<li class="">
+				<!-- 实心字体 -->
+				<img src="" alt="" class="banner-font">
+				<!-- 字体边框 -->
+				<img src="" alt="" class="banner-border">
+				<section class="outer-mask">
+					<section class="inner-mask">
+						<!-- 轮播图 -->
+						<img>
+					</section>
 				</section>
 			</li>
-			<li class="banner-page">
-				<!-- 轮播图文字→自己去引入 -->
-				<section>
-					<!-- 轮播图主图片 -->
-				</section>
-			</li>
-			<li class="banner-page">
-				<!-- 轮播图文字→自己去引入 -->
-				<section>
-					<!-- 轮播图主图片 -->
-				</section>
-			</li>
+			<div class="banner-btns">
+				<span class="banner-btn"><span class="bg-span"></span></span>
+				<span class="banner-btn"><span class="bg-span"></span></span>
+				<span class="banner-btn"><span class="bg-span"></span></span>
+				<span class="banner-btn"><span class="bg-span"></span></span> 
+				<span class="banner-btn"><span class="bg-span"></span></span>
+			</div>
 		</ul>
 		<!-- 上一页按钮 -->
-		<button class="switch-btn pre-btn"></button>
+		<svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
+		xmlns="http://www.w3.org/2000/svg">
+		<circle data-left="" cx="15" cy="15" r="14"></circle>
+		<g data-left="">
+			<path data-left=""
+				d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+				stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+			<line data-left="" x1="0" y1="7" x2="50" y2="7"></line>
+		</g>
+	</svg>
 		<!-- 下一页按钮 -->
-		<button class="switch-btn next-btn"></button>
+		<svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
+			xmlns="http://www.w3.org/2000/svg">
+			<circle data-right="" cx="15" cy="15" r="14"></circle>
+			<g data-right="">
+				<path data-right=""
+					d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+					stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+				<line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
+			</g>
+		</svg>
 	</section>
 	<!-- 部门详情介绍页 -->
-	<section id="detail-pages">
+	<section id="detail-pages" style="display: none">
 		<!-- 王菲板块 -->
 		<section id="front-end" class="page">
 			<section class="per-one">
@@ -71,11 +99,11 @@
 			<section class="per-two">
 				<img src="img/front-end/001.jpg" alt="">
 				<section class="article">
-					TopView 前端组主要基于HTML，CSS，JavaScript等基础web前端编程语言进行开发，<br/>
-					同时引入前端领域前沿技术进一步构建项目。<br/>
+					TopView 前端组主要基于HTML，CSS，JavaScript等基础web前端编程语言进行开发，<br />
+					同时引入前端领域前沿技术进一步构建项目。<br />
 					我们专注于展现视觉更好的页面，
 					打造用户体验更优的网站，
-					开发更有特色更有创意的产品。 
+					开发更有特色更有创意的产品。
 				</section>
 			</section>
 			<section class="per-three">
@@ -122,7 +150,7 @@
 				<sup>优雅极致、中流砥柱</sup>
 				<br>
 				<sup  id="directionDetails" style="font-size:0.5em">〔下滑详情〕</sup> -->
-			<!-- </div> -->
+				<!-- </div> -->
 				<img src="./img/ios/3.jpg" alt="" class="bg">
 			</section>
 			<section class="pre-two">
@@ -147,22 +175,40 @@
 		<!-- 基你太美模块 -->
 		<section id="machine-learning" class="page">
 			<section class="per-one">
-                <img src="img/machine-learning/banner-machine-font.png" alt="" class="header-font">
-                <img src="img/machine-learning/机器学习3.jpg" alt="" class="bg">
-            </section>
-            <section class="per-two">
-                <div class="txt-container">
-                    <span class="span1">TopView 机器学习组是16年成立的新组</span>
-                    <span class="span2">我们关注机器学习算法模型</span>
-                    <span class="span3">在理论学习的同时</span>
-                    <span class="span4">也包含对工程项目的实践</span>
-                </div>
-                <img src="img/machine-learning/机器学习详情页.jpg" alt="">
-                <img src="img/machine-learning/机器学习轮播图.png" alt="">
-            </section>
-            <!-- <section class="per-three"> -->
-            <!-- <img src="img/machine-learning/机器学习4.jpg" alt=""> -->
-            <!-- </section> -->
+				<img src="img/machine-learning/banner-machine-font.png" alt="" class="header-font">
+				<img src="img/machine-learning/机器学习3.jpg" alt="" class="bg">
+			</section>
+			<section class="per-two">
+				<div class="flex-box1 flex-box">
+					<div class="txt-container1">
+						<span class="show-span">TopView 机器学习组是16年成立的新组,</span>
+						<span class="show-span">我们关注机器学习算法模型,</span>
+						<span class="show-span">在理论学习的同时,</span>
+						<span class="show-span">也包含对工程项目的实践。</span>
+						<span class="show-span">我们组以Python语言为主,</span>
+						<span class="show-span">目前工作集中在爬虫技术、数据挖掘、</span>
+						<span class="show-span">机器学习、AI研究方向，</span>
+						<span class="show-span">包括金融信贷反欺诈和在线评论的情感分析等……</span>
+					</div>
+					<img src="img/machine-learning/机器学习详情页1.jpg" alt="" class="img1">
+				</div>
+				<div class="flex-box2 flex-box">
+					<img src="img/machine-learning/机器学习详情页2.jpg" alt="" class="img2">
+					<div class="txt-container2">
+						<span class="show-span">发展方向则有大数据、自然语言处理、</span>
+						<span class="show-span">计算机视觉等多个人工智能领域方向，</span>
+						<span class="show-span">并与研究生实验室有合作。</span>
+					</div>
+				</div>
+
+				<div class="txt-container3">
+					<span class="show-span">要求：</span>
+					<span class="show-span">了解使用至少一门编程语言，有自主学习能力，能承受学习基础理论学科的枯燥性，</span>
+					<span class="show-span">对学习数学相关知识，阅读外语文献不排斥（我们非常欢迎数学和英语好的同学）</span>
+					<img src="img/machine-learning/机器学习详情页3.jpg" alt="" class="img3">
+				</div>
+				<div class="bottom-bg"></div>
+			</section>
 		</section>
 
 		<!-- 跳转菜单 -->
@@ -178,38 +224,39 @@
 
 			</section>
 			<h2 class="des">Menu</h2>
-		</section>	
+		</section>
 		<!-- 关闭按钮 -->
 		<section id="close-btn"></section>
 		<!-- 上一页按钮 -->
-        <svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
-            xmlns="http://www.w3.org/2000/svg">
-            <circle data-left="" cx="15" cy="15" r="14"></circle>
-            <g data-left="">
-                <path data-left=""
-                    d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
-                    stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
-                <line data-left="" x1="0" y1="7" x2="50" y2="7"></line>
-            </g>
-        </svg>
-        <!-- 下一页按钮 -->
-        <svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
-            xmlns="http://www.w3.org/2000/svg">
-            <circle data-right="" cx="15" cy="15" r="14"></circle>
-            <g data-right="">
-                <path data-right=""
-                    d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
-                    stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
-                <line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
-            </g>
-        </svg>
-        <!-- 3d按钮 -->
-        <button id="3d-btn"></button>
-        <!-- 表单 -->
-        <section id="form-page">
-        </section>
-        <script src="src/js/jquery-1.12.4.min.js"></script>
-        <script src="js/index.js"></script>
+		<svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
+			xmlns="http://www.w3.org/2000/svg">
+			<circle data-left="" cx="15" cy="15" r="14"></circle>
+			<g data-left="">
+				<path data-left=""
+					d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+					stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+				<line data-left="" x1="0" y1="7" x2="50" y2="7"></line>
+			</g>
+		</svg>
+		<!-- 下一页按钮 -->
+		<svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
+			xmlns="http://www.w3.org/2000/svg">
+			<circle data-right="" cx="15" cy="15" r="14"></circle>
+			<g data-right="">
+				<path data-right=""
+					d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+					stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+				<line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
+			</g>
+		</svg>
+	</section>
+	<!-- 3d按钮 -->
+	<button id="3d-btn"></button>
+	<!-- 表单 -->
+	<section id="form-page">
+	</section>
+	<script src="src/js/jquery-1.12.4.min.js"></script>
+	<script src="js/index.js"></script>
 </body>
 
 </html>
