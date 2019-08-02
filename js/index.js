@@ -1,28 +1,181 @@
 $(function () {
 	console.log('Welcome to TopView!');
+	//幕布函数
+	const $preBtn = $(".pre-btn");
+	const $nextBtn = $(".next-btn");
+	function curtainUp() {
+		let $bar = $(".bar");
+		let $bars = $(".bars");
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($bar).css("z-index", 9);
+		        $($bar[0]).animate({ height: '100vh' }, 80);
+		        $($bar[1]).animate({ height: '100vh' }, 240);
+		        $($bar[2]).animate({ height: '100vh' }, 400);
+		        $($bar[3]).animate({ height: '100vh' }, 560);
+				$($bar[4]).animate({ height: '100vh' }, 720);
+				//更改按钮display
+				resolve("true");
+			}, 0);
+		});
+		return p;
+	}
+	// 轮播图点击触发函数
+	let detailIndex = 0;
+	const $pages = $(".page");
+	function showPage(index){
+		detailIndex = index;
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($pages[detailIndex]).css(display, "block").siblings().css(display, "none");
+				resolve("true");
+			}, 720);
+		});
+		return p;
+	}
+	function prePage() {
+		detailIndex--;
+		//console.log(detailIndex)
+		if(detailIndex == 0) {
+			$($preBtn).css("display", "none");
+		}
+		else {$($preBtn).css("display", "block");}
+		if (detailIndex == 4) {
+			$($nextBtn).css("display", "none");
+		}
+		else {$($nextBtn).css("display", "block")}
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($pages).css("display", "none");
+				$($pages[detailIndex]).css("display", "block");
+				
+				resolve("true");
+			}, 1700);
+		});
+		return p; 
+	}
+	function nextPage() {
+		detailIndex++;
+		console.log(detailIndex)
+		if(detailIndex == 0) {
+			$($preBtn).css("display", "none");
+		}
+		else {$($preBtn).css("display", "block");}
+		if(detailIndex == 4) {
+			$($nextBtn).css("display", "none");
+		}
+		else {$($nextBtn).css("display", "block")}
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($pages).css("display", "none");
+				$($pages[detailIndex]).css("display", "block");
+				resolve("true");
+			}, 1700);
+		});
+		return p;
+	}
+	function curtainDown(data) {
+		let $bar = $(".bar");
+		let $bars = $(".bars");
+		if(data == "true") {
+		var p = new Promise(function(resolve, reject) {
+			setTimeout(function() {
+				$($bars).css("z-index", 9);
+		        $($bar[0]).animate({ height: '0vh' }, 80);
+		        $($bar[1]).animate({ height: '0vh' }, 240);
+		        $($bar[2]).animate({ height: '0vh' }, 400);
+		        $($bar[3]).animate({ height: '0vh' }, 560);
+				$($bar[4]).animate({ height: '0vh' }, 720);
+				
+				//更改按钮display
+				resolve();
+			}, 0);
+		});
+		return p;
+	    }
+	}
+	// 切换幕布
+	!(() => {
+		//左右按钮切换
+		const $btns = $("#detail-pages svg");
+		const $bars = $(".bars");
+		$($btns[0]).on("click", function() {
+			curtainUp().then(prePage).then(curtainDown);
+			
+		})
+		$($btns[1]).on("click", function() {
+			curtainUp().then(nextPage).then(curtainDown);
+			
+		})
+	})()
 	// 旋转菜单模块
 	!(() => {
+		const $detailPages = $("#detail-pages")
 		const $home = $('#home');
 		const $imgs = $('#menu-list img');
+		const $menuList = $('#menu-list')
 		let c = 130;
 		let flag = true;
-		$imgs.on('click', function () {
-			$(this).css({
-				transition: ".5s linear",
-				transform: "scale(2) rotate(-720deg)",
-				opacity: 0.1
-			});
-			$(this).on("transitionend", end);
-		})
 
-		function end() {
-			$(this).css({
-				transition: ".1s",
-				transform: "scale(1) rotate(-720deg)",
-				opacity: 1
-			});
-			$(this).off("transitionend", end);
+		// 给五个菜单小图标绑定点击事件
+		$imgs.on('click', throttle(rotaImg, 500));
+		// 给菜单图标绑定点击事件
+		$home.on('click', throttle(rota, 1000));
+		// 给详情页绑定点击事件
+		$detailPages.on('click', function (ev) {
+			if (ev.target.id !== 'home' && !$(ev.target).hasClass('menu-item') && flag == false) {
+				$home.get(0).style.transform = "scale(1) rotate(0) ";
+				for (let i = 0; i < $imgs.length; i++) {
+					$imgs.eq(i).css({
+						transform: "scale(1) rotate(0)",
+						transition: ".5s " + (($imgs.length - 1 - i) * 0.1) + "s ",
+						left: 0,
+						top: 0
+					});
+				}
+				flag = true;
+			}	
+		})
+		
+		/*
+		 * @desc 函数节流 时间戳版
+		 * @param func 函数
+		 * @param wait 延迟执行毫秒数
+		 */
+		function throttle(func, wait) {
+			let previous = 0;
+			return function() {
+				let now = Date.now();
+				let context = this;
+				let args = arguments;
+				if (now - previous > wait) {
+					func.apply(context, args);
+					previous = now;
+				}
+			}
 		}
+		// 延迟停止时调用此函数
+		function end() {
+			$home.get(0).style.transform = "scale(1) rotate(0) ";
+				for (let i = 0; i < $imgs.length; i++) {
+					$imgs.eq(i).css({
+						transform: "scale(1) rotate(0)",
+						transition: ".3s " + (($imgs.length - 1 - i) * 0.1) + "s ",
+						left: 0,
+						top: 0
+					});
+				}
+				flag = true;
+				setTimeout(() => {
+					$(this).css({
+					transition: "0",
+					transform: "scale(1) rotate(-720deg)",
+					opacity: 1
+					})
+				},500)
+			$(this).off('transitionend', end);
+		}
+
 		//根据第三边和角度换算出坐标
 		//角度转弧度   角度*π/180 =弧度
 		const getPoint = (c, deg) => {
@@ -33,7 +186,20 @@ $(function () {
 				y: b
 			};
 		}
-		$home.on('click', function () {
+		// 用于点击图片时调用的旋转函数
+		function rotaImg(ev) {
+			$(this).css({
+				transition: ".3s linear",
+				transform: "scale(2) rotate(-720deg)",
+				opacity: 0
+			});
+			$(this).on("transitionend", end);
+
+			ev.stopPropagation();
+			// return false;
+		}
+		// 用于点击home时调用的旋转函数
+		function rota(ev) {
 			if (flag) {
 				this.style.transform = "scale(1) rotate(-720deg)";
 				for (let i = 0; i < $imgs.length; i++) {
@@ -56,18 +222,64 @@ $(function () {
 				}
 			}
 			flag = !flag;
-		})
-	})()
+			ev.stopPropagation();
+		}
+	
+	})();
 	//front-end
 	!(() => {
 		const $frontEnd = $("#front-end");
 		const $perOne = $(".per-one");
 		const $perTwo = $(".per-two");
+		const $article = $(".article p");
 		$frontEnd.on("scroll", function () {
+			//console.log($frontEnd.scrollTop())
+
 			$perOne.css("opacity", (1 - $frontEnd.scrollTop() / 2500));
 			if ($frontEnd.scrollTop() > 1850) {
 				$perTwo.css("opacity", (1 - ($frontEnd.scrollTop() - 1850) / 1000));
 			}
+			/* if ($frontEnd.scrollTop() > 1000) {
+				$article.fadeIn("4000");
+			}
+			if ($frontEnd.scrollTop() < 700) {
+				$article.fadeOut("4000");
+			} */
+			//逐行显示//not a function//包装成$()
+			if ($frontEnd.scrollTop() > 500) {
+				$($article[0]).fadeIn("4000");
+			}
+			else { $($article[0]).fadeOut(); }
+			if ($frontEnd.scrollTop() > 570) {
+				$($article[1]).fadeIn("4000");
+			}
+			else { $($article[1]).fadeOut(); }
+			if ($frontEnd.scrollTop() > 640) {
+				$($article[2]).fadeIn("4000");
+			}
+			else { $($article[2]).fadeOut(); }
+
+			if ($frontEnd.scrollTop() > 706) {
+				$($article[3]).fadeIn("4000");
+			}
+			else { $($article[3]).fadeOut(); }
+
+			if ($frontEnd.scrollTop() > 780) {
+				$($article[4]).fadeIn("4000");
+			}
+			else { $($article[4]).fadeOut(); }
+
+			if ($frontEnd.scrollTop() > 840) {
+				$($article[5]).fadeIn("4000");
+			}
+			else { $($article[5]).fadeOut(); }
+
+			if ($frontEnd.scrollTop() > 940) {
+				$($article[6]).fadeIn("4000");
+			}
+			else { $($article[6]).fadeOut(); }
+
+
 		})
 	})();
 
@@ -85,6 +297,7 @@ $(function () {
 			}
 		});
 	})();
+	
 
 
 	// 机器学习
@@ -179,7 +392,7 @@ $(function () {
 		})
 	})();
 
-	// 伦哥模块
+	// android模块
 	!(() => {
 		// 获取页面元素
 		const $android = $('#android');
@@ -187,10 +400,7 @@ $(function () {
 		const $persOne = $('.pers-one');
 		// 监听滚动条事件
 		$android.on('scroll', function () {
-			// console.log($persOne.get(0).clientHeight)
-			// console.log(this.scrollTop)
 			let scale = this.scrollTop / $persOne.get(0).clientHeight - 1;
-			console.log(scale)
 			if (scale > 0) {
 				$fontBg.css({
 					opacity: 1 - scale
@@ -351,5 +561,99 @@ $(function () {
 			prePage(playIndex - 1)
 		});
 
+	})();
+	//backstage
+	(() => {
+		let that;
+		class backstage  {
+			constructor() {
+				that = this;
+				this.$backstage = $("#back-stage");
+				this.$content = $(".bcak-stage-content");
+				this.$sections = $("#back-stage section");
+				this.$pageName = $(".page-name");
+				this.$contents = $(".bcak-stage-content p");
+				this.$writebox = $("#detail-pages #back-stage .per-two .write-box");
+				console.log(this.$pageName);
+			}
+			//初始化
+			init() {
+				//给backstage注册事件
+				this.$backstage.on("scroll",this.scroll);
+			}
+			//监听滚动距离
+			scroll() {
+				let scrollTop = that.$backstage.scrollTop();
+				that.fadeout(that.$sections[0],scrollTop);
+				that.fadeout(that.$pageName[0],scrollTop);
+				console.log(scrollTop);
+				if(scrollTop >= 240) {
+					that.objmove();
+				}
+				// else if(scrollTop == 0) {
+				// 	this.$content.num = 0;
+				// 	for(let i = 0;i <7 ; i++) {
+				// 		console.log("xiaoshi")
+				// 		that.fontout($(that.$contents[i]),i);
+				// 		that.$writebox.hide();
+				// 	}
+				// }
+			}
+			//使元素淡出
+			fadeout(obj,scrollTop) {
+				obj.style.opacity = 2.2 - (scrollTop / $(window).height());
+			}
+			//元素移动
+			objmove() {
+				this.$content.num = 0;
+				that.$content.timer = null;
+				that.$content.timer = () => {
+					setTimeout(() => {
+						console.log("num" + that.$content.num);
+						console.log($(that.$contents[that.$content.num]));
+						that.fontin($(that.$contents[that.$content.num]),that.$content.num);
+						if(that.$content.num <= 7){
+							that.$content.num++;
+							that.$content.timer();		
+						}else {
+							that.$writebox.show(2000);	
+							return false;
+						}
+					},800)
+				}
+				that.$content.timer();
+			}
+			//显示
+			fontin(obj,num) {
+				if(((num) % 2) == 0){
+					obj.animate({
+						left: (750 - obj.width()) / 2,
+						top:num*55
+					},1000);
+				}else if(num > 0) {
+					obj.animate({
+						right: (750 - obj.width()) / 2,
+						top:num*55
+					},1000);
+				}
+			}
+			//隐藏
+			fontout(obj,num) {
+				if(((num) % 2) == 0){
+					obj.animate({
+						left: -750,
+						top:-55
+					},1000);
+				}else {
+					obj.animate({
+						right: -750,
+						top:-55
+					},1000);
+				}
+			}
+		}
+		let newBackstage = new backstage();
+		console.log(newBackstage);
+		newBackstage.init();
 	})();
 });

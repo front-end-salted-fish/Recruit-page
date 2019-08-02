@@ -18,43 +18,19 @@ html {
 }
 #menu #menu-list {
   position: relative;
-  width: 42px;
-  height: 42px;
-  margin: 4px;
+  height: 50px;
 }
 #menu #menu-list img {
   position: absolute;
   left: 0;
   top: 0;
-  width: 50px;
-  height: 50px;
+  width: 43px;
+  height: 43px;
   background: url(../img/logo/logo.png);
   border-radius: 50%;
   transition: 1s;
   box-shadow: 0px 0px 5px #333;
-}
-#menu #home {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 50px;
-  height: 50px;
-  background: url(../img/logo/logo.png);
-  border-radius: 50%;
-  transition: 1s;
-  box-shadow: 0px 0px 15px #333;
-}
-#menu .des {
-  position: absolute;
-  left: 8px;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  text-shadow: 2px 2px 9px black;
-}
-#menu img {
-  width: 100%;
-  box-shadow: 0px 0px 100px #2f1e1e;
+  margin: 4px;
 }
 #ios {
   /* 滚动容器高度是视口高度 */
@@ -71,13 +47,74 @@ html {
   perspective: 1px;
   min-width: 1500px;
 }
-#ios .pre-one {
-  transform: translateZ(-6px) scale(7);
+#ios .des {
+  position: absolute;
+  left: 8px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 9px black;
+  line-height: 30px;
 }
-#ios .pre-one .bg {
+#ios img {
+  width: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#ios .bg {
   filter: brightness(80%);
 }
-#ios .pre-one .header-icon {
+#ios #banner-container .bars {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+}
+#ios #banner-container .bars .bar {
+  width: 20%;
+  background-color: #001732;
+  height: 0px;
+  position: absolute;
+  bottom: 0px;
+  transition: all 1s ease 0s;
+}
+#ios #banner-container .bars .bar1 {
+  left: 0%;
+}
+#ios #banner-container .bars .bar2 {
+  left: 20%;
+}
+#ios #banner-container .bars .bar3 {
+  left: 40%;
+}
+#ios #banner-container .bars .bar4 {
+  left: 60%;
+}
+#ios #banner-container .bars .bar5 {
+  left: 80%;
+}
+#ios #ios {
+  /* 滚动容器高度是视口高度 */
+  display: none;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  /* 宽度为视口宽度 */
+  width: 100vw;
+  /* 不占用宽度的滚动条 */
+  overflow-y: overlay;
+  overflow-x: hidden;
+  /* 关键一行 */
+  perspective: 1px;
+  min-width: 1500px;
+}
+#ios #ios .pre-one {
+  transform: translateZ(-6px) scale(7);
+}
+#ios #ios .pre-one .bg {
+  filter: brightness(80%);
+}
+#ios #ios .pre-one .header-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -85,10 +122,13 @@ html {
   z-index: 2;
   box-shadow: 0px 0px 0px;
 }
-#ios .pre-one #directionDetails {
+#ios #ios .pre-one #directionDetails {
   font-size: 0.5em;
 }
-#ios .pre-one sup {
+#ios #ios .pre-one #directionDetails {
+  font-size: 0.5em;
+}
+#ios #ios .pre-one sup {
   top: 0.5em;
   font-size: 90%;
   line-height: 0;
@@ -96,22 +136,22 @@ html {
   vertical-align: baseline;
   color: blanchedalmond;
 }
-#ios .pre-one .ios-box {
+#ios #ios .pre-one .ios-box {
   position: fixed;
   top: 10%;
   left: 5%;
 }
-#ios .pre-one .ios-box h3 {
+#ios #ios .pre-one .ios-box h3 {
   font-size: xx-large;
   color: blanchedalmond;
 }
-#ios .pre-two {
+#ios #ios .pre-two {
   transform: translate3D(0px, 1000px, -1px) scale(2);
 }
-#ios .pre-two .cd-container.infor-font {
+#ios #ios .pre-two .cd-container.infor-font {
   font-size: 2em;
 }
-#ios .pre-two .cd-container {
+#ios #ios .pre-two .cd-container {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -123,17 +163,17 @@ html {
   font-size: 2.5em;
   text-align: center;
 }
-#ios .pre-two .infor-font {
+#ios #ios .pre-two .infor-font {
   font-size: 1.5em;
   color: #6d7584;
 }
-#ios .pre-three {
+#ios #ios .pre-three {
   transform: translate3D(0px, 1000px, 0px) scale(1);
 }
-#ios .pre-three .cd-container.infor-font {
+#ios #ios .pre-three .cd-container.infor-font {
   font-size: 2em;
 }
-#ios .pre-three .cd-container {
+#ios #ios .pre-three .cd-container {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -145,15 +185,15 @@ html {
   font-size: 2.5em;
   text-align: center;
 }
-#ios .pre-three .infor-font {
+#ios #ios .pre-three .infor-font {
   font-size: 1.5em;
   color: #6d7584;
 }
-#ios img {
+#ios #ios img {
   width: 100%;
   box-shadow: 0px 0px 100px #2f1e1e;
 }
-#front-end {
+#ios #front-end {
   display: none;
   background-color: #333;
   margin: 0px;
@@ -166,36 +206,80 @@ html {
   overflow-x: hidden;
   perspective: 1px;
 }
-#front-end img {
+#ios #front-end img {
   width: 100%;
   box-shadow: 0px 0px 100px #2f1e1e;
 }
-#front-end .per-one {
+#ios #front-end .per-one {
   transform: translateZ(-6px) scale(7);
   position: relative;
   display: flex;
 }
-#front-end .per-one .title {
+#ios #front-end #front-end {
+  display: none;
+  background-color: black;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  perspective: 1px;
+}
+#ios #front-end #front-end img {
+  width: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#ios #front-end #front-end .per-one {
+  transform: translateZ(-6px) scale(7);
+  position: relative;
+  display: flex;
+}
+#ios #front-end #front-end .per-one .title {
   width: 30%;
   position: absolute;
   top: 30%;
   left: 35%;
-  z-index: 9;
+  z-index: 8;
   box-shadow: none;
 }
-#front-end .per-two {
+#ios #front-end #front-end .per-one .per {
+  filter: brightness(0.7);
+}
+#ios #front-end #front-end .per-two {
+  background-color: #383838;
   transform: translate3d(0px, 90%, -1px) scale(2);
   position: relative;
-  display: flex;
+  width: 100%;
+  height: 200%;
 }
-#front-end .per-two .article {
+#ios #front-end #front-end .per-two .article {
+  top: 10%;
   z-index: 2;
   position: absolute;
 }
-#front-end .per-three {
+#ios #front-end #front-end .per-two .article p {
+  font-size: 25px;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: none;
+}
+#ios #front-end #front-end .per-two .icon {
+  z-index: 9;
+  width: 40%;
+  position: absolute;
+  top: 30%;
+  right: 0;
+}
+#ios #front-end #front-end .per-three {
   transform: translate3d(0px, 70%, 0px) scale(1);
 }
-#machine-learning {
+#ios #front-end #front-end .per-three {
+  transform: translate3d(0px, 70%, 0px) scale(1);
+}
+#ios #machine-learning {
   position: absolute;
   top: 0;
   overflow-y: scroll;
@@ -204,22 +288,22 @@ html {
   perspective: 1px;
   height: 100vh;
 }
-#machine-learning .per-one {
+#ios #machine-learning .per-one {
   width: 100%;
   transform: translateZ(-2px) scale(3);
 }
-#machine-learning .per-one .bg {
+#ios #machine-learning .per-one .bg {
   width: 100%;
   filter: brightness(60%);
 }
-#machine-learning .per-one .header-font {
+#ios #machine-learning .per-one .header-font {
   position: absolute;
   z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.27);
 }
-#machine-learning .per-two {
+#ios #machine-learning .per-two {
   width: 100%;
   transform: translateY(10px) scale(1);
   background-color: #fcf8f2;
@@ -227,7 +311,7 @@ html {
   min-height: 1800px;
   overflow: hidden;
 }
-#machine-learning .per-two .show-span {
+#ios #machine-learning .per-two .show-span {
   display: block;
   position: relative;
   font-size: 22px;
@@ -238,69 +322,69 @@ html {
   opacity: 0;
   transform: translateY(30px);
 }
-#machine-learning .per-two img {
+#ios #machine-learning .per-two img {
   width: 50%;
   opacity: 0;
   filter: blur(10px);
   transform: scale(1.2);
   transition: all .5s;
 }
-#machine-learning .per-two .flex-box {
+#ios #machine-learning .per-two .flex-box {
   display: flex;
   flex-wrap: nowrap;
   min-width: 980px;
   width: 80vw;
   margin: 0 auto;
 }
-#machine-learning .per-two .flex-box1 {
+#ios #machine-learning .per-two .flex-box1 {
   padding-top: 8%;
 }
-#machine-learning .per-two .flex-box1 .txt-container1 {
+#ios #machine-learning .per-two .flex-box1 .txt-container1 {
   position: relative;
   width: 40%;
   padding-left: 6%;
   padding-right: 4%;
 }
-#machine-learning .per-two .flex-box1 .txt-container1 span {
+#ios #machine-learning .per-two .flex-box1 .txt-container1 span {
   text-align: start;
 }
-#machine-learning .per-two .flex-box1 .img1 {
+#ios #machine-learning .per-two .flex-box1 .img1 {
   width: 540px;
 }
-#machine-learning .per-two .flex-box2 {
+#ios #machine-learning .per-two .flex-box2 {
   margin-top: -5%;
   align-items: flex-end;
 }
-#machine-learning .per-two .flex-box2 .txt-container2 {
+#ios #machine-learning .per-two .flex-box2 .txt-container2 {
   position: relative;
   width: 40%;
   padding-left: 14%;
   padding-right: 6%;
 }
-#machine-learning .per-two .flex-box2 .txt-container2 span {
+#ios #machine-learning .per-two .flex-box2 .txt-container2 span {
   text-align: start;
 }
-#machine-learning .per-two .flex-box2 .img2 {
+#ios #machine-learning .per-two .flex-box2 .img2 {
   width: 36%;
   padding-left: 6%;
 }
-#machine-learning .per-two .txt-container3 {
+#ios #machine-learning .per-two .txt-container3 {
   padding-top: 100px;
   position: relative;
   padding-bottom: 70px;
   bottom: 0;
 }
-#machine-learning .per-two .txt-container3 span {
+#ios #machine-learning .per-two .txt-container3 span {
   text-align: center;
   width: 100%;
   font-weight: bold;
   transform: scale(0.1);
 }
-#machine-learning .per-two .txt-container3 span:first-child {
+#ios #machine-learning .per-two .txt-container3 span:first-child {
   font-size: 40px;
   line-height: 80px;
 }
-#machine-learning .per-two .img3 {
+#ios #machine-learning .per-two .img3 {
   position: relative;
   padding-top: 45px;
   left: 50%;
@@ -309,7 +393,7 @@ html {
   opacity: 0.85;
   filter: blur(0px);
 }
-#machine-learning .per-two .bottom-bg {
+#ios #machine-learning .per-two .bottom-bg {
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -317,8 +401,8 @@ html {
   background-color: rgba(88, 53, 20, 0.349);
   transition: all 0.1s;
 }
-#machine-learning .per-two .machine,
-#machine-learning .per-two .learning {
+#ios #machine-learning .per-two .machine,
+#ios #machine-learning .per-two .learning {
   font-size: 50px ;
   color: white;
   position: absolute;
@@ -326,15 +410,53 @@ html {
   transform: translateY(50%);
   transition: all 1s;
 }
-#machine-learning .per-two .machine {
+#ios #machine-learning .per-two .machine {
   left: 6%;
 }
-#machine-learning .per-two .learning {
+#ios #machine-learning .per-two .learning {
   right: 6%;
 }
 #detail-pages,
 #banner-container {
   position: relative;
+}
+#detail-pages .bars,
+#banner-container .bars {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+}
+#detail-pages .bars .bar,
+#banner-container .bars .bar {
+  width: 20%;
+  background-color: #001732;
+  height: 0px;
+  position: absolute;
+  bottom: 0px;
+  transition: all 1s ease 0s;
+}
+#detail-pages .bars .bar1,
+#banner-container .bars .bar1 {
+  left: 0%;
+}
+#detail-pages .bars .bar2,
+#banner-container .bars .bar2 {
+  left: 20%;
+}
+#detail-pages .bars .bar3,
+#banner-container .bars .bar3 {
+  left: 40%;
+}
+#detail-pages .bars .bar4,
+#banner-container .bars .bar4 {
+  left: 60%;
+}
+#detail-pages .bars .bar5,
+#banner-container .bars .bar5 {
+  left: 80%;
 }
 #detail-pages svg,
 #banner-container svg {
@@ -343,7 +465,7 @@ html {
   top: 50%;
   display: block;
   opacity: 1;
-  z-index: 10;
+  z-index: 100;
   transition: transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   cursor: pointer;
 }
@@ -382,6 +504,7 @@ html {
 #banner-container svg[data-left] {
   transform: translateY(-50%) scale(-1.3, 1.3);
   left: 10px;
+  display: none;
 }
 #detail-pages svg[data-right],
 #banner-container svg[data-right] {
@@ -389,12 +512,14 @@ html {
   right: 10px;
 }
 #android {
+  display: none;
   position: absolute;
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   perspective: 1px;
   height: 100vh;
+  top: -24px;
   background: #333;
 }
 #android .pers-one {
@@ -416,7 +541,7 @@ html {
 }
 #android .pers-two {
   position: relative;
-  box-shadow: 0 -8px 10px #2e2e2e;
+  box-shadow: 0 -8px #2e2e2e;
   transform: translate3d(0, 200%, -2px) scale(3);
   width: 100%;
 }
@@ -432,8 +557,8 @@ html {
 }
 #android .pers-three {
   position: relative;
-  box-shadow: 0 -8px 10px #383838;
-  transform: translate3d(0, 210%, 0) scale(1);
+  box-shadow: 0 -8px #383838;
+  transform: translate3d(0, 190%, 0) scale(1);
   width: 100%;
 }
 #android .pers-three .describe {
@@ -442,7 +567,6 @@ html {
   bottom: 0;
   border-radius: 10px 10px;
   box-shadow: 0 0 20px black;
-  text-shadow: 2px 2px 9px black;
   padding: 20px;
   text-align: center;
   line-height: 38px;
@@ -460,6 +584,33 @@ html {
   z-index: 4;
   font-size: 24px;
   line-height: 48px;
+}
+#detail-pages #back-stage {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  perspective: 1px;
+  position: absolute;
+  top: 0;
+}
+#detail-pages #back-stage section {
+  width: 100vw;
+}
+#detail-pages #back-stage .per-one {
+  transform: translateZ(-3px) scale(4);
+  overflow: hidden;
+}
+#detail-pages #back-stage .per-one img:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#detail-pages #back-stage .per-one .page-name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -55%) scale(0.27);
 }
 #banner-container {
   height: 100vh;
@@ -615,4 +766,66 @@ html {
 }
 #banner-container .next-btn {
   right: 2%;
+}
+#banner-container .per-two {
+  transform: translate3D(0px, 858px, -1px) scale(2);
+  overflow: hidden;
+  position: relative;
+}
+#banner-container .per-two img {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#banner-container .per-two .bcak-stage-content {
+  position: absolute;
+  right: 210px;
+  top: 150px;
+  text-align: center;
+  width: 750px;
+  height: 500px;
+  overflow: hidden;
+}
+#banner-container .per-two .bcak-stage-content p {
+  position: absolute;
+  font-size: 30px;
+  color: #fff;
+  line-height: 1.5;
+}
+#banner-container .per-two .bcak-stage-content p:nth-child(2n) {
+  right: -750px;
+}
+#banner-container .per-two .bcak-stage-content p:nth-child(2n+1) {
+  left: -750px;
+}
+#banner-container .per-two .write-box {
+  display: none;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  right: 65%;
+  top: 12%;
+  background: url("../img/back-stage/javaicon.png") no-repeat;
+  background-size: 100%;
+}
+@keyframes dash {
+  from {
+    stroke-dashoffset: 320;
+  }
+  to {
+    stroke-dashoffset: 0;
+    fill: none;
+  }
+}
+#banner-container .per-two .write-box #java {
+  width: 300px;
+  height: 300px;
+  display: block;
+  position: absolute;
+  top: 0%;
+}
+#banner-container .per-two .write-box #java path {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 0;
+  animation: dash 3s ease infinite;
 }
