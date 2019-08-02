@@ -1,18 +1,25 @@
 $(function () {
 	console.log('Welcome to TopView!');
+
 	//幕布函数
-	const $preBtn = $(".pre-btn");
-	const $nextBtn = $(".next-btn");
+
+	// 获取左右详情页左右按钮
+	const $preBtn = $("#detail-pages .pre-btn");
+	const $nextBtn = $("#detail-pages .next-btn");
+
 	function curtainUp() {
+		// 获取幕布容器
 		let $bar = $(".bar");
+		// 获取每个幕布
 		let $bars = $(".bars");
+
 		var p = new Promise(function(resolve, reject) {
 			setTimeout(function() {
 				$($bar).css("z-index", 9);
-		        $($bar[0]).animate({ height: '100vh' }, 80);
-		        $($bar[1]).animate({ height: '100vh' }, 240);
-		        $($bar[2]).animate({ height: '100vh' }, 400);
-		        $($bar[3]).animate({ height: '100vh' }, 560);
+				$($bar[0]).animate({ height: '100vh' }, 80);
+				$($bar[1]).animate({ height: '100vh' }, 240);
+				$($bar[2]).animate({ height: '100vh' }, 400);
+				$($bar[3]).animate({ height: '100vh' }, 560);
 				$($bar[4]).animate({ height: '100vh' }, 720);
 				//更改按钮display
 				resolve("true");
@@ -20,20 +27,28 @@ $(function () {
 		});
 		return p;
 	}
-	// 轮播图点击触发函数
+
+	
+	// 目前展示页index
 	let detailIndex = 0;
+	// 获取所有详情页
 	const $pages = $(".page");
+	
+	// 轮播图点击触发函数
 	function showPage(index){
+		// 更新目前展示
 		detailIndex = index;
 		var p = new Promise(function(resolve, reject) {
 			setTimeout(function() {
-				$($pages[detailIndex]).css(display, "block").siblings().css(display, "none");
+				$($pages[detailIndex]).css(display, "block").siblings(".page").css(display, "none");
 				resolve("true");
 			}, 720);
 		});
 		return p;
 	}
+
 	function prePage() {
+		
 		detailIndex--;
 		//console.log(detailIndex)
 		if(detailIndex == 0) {
@@ -54,6 +69,7 @@ $(function () {
 		});
 		return p; 
 	}
+
 	function nextPage() {
 		detailIndex++;
 		console.log(detailIndex)
@@ -74,6 +90,7 @@ $(function () {
 		});
 		return p;
 	}
+
 	function curtainDown(data) {
 		let $bar = $(".bar");
 		let $bars = $(".bars");
@@ -94,6 +111,7 @@ $(function () {
 		return p;
 	    }
 	}
+
 	// 切换幕布
 	!(() => {
 		//左右按钮切换
@@ -105,9 +123,9 @@ $(function () {
 		})
 		$($btns[1]).on("click", function() {
 			curtainUp().then(nextPage).then(curtainDown);
-			
 		})
-	})()
+	})();
+
 	// 旋转菜单模块
 	!(() => {
 		const $detailPages = $("#detail-pages")
@@ -226,6 +244,7 @@ $(function () {
 		}
 	
 	})();
+
 	//front-end
 	!(() => {
 		const $frontEnd = $("#front-end");
@@ -562,6 +581,8 @@ $(function () {
 		});
 
 	})();
+
+
 	//backstage
 	(() => {
 		let that;
