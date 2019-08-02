@@ -1,5 +1,31 @@
 $(function () {
 	console.log('Welcome to TopView!');
+	//幕布函数
+	function curtainUp() {
+		//$bars.css("z-index", 9);
+		const $bar = $(".bar");
+		$($bar[0]).animate({ height: '100vh' }, 80);
+		$($bar[1]).animate({ height: '100vh' }, 240);
+		$($bar[2]).animate({ height: '100vh' }, 400);
+		$($bar[3]).animate({ height: '100vh' }, 560);
+		$($bar[4]).animate({ height: '100vh' }, 720);
+	}
+	function curtainDown() {
+		$($bar[0]).animate({ height: '0vh' }, 80);
+		$($bar[1]).animate({ height: '0vh' }, 240);
+		$($bar[2]).animate({ height: '0vh' }, 400);
+		$($bar[3]).animate({ height: '0vh' }, 560);
+		$($bar[4]).animate({ height: '0vh' }, 720);
+		//$bars.css("z-index", 0);
+	}
+	// 轮播图切换幕布
+	!(() => {
+		//const $btns = $("#menu-list img");
+		//const $btns = $(".switch-btn");
+		const $bars = $(".bars");
+		/* $($btns[0]).on("click", curtainUp);
+		$($btns[1]).on("click", curtainDown); */
+	})()
 	// 旋转菜单模块
 	!(() => {
 		const $detailPages = $("#detail-pages")
@@ -115,7 +141,6 @@ $(function () {
 			}
 			flag = !flag;
 			ev.stopPropagation();
-			// return false;
 		}
 	
 	})();
@@ -124,11 +149,55 @@ $(function () {
 		const $frontEnd = $("#front-end");
 		const $perOne = $(".per-one");
 		const $perTwo = $(".per-two");
+		const $article = $(".article p");
 		$frontEnd.on("scroll", function () {
+			console.log($frontEnd.scrollTop())
+
 			$perOne.css("opacity", (1 - $frontEnd.scrollTop() / 2500));
 			if ($frontEnd.scrollTop() > 1850) {
 				$perTwo.css("opacity", (1 - ($frontEnd.scrollTop() - 1850) / 1000));
 			}
+			/* if ($frontEnd.scrollTop() > 1000) {
+				$article.fadeIn("4000");
+			}
+			if ($frontEnd.scrollTop() < 700) {
+				$article.fadeOut("4000");
+			} */
+			//逐行显示//not a function//包装成$()
+			if ($frontEnd.scrollTop() > 500) {
+				$($article[0]).fadeIn("4000");
+			}
+			else { $($article[0]).fadeOut(); }
+			if ($frontEnd.scrollTop() > 570) {
+				$($article[1]).fadeIn("4000");
+			}
+			else { $($article[1]).fadeOut(); }
+			if ($frontEnd.scrollTop() > 640) {
+				$($article[2]).fadeIn("4000");
+			}
+			else { $($article[2]).fadeOut(); }
+
+			if ($frontEnd.scrollTop() > 706) {
+				$($article[3]).fadeIn("4000");
+			}
+			else { $($article[3]).fadeOut(); }
+
+			if ($frontEnd.scrollTop() > 780) {
+				$($article[4]).fadeIn("4000");
+			}
+			else { $($article[4]).fadeOut(); }
+
+			if ($frontEnd.scrollTop() > 840) {
+				$($article[5]).fadeIn("4000");
+			}
+			else { $($article[5]).fadeOut(); }
+
+			if ($frontEnd.scrollTop() > 940) {
+				$($article[6]).fadeIn("4000");
+			}
+			else { $($article[6]).fadeOut(); }
+
+
 		})
 	})();
 

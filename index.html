@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<!-- <header id="loading-module">
+    <!-- <header id="loading-module">
 		<h1>Welcome to TopView</h1>
 	</header> -->
 	<!-- tv总介绍 -->
@@ -55,6 +55,14 @@
 				</section>
 			</li>
 		</ul>
+		<!-- 切换图片的覆盖层 -->
+		<div class="bars">
+			<div class="bar bar1"></div>
+			<div class="bar bar2"></div>
+			<div class="bar bar3"></div>
+			<div class="bar bar4"></div>
+			<div class="bar bar5"></div>
+		</div>
 		<!-- 上一页按钮 -->
 		<button class="switch-btn pre-btn"></button>
 		<!-- 下一页按钮 -->
@@ -65,22 +73,25 @@
 		<!-- 王菲板块 -->
 		<section id="front-end" class="page">
 			<section class="per-one">
-				<img src="img/front-end/005.jpg" alt="">
+				<img src="img/front-end/005.jpg" alt="" class="per">
 				<img src="img/front-end/banner-frontend-font.png" alt="" class="title">
 			</section>
 			<section class="per-two">
-				<img src="img/front-end/001.jpg" alt="">
+				<!-- <img src="img/front-end/001.jpg" alt=""> -->
 				<section class="article">
-					TopView 前端组主要基于HTML，CSS，JavaScript等基础web前端编程语言进行开发，<br/>
-					同时引入前端领域前沿技术进一步构建项目。<br/>
-					我们专注于展现视觉更好的页面，
-					打造用户体验更优的网站，
-					开发更有特色更有创意的产品。 
+					<p>TopView 前端组主要基于HTML，CSS，JavaScript</p><br/>
+					<p>等基础web前端编程语言进行开发，</p><br/>
+					<p>同时引入前端领域前沿技术进一步构建项目。</p><br/>
+					<p>我们专注于展现视觉更好的页面，</p><br/>
+					<p>打造用户体验更优的网站，</p><br/>
+					<p>开发更有特色更有创意的产品。 </p><br/>
+					<p>如果你喜欢设计、热爱前端，那你就是我们前端组想要的！</p><br/>
 				</section>
+				<img src="img/front-end/002.jpg" class="icon">
 			</section>
-			<section class="per-three">
+			<!-- <section class="per-three">
 				<img src="img/front-end/008.jpg" alt="">
-			</section>
+			</section> -->
 		</section>
 		<!-- 伦哥模块 -->
 		<section id="android" class="page" style="display: none">
@@ -158,6 +169,7 @@
                     <span class="span4">也包含对工程项目的实践</span>
                 </div>
                 <img src="img/machine-learning/机器学习详情页.jpg" alt="">
+                <img src="img/machine-learning/机器学习轮播图.png" alt="">
             </section>
             <!-- <section class="per-three"> -->
             <!-- <img src="img/machine-learning/机器学习4.jpg" alt=""> -->
@@ -202,14 +214,13 @@
                 <line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
             </g>
         </svg>
-	</section>
-	<!-- 3d按钮 -->
-	<button id="3d-btn"></button>
-	<!-- 表单 -->
-	<section id="form-page">
-	</section>
-	<script src="src/js/jquery-1.12.4.min.js"></script>
-	<script src="js/index.js"></script>
+        <!-- 3d按钮 -->
+        <button id="3d-btn"></button>
+        <!-- 表单 -->
+        <section id="form-page">
+        </section>
+        <script src="src/js/jquery-1.12.4.min.js"></script>
+        <script src="js/index.js"></script>
 </body>
 
 </html>
