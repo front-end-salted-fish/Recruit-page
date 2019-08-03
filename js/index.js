@@ -13,14 +13,24 @@ $(function () {
 		// 获取每个幕布
 		let $bars = $(".bars");
 
-		var p = new Promise(function(resolve, reject) {
-			setTimeout(function() {
+		var p = new Promise(function (resolve, reject) {
+			setTimeout(function () {
 				$($bar).css("z-index", 9);
-				$($bar[0]).animate({ height: '100vh' }, 80);
-				$($bar[1]).animate({ height: '100vh' }, 240);
-				$($bar[2]).animate({ height: '100vh' }, 400);
-				$($bar[3]).animate({ height: '100vh' }, 560);
-				$($bar[4]).animate({ height: '100vh' }, 720);
+				$($bar[0]).animate({
+					height: '100vh'
+				}, 80);
+				$($bar[1]).animate({
+					height: '100vh'
+				}, 240);
+				$($bar[2]).animate({
+					height: '100vh'
+				}, 400);
+				$($bar[3]).animate({
+					height: '100vh'
+				}, 560);
+				$($bar[4]).animate({
+					height: '100vh'
+				}, 720);
 				//更改按钮display
 				resolve("true");
 			}, 0);
@@ -28,18 +38,18 @@ $(function () {
 		return p;
 	}
 
-	
+
 	// 目前展示页index
 	let detailIndex = 0;
 	// 获取所有详情页
 	const $pages = $(".page");
-	
+
 	// 轮播图点击触发函数
-	function showPage(index){
+	function showPage(index) {
 		// 更新目前展示
 		detailIndex = index;
-		var p = new Promise(function(resolve, reject) {
-			setTimeout(function() {
+		var p = new Promise(function (resolve, reject) {
+			setTimeout(function () {
 				$($pages[detailIndex]).css(display, "block").siblings(".page").css(display, "none");
 				resolve("true");
 			}, 720);
@@ -48,41 +58,45 @@ $(function () {
 	}
 
 	function prePage() {
-		
+
 		detailIndex--;
 		//console.log(detailIndex)
-		if(detailIndex == 0) {
+		if (detailIndex == 0) {
 			$($preBtn).css("display", "none");
+		} else {
+			$($preBtn).css("display", "block");
 		}
-		else {$($preBtn).css("display", "block");}
 		if (detailIndex == 4) {
 			$($nextBtn).css("display", "none");
+		} else {
+			$($nextBtn).css("display", "block")
 		}
-		else {$($nextBtn).css("display", "block")}
-		var p = new Promise(function(resolve, reject) {
-			setTimeout(function() {
+		var p = new Promise(function (resolve, reject) {
+			setTimeout(function () {
 				$($pages).css("display", "none");
 				$($pages[detailIndex]).css("display", "block");
-				
+
 				resolve("true");
 			}, 1700);
 		});
-		return p; 
+		return p;
 	}
 
 	function nextPage() {
 		detailIndex++;
 		console.log(detailIndex)
-		if(detailIndex == 0) {
+		if (detailIndex == 0) {
 			$($preBtn).css("display", "none");
+		} else {
+			$($preBtn).css("display", "block");
 		}
-		else {$($preBtn).css("display", "block");}
-		if(detailIndex == 4) {
+		if (detailIndex == 4) {
 			$($nextBtn).css("display", "none");
+		} else {
+			$($nextBtn).css("display", "block")
 		}
-		else {$($nextBtn).css("display", "block")}
-		var p = new Promise(function(resolve, reject) {
-			setTimeout(function() {
+		var p = new Promise(function (resolve, reject) {
+			setTimeout(function () {
 				$($pages).css("display", "none");
 				$($pages[detailIndex]).css("display", "block");
 				resolve("true");
@@ -94,22 +108,32 @@ $(function () {
 	function curtainDown(data) {
 		let $bar = $(".bar");
 		let $bars = $(".bars");
-		if(data == "true") {
-		var p = new Promise(function(resolve, reject) {
-			setTimeout(function() {
-				$($bars).css("z-index", 9);
-		        $($bar[0]).animate({ height: '0vh' }, 80);
-		        $($bar[1]).animate({ height: '0vh' }, 240);
-		        $($bar[2]).animate({ height: '0vh' }, 400);
-		        $($bar[3]).animate({ height: '0vh' }, 560);
-				$($bar[4]).animate({ height: '0vh' }, 720);
-				
-				//更改按钮display
-				resolve();
-			}, 0);
-		});
-		return p;
-	    }
+		if (data == "true") {
+			var p = new Promise(function (resolve, reject) {
+				setTimeout(function () {
+					$($bars).css("z-index", 9);
+					$($bar[0]).animate({
+						height: '0vh'
+					}, 80);
+					$($bar[1]).animate({
+						height: '0vh'
+					}, 240);
+					$($bar[2]).animate({
+						height: '0vh'
+					}, 400);
+					$($bar[3]).animate({
+						height: '0vh'
+					}, 560);
+					$($bar[4]).animate({
+						height: '0vh'
+					}, 720);
+
+					//更改按钮display
+					resolve();
+				}, 0);
+			});
+			return p;
+		}
 	}
 
 	// 切换幕布
@@ -117,11 +141,11 @@ $(function () {
 		//左右按钮切换
 		const $btns = $("#detail-pages svg");
 		const $bars = $(".bars");
-		$($btns[0]).on("click", function() {
+		$($btns[0]).on("click", function () {
 			curtainUp().then(prePage).then(curtainDown);
-			
+
 		})
-		$($btns[1]).on("click", function() {
+		$($btns[1]).on("click", function () {
 			curtainUp().then(nextPage).then(curtainDown);
 		})
 	})();
@@ -193,7 +217,6 @@ $(function () {
 			}, 500)
 			$(this).off('transitionend', end);
 		}
-
 		//根据第三边和角度换算出坐标
 		//角度转弧度   角度*π/180 =弧度
 		const getPoint = (c, deg) => {
@@ -323,7 +346,7 @@ $(function () {
 			}
 		});
 	})();
-	
+
 
 
 	// 机器学习
@@ -532,6 +555,40 @@ $(function () {
 		})
 
 	})();
+	// 3d按钮模块
+	!(() => {
+		let
+			$button = $("#btn"),
+			btncoords = $button[0].getBoundingClientRect(),
+			$wrap = $('#three-dimensional-btn'),
+			styles = $wrap[0].style,
+			$glare = $("#btn .glare");
+
+		function rotate(e) {
+			let
+				x = e.clientX - btncoords.left,
+				y = e.clientY - btncoords.top,
+				cx = btncoords.width / 2,
+				cy = btncoords.height / 2,
+				dx = x - cx,
+				dy = y - cy;
+			styles.setProperty("--rx", `${(dy / -1.5)}deg`);
+			styles.setProperty("--ry", `${(dx / 10)}deg`);
+			$glare.css({
+				transform: "translate(" + (-x / 2) + "%, " + -y + "%)"
+			});
+		};
+
+		function restore(e) {
+			styles.setProperty("--rx", `${0}deg`);
+			styles.setProperty("--ry", `${0}deg`);
+			$glare.css({
+				transform: "translate(" + (-50) + "%, " + -50 + "%)"
+			});
+		}
+		$button.on('mousemove', rotate);
+		$button.on('mouseleave', restore);
+	})();
 
 
 
@@ -588,22 +645,23 @@ $(function () {
 			$bannerUl.css("background-color", bgColors[0]);
 			// 设置第一个按钮颜色
 			$($btns[playIndex]).css({
-				opacity:1,
-				transform:"scale(1)"
-			}).parent(".banner-btn").siblings().children()
-			.css({
-				opacity:0,
-				transform:"scale(0)"
-			});
+					opacity: 1,
+					transform: "scale(1)"
+				}).parent(".banner-btn").siblings().children()
+				.css({
+					opacity: 0,
+					transform: "scale(0)"
+				});
 			goBanner();
 		})();
 
 		// 启动轮播图
 		var timer;
-		function goBanner(){
-			timer = setInterval(()=>{
+
+		function goBanner() {
+			timer = setInterval(() => {
 				nextPage(playIndex + 1);
-			},6000);
+			}, 6000);
 		}
 
 
@@ -631,13 +689,13 @@ $(function () {
 			classArr.unshift(classArr.pop());
 			resetClass1();
 			$($btns[playIndex]).css({
-				opacity:1,
-				transform:"scale(1)"
-			}).parent(".banner-btn").siblings().children()
-			.css({
-				opacity:0,
-				transform:"scale(0)"
-			});
+					opacity: 1,
+					transform: "scale(1)"
+				}).parent(".banner-btn").siblings().children()
+				.css({
+					opacity: 0,
+					transform: "scale(0)"
+				});
 		}
 		// 向上翻页函数
 		// index为跳转的部门index
@@ -655,13 +713,13 @@ $(function () {
 			classArr.push(classArr.shift());
 			resetClass1();
 			$($btns[playIndex]).css({
-				opacity:1,
-				transform:"scale(1)"
-			}).parent(".banner-btn").siblings().children()
-			.css({
-				opacity:0,
-				transform:"scale(0)"
-			});
+					opacity: 1,
+					transform: "scale(1)"
+				}).parent(".banner-btn").siblings().children()
+				.css({
+					opacity: 0,
+					transform: "scale(0)"
+				});
 		}
 		// 跳转翻页
 		$(".banner-btns").on("click", (event) => {
@@ -691,7 +749,7 @@ $(function () {
 	//backstage
 	(() => {
 		let that;
-		class backstage  {
+		class backstage {
 			constructor() {
 				that = this;
 				this.$backstage = $("#back-stage");
@@ -705,15 +763,15 @@ $(function () {
 			//初始化
 			init() {
 				//给backstage注册事件
-				this.$backstage.on("scroll",this.scroll);
+				this.$backstage.on("scroll", this.scroll);
 			}
 			//监听滚动距离
 			scroll() {
 				let scrollTop = that.$backstage.scrollTop();
-				that.fadeout(that.$sections[0],scrollTop);
-				that.fadeout(that.$pageName[0],scrollTop);
+				that.fadeout(that.$sections[0], scrollTop);
+				that.fadeout(that.$pageName[0], scrollTop);
 				console.log(scrollTop);
-				if(scrollTop >= 240) {
+				if (scrollTop >= 240) {
 					that.objmove();
 				}
 				// else if(scrollTop == 0) {
@@ -726,7 +784,7 @@ $(function () {
 				// }
 			}
 			//使元素淡出
-			fadeout(obj,scrollTop) {
+			fadeout(obj, scrollTop) {
 				obj.style.opacity = 2.2 - (scrollTop / $(window).height());
 			}
 			//元素移动
@@ -737,44 +795,44 @@ $(function () {
 					setTimeout(() => {
 						console.log("num" + that.$content.num);
 						console.log($(that.$contents[that.$content.num]));
-						that.fontin($(that.$contents[that.$content.num]),that.$content.num);
-						if(that.$content.num <= 7){
+						that.fontin($(that.$contents[that.$content.num]), that.$content.num);
+						if (that.$content.num <= 7) {
 							that.$content.num++;
-							that.$content.timer();		
-						}else {
-							that.$writebox.show(2000);	
+							that.$content.timer();
+						} else {
+							that.$writebox.show(2000);
 							return false;
 						}
-					},800)
+					}, 800)
 				}
 				that.$content.timer();
 			}
 			//显示
-			fontin(obj,num) {
-				if(((num) % 2) == 0){
+			fontin(obj, num) {
+				if (((num) % 2) == 0) {
 					obj.animate({
 						left: (750 - obj.width()) / 2,
-						top:num*55
-					},1000);
-				}else if(num > 0) {
+						top: num * 55
+					}, 1000);
+				} else if (num > 0) {
 					obj.animate({
 						right: (750 - obj.width()) / 2,
-						top:num*55
-					},1000);
+						top: num * 55
+					}, 1000);
 				}
 			}
 			//隐藏
-			fontout(obj,num) {
-				if(((num) % 2) == 0){
+			fontout(obj, num) {
+				if (((num) % 2) == 0) {
 					obj.animate({
 						left: -750,
-						top:-55
-					},1000);
-				}else {
+						top: -55
+					}, 1000);
+				} else {
 					obj.animate({
 						right: -750,
-						top:-55
-					},1000);
+						top: -55
+					}, 1000);
 				}
 			}
 		}
