@@ -151,9 +151,9 @@ $(function () {
 					});
 				}
 				flag = true;
-			}	
+			}
 		})
-		
+
 		/*
 		 * @desc 函数节流 时间戳版
 		 * @param func 函数
@@ -161,7 +161,7 @@ $(function () {
 		 */
 		function throttle(func, wait) {
 			let previous = 0;
-			return function() {
+			return function () {
 				let now = Date.now();
 				let context = this;
 				let args = arguments;
@@ -174,22 +174,22 @@ $(function () {
 		// 延迟停止时调用此函数
 		function end() {
 			$home.get(0).style.transform = "scale(1) rotate(0) ";
-				for (let i = 0; i < $imgs.length; i++) {
-					$imgs.eq(i).css({
-						transform: "scale(1) rotate(0)",
-						transition: ".3s " + (($imgs.length - 1 - i) * 0.1) + "s ",
-						left: 0,
-						top: 0
-					});
-				}
-				flag = true;
-				setTimeout(() => {
-					$(this).css({
+			for (let i = 0; i < $imgs.length; i++) {
+				$imgs.eq(i).css({
+					transform: "scale(1) rotate(0)",
+					transition: ".3s " + (($imgs.length - 1 - i) * 0.1) + "s ",
+					left: 0,
+					top: 0
+				});
+			}
+			flag = true;
+			setTimeout(() => {
+				$(this).css({
 					transition: "0",
 					transform: "scale(1) rotate(-720deg)",
 					opacity: 1
-					})
-				},500)
+				})
+			}, 500)
 			$(this).off('transitionend', end);
 		}
 
@@ -241,7 +241,7 @@ $(function () {
 			flag = !flag;
 			ev.stopPropagation();
 		}
-	
+
 	})();
 
 	//front-end
@@ -399,6 +399,104 @@ $(function () {
 				});
 			}
 		})
+	})();
+	// 表单模块
+	!(() => {
+		// 获取表单元素
+		const $formPages = $('#form-page');
+		const $formPageOne = $('#form-page-one');
+		const $formPageTwo = $('#form-page-two');
+		const $username = $('[name=username]');
+		const $studentId = $('[name=student-id]');
+		const $gradeProfessional = $('[name=grade-professional]');
+		const $radio = $('.x-radio');
+		const $nextStep = $('.next-step'); // 下一步按钮
+		const $submit = $('.submit'); // 提交按钮
+		const $preStep = $('.pre-step'); // 上一步按钮
+		const $number = $('[name=number]');
+		const $email = $('[name=email]');
+		const $introduction = $('[name=introduction]');
+		const $direction = $('[name=direction]');
+		const $options = $('.x-dropdown-item'); // 获取下拉框
+		const $skills = $('[name=skills]');
+		const $idea = $('[name=idea]');
+		let formData = {
+			username: '',
+			studentId: '',
+			gradeProfessional: '',
+			sex: '',
+			number: '',
+			email: '',
+			introduction: '',
+			direction: '',
+			skills: '',
+			idea: ''
+		};
+		$formPages.on('blur', 'input', function (ev) {
+			let match = $(ev.target).attr('name');
+			let value = $(ev.target).val();
+			switch (match) {
+				case "username":
+					formData.username = value;
+					break;
+				case "student-id":
+					formData.studentId = value;
+					break;
+				case "grade-professional":
+					formData.gradeProfessional = value;
+					break;
+				case "username":
+					formData.sex = value;
+					break;
+				case "number":
+					formData.number = value;
+					break;
+				case "email":
+					formData.email = value;
+					break;
+				default:
+					break;
+
+			}
+
+		})
+		$formPages.on('blur', 'textarea', function (ev) {
+			let match = $(ev.target).attr('name');
+			let value = $(ev.target).val();
+			switch (match) {
+				case "introduction":
+					formData.introduction = value;
+					break;
+				case "idea":
+					formData.idea = value;
+					break;
+				case "skills":
+					formData.skills = value;
+					break;
+				default:
+					break;
+
+			}
+			console.log(formData)
+
+		})
+		// 给性别单选按钮绑定单击响应函数
+		$radio.on('click', function (ev) {
+			let sex = $(this).attr('value');
+			$(this).children()[0].style.background = '#07190e80';
+			$(this).first().siblings().children()[0].style.background = '#fff';
+			formData.sex = sex;
+		})
+		// 给下一步按钮按钮绑定单击响应函数
+		$nextStep.on('click', function () {
+			$formPageOne.hide();
+			$formPageTwo.fadeIn();
+		})
+		$preStep.on('click', function () {
+			$formPageOne.fadeIn();
+			$formPageTwo.hide();
+		})
+
 	})();
 
 
