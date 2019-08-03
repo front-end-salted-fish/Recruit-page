@@ -250,6 +250,7 @@ $(function () {
 		const $perOne = $(".per-one");
 		const $perTwo = $(".per-two");
 		const $article1 = $(".article1 p");
+		const $article2 = $(".article2 p");
 		$frontEnd.on("scroll", function () {
 			//console.log($frontEnd.scrollTop())
 
@@ -271,7 +272,29 @@ $(function () {
 				$($article1[3]).fadeIn("4000");
 			}
 			else { $($article1[3]).fadeOut(); }
+			//第二个article
+			if ($frontEnd.scrollTop() > 1000) {
+				$($article2[0]).fadeIn("4000");
+			}
+			else { $($article2[0]).fadeOut(); }
+			if ($frontEnd.scrollTop() > 1060) {
+				$($article2[1]).fadeIn("4000");
+			}
+			else { $($article2[1]).fadeOut(); }
 
+			if ($frontEnd.scrollTop() > 1120) {
+				$($article2[2]).fadeIn("4000");
+			}
+			else { $($article2[2]).fadeOut(); }
+			if ($frontEnd.scrollTop() > 1180) {
+				$($article2[3]).fadeIn("4000");
+			}
+			else { $($article2[3]).fadeOut(); }
+			if ($frontEnd.scrollTop() > 1260) {
+				$($article2[4]).fadeIn("4000");
+			}
+			else { $($article2[4]).fadeOut(); }
+			
 		})
 	})();
 
