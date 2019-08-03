@@ -8,6 +8,77 @@ html {
   background-color: black;
   min-width: 9;
 }
+#loading-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+}
+.move-div {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  line-height: 70px;
+}
+.move-div .move-sdiv {
+  overflow: hidden;
+}
+.move-div .move-sdiv .move-span {
+  font-size: 50px;
+  color: whitesmoke;
+  display: inline-block;
+  transform: translateX(50px);
+}
+#reverse {
+  flex-direction: row-reverse;
+}
+#free-div {
+  width: 125px;
+  height: 50px;
+}
+#cen-dev {
+  justify-content: center;
+}
+#loading-module {
+  padding: 200px;
+  padding-bottom: 300px;
+}
+.span-one {
+  width: 280px;
+  height: 50px;
+  background-color: whitesmoke;
+  color: whitesmoke;
+  display: inline-block;
+  position: absolute;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 80px;
+  line-height: 50px;
+}
+#span-one {
+  position: absolute;
+  right: 0;
+}
+.inner-span {
+  position: absolute;
+}
+#right-span {
+  background-color: whitesmoke;
+  height: 50px;
+  position: absolute;
+}
+#span-box {
+  width: auto;
+  height: 50px;
+  color: whitesmoke;
+  display: inline-block;
+  position: absolute;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 80px;
+  line-height: 50px;
+}
 #menu {
   position: fixed;
   right: 20px;
@@ -47,9 +118,12 @@ html {
   text-align: center;
   text-shadow: 2px 2px 9px black;
 }
+#menu img {
+  width: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
 #ios {
   /* 滚动容器高度是视口高度 */
-  display: none;
   position: absolute;
   top: 0;
   height: 100vh;
@@ -105,7 +179,7 @@ html {
 #ios .pre-two .cd-container {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 40%;
   -moz-transform: translateX(-50%) translateY(-50%);
   -ms-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
@@ -116,7 +190,7 @@ html {
 }
 #ios .pre-two .infor-font {
   font-size: 1.5em;
-  color: #6d7584;
+  color: #fefeff;
 }
 #ios .pre-three {
   transform: translate3D(0px, 1000px, 0px) scale(1);
@@ -127,7 +201,7 @@ html {
 #ios .pre-three .cd-container {
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 40%;
   -moz-transform: translateX(-50%) translateY(-50%);
   -ms-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
@@ -138,15 +212,11 @@ html {
 }
 #ios .pre-three .infor-font {
   font-size: 1.5em;
-  color: #6d7584;
+  color: #fefeff;
 }
 #ios img {
   width: 100%;
   box-shadow: 0px 0px 100px #2f1e1e;
-}
-/* 滚动条宽度为0 */
-::-webkit-scrollbar {
-  width: 0 !important;
 }
 #machine-learning {
   position: absolute;
