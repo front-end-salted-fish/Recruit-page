@@ -11,24 +11,23 @@ html {
   width: 50px;
   height: 50px;
   cursor: pointer;
-  z-index: 15;
 }
 #menu #menu-list {
   position: relative;
-  height: 50px;
-  z-index: 15;
+  width: 42px;
+  height: 42px;
+  margin: 4px;
 }
 #menu #menu-list img {
   position: absolute;
   left: 0;
   top: 0;
-  width: 43px;
-  height: 43px;
+  width: 50px;
+  height: 50px;
   background: url(../img/logo/logo.png);
   border-radius: 50%;
   transition: 1s;
   box-shadow: 0px 0px 5px #333;
-  margin: 4px;
 }
 #menu #home {
   position: absolute;
@@ -40,7 +39,6 @@ html {
   border-radius: 50%;
   transition: 1s;
   box-shadow: 0px 0px 15px #333;
-  z-index: 15;
 }
 #menu .des {
   position: absolute;
@@ -49,7 +47,6 @@ html {
   color: white;
   text-align: center;
   text-shadow: 2px 2px 9px black;
-  line-height: 30px;
 }
 #menu img {
   width: 100%;
@@ -61,7 +58,6 @@ html {
   height: 100vh;
   top: 0px;
   left: 0px;
-  z-index: 9;
 }
 #banner-container .bars .bar {
   width: 20%;
@@ -88,7 +84,6 @@ html {
 }
 #ios {
   /* 滚动容器高度是视口高度 */
-  display: none;
   position: absolute;
   top: 0;
   height: 100vh;
@@ -114,6 +109,9 @@ html {
   transform: translate(-50%, -50%) scale(0.27);
   z-index: 2;
   box-shadow: 0px 0px 0px;
+}
+#ios .pre-one #directionDetails {
+  font-size: 0.5em;
 }
 #ios .pre-one #directionDetails {
   font-size: 0.5em;
@@ -184,7 +182,6 @@ html {
   box-shadow: 0px 0px 100px #2f1e1e;
 }
 #front-end {
-  display: none;
   background-color: black;
   margin: 0px;
   padding: 0px;
@@ -205,15 +202,15 @@ html {
   position: relative;
   display: flex;
 }
-#front-end .per-one .title {
+#front-end .title {
   width: 30%;
   position: absolute;
   top: 30%;
   left: 35%;
-  z-index: 9;
+  z-index: 8;
   box-shadow: none;
 }
-#front-end .per-one .per {
+#front-end .per {
   filter: brightness(0.7);
 }
 #front-end .per-two {
@@ -247,7 +244,7 @@ html {
 #machine-learning {
   position: absolute;
   top: 0;
-  overflow-y: overlay;
+  overflow-y: scroll;
   overflow-x: hidden;
   /* 开启透视 */
   perspective: 1px;
@@ -270,70 +267,171 @@ html {
 }
 #machine-learning .per-two {
   width: 100%;
-  transform: translateZ(0px) scale(1);
-  background-color: #fff5e6;
+  transform: translateY(10px) scale(1);
+  background-color: #fcf8f2;
   box-shadow: 0px 0px 100px #333;
+  min-height: 1800px;
+  overflow: hidden;
 }
-#machine-learning .per-two .txt-container {
-  height: 800px;
-  text-align: center;
-  padding-top: 100px;
-}
-#machine-learning .per-two .txt-container span {
+#machine-learning .per-two .show-span {
   display: block;
   position: relative;
-  font-size: 30px;
+  font-size: 22px;
   color: #222;
-  opacity: 0;
-  line-height: 55px;
   transition: all 0.7s;
-  top: 30px;
+  font-weight: lighter;
+  line-height: 47px;
+  opacity: 0;
+  transform: translateY(30px);
 }
 #machine-learning .per-two img {
   width: 50%;
+  opacity: 0;
+  filter: blur(10px);
+  transform: scale(1.2);
+  transition: all .5s;
 }
-#detail-pages {
+#machine-learning .per-two .flex-box {
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: 980px;
+  width: 80vw;
+  margin: 0 auto;
+}
+#machine-learning .per-two .flex-box1 {
+  padding-top: 8%;
+}
+#machine-learning .per-two .flex-box1 .txt-container1 {
+  position: relative;
+  width: 40%;
+  padding-left: 6%;
+  padding-right: 4%;
+}
+#machine-learning .per-two .flex-box1 .txt-container1 span {
+  text-align: start;
+}
+#machine-learning .per-two .flex-box1 .img1 {
+  width: 540px;
+}
+#machine-learning .per-two .flex-box2 {
+  margin-top: -5%;
+  align-items: flex-end;
+}
+#machine-learning .per-two .flex-box2 .txt-container2 {
+  position: relative;
+  width: 40%;
+  padding-left: 14%;
+  padding-right: 6%;
+}
+#machine-learning .per-two .flex-box2 .txt-container2 span {
+  text-align: start;
+}
+#machine-learning .per-two .flex-box2 .img2 {
+  width: 36%;
+  padding-left: 6%;
+}
+#machine-learning .per-two .txt-container3 {
+  padding-top: 100px;
+  position: relative;
+  padding-bottom: 70px;
+  bottom: 0;
+}
+#machine-learning .per-two .txt-container3 span {
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  transform: scale(0.1);
+}
+#machine-learning .per-two .txt-container3 span:first-child {
+  font-size: 40px;
+  line-height: 80px;
+}
+#machine-learning .per-two .img3 {
+  position: relative;
+  padding-top: 45px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 2;
+  opacity: 0.85;
+  filter: blur(0px);
+}
+#machine-learning .per-two .bottom-bg {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 42px;
+  background-color: rgba(88, 53, 20, 0.349);
+  transition: all 0.1s;
+}
+#machine-learning .per-two .machine,
+#machine-learning .per-two .learning {
+  font-size: 50px ;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50%);
+  transition: all 1s;
+}
+#machine-learning .per-two .machine {
+  left: 6%;
+}
+#machine-learning .per-two .learning {
+  right: 6%;
+}
+#detail-pages,
+#banner-container {
   position: relative;
 }
-#detail-pages svg {
+#detail-pages svg,
+#banner-container svg {
   position: absolute;
   stroke: #fff;
   top: 50%;
   display: block;
   opacity: 1;
+  z-index: 100;
   transition: transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955), opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   cursor: pointer;
 }
-#detail-pages svg:hover circle {
+#detail-pages svg:hover circle,
+#banner-container svg:hover circle {
   transform: translate(80px);
   /* 神奇属性居然能设置 */
   r: 0;
   opacity: 0;
 }
-#detail-pages svg:hover g {
+#detail-pages svg:hover g,
+#banner-container svg:hover g {
   transform: translate(20px, 9px);
 }
-#detail-pages svg circle {
+#detail-pages svg circle,
+#banner-container svg circle {
   fill: none;
   transform: translate(40px);
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#detail-pages svg g {
+#detail-pages svg g,
+#banner-container svg g {
   transform: translate(10px, 9px);
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#detail-pages svg g path {
+#detail-pages svg g path,
+#banner-container svg g path {
   transform: translateX(43px);
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#detail-pages svg g line {
+#detail-pages svg g line,
+#banner-container svg g line {
   transition: all 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
-#detail-pages svg[data-left] {
+#detail-pages svg[data-left],
+#banner-container svg[data-left] {
   transform: translateY(-50%) scale(-1.3, 1.3);
   left: 10px;
+  display: none;
 }
-#detail-pages svg[data-right] {
+#detail-pages svg[data-right],
+#banner-container svg[data-right] {
   transform: translateY(-50%) scale(1.3, 1.3);
   right: 10px;
 }
@@ -688,4 +786,248 @@ html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+#back-stage {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  perspective: 1px;
+  position: absolute;
+  top: 0;
+}
+#back-stage section {
+  width: 100vw;
+}
+#back-stage .per-one {
+  transform: translateZ(-3px) scale(4);
+  overflow: hidden;
+}
+#back-stage .per-one img:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#back-stage .per-one .page-name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -55%) scale(0.27);
+}
+#back-stage .per-two {
+  transform: translate3D(0px, 858px, -1px) scale(2);
+  overflow: hidden;
+  position: relative;
+}
+#back-stage .per-two img {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 100px #2f1e1e;
+}
+#back-stage .per-two .bcak-stage-content {
+  position: absolute;
+  right: 210px;
+  top: 150px;
+  text-align: center;
+  width: 750px;
+  height: 500px;
+  overflow: hidden;
+}
+#back-stage .per-two .bcak-stage-content p {
+  position: absolute;
+  font-size: 30px;
+  color: #fff;
+  line-height: 1.5;
+}
+#back-stage .per-two .bcak-stage-content p:nth-child(2n) {
+  right: -750px;
+}
+#back-stage .per-two .bcak-stage-content p:nth-child(2n+1) {
+  left: -750px;
+}
+#back-stage .per-two .write-box {
+  display: none;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  right: 65%;
+  top: 12%;
+  background: url("../img/back-stage/javaicon.png") no-repeat;
+  background-size: 100%;
+}
+@keyframes dash {
+  from {
+    stroke-dashoffset: 320;
+  }
+  to {
+    stroke-dashoffset: 0;
+    fill: none;
+  }
+}
+#back-stage .per-two .write-box #java {
+  width: 300px;
+  height: 300px;
+  display: block;
+  position: absolute;
+  top: 0%;
+}
+#back-stage .per-two .write-box #java path {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 0;
+  animation: dash 3s ease infinite;
+}
+#banner-container {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+#banner-container #banner {
+  height: 100vh;
+  position: relative;
+  width: 100%;
+  transition: all 1s, background-color 1s 1s;
+}
+#banner-container #banner .banner-btns {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+  height: 12px;
+  margin: 0 auto;
+  width: 100%;
+}
+#banner-container #banner .banner-btns .banner-btn {
+  display: inline-block;
+  background-color: rgba(34, 34, 34, 0.301);
+  height: 100%;
+  width: 3.5%;
+  margin: 0 15px;
+  cursor: pointer;
+}
+#banner-container #banner .banner-btns .banner-btn .bg-span {
+  display: inline-block;
+  transition: all 0.2s;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  background-color: #fff;
+}
+#banner-container #banner .banner-btns .banner-btn:hover .bg-span {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+#banner-container #banner li {
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+  cursor: pointer;
+}
+#banner-container #banner li .banner-font,
+#banner-container #banner li .banner-border {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  z-index: 2;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(0.3);
+}
+#banner-container #banner li .outer-mask {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#banner-container #banner li .outer-mask .inner-mask {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+#banner-container #banner li .outer-mask .inner-mask img {
+  width: 100%;
+  height: 100%;
+  left: 0vw;
+  position: absolute;
+}
+#banner-container #banner .pre-page {
+  transform: translate(-100vw);
+}
+#banner-container #banner .pre-page .banner-font {
+  opacity: 0;
+}
+#banner-container #banner .pre-page .banner-border,
+#banner-container #banner .pre-page .banner-font {
+  transform: translate(-100%, -50%) scale(0.3);
+}
+#banner-container #banner .pre-page .outer-mask {
+  transform: scale(0.75);
+}
+#banner-container #banner .pre-page .outer-mask img {
+  left: 30vw !important;
+  transform: scale(1.8);
+  filter: brightness(80%);
+}
+#banner-container #banner .next-page {
+  transform: translate(100vw);
+}
+#banner-container #banner .next-page .banner-font {
+  opacity: 0;
+}
+#banner-container #banner .next-page .banner-border,
+#banner-container #banner .next-page .banner-font {
+  transform: translate(0%, -50%) scale(0.3);
+}
+#banner-container #banner .next-page .outer-mask {
+  transform: scale(0.75);
+}
+#banner-container #banner .next-page .outer-mask img {
+  left: -30vw !important;
+  transform: scale(1.8);
+  filter: brightness(80%);
+}
+#banner-container #banner .banner-out {
+  transition: transform 1s cubic-bezier(0.5, 0, 0, 1) 1.09s;
+}
+#banner-container #banner .banner-out .banner-font,
+#banner-container #banner .banner-out .banner-border {
+  transition: opacity 1s, transform 1s cubic-bezier(0.5, 0, 0, 1) 1s;
+}
+#banner-container #banner .banner-out .outer-mask {
+  transition: all cubic-bezier(0.5, 0, 0, 1) 1s;
+}
+#banner-container #banner .banner-out .outer-mask img {
+  transition: all cubic-bezier(0.5, 0, 0, 1) 1s, left 1s 1s;
+}
+#banner-container #banner .banner-in {
+  transition: transform 1s cubic-bezier(0.5, 0, 0, 1) 1.09s;
+}
+#banner-container #banner .banner-in .banner-font,
+#banner-container #banner .banner-in .banner-border {
+  transition: opacity 1s 2s, transform 1s cubic-bezier(0.5, 0, 0, 1) 1.18s;
+}
+#banner-container #banner .banner-in .outer-mask {
+  transition: all 1s cubic-bezier(0.5, 0, 0, 1) 2.18s;
+}
+#banner-container #banner .banner-in .outer-mask img {
+  transition: all cubic-bezier(0.5, 0, 0, 1) 1s 2.18s, left 1s 1.18s;
+}
+#banner-container .switch-btn {
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.726);
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  transition: all .5s;
+  z-index: 100;
+}
+#banner-container .switch-btn:hover {
+  color: white;
+}
+#banner-container .pre-btn {
+  left: 2%;
+}
+#banner-container .next-btn {
+  right: 2%;
 }

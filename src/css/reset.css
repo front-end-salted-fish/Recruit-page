@@ -124,4 +124,21 @@ body {
     height: 100vh;
 }
 
-/* 自定义滚动条 */
+
+
+/* 初始化层次 */
+#front-end {
+    z-index: 5;
+}
+#android {
+    z-index: 4;
+}
+#back-stage {
+    z-index: 3;
+}
+#ios {
+    z-index: 2;
+}
+#machine-learning {
+    z-index: 1;
+}
