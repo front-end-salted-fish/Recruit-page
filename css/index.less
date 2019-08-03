@@ -17,7 +17,7 @@ html {
     width: 50px;
     height: 50px;
     cursor: pointer;
-
+    z-index: 100;
     #menu-list {
         position: relative;
         width: 42px;
@@ -66,16 +66,15 @@ html {
 }
 
 
-//轮播图
-#banner-container {
+//幕布
+#detail-pages {
   .bars {
     position: absolute;
     width: 100%;
     height: 100vh;
     top: 0px;
     left: 0px;
-    
-
+    z-index: 9;
     .bar {
       width: 20%;
       background-color: rgb(0, 23, 50);
@@ -83,6 +82,7 @@ html {
       position: absolute;
       bottom: 0px;
       transition: all 1s ease 0s;
+      z-index: 9;
     }
 
     .bar1 {
@@ -271,35 +271,51 @@ html {
   
 
   .per-two {
-    background-color: #383838;
+    background-color: gray;
     transform: translate3d(0px, 90%, -1px) scale(2);
     position: relative;
-    //display: flex;
     width: 100%;
-    height: 200%;
-
-    .article {
-      top: 10%;
-      //left: 30%;
-      z-index: 2;
+    height: 180vh;
+    .article1 {
       position: absolute;
-
+      top: 10%;
+      left: 3%;
+      z-index: 2;
       p {
         font-size: 25px;
         color: white;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        display: none;
+        //display: none;
       }
-
+    }
+    .article2 {
+      position: absolute;
+      top: 33%;
+      right: 5%;
+      z-index: 2;
+      p {
+        font-size: 25px;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        //display: none;
+      }
     }
 
-    .icon {
+    .icon1 {
       z-index: 9;
-      width: 40%;
+      width: 35%;
+      position: absolute;
+      top: 3%;
+      right: 5%;
+      border-radius: 25%;
+    }
+    .icon2 {
+      z-index: 9;
+      width: 35%;
       position: absolute;
       top: 30%;
-      right: 0;
-
+      left: 5%;
+      border-radius: 25%;
     }
   }
 

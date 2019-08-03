@@ -15,6 +15,7 @@ html {
   width: 50px;
   height: 50px;
   cursor: pointer;
+  z-index: 100;
 }
 #menu #menu-list {
   position: relative;
@@ -56,34 +57,36 @@ html {
   width: 100%;
   box-shadow: 0px 0px 100px #2f1e1e;
 }
-#banner-container .bars {
+#detail-pages .bars {
   position: absolute;
   width: 100%;
   height: 100vh;
   top: 0px;
   left: 0px;
+  z-index: 9;
 }
-#banner-container .bars .bar {
+#detail-pages .bars .bar {
   width: 20%;
   background-color: #001732;
   height: 0px;
   position: absolute;
   bottom: 0px;
   transition: all 1s ease 0s;
+  z-index: 9;
 }
-#banner-container .bars .bar1 {
+#detail-pages .bars .bar1 {
   left: 0%;
 }
-#banner-container .bars .bar2 {
+#detail-pages .bars .bar2 {
   left: 20%;
 }
-#banner-container .bars .bar3 {
+#detail-pages .bars .bar3 {
   left: 40%;
 }
-#banner-container .bars .bar4 {
+#detail-pages .bars .bar4 {
   left: 60%;
 }
-#banner-container .bars .bar5 {
+#detail-pages .bars .bar5 {
   left: 80%;
 }
 #ios {
@@ -218,29 +221,49 @@ html {
   filter: brightness(0.7);
 }
 #front-end .per-two {
-  background-color: #383838;
+  background-color: gray;
   transform: translate3d(0px, 90%, -1px) scale(2);
   position: relative;
   width: 100%;
-  height: 200%;
+  height: 180vh;
 }
-#front-end .per-two .article {
-  top: 10%;
-  z-index: 2;
+#front-end .per-two .article1 {
   position: absolute;
+  top: 10%;
+  left: 3%;
+  z-index: 2;
 }
-#front-end .per-two .article p {
+#front-end .per-two .article1 p {
   font-size: 25px;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  display: none;
 }
-#front-end .per-two .icon {
+#front-end .per-two .article2 {
+  position: absolute;
+  top: 33%;
+  right: 5%;
+  z-index: 2;
+}
+#front-end .per-two .article2 p {
+  font-size: 25px;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#front-end .per-two .icon1 {
   z-index: 9;
-  width: 40%;
+  width: 35%;
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  border-radius: 25%;
+}
+#front-end .per-two .icon2 {
+  z-index: 9;
+  width: 35%;
   position: absolute;
   top: 30%;
-  right: 0;
+  left: 5%;
+  border-radius: 25%;
 }
 #front-end .per-three {
   transform: translate3d(0px, 70%, 0px) scale(1);

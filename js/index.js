@@ -2,7 +2,8 @@ $(function () {
 	console.log('Welcome to TopView!');
 
 	//幕布函数
-
+	let $bar = $(".bar");
+	let $bars = $(".bars");
 	// 获取左右详情页左右按钮
 	const $preBtn = $("#detail-pages .pre-btn");
 	const $nextBtn = $("#detail-pages .next-btn");
@@ -12,10 +13,11 @@ $(function () {
 		let $bar = $(".bar");
 		// 获取每个幕布
 		let $bars = $(".bars");
-
+		
+		// 获取每个幕布
 		var p = new Promise(function(resolve, reject) {
 			setTimeout(function() {
-				$($bar).css("z-index", 9);
+				//$($bars).css("z-index", 9);
 				$($bar[0]).animate({ height: '100vh' }, 80);
 				$($bar[1]).animate({ height: '100vh' }, 240);
 				$($bar[2]).animate({ height: '100vh' }, 400);
@@ -97,13 +99,12 @@ $(function () {
 		if(data == "true") {
 		var p = new Promise(function(resolve, reject) {
 			setTimeout(function() {
-				$($bars).css("z-index", 9);
+				//$($bars).css("z-index", 9);
 		        $($bar[0]).animate({ height: '0vh' }, 80);
 		        $($bar[1]).animate({ height: '0vh' }, 240);
 		        $($bar[2]).animate({ height: '0vh' }, 400);
 		        $($bar[3]).animate({ height: '0vh' }, 560);
-				$($bar[4]).animate({ height: '0vh' }, 720);
-				
+				$($bar[4]).animate({ height: '0vh' }, 720);				
 				//更改按钮display
 				resolve();
 			}, 0);
@@ -111,19 +112,17 @@ $(function () {
 		return p;
 	    }
 	}
-
 	// 切换幕布
 	!(() => {
 		//左右按钮切换
-		const $btns = $("#detail-pages svg");
-		const $bars = $(".bars");
+		const $btns = $("#detail-pages .switch-btn");
+		//const $bars = $(".bars");
 		$($btns[0]).on("click", function() {
 			curtainUp().then(prePage).then(curtainDown);
-			
-		})
-		$($btns[1]).on("click", function() {
+		});
+		$($btns[1]).on("click", function() {	
 			curtainUp().then(nextPage).then(curtainDown);
-		})
+		});
 	})();
 
 	// 旋转菜单模块
@@ -250,54 +249,28 @@ $(function () {
 		const $frontEnd = $("#front-end");
 		const $perOne = $(".per-one");
 		const $perTwo = $(".per-two");
-		const $article = $(".article p");
+		const $article1 = $(".article1 p");
 		$frontEnd.on("scroll", function () {
 			//console.log($frontEnd.scrollTop())
 
 			$perOne.css("opacity", (1 - $frontEnd.scrollTop() / 2500));
-			if ($frontEnd.scrollTop() > 1850) {
-				$perTwo.css("opacity", (1 - ($frontEnd.scrollTop() - 1850) / 1000));
-			}
-			/* if ($frontEnd.scrollTop() > 1000) {
-				$article.fadeIn("4000");
-			}
-			if ($frontEnd.scrollTop() < 700) {
-				$article.fadeOut("4000");
-			} */
-			//逐行显示//not a function//包装成$()
 			if ($frontEnd.scrollTop() > 500) {
-				$($article[0]).fadeIn("4000");
+				$($article1[0]).fadeIn("4000");
 			}
-			else { $($article[0]).fadeOut(); }
+			else { $($article1[0]).fadeOut(); }
 			if ($frontEnd.scrollTop() > 570) {
-				$($article[1]).fadeIn("4000");
+				$($article1[1]).fadeIn("4000");
 			}
-			else { $($article[1]).fadeOut(); }
+			else { $($article1[1]).fadeOut(); }
 			if ($frontEnd.scrollTop() > 640) {
-				$($article[2]).fadeIn("4000");
+				$($article1[2]).fadeIn("4000");
 			}
-			else { $($article[2]).fadeOut(); }
+			else { $($article1[2]).fadeOut(); }
 
 			if ($frontEnd.scrollTop() > 706) {
-				$($article[3]).fadeIn("4000");
+				$($article1[3]).fadeIn("4000");
 			}
-			else { $($article[3]).fadeOut(); }
-
-			if ($frontEnd.scrollTop() > 780) {
-				$($article[4]).fadeIn("4000");
-			}
-			else { $($article[4]).fadeOut(); }
-
-			if ($frontEnd.scrollTop() > 840) {
-				$($article[5]).fadeIn("4000");
-			}
-			else { $($article[5]).fadeOut(); }
-
-			if ($frontEnd.scrollTop() > 940) {
-				$($article[6]).fadeIn("4000");
-			}
-			else { $($article[6]).fadeOut(); }
-
+			else { $($article1[3]).fadeOut(); }
 
 		})
 	})();
