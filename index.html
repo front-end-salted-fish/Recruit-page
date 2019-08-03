@@ -2,14 +2,14 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>TopView</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="src/css/reset.css">
+	<meta charset="utf-8">
+	<title>TopView</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="src/css/reset.css">
 </head>
 
 <body>
-    <!-- <header id="loading-module">
+	<!-- <header id="loading-module">
 		<h1>Welcome to TopView</h1>
 	</header> -->
 	<!-- tv总介绍 -->
@@ -18,7 +18,7 @@
 		<button id="go-ahead-btn"></button>
 	</section>
 	<!-- 部门轮播图容器 -->
-	<section id="banner-container">
+	<section id="banner-container" style="display: none">
 		<!-- 轮播图ul -->
 		<ul id="banner">
 			<li class="banner-page">
@@ -71,7 +71,7 @@
 	<!-- 部门详情介绍页 -->
 	<section id="detail-pages">
 		<!-- 王菲板块 -->
-		<section id="front-end" class="page">
+		<section id="front-end" class="page" style="display: block; z-index: 100;">
 			<section class="per-one">
 				<img src="img/front-end/005.jpg" alt="" class="per">
 				<img src="img/front-end/banner-frontend-font.png" alt="" class="title">
@@ -79,13 +79,13 @@
 			<section class="per-two">
 				<!-- <img src="img/front-end/001.jpg" alt=""> -->
 				<section class="article">
-					<p>TopView 前端组主要基于HTML，CSS，JavaScript</p><br/>
-					<p>等基础web前端编程语言进行开发，</p><br/>
-					<p>同时引入前端领域前沿技术进一步构建项目。</p><br/>
-					<p>我们专注于展现视觉更好的页面，</p><br/>
-					<p>打造用户体验更优的网站，</p><br/>
-					<p>开发更有特色更有创意的产品。 </p><br/>
-					<p>如果你喜欢设计、热爱前端，那你就是我们前端组想要的！</p><br/>
+					<p>TopView 前端组主要基于HTML，CSS，JavaScript</p><br />
+					<p>等基础web前端编程语言进行开发，</p><br />
+					<p>同时引入前端领域前沿技术进一步构建项目。</p><br />
+					<p>我们专注于展现视觉更好的页面，</p><br />
+					<p>打造用户体验更优的网站，</p><br />
+					<p>开发更有特色更有创意的产品。 </p><br />
+					<p>如果你喜欢设计、热爱前端，那你就是我们前端组想要的！</p><br />
 				</section>
 				<img src="img/front-end/002.jpg" class="icon">
 			</section>
@@ -133,7 +133,7 @@
 				<sup>优雅极致、中流砥柱</sup>
 				<br>
 				<sup  id="directionDetails" style="font-size:0.5em">〔下滑详情〕</sup> -->
-			<!-- </div> -->
+				<!-- </div> -->
 				<img src="./img/ios/3.jpg" alt="" class="bg">
 			</section>
 			<section class="pre-two">
@@ -158,22 +158,22 @@
 		<!-- 基你太美模块 -->
 		<section id="machine-learning" class="page" style="display: none">
 			<section class="per-one">
-                <img src="img/machine-learning/banner-machine-font.png" alt="" class="header-font">
-                <img src="img/machine-learning/机器学习3.jpg" alt="" class="bg">
-            </section>
-            <section class="per-two">
-                <div class="txt-container">
-                    <span class="span1">TopView 机器学习组是16年成立的新组</span>
-                    <span class="span2">我们关注机器学习算法模型</span>
-                    <span class="span3">在理论学习的同时</span>
-                    <span class="span4">也包含对工程项目的实践</span>
-                </div>
-                <img src="img/machine-learning/机器学习详情页.jpg" alt="">
-                <img src="img/machine-learning/机器学习轮播图.png" alt="">
-            </section>
-            <!-- <section class="per-three"> -->
-            <!-- <img src="img/machine-learning/机器学习4.jpg" alt=""> -->
-            <!-- </section> -->
+				<img src="img/machine-learning/banner-machine-font.png" alt="" class="header-font">
+				<img src="img/machine-learning/机器学习3.jpg" alt="" class="bg">
+			</section>
+			<section class="per-two">
+				<div class="txt-container">
+					<span class="span1">TopView 机器学习组是16年成立的新组</span>
+					<span class="span2">我们关注机器学习算法模型</span>
+					<span class="span3">在理论学习的同时</span>
+					<span class="span4">也包含对工程项目的实践</span>
+				</div>
+				<img src="img/machine-learning/机器学习详情页.jpg" alt="">
+				<img src="img/machine-learning/机器学习轮播图.png" alt="">
+			</section>
+			<!-- <section class="per-three"> -->
+			<!-- <img src="img/machine-learning/机器学习4.jpg" alt=""> -->
+			<!-- </section> -->
 		</section>
 
 		<!-- 跳转菜单 -->
@@ -189,38 +189,198 @@
 
 			</section>
 			<h2 class="des">Menu</h2>
-		</section>	
+		</section>
 		<!-- 关闭按钮 -->
 		<section id="close-btn"></section>
 		<!-- 上一页按钮 -->
-        <svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
-            xmlns="http://www.w3.org/2000/svg">
-            <circle data-left="" cx="15" cy="15" r="14"></circle>
-            <g data-left="">
-                <path data-left=""
-                    d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
-                    stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
-                <line data-left="" x1="0" y1="7" x2="50" y2="7"></line>
-            </g>
-        </svg>
-        <!-- 下一页按钮 -->
-        <svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
-            xmlns="http://www.w3.org/2000/svg">
-            <circle data-right="" cx="15" cy="15" r="14"></circle>
-            <g data-right="">
-                <path data-right=""
-                    d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
-                    stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
-                <line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
-            </g>
-        </svg>
-        <!-- 3d按钮 -->
-        <button id="3d-btn"></button>
-        <!-- 表单 -->
-        <section id="form-page">
-        </section>
-        <script src="src/js/jquery-1.12.4.min.js"></script>
-        <script src="js/index.js"></script>
+		<svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
+			xmlns="http://www.w3.org/2000/svg">
+			<circle data-left="" cx="15" cy="15" r="14"></circle>
+			<g data-left="">
+				<path data-left=""
+					d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+					stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+				<line data-left="" x1="0" y1="7" x2="50" y2="7"></line>
+			</g>
+		</svg>
+		<!-- 下一页按钮 -->
+		<svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
+			xmlns="http://www.w3.org/2000/svg">
+			<circle data-right="" cx="15" cy="15" r="14"></circle>
+			<g data-right="">
+				<path data-right=""
+					d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+					stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+				<line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
+			</g>
+		</svg>
+		<!-- 3d按钮 -->
+		<button id="3d-btn"></button>
+		<!-- 表单 -->
+		 <section id="form-page">
+			<section class="preview-pane">
+				<section class="fx_external_form" 
+					style="background-color: rgb(244, 249, 249); background-image: none;">
+					<section  id="form-page-one" class="form-content">
+						<section class="form-head">
+							<section class="head-banner" style="background-color: transparent;"><img
+									src="https://assets.jiandaoyun.com/v2100/resources/images/theme/form/bn_18.jpg">
+							</section>
+							<section class="head-title"
+								style="color: rgb(49, 49, 49); font-size: 20px; font-style: normal; font-weight: bold;">
+								个人信息</section>
+						</section>
+						<section class="form-body">
+							<section class="fui-form grid-layout"  style="width: 780px;">
+								<section class="widget-wrapper">
+									<ul>
+										<li class="widget-view x-grid-col-6" >
+											<section class="fl-label"><span class="label-title">姓名</span><span
+													class="label-notnull">*</span></section>
+											<section class="fl-widget">
+												<section class="fui_text" 
+													style="width: 330px; height: 30px;"><input type="text"
+														class="x-input" name="username" ></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-6" >
+											<section class="fl-label"><span class="label-title">学号</span><span
+													class="label-notnull">*</span></section>
+											<section class="fl-widget">
+												<section class="fui_text" 
+													style="width: 330px; height: 30px;"><input type="text"
+														class="x-input" name="student-id"></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-6" >
+											<section class="fl-label"><span class="label-title">年级专业</span><span
+													class="label-notnull">*</span></section>
+											<section class="fl-widget">
+												<section class="fui_text" 
+													style="width: 330px; height: 30px;"><input type="text"
+														class="x-input" name="grade-professional" ></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-6" >
+											<section class="fl-label"><span class="label-title">性别</span><span
+													class="label-notnull">*</span></section>
+											<section class="fl-widget">
+												<section class="x-group" 
+													style="width: 330px;">
+													<section class="group_item x-radio horizontal" value="男"><i
+															class="icon-blank"></i><span>男</span></section>
+													<section class="group_item x-radio horizontal" value="女"><i
+															class="icon-blank"></i><span>女</span></section>
+												</section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-12" >
+											<section class="fl-label"><span class="label-title">手机号码</span><span
+													class="label-notnull">*</span></section>
+											<section class="fl-widget">
+												<section class="fui_text" 
+													style="width: 720px; height: 30px;"><input type="text"
+														class="x-input" name="number" ></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-12" >
+											<section class="fl-label"><span class="label-title">邮箱</span><span
+													class="label-notnull">*</span></section>
+											<section class="fl-description x-subhtml">
+												<p style="text-align:left;"><br></p>
+											</section>
+											<section class="fl-widget">
+												<section class="fui_text" 
+													style="width: 720px; height: 30px;"><input type="text"
+														class="x-input" name="email"></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-12" >
+											<section class="fl-label"><span class="label-title">自我介绍</span><span
+													class="label-notnull">*</span></section>
+											<section class="fl-widget">
+												<section class="fui_textarea" 
+													style="width: 720px; height: 140px;"><textarea
+														class="x-textarea" name="introduction"></textarea></section>
+											</section>
+										</li>
+									</ul>
+								</section>
+							</section>
+						</section>
+						<section class="form-foot">
+							<section class="foot-btn next-step" style="background-color: rgb(49, 49, 49);">下一步</section>
+						</section>
+					</section>
+					<section style="display: none" id="form-page-two" class="form-content">
+							<section class="form-head">
+								<section class="head-banner" style="background-color: transparent;"><img
+										src="https://assets.jiandaoyun.com/v2100/resources/images/theme/form/bn_18.jpg">
+								</section>
+								<section class="head-title"
+									style="color: rgb(49, 49, 49); font-size: 20px; font-style: normal; font-weight: bold;">
+									你的想法</section>
+							</section>
+							<section class="form-body">
+								<section class="fui-form normal-layout" style="width: 780px;">
+									<section class="widget-wrapper">
+										<ul>
+											<li class="widget-view x-grid-col-12">
+												<section class="fl-label"><span class="label-title">发展方向</span><span
+														class="label-notnull">*</span></section>
+												<section class="fl-widget">
+													<section class="fui_combo"
+														style="width: 330px; height: 30px; line-height: 28px;"><input
+															class="fui_trigger-input" onfocus="this.blur();"
+															 unselectable="on" name="direction"><i
+															class="fui_trigger-btn icon-caret-down"></i>
+													</section>
+													<section class="x-dropdown">
+														<!-- <section class="fui_combo-search"><input>
+															<i class="icon-search search-icon"></i>
+														</section> -->
+														<section class="x-dropdown-list combo-list"
+															style="max-width: 330px; min-width: 160px;"><a
+																class="x-dropdown-item" option="前端" title="前端">前端</a><a
+																class="x-dropdown-item" option="后台" title="后台">后台</a><a
+																class="x-dropdown-item" option="安卓" title="安卓">安卓</a><a
+																class="x-dropdown-item" option="iOS" title="iOS">iOS</a><a
+																class="x-dropdown-item" option="机器学习" title="机器学习">机器学习</a>
+														</section>
+													</section>
+												</section>
+											</li>
+											<li class="widget-view x-grid-col-12">
+												<section class="fl-label"><span class="label-title">计算机类技能经验</span>
+												</section>
+												<section class="fl-widget">
+													<section class="fui_textarea" style="width: 720px; height: 140px;">
+														<textarea class="x-textarea" name="skills"></textarea></section>
+												</section>
+											</li>
+											<li class="widget-view x-grid-col-12">
+												<section class="fl-label"><span class="label-title">谈谈你对我们工作室的认识</span>
+												</section>
+												<section class="fl-widget">
+													<section class="fui_textarea" style="width: 720px; height: 140px;">
+														<textarea class="x-textarea" name="idea"></textarea></section>
+												</section>
+											</li>
+										</ul>
+									</section>
+								</section>
+							</section>
+							<section class="form-foot">
+								<section class="foot-btn submit" style="background-color: rgb(49, 49, 49);">提交</section>
+								<a href="javascript:;" class="pre-step">返回上一步</a>
+							</section>
+						</section>
+				</section>
+			</section>
+		</section>  
+
+		<script src="src/js/jquery-1.12.4.min.js"></script>
+		<script src="js/index.js"></script>
 </body>
 
 </html>
