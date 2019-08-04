@@ -126,6 +126,24 @@ $(function () {
 		})
 	})();
 
+	/*
+		* @desc 函数节流 时间戳版
+		* @param func 函数
+		* @param wait 延迟执行毫秒数
+		*/
+	function throttle(func, wait) {
+		let previous = 0;
+		return function () {
+			let now = Date.now();
+			let context = this;
+			let args = arguments;
+			if (now - previous > wait) {
+				func.apply(context, args);
+				previous = now;
+			}
+		}
+	}
+
 	// 旋转菜单模块
 	!(() => {
 		const $detailPages = $("#detail-pages")
@@ -155,23 +173,7 @@ $(function () {
 			}
 		})
 
-		/*
-		 * @desc 函数节流 时间戳版
-		 * @param func 函数
-		 * @param wait 延迟执行毫秒数
-		 */
-		function throttle(func, wait) {
-			let previous = 0;
-			return function () {
-				let now = Date.now();
-				let context = this;
-				let args = arguments;
-				if (now - previous > wait) {
-					func.apply(context, args);
-					previous = now;
-				}
-			}
-		}
+
 		// 延迟停止时调用此函数
 		function end() {
 			$home.get(0).style.transform = "scale(1) rotate(0) ";
@@ -309,7 +311,6 @@ $(function () {
 		})
 	})();
 
-
 	// ios
 	(() => {
 		const $ios = $("#ios");
@@ -323,8 +324,6 @@ $(function () {
 			}
 		});
 	})();
-	
-
 
 	// 机器学习
 	(() => {
@@ -434,6 +433,7 @@ $(function () {
 			}
 		})
 	})();
+
 	// 表单模块
 	!(() => {
 		// 获取表单元素
@@ -587,7 +587,7 @@ $(function () {
 			// 设置第一个背景颜色
 			$bannerUl.css("background-color", bgColors[0]);
 			// 设置第一个按钮颜色
-			$($btns[playIndex]).css({
+			$($btns[0]).css({
 				opacity:1,
 				transform:"scale(1)"
 			}).parent(".banner-btn").siblings().children()
@@ -619,6 +619,8 @@ $(function () {
 		// index为跳转的部门index
 		function nextPage(index) {
 			// 越界判断
+			// index = index || (playIndex + 1);
+			console.log("到我这里了");
 			playIndex = (index == bannerImgScr.length) ? 0 : index;
 			$bannerUl.css("background-color", bgColors[playIndex]);
 			// 更新下一张轮播图的信息
@@ -676,13 +678,31 @@ $(function () {
 				}
 			}
 		});
+
+		// 节流函数
+		function throttle2(func, index, wait) {
+			console.log(1);
+			let previous = 0;
+			clearInterval(timer);
+			return function () {
+				let now = Date.now();
+				let context = this;
+				if (now - previous > wait) {
+					func.call(context, index);
+					goBanner();
+					previous = now;
+				}
+			}
+		}
+
 		// 下翻页
-		$nextBtn.on("click", function () {
-			nextPage(playIndex + 1)
-		});
+		$nextBtn.on("click",
+			// timer;
+			throttle2(nextPage, (playIndex + 1), 10000)
+		);
 		// 上翻页
 		$preBtn.on("click", function () {
-			prePage(playIndex - 1)
+			prePage(playIndex - 1);
 		});
 
 	})();

@@ -428,7 +428,6 @@ html {
 #banner-container svg[data-left] {
   transform: translateY(-50%) scale(-1.3, 1.3);
   left: 10px;
-  display: none;
 }
 #detail-pages svg[data-right],
 #banner-container svg[data-right] {
