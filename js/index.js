@@ -1,64 +1,335 @@
 $(function () {
-			console.log('Welcome to TopView!');
+	console.log('Welcome to TopView!');
 
-			//幕布函数
-			let $bar = $(".bar");
-			let $bars = $(".bars");
-			// 获取左右详情页左右按钮
-			const $preBtn = $("#detail-pages .pre-btn");
-			const $nextBtn = $("#detail-pages .next-btn");
+	//幕布函数
+	let $bar = $(".bar");
+	let $bars = $(".bars");
+	// 获取左右详情页左右按钮
+	const $preBtn = $("#detail-pages .pre-btn");
+	const $nextBtn = $("#detail-pages .next-btn");
 
-			function curtainUp() {
-				// 获取幕布容器
-				let $bar = $(".bar");
-				// 获取每个幕布
-				let $bars = $(".bars");
+	function curtainUp() {
+		// 获取幕布容器
+		let $bar = $(".bar");
+		// 获取每个幕布
+		let $bars = $(".bars");
 
-				// 获取每个幕布
-				var p = new Promise(function (resolve, reject) {
-					setTimeout(function () {
-						//$($bars).css("z-index", 9);
-						$($bar[0]).animate({
-							height: '100vh'
-						}, 80);
-						$($bar[1]).animate({
-							height: '100vh'
-						}, 240);
-						$($bar[2]).animate({
-							height: '100vh'
-						}, 400);
-						$($bar[3]).animate({
-							height: '100vh'
-						}, 560);
-						$($bar[4]).animate({
-							height: '100vh'
-						}, 720);
-						//更改按钮display
-						resolve("true");
-					}, 0);
-				});
-				return p;
-			}
+		// 获取每个幕布
+		var p = new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				//$($bars).css("z-index", 9);
+				$($bar[0]).animate({
+					height: '100vh'
+				}, 80);
+				$($bar[1]).animate({
+					height: '100vh'
+				}, 240);
+				$($bar[2]).animate({
+					height: '100vh'
+				}, 400);
+				$($bar[3]).animate({
+					height: '100vh'
+				}, 560);
+				$($bar[4]).animate({
+					height: '100vh'
+				}, 720);
+				//更改按钮display
+				resolve("true");
+			}, 0);
+		});
+		return p;
+	}
 
 
-			// 目前展示页index
-			let detailIndex = 0;
-			// 获取所有详情页
-			const $pages = $(".page");
+	// 目前展示页index
+	let detailIndex = 0;
+	// 获取所有详情页
+	const $pages = $(".page");
 
-			// 轮播图点击触发函数
-			function showPage(index) {
-				// 更新目前展示
-				detailIndex = index;
-				var p = new Promise(function (resolve, reject) {
-					setTimeout(function () {
-						$($pages[detailIndex]).css(display, "block").siblings(".page").css(display, "none");
-						resolve("true");
+	// 轮播图点击触发函数
+	function showPage(index) {
+		// 更新目前展示
+		detailIndex = index;
+		var p = new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				$($pages[detailIndex]).css(display, "block").siblings(".page").css(display, "none");
+				resolve("true");
+			}, 720);
+		});
+		return p;
+	}
+
+	function prePage() {
+		detailIndex--;
+		//console.log(detailIndex)
+		if (detailIndex == 0) {
+			$($preBtn).css("display", "none");
+		} else {
+			$($preBtn).css("display", "block");
+		}
+		if (detailIndex == 4) {
+			$($nextBtn).css("display", "none");
+		} else {
+			$($nextBtn).css("display", "block")
+		}
+		var p = new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				$($pages).css("display", "none");
+				$($pages[detailIndex]).css("display", "block");
+
+				resolve("true");
+			}, 1700);
+			return p;
+		})
+	}
+
+	function wfNextPage() {
+		detailIndex++;
+		console.log(detailIndex)
+		if (detailIndex == 0) {
+			$($preBtn).css("display", "none");
+		} else {
+			$($preBtn).css("display", "block");
+		}
+		if (detailIndex == 4) {
+			$($nextBtn).css("display", "none");
+		} else {
+			$($nextBtn).css("display", "block")
+		}
+		var p = new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				$($pages).css("display", "none");
+				$($pages[detailIndex]).css("display", "block");
+				resolve("true");
+			}, 1700);
+		});
+		return p;
+	}
+
+	function curtainDown(data) {
+		let $bar = $(".bar");
+		let $bars = $(".bars");
+		if (data == "true") {
+			var p = new Promise(function (resolve, reject) {
+				setTimeout(function () {
+					//$($bars).css("z-index", 9);
+					$($bar[0]).animate({
+						height: '0vh'
+					}, 80);
+					$($bar[1]).animate({
+						height: '0vh'
+					}, 240);
+					$($bar[2]).animate({
+						height: '0vh'
+					}, 400);
+					$($bar[3]).animate({
+						height: '0vh'
+					}, 560);
+					$($bar[4]).animate({
+						height: '0vh'
 					}, 720);
-				});
-				return p;
+					//更改按钮display
+					resolve();
+				}, 0);
+			});
+			return p;
+		}
+	}
+	// 切换幕布
+	!(() => {
+		//左右按钮切换
+		const $btns = $("#detail-pages .switch-btn");
+		//const $bars = $(".bars");
+		$($btns[0]).on("click", function () {
+			curtainUp().then(prePage).then(curtainDown);
+		});
+		$($btns[1]).on("click", function () {
+			curtainUp().then(wfNextPage).then(curtainDown);
+		});
+	})();
+	//开局动画
+	(() => {
+		const $loadingModule = $("#loading-module");
+		const $loadingSpan = $(".span-one");
+		const $innerspan = $(".inner-span");
+		const $rightSpan = $("#right-span");
+		const $spanBox = $("#span-box");
+		const $moveSdiv = $(".move-span");
+		// const $innerSpan = $('.move-span');
+		$loadingSpan.eq(0).animate({
+			left: '800px'
+		}, 2000);
+		$loadingSpan.eq(0).animate({
+			width: '150px',
+			left: "950px"
+		}, 1000, () => {
+			$innerspan.eq(0).css({
+				right: '180px'
+			});
+			// $innerSpan.eq(0).animate({
+			// 	right: '80px'
+			// }, 1000);
+			// $innerSpan.eq(1).animate({
+			// 	right: '50px'
+			// }, 1200);
+			// $innerSpan.eq(2).animate({
+			// 	right: '20px'
+			// }, 1400)
+			// $innerSpan.eq(3).animate({
+			// 	right: ''
+			// }, 1400)
+		});
+
+		$loadingSpan.eq(1).animate({
+			left: '800px'
+		}, 2000);
+		$loadingSpan.eq(1).animate({
+			width: '150px',
+		}, 1000, () => {
+			$innerspan.eq(1).css({
+				left: '150px'
+			});
+			// $innerSpan.eq(7).animate({
+			// 	left: '130px'
+			// }, 1000);
+			// $innerSpan.eq(6).animate({
+			// 	left: '80px'
+			// }, 1200);
+			// $innerSpan.eq(5).animate({
+			// 	left: '40px'
+			// }, 1400);
+		});
+		$loadingSpan.eq(2).animate({
+			width: '60px',
+			left: '900px'
+		}, 2000, () => {
+			$innerspan.eq(2).css({
+				right: '80px'
+			});
+			// $innerSpan.eq(8).animate({
+			// 	right: '50px'
+			// }, 1000);
+			// $innerSpan.eq(9).animate({
+			// 	right: ''
+			// }, 1400);
+			// $innerSpan.eq(13).animate({
+			// 	left: '110px'
+			// }, 1200);
+			// $innerSpan.eq(12).animate({
+			// 	left: '80px'
+			// }, 1400);
+			// $innerSpan.eq(11).animate({
+			// 	left: '35px'
+			// }, 1600);
+			// $innerSpan.eq(10).animate({
+			// 	left: ''
+			// }, 1800);
+			$innerspan.eq(3).animate({
+				width: '80px'
+			}, 1000);
+
+			$rightSpan.animate({
+				width: '80px',
+				left: '230px'
+
+			}, 1000, () => {
+				console.log($rightSpan);
+
+				$moveSdiv.each(
+					function (i) {
+						$(this).css({
+							transform: "translateX(0px)",
+							transition: "1.5s"
+						})
+					}
+				);
+			});
+
+
+		});
+		$spanBox.animate({
+			left: '600px',
+
+		}, 2000);
+		// $innerSpan.eq(14).animate({
+		// 	left: ''
+		// }, 1000);
+		// $innerSpan.eq(15).animate({
+		// 	left: '35px'
+		// }, 1000);
+		// $innerSpan.eq(16).animate({
+		// 	left: '50px'
+		// }, 1000);
+		// $innerSpan.eq(17).animate({
+		// 	left: '80px'
+		// }, 1000);
+		// $innerspan.eq(4).css({
+		// 	left: '90px'
+	})();
+
+
+	
+
+	//front-end
+	!(() => {
+		const $frontEnd = $("#front-end");
+		const $perOne = $(".per-one");
+		const $perTwo = $(".per-two");
+		const $article1 = $(".article1 p");
+		const $article2 = $(".article2 p");
+		$frontEnd.on("scroll", function () {
+			//console.log($frontEnd.scrollTop())
+
+			$perOne.css("opacity", (1 - $frontEnd.scrollTop() / 2500));
+			if ($frontEnd.scrollTop() > 500) {
+				$($article1[0]).fadeIn("4000");
+			} else {
+				$($article1[0]).fadeOut();
+			}
+			if ($frontEnd.scrollTop() > 570) {
+				$($article1[1]).fadeIn("4000");
+			} else {
+				$($article1[1]).fadeOut();
+			}
+			if ($frontEnd.scrollTop() > 640) {
+				$($article1[2]).fadeIn("4000");
+			} else {
+				$($article1[2]).fadeOut();
 			}
 
+			if ($frontEnd.scrollTop() > 706) {
+				$($article1[3]).fadeIn("4000");
+			} else {
+				$($article1[3]).fadeOut();
+			}
+			//第二个article
+			if ($frontEnd.scrollTop() > 1000) {
+				$($article2[0]).fadeIn("4000");
+			} else {
+				$($article2[0]).fadeOut();
+			}
+			if ($frontEnd.scrollTop() > 1060) {
+				$($article2[1]).fadeIn("4000");
+			} else {
+				$($article2[1]).fadeOut();
+			}
+
+			if ($frontEnd.scrollTop() > 1120) {
+				$($article2[2]).fadeIn("4000");
+			} else {
+				$($article2[2]).fadeOut();
+			}
+			if ($frontEnd.scrollTop() > 1180) {
+				$($article2[3]).fadeIn("4000");
+			} else {
+				$($article2[3]).fadeOut();
+			}
+			if ($frontEnd.scrollTop() > 1260) {
+				$($article2[4]).fadeIn("4000");
+			} else {
+				$($article2[4]).fadeOut();
+			}
+		})
 			function prePage() {
 				detailIndex--;
 				//console.log(detailIndex)
@@ -82,6 +353,7 @@ $(function () {
 						return p;
 					})
 				}
+			
 
 				function curtainDown(data) {
 					let $bar = $(".bar");
@@ -112,149 +384,10 @@ $(function () {
 						return p;
 					}
 				}
+			})();
 
-
-				// 切换幕布
-				!(() => {
-					//左右按钮切换
-					const $btns = $("#detail-pages .switch-btn");
-					//const $bars = $(".bars");
-					$($btns[0]).on("click", function () {
-						curtainUp().then(prePage).then(curtainDown);
-					});
-					$($btns[1]).on("click", function () {
-						curtainUp().then(nextPage).then(curtainDown);
-					});
-				})();
-				//开局动画
-				!(() => {
-					const $loadingModule = $("#loading-module");
-					const $loadingSpan = $(".span-one");
-					const $innerspan = $(".inner-span");
-					const $rightSpan = $("#right-span");
-					const $spanBox = $("#span-box");
-					const $moveSdiv = $(".move-span");
-					// const $innerSpan = $('.move-span');
-					$loadingSpan.eq(0).animate({
-						left: '800px'
-					}, 2000);
-					$loadingSpan.eq(0).animate({
-						width: '150px',
-						left: "950px"
-					}, 1000, () => {
-						$innerspan.eq(0).css({
-							right: '180px'
-						});
-						// $innerSpan.eq(0).animate({
-						// 	right: '80px'
-						// }, 1000);
-						// $innerSpan.eq(1).animate({
-						// 	right: '50px'
-						// }, 1200);
-						// $innerSpan.eq(2).animate({
-						// 	right: '20px'
-						// }, 1400)
-						// $innerSpan.eq(3).animate({
-						// 	right: ''
-						// }, 1400)
-					});
-
-					$loadingSpan.eq(1).animate({
-						left: '800px'
-					}, 2000);
-					$loadingSpan.eq(1).animate({
-						width: '150px',
-					}, 1000, () => {
-						$innerspan.eq(1).css({
-							left: '150px'
-						});
-						// $innerSpan.eq(7).animate({
-						// 	left: '130px'
-						// }, 1000);
-						// $innerSpan.eq(6).animate({
-						// 	left: '80px'
-						// }, 1200);
-						// $innerSpan.eq(5).animate({
-						// 	left: '40px'
-						// }, 1400);
-					});
-					$loadingSpan.eq(2).animate({
-						width: '60px',
-						left: '900px'
-					}, 2000, () => {
-						$innerspan.eq(2).css({
-							right: '80px'
-						});
-						// $innerSpan.eq(8).animate({
-						// 	right: '50px'
-						// }, 1000);
-						// $innerSpan.eq(9).animate({
-						// 	right: ''
-						// }, 1400);
-						// $innerSpan.eq(13).animate({
-						// 	left: '110px'
-						// }, 1200);
-						// $innerSpan.eq(12).animate({
-						// 	left: '80px'
-						// }, 1400);
-						// $innerSpan.eq(11).animate({
-						// 	left: '35px'
-						// }, 1600);
-						// $innerSpan.eq(10).animate({
-						// 	left: ''
-						// }, 1800);
-						$innerspan.eq(3).animate({
-							width: '80px'
-						}, 1000);
-
-						$rightSpan.animate({
-							width: '80px',
-							left: '230px'
-
-						}, 1000, () => {
-							console.log($rightSpan);
-
-							$moveSdiv.each(
-								function (i) {
-									$(this).css({
-										transform: "translateX(0px)",
-										transition: "1.5s"
-									})
-								}
-							);
-						});
-
-
-					});
-					$spanBox.animate({
-						left: '600px',
-
-					}, 2000);
-
-
-
-
-					// $innerSpan.eq(14).animate({
-					// 	left: ''
-					// }, 1000);
-					// $innerSpan.eq(15).animate({
-					// 	left: '35px'
-					// }, 1000);
-					// $innerSpan.eq(16).animate({
-					// 	left: '50px'
-					// }, 1000);
-					// $innerSpan.eq(17).animate({
-					// 	left: '80px'
-					// }, 1000);
-					// $innerspan.eq(4).css({
-					// 	left: '90px'
-					// });
-
-
-
-
-
-				})();
+			
+				
 				// 旋转菜单模块
 				!(() => {
 					const $detailPages = $("#detail-pages")
@@ -369,68 +502,7 @@ $(function () {
 						ev.stopPropagation();
 					}
 				})();
-					//front-end
-					!(() => {
-						const $frontEnd = $("#front-end");
-						const $perOne = $(".per-one");
-						const $perTwo = $(".per-two");
-						const $article1 = $(".article1 p");
-						const $article2 = $(".article2 p");
-						$frontEnd.on("scroll", function () {
-							//console.log($frontEnd.scrollTop())
-
-							$perOne.css("opacity", (1 - $frontEnd.scrollTop() / 2500));
-							if ($frontEnd.scrollTop() > 500) {
-								$($article1[0]).fadeIn("4000");
-							} else {
-								$($article1[0]).fadeOut();
-							}
-							if ($frontEnd.scrollTop() > 570) {
-								$($article1[1]).fadeIn("4000");
-							} else {
-								$($article1[1]).fadeOut();
-							}
-							if ($frontEnd.scrollTop() > 640) {
-								$($article1[2]).fadeIn("4000");
-							} else {
-								$($article1[2]).fadeOut();
-							}
-
-							if ($frontEnd.scrollTop() > 706) {
-								$($article1[3]).fadeIn("4000");
-							} else {
-								$($article1[3]).fadeOut();
-							}
-							//第二个article
-							if ($frontEnd.scrollTop() > 1000) {
-								$($article2[0]).fadeIn("4000");
-							} else {
-								$($article2[0]).fadeOut();
-							}
-							if ($frontEnd.scrollTop() > 1060) {
-								$($article2[1]).fadeIn("4000");
-							} else {
-								$($article2[1]).fadeOut();
-							}
-
-							if ($frontEnd.scrollTop() > 1120) {
-								$($article2[2]).fadeIn("4000");
-							} else {
-								$($article2[2]).fadeOut();
-							}
-							if ($frontEnd.scrollTop() > 1180) {
-								$($article2[3]).fadeIn("4000");
-							} else {
-								$($article2[3]).fadeOut();
-							}
-							if ($frontEnd.scrollTop() > 1260) {
-								$($article2[4]).fadeIn("4000");
-							} else {
-								$($article2[4]).fadeOut();
-							}
-
-						})
-					})();
+					
 
 
 					// ios
