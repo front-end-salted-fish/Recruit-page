@@ -9,9 +9,54 @@
 </head>
 
 <body>
-	<!-- <header id="loading-module">
-		<h1>Welcome to TopView</h1>
-	</header> -->
+	<!-- 开局动画 -->
+	<header id="loading-module" style="transform: scale(2)">
+		<div id="loading-word">
+			<div class="move-div">
+				<div class="move-sdiv"><span class="move-span">W</span></div>
+				<div class="move-sdiv"><span class="move-span">E</span></div>
+				<div class="move-sdiv"><span class="move-span">L</span></div>
+				<div class="move-sdiv"><span class="move-span">-</span></div>
+			</div>
+			<div class="move-div" id="reverse">
+				<div class="move-sdiv move-ssdiv"><span class="move-span">E</span></div>
+				<div class="move-sdiv move-ssdiv"><span class="move-span">M</span></div>
+				<div class="move-sdiv move-ssdiv"><span class="move-span">O</span></div>
+				<div class="move-sdiv move-ssdiv"><span class="move-span">C</span></div>
+			</div>
+			<div class="move-div">
+				<div class="move-sdiv"><span class="move-span">T</span></div>
+				<div class="move-sdiv"><span class="move-span">O</span></div>
+				<div id="free-div"></div>
+				<div class="move-sdiv"><span class="move-span">T</span></div>
+				<div class="move-sdiv"><span class="move-span">O</span></div>
+				<div class="move-sdiv"><span class="move-span">P</span></div>
+				<div class="move-sdiv"><span class="move-span">-</span></div>
+			</div>
+			<div class="move-div" id="cen-dev">
+				<div class="move-sdiv"><span class="move-span">V</span></div>
+				<div class="move-sdiv"><span class="move-span">I</span></div>
+				<div class="move-sdiv"><span class="move-span">E</span></div>
+				<div class="move-sdiv"><span class="move-span">W</span></div>
+			</div>
+		</div>
+		<!-- <div id="loading-span">
+		<div class="span-one"><span class="inner-span"><span class="move-span">W</span><span class="move-span">E</span><span class="move-span">L</span><span class="move-span">-</span></span></div><br><br><br><br><br><br><br>
+		<div class="span-one" id="span-one"><span class="inner-span"><span class="move-span">C</span><span class="move-span">O</span><span class="move-span">M</span><span class="move-span">E</span></span></div><br><br><br><br><br><br><br>
+		<div class="span-one" id="span-two"><span class="inner-span"><span class="move-span">T</span><span class="move-span">O</span></span><span id="center-span"></span><span class="inner-span"><span class="move-span">T</span><span class="move-span">O</span><span class="move-span">P</span><span class="move-span">-</span></span></div><br><br><br><br><br><br><br>
+		<div class="span-one" style="position: relative"><span class="inner-span"><span class="move-span">V</span><span class="move-span">I</span><span class="move-span">E</span><span class="move-span">W</span></span><span id="right-span"></span></div><br>
+		</div> -->
+		<div id="loading-span">
+			<div class="span-one"><span class="inner-span"></span></div><br><br><br><br><br><br><br>
+			<div class="span-one" id="span-one"><span class="inner-span"></span></div><br><br><br><br><br><br><br>
+			<div class="span-one" id="span-two"><span class="inner-span"></span><span id="center-span"></span></div>
+			<br><br><br><br><br><br><br>
+			<div class="span-one" style="position: relative" id="span-box"><span class="inner-span"
+					style="height: 50px; background-color:whitesmoke;width: 220px"></span><span id="right-span"
+					class="inner-span" style="width:220px;"></span></div><br>
+		</div>
+
+	</header>
 	<!-- tv总介绍 -->
 	<section id="tv-introduction">
 		<!-- 表示继续的按钮 -->
@@ -90,7 +135,7 @@
 		</svg>
 	</section>
 	<!-- 部门详情介绍页 -->
-	<section id="detail-pages"  style="display: none">
+	<section id="detail-pages" >
 		<!-- 切换图片的覆盖层 -->
 		<div class="bars">
 			<div class="bar bar1"></div>
@@ -107,23 +152,28 @@
 			</section>
 			<section class="per-two">
 				<!-- <img src="img/front-end/001.jpg" alt=""> -->
-				<section class="article">
-					<p>TopView 前端组主要基于HTML，CSS，JavaScript</p><br />
-					<p>等基础web前端编程语言进行开发，</p><br />
-					<p>同时引入前端领域前沿技术进一步构建项目。</p><br />
-					<p>我们专注于展现视觉更好的页面，</p><br />
-					<p>打造用户体验更优的网站，</p><br />
-					<p>开发更有特色更有创意的产品。 </p><br />
-					<p>如果你喜欢设计、热爱前端，那你就是我们前端组想要的！</p><br />
+				<section class="article article1">
+					<p>TopView 前端组主要基于</p><br/>
+					<p>HTML，CSS，JavaScript等</p><br/>
+					<p>基础web前端编程语言进行开发，</p><br/>
+					<p>同时引入前端领域前沿技术进一步构建项目。</p><br/>
 				</section>
-				<img src="img/front-end/002.jpg" class="icon">
+				<section class="article article2">
+					<p>我们专注于展现视觉更好的页面，</p><br/>
+					<p>打造用户体验更优的网站，</p><br/>
+					<p>开发更有特色更有创意的产品。 </p><br/>
+					<p>如果你喜欢设计、热爱前端，</p><br/>
+					<p>那你就是我们前端组想要的！</p><br/>
+				</section>
+				<img src="img/front-end/002.jpg" class="icon1">
+				<img src="img/front-end/008.jpg" class="icon2">
 			</section>
 			<!-- <section class="per-three">
 				<img src="img/front-end/008.jpg" alt="">
 			</section> -->
 		</section>
 		<!-- 伦哥模块 -->
-		<section id="android" class="page">
+		<section id="android" class="page" style="display: none">
 			<section class="pers-one">
 				<img class="font-bg" src="img/android/banner-android-font.png" alt="">
 				<img class="one" src="img/android/timg (5).jpeg" alt="">
@@ -223,20 +273,20 @@
 				<br>
 				<sup  id="directionDetails" style="font-size:0.5em">〔下滑详情〕</sup> -->
 				<!-- </div> -->
-				<img src="./img/ios/3.jpg" alt="" class="bg">
+				<img src="./img/ios/13.jpg" alt="" class="bg">
 			</section>
 			<section class="pre-two">
-				<p class="cd-container infor-font">
+				<p class="cd-container infor-font" id="ios-pretwo">
 					TopView
 					iOS组专注于极致和优雅的主流App开发以及iOS新技术的探索。iOS组是TopView的主要开发组之一，成立于2015年。在TopView工作室的帮助下，工作室成员的相互交流中，iOS组已经成为工作室的中流砥柱之一。
 				</p>
-				<img src="./img/ios/4.jpg" alt="">
+				<img src="./img/ios/19.jpg" alt="">
 
 
 			</section>
 			<section class="pre-three">
-				<img src="./img/ios/3.jpeg" alt="">
-				<p class="cd-container infor-font">
+				<img src="./img/ios/15.jpeg" alt="">
+				<p class="cd-container infor-font" id="ios-prethree">
 					加入我们，相信你一定能得到锻炼与成长。只要你有c语言基础，热爱学习，有责任心就加入iOS组吧!
 				</p>
 			</section>
@@ -245,7 +295,7 @@
 			</section> -->
 		</section>
 		<!-- 基你太美模块 -->
-		<section id="machine-learning" class="page">
+		<section id="machine-learning" class="page" style="display: none">
 			<section class="per-one">
 				<img src="img/machine-learning/banner-machine-font.png" alt="" class="header-font">
 				<img src="img/machine-learning/机器学习3.jpg" alt="" class="bg">
@@ -321,17 +371,31 @@
 				<line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
 			</g>
 		</svg>
+		</section>
 		<!-- 3d按钮 -->
-		<button id="3d-btn"></button>
-	</section>
-	<!-- 表单 -->
-	<section id="form-page">
-		<section class="preview-pane">
-			<section class="fx_external_form" style="background-color: rgb(244, 249, 249); background-image: none;">
-				<section id="form-page-one" class="form-content">
-					<section class="form-head">
-						<section class="head-banner" style="background-color: transparent;"><img
-								src="https://assets.jiandaoyun.com/v2100/resources/images/theme/form/bn_18.jpg">
+		<section id="three-dimensional-btn">
+			<section class="main">
+			    <section class="cont">
+			        <button id="btn">
+			                <section class="glare"></section>
+			                <span>Button</span>
+			            </button>
+			    </section>
+			</section>
+		</section>
+		<!-- 表单 -->
+		 <section id="form-page">
+			<section class="preview-pane">
+				<section class="fx_external_form" 
+					style="background-color: rgb(244, 249, 249); background-image: none;">
+					<section  id="form-page-one" class="form-content">
+						<section class="form-head">
+							<section class="head-banner" style="background-color: transparent;"><img
+									src="https://assets.jiandaoyun.com/v2100/resources/images/theme/form/bn_18.jpg">
+							</section>
+							<section class="head-title"
+								style="color: rgb(49, 49, 49); font-size: 20px; font-style: normal; font-weight: bold;">
+								个人信息</section>
 						</section>
 						<section class="head-title"
 							style="color: rgb(49, 49, 49); font-size: 20px; font-style: normal; font-weight: bold;">

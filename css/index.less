@@ -5,6 +5,99 @@ html {
     min-width: 9;
 }
 
+//开局动画
+#loading-word {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+}
+
+.move-div {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  line-height: 70px;
+
+  .move-sdiv {
+    // transform: translateX(30px);
+    overflow: hidden;
+    // position: relative;
+
+    .move-span {
+      font-size: 50px;
+      color: whitesmoke;
+      display: inline-block;
+      transform: translateX(50px);
+      // overflow: hidden;
+      // position: absolute;
+
+    }
+  }
+}
+
+#reverse {
+  flex-direction: row-reverse;
+}
+
+#free-div {
+  width: 125px;
+  height: 50px;
+}
+
+#cen-dev {
+  justify-content: center;
+}
+
+#loading-module {
+  // height: 900px;
+  padding: 200px;
+  padding-bottom: 300px;
+}
+
+.span-one {
+  width: 280px;
+  height: 50px;
+  background-color: whitesmoke;
+  color: whitesmoke;
+  display: inline-block;
+  position: absolute;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 80px;
+  line-height: 50px;
+}
+
+#span-one {
+  position: absolute;
+  right: 0;
+}
+
+.inner-span {
+  position: absolute;
+
+}
+
+#right-span {
+  background-color: whitesmoke;
+  height: 50px;
+  position: absolute;
+}
+
+#span-box {
+  width: auto;
+  height: 50px;
+  // background-color: whitesmoke;
+  color: whitesmoke;
+  display: inline-block;
+  position: absolute;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 80px;
+  line-height: 50px;
+}
+
 #menu {
     position: fixed;
     right: 20px;
@@ -12,7 +105,7 @@ html {
     width: 50px;
     height: 50px;
     cursor: pointer;
-
+    z-index: 100;
     #menu-list {
         position: relative;
         width: 42px;
@@ -23,8 +116,8 @@ html {
             position: absolute;
             left: 0;
             top: 0;
-            width: 50px;
-            height: 50px;
+            width: 42px;
+            height: 42px;
             background: url(../img/logo/logo.png);
             border-radius: 50%;
             transition: 1s;
@@ -61,16 +154,15 @@ html {
 }
 
 
-//轮播图幕布
-#banner-container {
+//幕布
+#detail-pages {
   .bars {
     position: absolute;
     width: 100%;
     height: 100vh;
     top: 0px;
     left: 0px;
-    
-
+    z-index: 9;
     .bar {
       width: 20%;
       background-color: rgb(0, 23, 50);
@@ -78,6 +170,7 @@ html {
       position: absolute;
       bottom: 0px;
       transition: all 1s ease 0s;
+      z-index: 9;
     }
 
     .bar1 {
@@ -192,35 +285,22 @@ html {
         }
     }
 
-    .pre-three {
-        transform: translate3D(0px, 1000px, 0px) scale(1);
-
-        .cd-container.infor-font {
-            font-size: 2em;
-        }
-
-        .cd-container {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            -moz-transform: translateX(-50%) translateY(-50%);
-            -ms-transform: translateX(-50%) translateY(-50%);
-            -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
-            color: rgb(241, 191, 191);
-            font-size: 2.5em;
-            text-align: center;
-        }
-
-        .infor-font {
-            font-size: 1.5em;
-            color: #6d7584;
-        }
+    .cd-container {
+      position: absolute;
+      left: 50%;
+      top: 40%;
+      -moz-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+      -webkit-transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-50%) translateY(-50%);
+      color: rgb(241, 191, 191);
+      font-size: 2.5em;
+      text-align: center;
     }
 
-    img {
-        width: 100%;
-        box-shadow: 0px 0px 100px #2f1e1e;
+    .infor-font {
+      font-size: 1.5em;
+      color: #fefeff;
     }
 
 }
@@ -266,35 +346,51 @@ html {
   
 
   .per-two {
-    background-color: #383838;
+    background-color: gray;
     transform: translate3d(0px, 90%, -1px) scale(2);
     position: relative;
-    //display: flex;
     width: 100%;
-    height: 200%;
-
-    .article {
-      top: 10%;
-      //left: 30%;
-      z-index: 2;
+    height: 180vh;
+    .article1 {
       position: absolute;
-
+      top: 10%;
+      left: 3%;
+      z-index: 2;
       p {
         font-size: 25px;
         color: white;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         display: none;
       }
-
+    }
+    .article2 {
+      position: absolute;
+      top: 33%;
+      right: 5%;
+      z-index: 2;
+      p {
+        font-size: 25px;
+        color: white;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        display: none;
+      }
     }
 
-    .icon {
+    .icon1 {
       z-index: 9;
-      width: 40%;
+      width: 35%;
+      position: absolute;
+      top: 3%;
+      right: 5%;
+      border-radius: 25%;
+    }
+    .icon2 {
+      z-index: 9;
+      width: 35%;
       position: absolute;
       top: 30%;
-      right: 0;
-
+      left: 5%;
+      border-radius: 25%;
     }
   }
 
@@ -518,7 +614,17 @@ html {
         transform: translateY(-50%) scale(1.3, 1.3);
         right: 10px;
     }
-}
+  }
+
+ /*  svg[data-left] {
+    transform: translateY(-50%) scale(-1.3, 1.3);
+    left: 10px;
+  }
+
+  svg[data-right] {
+    transform: translateY(-50%) scale(1.3, 1.3);
+    right: 10px;
+  } */
 
 
 // 安卓
@@ -1198,5 +1304,70 @@ html {
     }
     .next-btn {
         right:2%;
+    }
+}
+// 3d btn
+#three-dimensional-btn {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -999;
+    height: 100vh;
+    .main {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      #btn {
+        width: 14em;
+        height: 5em;
+        background: linear-gradient(90deg, #2c35f7, #6232ee);
+        box-shadow: 0 0 20px -2px rgba(4, 7, 56, 0.45);
+        outline: none;
+        border: none;
+        border-radius: 0.5em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
+        overflow: hidden;
+        transition: 0.22s cubic-bezier(0.34, 0.34, 0.17, 1.55);
+        &:hover .glare {
+          opacity: 0.15;
+        }
+        &:hover span {
+          transform: translate(-50%, -50%) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) translateZ(15px);
+        }
+        &:active {
+          transform: translate(-50%, -50%) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) translateZ(-20px);
+        }
+        #btn:active span {
+          transform: translate(-50%, -50%) rotateX(var(--rx, 0)) rotateY(var(--ry, 0)) translateZ(40px);
+        }
+        .glare {
+          width: 120px;
+          height: 120px;
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          background: white;
+          opacity: 0.1;
+          border-radius: 50%;
+          filter: blur(30px);
+          transition: 0.32s ease;
+        }
+        span {
+          color: #fff;
+          font-size: 18px;
+          display: block;
+          top: 50%;
+          left: 50%;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          transition: 0.32s ease;
+        }
+      }
     }
 }
