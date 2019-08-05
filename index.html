@@ -6,57 +6,63 @@
 	<title>TopView</title>
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="src/css/reset.css">
+	
 </head>
 
 <body>
 	<!-- 开局动画 -->
-	<header id="loading-module" style="transform: scale(2)">
-		<div id="loading-word">
-			<div class="move-div">
-				<div class="move-sdiv"><span class="move-span">W</span></div>
-				<div class="move-sdiv"><span class="move-span">E</span></div>
-				<div class="move-sdiv"><span class="move-span">L</span></div>
-				<div class="move-sdiv"><span class="move-span">-</span></div>
+    <header id="loading-module" >
+		<!-- 文字及banner的容器 -->
+		<div id="loading-box" >
+		  <!-- 第一行 -->
+		  <div class="row row-one">
+			<div class="inner-left">
+			  <div class="move-sdiv"><span class="move-span">W</span></div>
+			  <div class="move-sdiv"><span class="move-span">E</span></div>
+			  <div class="move-sdiv"><span class="move-span">L</span></div>
+			  <div class="move-sdiv"><span class="move-span">-</span></div>
 			</div>
-			<div class="move-div" id="reverse">
-				<div class="move-sdiv move-ssdiv"><span class="move-span">E</span></div>
-				<div class="move-sdiv move-ssdiv"><span class="move-span">M</span></div>
-				<div class="move-sdiv move-ssdiv"><span class="move-span">O</span></div>
-				<div class="move-sdiv move-ssdiv"><span class="move-span">C</span></div>
+			<div class="inner-right">
 			</div>
-			<div class="move-div">
-				<div class="move-sdiv"><span class="move-span">T</span></div>
-				<div class="move-sdiv"><span class="move-span">O</span></div>
-				<div id="free-div"></div>
-				<div class="move-sdiv"><span class="move-span">T</span></div>
-				<div class="move-sdiv"><span class="move-span">O</span></div>
-				<div class="move-sdiv"><span class="move-span">P</span></div>
-				<div class="move-sdiv"><span class="move-span">-</span></div>
+		  </div>
+		  <!-- 第二行 -->
+		  <div class="row row-two">
+			<div class="inner-left"></div>
+			<div class="inner-right">
+			  <div class="move-sdiv move-ssdiv"><span class="move-span">C</span></div>
+			  <div class="move-sdiv move-ssdiv"><span class="move-span">O</span></div>
+			  <div class="move-sdiv move-ssdiv"><span class="move-span">M</span></div>
+			  <div class="move-sdiv move-ssdiv"><span class="move-span">E</span></div>
 			</div>
-			<div class="move-div" id="cen-dev">
-				<div class="move-sdiv"><span class="move-span">V</span></div>
-				<div class="move-sdiv"><span class="move-span">I</span></div>
-				<div class="move-sdiv"><span class="move-span">E</span></div>
-				<div class="move-sdiv"><span class="move-span">W</span></div>
+		  </div>
+		  <!-- 第三行 -->
+		  <div class="row row-three">
+			<div class="inner-left">
+			  <div class="move-sdiv"><span class="move-span">T</span></div>
+			  <div class="move-sdiv"><span class="move-span">O</span></div>
 			</div>
+			<div class="inner-right">
+			  <div class="move-sdiv"><span class="move-span">T</span></div>
+			  <div class="move-sdiv"><span class="move-span">O</span></div>
+			  <div class="move-sdiv"><span class="move-span">P</span></div>
+			  <div class="move-sdiv"><span class="move-span">-</span></div>
+			</div>
+			<div class="inner-center">
+			</div>
+		  </div>
+		  <!-- 第四行 -->
+		  <div class="row row-forth">
+			<div class="inner-left"></div>
+			<div class="inner-center">
+			  <div class="move-sdiv"><span class="move-span">V</span></div>
+			  <div class="move-sdiv"><span class="move-span">I</span></div>
+			  <div class="move-sdiv"><span class="move-span">E</span></div>
+			  <div class="move-sdiv"><span class="move-span">W</span></div>
+			</div>
+			<div class="inner-right"></div>
+		  </div>
 		</div>
-		<!-- <div id="loading-span">
-		<div class="span-one"><span class="inner-span"><span class="move-span">W</span><span class="move-span">E</span><span class="move-span">L</span><span class="move-span">-</span></span></div><br><br><br><br><br><br><br>
-		<div class="span-one" id="span-one"><span class="inner-span"><span class="move-span">C</span><span class="move-span">O</span><span class="move-span">M</span><span class="move-span">E</span></span></div><br><br><br><br><br><br><br>
-		<div class="span-one" id="span-two"><span class="inner-span"><span class="move-span">T</span><span class="move-span">O</span></span><span id="center-span"></span><span class="inner-span"><span class="move-span">T</span><span class="move-span">O</span><span class="move-span">P</span><span class="move-span">-</span></span></div><br><br><br><br><br><br><br>
-		<div class="span-one" style="position: relative"><span class="inner-span"><span class="move-span">V</span><span class="move-span">I</span><span class="move-span">E</span><span class="move-span">W</span></span><span id="right-span"></span></div><br>
-		</div> -->
-		<div id="loading-span">
-			<div class="span-one"><span class="inner-span"></span></div><br><br><br><br><br><br><br>
-			<div class="span-one" id="span-one"><span class="inner-span"></span></div><br><br><br><br><br><br><br>
-			<div class="span-one" id="span-two"><span class="inner-span"></span><span id="center-span"></span></div>
-			<br><br><br><br><br><br><br>
-			<div class="span-one" style="position: relative" id="span-box"><span class="inner-span"
-					style="height: 50px; background-color:whitesmoke;width: 220px"></span><span id="right-span"
-					class="inner-span" style="width:220px;"></span></div><br>
-		</div>
-
-	</header>
+    </header>
 	<!-- tv总介绍 -->
 	<section id="tv-introduction">
 		<!-- 表示继续的按钮 -->
@@ -133,19 +139,25 @@
 				<line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
 			</g>
 		</svg>
+			<!-- 3d按钮 -->
+			<!-- <section style="height:100vh; overflow: hidden;"> -->
+					<section id="three-dimensional-btn">
+							<section class="main">
+								<section class="cont">
+									<button id="btn">
+											<section class="glare"></section>
+											<span>点击报名</span>
+										</button>
+								</section>
+							</section>
+						</section>
+			<!-- </section> -->
 	</section>
 	<!-- 部门详情介绍页 -->
-	<section id="detail-pages" >
-		<!-- 切换图片的覆盖层 -->
-		<div class="bars">
-			<div class="bar bar1"></div>
-			<div class="bar bar2"></div>
-			<div class="bar bar3"></div>
-			<div class="bar bar4"></div>
-			<div class="bar bar5"></div>
-		</div>
+	<section id="detail-pages">
+	
 		<!-- 王菲板块 -->
-		<section id="front-end" class="page" style="display: block; z-index: 100;">
+		<section id="front-end" class="page" >
 			<section class="per-one">
 				<img src="img/front-end/005.jpg" alt="" class="per">
 				<img src="img/front-end/banner-frontend-font.png" alt="" class="title">
@@ -173,7 +185,7 @@
 			</section> -->
 		</section>
 		<!-- 伦哥模块 -->
-		<section id="android" class="page" style="display: none">
+		<section id="android" class="page">
 			<section class="pers-one">
 				<img class="font-bg" src="img/android/banner-android-font.png" alt="">
 				<img class="one" src="img/android/timg (5).jpeg" alt="">
@@ -285,7 +297,7 @@
 
 			</section>
 			<section class="pre-three">
-				<img src="./img/ios/15.jpeg" alt="">
+				<img src="./img/ios/轮播图.jpeg" alt="">
 				<p class="cd-container infor-font" id="ios-prethree">
 					加入我们，相信你一定能得到锻炼与成长。只要你有c语言基础，热爱学习，有责任心就加入iOS组吧!
 				</p>
@@ -295,7 +307,7 @@
 			</section> -->
 		</section>
 		<!-- 基你太美模块 -->
-		<section id="machine-learning" class="page" style="display: none">
+		<section id="machine-learning" class="page" >
 			<section class="per-one">
 				<img src="img/machine-learning/banner-machine-font.png" alt="" class="header-font">
 				<img src="img/machine-learning/机器学习3.jpg" alt="" class="bg">
@@ -336,11 +348,11 @@
 		<!-- 跳转菜单 -->
 		<section id="menu" title="菜单">
 			<section id="menu-list">
-				<img class="menu-item" src="img/android/WechatIMG11.png" />
-				<img class="menu-item" src="img/back-stage/WechatIMG10.png" />
-				<img class="menu-item" src="img/front-end/WechatIMG9.png" />
-				<img class="menu-item" src="img/ios/WechatIMG12.png" />
-				<img class="menu-item" src="img/machine-learning/WechatIMG13.png" />
+					<img class="menu-item" src="img/front-end/WechatIMG9.png" title="前端"/>
+					<img class="menu-item" src="img/android/WechatIMG11.png" title="安卓"/>
+					<img class="menu-item" src="img/back-stage/WechatIMG10.png" title="后台"/>
+					<img class="menu-item" src="img/ios/WechatIMG12.png" title="ios"/>
+					<img class="menu-item" src="img/machine-learning/WechatIMG13.png" title="机器学习" />
 			</section>
 			<section id="home" class="home">
 
@@ -348,7 +360,7 @@
 			<h2 class="des">Menu</h2>
 		</section>
 		<!-- 关闭按钮 -->
-		<section id="close-btn"></section>
+		<!-- <section id="close-btn"></section> -->
 		<!-- 上一页按钮 -->
 		<svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
 			xmlns="http://www.w3.org/2000/svg">
@@ -372,173 +384,195 @@
 			</g>
 		</svg>
 		</section>
-		<!-- 3d按钮 -->
-		<section id="three-dimensional-btn">
-			<section class="main">
-			    <section class="cont">
-			        <button id="btn">
-			                <section class="glare"></section>
-			                <span>Button</span>
-			            </button>
-			    </section>
-			</section>
-		</section>
+	
+		
 		<!-- 表单 -->
-		 <section id="form-page" style="display: none;">
+		 <section id="form-page">
+				<section >
+						<div class="div" style="width:20vw">
+								<button id="btn" style="width:20vw">测试</button>
+							</div>
+				</section>
 			<section class="preview-pane">
 				<section class="fx_external_form" 
-					style="background-color: rgb(244, 249, 249); background-image: none;">
+					style="background-color: rgb(0, 0, 0); background-image: none;">
 					<section  id="form-page-one" class="form-content">
 						<section class="form-head">
-							<section class="head-banner" style="background-color: transparent;"><img
-									src="https://assets.jiandaoyun.com/v2100/resources/images/theme/form/bn_18.jpg">
+							<section class="head-banner" style="background-color: transparent;">
+								<img src="./img/form/bn_18.jpg">
 							</section>
-							<section class="head-title"
-								style="color: rgb(49, 49, 49); font-size: 20px; font-style: normal; font-weight: bold;">
-								个人信息</section>
-						</section>
-						<section class="head-title"
-							style="color: rgb(49, 49, 49); font-size: 20px; font-style: normal; font-weight: bold;">
-							个人信息</section>
-					</section>
-					<section class="form-body">
-						<section class="fui-form grid-layout" style="width: 780px;">
-							<section class="widget-wrapper">
-								<ul>
-									<li class="widget-view x-grid-col-6">
-										<section class="fl-label"><span class="label-title">姓名</span><span class="label-notnull">*</span>
+						
+							<section class="progress">
+									<section class="progress-one active">
+											<span class="rect">个人信息</span>
+											<span class="tri"></span>
 										</section>
-										<section class="fl-widget">
-											<section class="fui_text" style="width: 330px; height: 30px;"><input type="text" class="x-input"
-													name="username"></section>
+										<section class="progress-two">
+												<span class="rect"></span>
+											    <span class="info">你的想法</span>
 										</section>
-									</li>
-									<li class="widget-view x-grid-col-6">
-										<section class="fl-label"><span class="label-title">学号</span><span class="label-notnull">*</span>
-										</section>
-										<section class="fl-widget">
-											<section class="fui_text" style="width: 330px; height: 30px;"><input type="text" class="x-input"
-													name="student-id"></section>
-										</section>
-									</li>
-									<li class="widget-view x-grid-col-6">
-										<section class="fl-label"><span class="label-title">年级专业</span><span class="label-notnull">*</span>
-										</section>
-										<section class="fl-widget">
-											<section class="fui_text" style="width: 330px; height: 30px;"><input type="text" class="x-input"
-													name="grade-professional"></section>
-										</section>
-									</li>
-									<li class="widget-view x-grid-col-6">
-										<section class="fl-label"><span class="label-title">性别</span><span class="label-notnull">*</span>
-										</section>
-										<section class="fl-widget">
-											<section class="x-group" style="width: 330px;">
-												<section class="group_item x-radio horizontal" value="男"><i
-														class="icon-blank"></i><span>男</span></section>
-												<section class="group_item x-radio horizontal" value="女"><i
-														class="icon-blank"></i><span>女</span></section>
-											</section>
-										</section>
-									</li>
-									<li class="widget-view x-grid-col-12">
-										<section class="fl-label"><span class="label-title">手机号码</span><span class="label-notnull">*</span>
-										</section>
-										<section class="fl-widget">
-											<section class="fui_text" style="width: 720px; height: 30px;"><input type="text" class="x-input"
-													name="number"></section>
-										</section>
-									</li>
-									<li class="widget-view x-grid-col-12">
-										<section class="fl-label"><span class="label-title">邮箱</span><span class="label-notnull">*</span>
-										</section>
-										<section class="fl-description x-subhtml">
-											<p style="text-align:left;"><br></p>
-										</section>
-										<section class="fl-widget">
-											<section class="fui_text" style="width: 720px; height: 30px;"><input type="text" class="x-input"
-													name="email"></section>
-										</section>
-									</li>
-									<li class="widget-view x-grid-col-12">
-										<section class="fl-label"><span class="label-title">自我介绍</span><span class="label-notnull">*</span>
-										</section>
-										<section class="fl-widget">
-											<section class="fui_textarea" style="width: 720px; height: 140px;"><textarea class="x-textarea"
-													name="introduction"></textarea></section>
-										</section>
-									</li>
-								</ul>
 							</section>
-						</section>
-					</section>
-					<section class="form-foot">
-						<section class="foot-btn next-step" style="background-color: rgb(49, 49, 49);">下一步</section>
-					</section>
-				</section>
-				<section style="display: none" id="form-page-two" class="form-content">
-					<section class="form-head">
-						<section class="head-banner" style="background-color: transparent;"><img
-								src="https://assets.jiandaoyun.com/v2100/resources/images/theme/form/bn_18.jpg">
-						</section>
-						<section class="head-title"
-							style="color: rgb(49, 49, 49); font-size: 20px; font-style: normal; font-weight: bold;">
-							你的想法</section>
-					</section>
-					<section class="form-body">
-						<section class="fui-form normal-layout" style="width: 780px;">
-							<section class="widget-wrapper">
-								<ul>
-									<li class="widget-view x-grid-col-12">
-										<section class="fl-label"><span class="label-title">发展方向</span><span class="label-notnull">*</span>
-										</section>
-										<section class="fl-widget">
-											<section class="fui_combo" style="width: 330px; height: 30px; line-height: 28px;"><input
-													class="fui_trigger-input" onfocus="this.blur();" unselectable="on" name="direction"><i
-													class="fui_trigger-btn icon-caret-down"></i>
+						</section> 
+						<section class="form-body">
+							<section class="fui-form grid-layout" style="width: 780px;">
+								<section class="widget-wrapper">
+									<ul>
+										<li class="widget-view x-grid-col-6">
+											<section class="fl-label"><span class="label-title">姓名</span><span class="label-notnull">*</span>
 											</section>
-											<section class="x-dropdown">
-												<!-- <section class="fui_combo-search"><input>
-															<i class="icon-search search-icon"></i>
-														</section> -->
-												<section class="x-dropdown-list combo-list" style="max-width: 330px; min-width: 160px;"><a
-														class="x-dropdown-item" option="前端" title="前端">前端</a><a class="x-dropdown-item" option="后台"
-														title="后台">后台</a><a class="x-dropdown-item" option="安卓" title="安卓">安卓</a><a
-														class="x-dropdown-item" option="iOS" title="iOS">iOS</a><a class="x-dropdown-item"
-														option="机器学习" title="机器学习">机器学习</a>
+											<section class="fl-widget">
+												<section class="fui_text" style="width: 330px; height: 30px;"><input type="text" class="x-input"
+														name="username"></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-6">
+											<section class="fl-label"><span class="label-title">学号</span><span class="label-notnull">*</span>
+											</section>
+											<section class="fl-widget">
+												<section class="fui_text" style="width: 330px; height: 30px;"><input type="text" class="x-input"
+														name="student-id"></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-6">
+											<section class="fl-label"><span class="label-title">年级专业</span><span class="label-notnull">*</span>
+											</section>
+											<section class="fl-widget">
+												<section class="fui_text" style="width: 330px; height: 30px;"><input type="text" class="x-input"
+														name="grade-professional"></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-6">
+											<section class="fl-label"><span class="label-title">性别</span><span class="label-notnull">*</span>
+											</section>
+											<section class="fl-widget">
+												<section class="x-group" style="width: 330px;">
+													<section class="group_item x-radio horizontal" value="男"><i
+															class="icon-blank"></i><span>男</span></section>
+													<section class="group_item x-radio horizontal" value="女"><i
+															class="icon-blank"></i><span>女</span></section>
 												</section>
 											</section>
-										</section>
-									</li>
-									<li class="widget-view x-grid-col-12">
-										<section class="fl-label"><span class="label-title">计算机类技能经验</span>
-										</section>
-										<section class="fl-widget">
-											<section class="fui_textarea" style="width: 720px; height: 140px;">
-												<textarea class="x-textarea" name="skills"></textarea></section>
-										</section>
-									</li>
-									<li class="widget-view x-grid-col-12">
-										<section class="fl-label"><span class="label-title">谈谈你对我们工作室的认识</span>
-										</section>
-										<section class="fl-widget">
-											<section class="fui_textarea" style="width: 720px; height: 140px;">
-												<textarea class="x-textarea" name="idea"></textarea></section>
-										</section>
-									</li>
-								</ul>
+										</li>
+										<li class="widget-view x-grid-col-12">
+											<section class="fl-label"><span class="label-title">手机号码</span><span class="label-notnull">*</span>
+											</section>
+											<section class="fl-widget">
+												<section class="fui_text" style="width: 720px; height: 30px;"><input type="text" class="x-input"
+														name="number"></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-12">
+											<section class="fl-label"><span class="label-title">邮箱</span><span class="label-notnull">*</span>
+											</section>
+											<section class="fl-description x-subhtml">
+												<p style="text-align:left;"><br></p>
+											</section>
+											<section class="fl-widget">
+												<section class="fui_text" style="width: 720px; height: 30px;"><input type="text" class="x-input"
+														name="email"></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-12">
+											<section class="fl-label"><span class="label-title">自我介绍</span><span class="label-notnull">*</span>
+											</section>
+											<section class="fl-widget">
+												<section class="fui_textarea" style="width: 720px; height: 140px;"><textarea class="x-textarea"
+														name="introduction"></textarea></section>
+											</section>
+										</li>
+									</ul>
+								</section>
 							</section>
 						</section>
-					</section>
-					<section class="form-foot">
-						<section class="foot-btn submit" style="background-color: rgb(49, 49, 49);">提交</section>
-						<a href="javascript:;" class="pre-step">返回上一步</a>
-					</section>
+						<section class="form-foot">
+							<section class="foot-btn next-step" style="background-color: rgb(49, 49, 49);">下一步</section>
+						</section>
+				
+					
 				</section>
+				<section style="display: none" id="form-page-two" class="form-content">
+						<section class="form-head">
+							<section class="head-banner" style="background-color: transparent;"><img
+									src="./img/form/bn_18.jpg">
+							</section>
+							<!-- <section class="head-title"
+								style="color: rgb(49, 49, 49); font-size: 20px; font-style: normal; font-weight: bold;">
+								你的想法</section> -->
+								<section class="progress">
+									<section class="progress-one">
+											<span class="rect">个人信息</span>
+											<span class="tri"></span>
+										</section>
+										<section class="progress-two active">
+												<span class="rect"></span>
+											    <span class="info">你的想法</span>
+
+										</section>
+							</section>
+						</section>
+						<section class="form-body">
+							<section class="fui-form normal-layout" style="width: 780px;">
+								<section class="widget-wrapper">
+									<ul>
+										<li class="widget-view x-grid-col-12">
+											<section class="fl-label"><span class="label-title">发展方向</span><span class="label-notnull">*</span>
+											</section>
+											<section class="fl-widget">
+												<section class="fui_combo" style="width: 330px; height: 30px; line-height: 28px;"><input
+														class="fui_trigger-input" onfocus="this.blur();" unselectable="on" name="direction"><i
+														class="fui_trigger-btn icon-caret-down"></i>
+												</section>
+												<section class="x-dropdown">
+													<!-- <section class="fui_combo-search"><input>
+																<i class="icon-search search-icon"></i>
+															</section> -->
+													<section class="x-dropdown-list combo-list" style="max-width: 330px; min-width: 160px;"><a
+															class="x-dropdown-item" option="前端" title="前端">前端</a><a class="x-dropdown-item" option="后台"
+															title="后台">后台</a><a class="x-dropdown-item" option="安卓" title="安卓">安卓</a><a
+															class="x-dropdown-item" option="iOS" title="iOS">iOS</a><a class="x-dropdown-item"
+															option="机器学习" title="机器学习">机器学习</a>
+													</section>
+												</section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-12">
+											<section class="fl-label"><span class="label-title">计算机类技能经验</span>
+											</section>
+											<section class="fl-widget">
+												<section class="fui_textarea" style="width: 720px; height: 140px;">
+													<textarea class="x-textarea" name="skills"></textarea></section>
+											</section>
+										</li>
+										<li class="widget-view x-grid-col-12">
+											<section class="fl-label"><span class="label-title">谈谈你对我们工作室的认识</span>
+											</section>
+											<section class="fl-widget">
+												<section class="fui_textarea" style="width: 720px; height: 140px;">
+													<textarea class="x-textarea" name="idea"></textarea></section>
+											</section>
+										</li>
+									</ul>
+								</section>
+							</section>
+						</section>
+						<section class="form-foot">
+							<section class="foot-btn submit" style="background-color: rgb(49, 49, 49);">提交</section>
+							<a href="javascript:;" class="pre-step">返回上一步</a>
+						</section>
+					</section>
+			</section>
+				
 			</section>
 		</section>
-	</section>
-
+	
+			<!-- 切换图片的覆盖层 -->
+			<div class="bars">
+					<div class="bar bar1"></div>
+					<div class="bar bar2"></div>
+					<div class="bar bar3"></div>
+					<div class="bar bar4"></div>
+					<div class="bar bar5"></div>
+				</div>
 	<script src="src/js/jquery-1.12.4.min.js"></script>
 	<script src="js/index.js"></script>
 </body>
