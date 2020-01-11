@@ -499,35 +499,26 @@ $(function () {
 	// ios
 	!(() => {
 		const $ios = $("#ios");
-		const $img1 = $(".pre-one>img");
-		const $img2 = $(".pre-two>img");
+		const $img1 = $(".pre-one");
+		const $img2 = $(".pre-two");
 		const $iosword = $("#ios-pretwo");
 		const $iosThree = $("#ios-prethree");
-		$ios.on("scroll", function () {
-			console.log($ios.scrollTop());
-			$img1.css("opacity", (1 - $ios.scrollTop() / 2000));
+		// $ios.on("scroll", function () {
+		// 	console.log($ios.scrollTop());
+		// 	// I
+		// 	// if ($ios.scrollTop() > 2200) {
 
-			// $iosPretwo.fadeIn("slow");
-			if ($ios.scrollTop() > 1000) {
-				$img2.css("opacity", (1 - ($ios.scrollTop() - 1000) / 1333));
-				$iosword.css("opacity", (1 - ($ios.scrollTop() - 1800) / 1333));
-
-				// console.log($iosThree);
-
-			}
-			if ($ios.scrollTop() > 2200) {
-
-				// $iosThree.stop(true, false).slideDown("slow");
-				$iosThree.stop(true, false).slideUp(4000, () => {
-					$iosThree.css({
-						display: 'block'
-					});
-				});
-			}
-			// if ($ios.scrollTop() > 2000) {
-			// 	$iosThree.stop(true, false).slideDown("slow");
-			// }
-		});
+		// 	// 	// $iosThree.stop(true, false).slideDown("slow");
+		// 	// 	$iosThree.stop(true, false).slideUp(4000, () => {
+		// 	// 		$iosThree.css({
+		// 	// 			display: 'block'
+		// 	// 		});
+		// 	// 	});
+		// 	// }
+		// 	// if ($ios.scrollTop() > 2000) {
+		// 	// 	$iosThree.stop(true, false).slideDown("slow");
+		// 	// }
+		// });
 
 	})();
 	// 机器学习

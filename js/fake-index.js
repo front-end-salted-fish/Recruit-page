@@ -736,22 +736,46 @@ $(function() {
     const $ios = $("#ios");
     const $img1 = $(".pre-one");
     const $img2 = $(".pre-two");
-    const $iosword = $("#ios-pretwo");
-    const $iosThree = $("#ios-prethree");
+    const $img3 = $(".pre-three");
+    const $iosword = $(".ios-wrap");
     $ios.on("scroll", function () {
         console.log($ios.scrollTop());
+        // console.log($(".ios-wrap:second"));
+        
         $img1.css("opacity", (1 - $ios.scrollTop() / 2000));
-
+        // $img1.css("opacity", 0);
         // $iosPretwo.fadeIn("slow");
-        if ($ios.scrollTop() > 2400) {
-            $img2.css("opacity", (1 - ($ios.scrollTop() - 2400) / 900));
-            console.log($img2);
+        if ($ios.scrollTop() > 1000) {
+            // $img2.css("opacity", (1 - ($ios.scrollTop() - 1000) / 900));
+            // $(".ios-wrap:first").fadeIn();
+            $img2.css("opacity", (1 - ($ios.scrollTop() - 1000) / 2000));
+            
+            // $img2.css("opacity", (1 - $ios.scrollTop() / 2000));
+            // console.log($img2);
             
             // $iosword.css("opacity", (1 - ($ios.scrollTop() - 2400) / 900));
 
             // console.log($iosThree);
 
         }
+        // if($ios.scrollTop()==800) {
+        //     $(".ios-wrap:first").fadeIn();
+        //     console.log('1111');
+        //     console.log();
+        //     console.log('====================================');
+        // }
+        // if($ios.scrollTop()==1400) {
+        //     $(".ios-wrap:last").fadeIn();
+        //     console.log('====================================');
+        //     console.log();
+        //     console.log('====================================');
+        // }
+        if($ios.scrollTop() > 2000){
+            // $(".ios-wrap:last").fadeIn();
+            $img3.css("opacity",( ($ios.scrollTop() - 1800) / 1000));
+            
+        }
+        
         // if ($ios.scrollTop() > 2200) {
             
         //  // $iosThree.stop(true, false).slideDown("slow");

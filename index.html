@@ -11,7 +11,7 @@
 
 <body>
 	<!-- 开局动画 -->
-    <header id="loading-module" >
+    <header id="loading-module" style="display:none;">
 		<!-- 文字及banner的容器 -->
 		<div id="loading-box" >
 		  <!-- 第一行 -->
@@ -64,12 +64,12 @@
 		</div>
     </header>
 	<!-- tv总介绍 -->
-	<section id="tv-introduction">
+	<section id="tv-introduction" style="display:none;">
 		<!-- 表示继续的按钮 -->
 		<button id="go-ahead-btn"></button>
 	</section>
 	<!-- 部门轮播图容器 -->
-	<section id="banner-container">
+	<section id="banner-container" style="display:none;">
 		<!-- 轮播图ul -->
 		<ul id="banner">
 			<li class="">
@@ -157,7 +157,7 @@
 	<section id="detail-pages">
 	
 		<!-- 王菲板块 -->
-		<section id="front-end" class="page" >
+		<section id="front-end" class="page" style="display:none;" >
 			<section class="per-one">
 				<img src="img/front-end/005.jpg" alt="" class="per">
 				<img src="img/front-end/banner-frontend-font.png" alt="" class="title">
@@ -185,7 +185,7 @@
 			</section> -->
 		</section>
 		<!-- 伦哥模块 -->
-		<section id="android" class="page">
+		<section id="android" class="page" style="display:none;">
 			<section class="pers-one">
 				<img class="font-bg" src="img/android/banner-android-font.png" alt="">
 				<img class="one" src="img/android/timg (5).jpeg" alt="">
@@ -213,7 +213,7 @@
 			</section>
 		</section>
 		<!-- 锋哥模块 -->
-		<section id="back-stage" class="page">
+		<section id="back-stage" class="page" style="display:none;">
 			<section class="per-one">
 				<img src="img/back-stage/backstage1.jpg" alt="">
 				<img src="img/back-stage/banner-backstage-font.png" alt="" class="page-name">
@@ -288,26 +288,31 @@
 				<img src="./img/ios/13.jpg" alt="" class="bg">
 			</section>
 			<section class="pre-two">
-				<p class="cd-container infor-font" id="ios-pretwo">
-					TopView
-					iOS组专注于极致和优雅的主流App开发以及iOS新技术的探索。iOS组是TopView的主要开发组之一，成立于2015年。在TopView工作室的帮助下，工作室成员的相互交流中，iOS组已经成为工作室的中流砥柱之一。
-				</p>
-				<img src="./img/ios/19.jpg" alt="">
+				<div class="ios-wrap">
+					<p class="cd-container infor-font" id="ios-pretwo">
+						TopView
+						iOS组专注于极致和优雅的主流App开发以及iOS新技术的探索。iOS组是TopView的主要开发组之一，成立于2015年。在TopView工作室的帮助下，工作室成员的相互交流中，iOS组已经成为工作室的中流砥柱之一。
+					</p>
+				</div>
+				
+				<img src="./img/ios/22.jpg" alt="">
 
 
 			</section>
-			<section class="pre-three">
-				<img src="./img/ios/轮播图.jpeg" alt="">
-				<p class="cd-container infor-font" id="ios-prethree">
-					加入我们，相信你一定能得到锻炼与成长。只要你有c语言基础，热爱学习，有责任心就加入iOS组吧!
-				</p>
+			<section class="pre-three" style="opacity: 0;">
+				<img src="./img/ios/3.jpeg" alt="">
+				<div class="ios-wrap">
+					<p class="cd-container infor-font" id="ios-prethree">
+						加入我们，相信你一定能得到锻炼与成长。只要你有c语言基础，热爱学习，有责任心就加入iOS组吧!
+					</p>
+				</div>
 			</section>
 			<!-- <section class="pre-four">
 				<img src="./img/ios/5.jpg" alt="">
 			</section> -->
 		</section>
 		<!-- 基你太美模块 -->
-		<section id="machine-learning" class="page" >
+		<section id="machine-learning" class="page" style="display:none;">
 			<section class="per-one">
 				<img src="img/machine-learning/banner-machine-font.png" alt="" class="header-font">
 				<img src="img/machine-learning/机器学习3.jpg" alt="" class="bg">
@@ -387,7 +392,7 @@
 	
 		
 		<!-- 表单 -->
-		 <section id="form-page">
+		 <section id="form-page" style="display:none;">
 				<section >
 						<div class="div" style="width:20vw">
 								<button id="btn" style="width:20vw">测试</button>
@@ -574,7 +579,7 @@
 					<div class="bar bar5"></div>
 				</div>
 	<script src="src/js/jquery-1.12.4.min.js"></script>
-	<script src="js/index.js"></script>
+	<script src="js/fake-index.js"></script>
 </body>
 
 </html>
