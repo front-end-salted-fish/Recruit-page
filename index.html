@@ -1,73 +1,688 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>TopView</title>
-		<link rel="stylesheet" href="src/css/reset.css"> 
-		<link rel="stylesheet" href="css/index.css">
-	</head>
-	<body>
-		<header id="loading-module">
-			<h1>Welcome to TopView</h1>
-		</header>
-		<!-- tv总介绍 -->
-		<section id="tv-introduction">
-			<!-- 表示继续的按钮 -->
-			<button id="go-ahead-btn"></button>
+
+<head>
+	<meta charset="utf-8">
+	<title>TopView</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="src/css/reset.css">
+	<link rel="stylesheet" href="icomoon/style.css">
+	<script src="js/prefixfree.min.js"></script>
+</head>
+
+<body>
+	<!-- 开局动画 -->
+    <header id="loading-module" >
+		<!-- 文字及banner的容器 -->
+		<div id="loading-box" >
+		  <!-- 第一行 -->
+		  <div class="row row-one">
+			<div class="inner-left">
+			  <div class="move-sdiv"><span class="move-span">W</span></div>
+			  <div class="move-sdiv"><span class="move-span">E</span></div>
+			  <div class="move-sdiv"><span class="move-span">L</span></div>
+			  <div class="move-sdiv"><span class="move-span">-</span></div>
+			</div>
+			<div class="inner-right">
+			</div>
+		  </div>
+		  <!-- 第二行 -->
+		  <div class="row row-two">
+			<div class="inner-left"></div>
+			<div class="inner-right">
+			  <div class="move-sdiv move-ssdiv"><span class="move-span">C</span></div>
+			  <div class="move-sdiv move-ssdiv"><span class="move-span">O</span></div>
+			  <div class="move-sdiv move-ssdiv"><span class="move-span">M</span></div>
+			  <div class="move-sdiv move-ssdiv"><span class="move-span">E</span></div>
+			</div>
+		  </div>
+		  <!-- 第三行 -->
+		  <div class="row row-three">
+			<div class="inner-left">
+			  <div class="move-sdiv"><span class="move-span">T</span></div>
+			  <div class="move-sdiv"><span class="move-span">O</span></div>
+			</div>
+			<div class="inner-right">
+			  <div class="move-sdiv"><span class="move-span">T</span></div>
+			  <div class="move-sdiv"><span class="move-span">O</span></div>
+			  <div class="move-sdiv"><span class="move-span">P</span></div>
+			  <div class="move-sdiv"><span class="move-span">-</span></div>
+			</div>
+			<div class="inner-center">
+			</div>
+		  </div>
+		  <!-- 第四行 -->
+		  <div class="row row-forth">
+			<div class="inner-left"></div>
+			<div class="inner-center">
+			  <div class="move-sdiv"><span class="move-span">V</span></div>
+			  <div class="move-sdiv"><span class="move-span">I</span></div>
+			  <div class="move-sdiv"><span class="move-span">E</span></div>
+			  <div class="move-sdiv"><span class="move-span">W</span></div>
+			</div>
+			<div class="inner-right"></div>
+		  </div>
+		</div>
+    </header>
+	<!-- tv总介绍 -->
+	<section id="tv-introduction">
+		<!-- 表示继续的按钮 -->
+		<button id="go-ahead-btn"></button>
+	</section>
+	<!-- 部门轮播图容器 -->
+	<section id="banner-container">
+		<!-- 轮播图ul -->
+		<ul id="banner">
+			<li class="">
+				<!-- 实心字体 -->
+				<img src="" alt="" class="banner-font">
+				<!-- 字体边框 -->
+				<img src="" alt="" class="banner-border">
+				<section class="outer-mask">
+					<section class="inner-mask">
+						<!-- 轮播图 -->
+						<img>
+					</section>
+				</section>
+			</li>
+			<li class="">
+				<!-- 实心字体 -->
+				<img src="" alt="" class="banner-font">
+				<!-- 字体边框 -->
+				<img src="" alt="" class="banner-border">
+				<section class="outer-mask">
+					<section class="inner-mask">
+						<!-- 轮播图 -->
+						<img>
+					</section>
+				</section>
+			</li>
+			<li class="">
+				<!-- 实心字体 -->
+				<img src="" alt="" class="banner-font">
+				<!-- 字体边框 -->
+				<img src="" alt="" class="banner-border">
+				<section class="outer-mask">
+					<section class="inner-mask">
+						<!-- 轮播图 -->
+						<img>
+					</section>
+				</section>
+			</li>
+			<div class="banner-btns">
+				<span class="banner-btn"><span class="bg-span"></span></span>
+				<span class="banner-btn"><span class="bg-span"></span></span>
+				<span class="banner-btn"><span class="bg-span"></span></span>
+				<span class="banner-btn"><span class="bg-span"></span></span>
+				<span class="banner-btn"><span class="bg-span"></span></span>
+			</div>
+		</ul>
+
+		<!-- 上一页按钮 -->
+		<svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
+			xmlns="http://www.w3.org/2000/svg">
+			<circle data-left="" cx="15" cy="15" r="14"></circle>
+			<g data-left="">
+				<path data-left=""
+					d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+					stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+				<line data-left="" x1="0" y1="7" x2="50" y2="7"></line>
+			</g>
+		</svg>
+		<!-- 下一页按钮 -->
+		<svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
+			xmlns="http://www.w3.org/2000/svg">
+			<circle data-right="" cx="15" cy="15" r="14"></circle>
+			<g data-right="">
+				<path data-right=""
+					d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+					stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+				<line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
+			</g>
+		</svg>
+			<!-- 3d按钮 -->
+			<!-- <section style="height:100vh; overflow: hidden;"> -->
+					<section id="three-dimensional-btn">
+							<section class="main">
+								<section class="cont">
+									<button id="btn">
+											<section class="glare"></section>
+											<span>点击报名</span>
+										</button>
+								</section>
+							</section>
+						</section>
+			<!-- </section> -->
+	</section>
+	<!-- 部门详情介绍页 -->
+	<section id="detail-pages">
+	<span class="zl-close"><i class="icon-cross"></i></span>
+		<!-- 王菲板块 -->
+		<section id="front-end" class="page" >
+			<section class="per-one">
+				<img src="img/front-end/005.jpg" alt="" class="per">
+				<img src="img/front-end/banner-frontend-font.png" alt="" class="title">
+			</section>
+			<section class="per-two">
+				<!-- <img src="img/front-end/001.jpg" alt=""> -->
+				<section class="article article1">
+					<p>TopView 前端组主要基于</p><br/>
+					<p>HTML，CSS，JavaScript等</p><br/>
+					<p>基础web前端编程语言进行开发，</p><br/>
+					<p>同时引入前端领域前沿技术进一步构建项目。</p><br/>
+				</section>
+				<section class="article article2">
+					<p>我们专注于展现视觉更好的页面，</p><br/>
+					<p>打造用户体验更优的网站，</p><br/>
+					<p>开发更有特色更有创意的产品。 </p><br/>
+					<p>如果你喜欢设计、热爱前端，</p><br/>
+					<p>那你就是我们前端组想要的！</p><br/>
+				</section>
+				<img src="img/front-end/002.jpg" class="icon1">
+				<img src="img/front-end/008.jpg" class="icon2">
+			</section>
+			<!-- <section class="per-three">
+				<img src="img/front-end/008.jpg" alt="">
+			</section> -->
 		</section>
-		<!-- 部门轮播图 -->
-		<section id="banner">
-			<section id="front-end"></section>
-			<section id="android"></section>
-			<section id="back-stage"></section>
-			<section id="ios"></section>
-			<section id="machine-learning"></section>
-			<!-- 上一页按钮 -->
-			<button class="switch-btn pre-btn"></button>
-			<!-- 下一页按钮 -->
-			<button class="switch-btn next-btn"></button>
+		<!-- 伦哥模块 -->
+		<section id="android" class="page">
+			<section class="pers-one">
+				<img class="font-bg" src="img/android/banner-android-font.png" alt="">
+				<img class="one" src="img/android/timg (5).jpeg" alt="">
+			</section>
+			<section class="pers-two">
+				<img class="one" src="img/android/timg (2).jpeg" alt="">
+				<p class="describe">
+					<span class="item">TopView Android组专注于有创意、有特色</span>
+					<span class="item">的主流App开发、Android高新技术探索以及</span>
+					<span class="item">Android系统源代码的研究。Android组自成</span>
+					<span class="item">立以来，一直有大量的师兄涌入阿里、腾</span>
+					<span class="item">讯、网易等一线互联网公司。每年各位毕业</span>
+					<span class="item">的优秀师兄都会回来分享Android的前沿技术</span>
+					<span class="item">以及发展趋势。Android组得益于大量的优秀</span>
+					<span class="item">师兄指导，目前已经成为广东工业大学优秀</span>
+					<span class="item">的Android开发小组之一。除此之外，每年师</span>
+					<span class="item">兄师姐都会根据招新水平，制定详细的培养</span>
+					<span class="item">计划帮助新一届的师弟师妹快速成长，成为</span>
+					<span class="item">同届中技术的佼佼者。</span>
+					<!-- TopView Android组专注于有创意、有特色的主流App开发、Android高新技术探索以及Android系统源代码的研究。Android组自成立以来，一直有大量的师兄涌入阿里、腾讯、网易等一线互联网公司。每年各位毕业的优秀师兄都会回来分享Android的前沿技术以及发展趋势。Android组得益于大量的优秀师兄指导，目前已经成为广东工业大学优秀的Android开发小组之一。除此之外，每年师兄师姐都会根据招新水平，制定详细的培养计划帮助新一届的师弟师妹快速成长，成为同届中技术的佼佼者。</p> -->
+			</section>
+			<section class="pers-three">
+				<img class="one" src="img/android/timg (6).jpg" alt="">
+				<p class="describe"> 只要你热爱Android，热爱Android开发，就来吧！加入Android组吧！</p>
+			</section>
 		</section>
-		<!-- 部门详情介绍页 -->
-		<section id="detail-pages">
-			<!-- 跳转菜单 -->
-			<section id="menu"></section>
-			<!-- 王菲板块 -->
-			<section id="front-end"></section>
-			<!-- 卓伦模块 -->
-			<section id="android"></section>
-			<!-- 锋哥模块 -->
-			<section id="back-stage">
-				<section class="per-one">
-					<img src="img/back-stage/backstage1.jpg" alt="" >
+		<!-- 锋哥模块 -->
+		<section id="back-stage" class="page">
+			<section class="per-one">
+				<img src="img/back-stage/backstage1.jpg" alt="">
+				<img src="img/back-stage/banner-backstage-font.png" alt="" class="page-name">
+			</section>
+			<section class="per-two">
+				<img src="img/back-stage/backstage2.jpg" alt="">
+				<section class="bcak-stage-content">
+					<p>TopView 后台组是与数据和信息打交道的方向，</p>
+					<p>是 Android、iOS、前端的”坚实后盾”，是每个</p>
+					<p>工作室的核心方向。TopView后台组基于Java语言，</p>
+					<p>自成立以来，一直致力于政府级、企业级项目</p>
+					<p>的实现和优化，如此大型的项目成就了</p>
+					<p>一代又一代的优秀师兄师姐。目前已有</p>
+					<p>多位师兄在腾讯、阿里、百度、美团等</p>
+					<p>一线互联网公司工作。</p>
 				</section>
-				<section class="per-two">
-					<img src="img/back-stage/backstage2.jpg" alt="">
-				</section>
-				<section class="per-third">
-					<img src="img/back-stage/backstage3.jpg" alt="" >
-				</section>
-				<section class="page-name">
-					<h1>后台</h1>
-					<p>坚实后盾</p>
+
+				<section class="write-box">
+					<svg id="java" data-name="java" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 394.51 499.48">
+						<defs>
+							<style>
+								.cls-1 {
+									fill: none;
+									fill-rule: evenodd;
+								}
+							</style>
+						</defs>
+						<title>icons8-java500 [转换]</title>
+						<path fill="transparent" stroke="#fff" stroke-width="3px" class="cls-1"
+							d="M543,134c16.53,9.73,20.53,48.34,12,69-17.26,41.83-72,65.32-83,106-7.1,26.19,29.64,66.74,37,87-15.79-8.6-28.73-21.73-41-34-9.73-9.73-19.82-19.79-27-32C388.47,240.6,578.34,215.67,543,134Z"
+							transform="translate(-314.49 -134)" />
+						<path fill="transparent" stroke="#fff" stroke-width="3px" class="cls-2"
+							d="M619,222l9,1h-2c-21.92,22.63-64,33.23-76,65-12.84,34.05,61.35,67.94-4,108-6,3.68-16.38,10.32-24,9,51.61-49.86-24.3-60.4-10-116,8.78-34.15,42.66-51.3,76-61Z"
+							transform="translate(-314.49 -134)" />
+						<path fill="transparent" stroke="#fff" stroke-width="3px" class="cls-3"
+							d="M432,385l22,1h-2c-14.86,7.43-30.75,9.14-43,18v3l2,1c58.56,13.57,146.37,5.4,201-6v1c-27.39,32.68-130.35,44-193,34-24.92-4-64.33-.7-67-26C364.75,382.32,401.52,396.69,432,385Z"
+							transform="translate(-314.49 -134)" />
+						<path fill="transparent" stroke="#fff" stroke-width="3px" class="cls-4"
+							d="M644,385c36.48-1,56.43,26.11,42,61-10.59,25.6-44,45.42-78,47l2-3c19-7.87,41.13-34,48-54,8.59-25-13.64-45.92-40-38C623.64,389.65,634.42,389.55,644,385Z"
+							transform="translate(-314.49 -134)" />
+						<path fill="transparent" stroke="#fff" stroke-width="3px" class="cls-5"
+							d="M422,441h8c-2.73,3.64-4.65,4.56-6,10l3,4c36.46,14.15,100.9,10.64,137-2l31,19v1c-47.81,9.21-104,27.08-164,13-16.84-3.95-39-5.34-41-24C399.7,450.1,407,448.25,422,441Z"
+							transform="translate(-314.49 -134)" />
+						<path fill="transparent" stroke="#fff" stroke-width="3px" class="cls-6"
+							d="M435,493l9,1-3,7c20.39,14.2,67.51,9.62,94,3l21-6,31,20-1,2-38,14c-32.73,8.22-136.5,14.52-140-20C413.72,500.35,421.79,499.18,435,493Z"
+							transform="translate(-314.49 -134)" />
+						<path fill="transparent" stroke="#fff" stroke-width="3px" class="cls-7"
+							d="M358,520c20.91-.8,41.63.45,49,13-16.38-5-33.92,1.79-44,9v5c6.89,20.86,51.36,20.06,76,24,56.17,9,189.73,3.58,211-28,3.58-5.32,1.63-14.62,3-20,7.25,3.36,14.15,7.13,17,15,11,28.17-41.54,41.78-61,47-63.26,17-168.33,20-235,3-19.21-4.88-75.77-23-55-51C327.54,525.51,343.4,525.9,358,520Z"
+							transform="translate(-314.49 -134)" />
+						<path fill="transparent" stroke="#fff" stroke-width="3px" class="cls-8"
+							d="M707,566h2c-5.33,76.6-200.55,76.18-275,56-17.88-4.85-42.65-7-55-18C473.75,624.78,656.87,631.93,707,566Z"
+							transform="translate(-314.49 -134)" />
+					</svg>
 				</section>
 			</section>
-			<!-- 青姐模块 -->
-			<section id="ios"></section>
-			<!-- 基你太美模块 -->
-			<section id="machine-learning"></section>
-			<!-- 关闭按钮 -->
-			<!-- <section id="close-btn"></section> -->
-			<!-- 上一页按钮 -->
-			<!-- <button class="switch-btn pre-btn"></button> -->
-			<!-- 下一页按钮 -->
-			<!-- <button class="switch-btn next-btn"></button> -->
+
+			<!-- <section class="per-third">
+				<img src="img/back-stage/backstage3.jpg" alt="" >
+			</section> -->
 		</section>
-		<!-- 3d按钮 -->
-		<button id="3d-btn"></button>
+		<!-- 青姐模块 -->
+		<section id="ios" class="page">
+			<section class="pre-one">
+				<img class="header-icon" src="img/ios/banner-ios-font.png" alt="">
+				<!-- <div class="ios-box">
+				<h3>IOS</h3>
+				<hr>
+				<sup>优雅极致、中流砥柱</sup>
+				<br>
+				<sup  id="directionDetails" style="font-size:0.5em">〔下滑详情〕</sup> -->
+				<!-- </div> -->
+				<img src="./img/ios/13.jpg" alt="" class="bg">
+			</section>
+			<section class="pre-two">
+				<p class="cd-container infor-font" id="ios-pretwo">
+					TopView
+					iOS组专注于极致和优雅的主流App开发以及iOS新技术的探索。iOS组是TopView的主要开发组之一，成立于2015年。在TopView工作室的帮助下，工作室成员的相互交流中，iOS组已经成为工作室的中流砥柱之一。
+				</p>
+				<img src="./img/ios/19.jpg" alt="">
+
+
+			</section>
+			<section class="pre-three">
+				<img src="./img/ios/轮播图.jpeg" alt="">
+				<p class="cd-container infor-font" id="ios-prethree">
+					加入我们，相信你一定能得到锻炼与成长。只要你有c语言基础，热爱学习，有责任心就加入iOS组吧!
+				</p>
+			</section>
+			<!-- <section class="pre-four">
+				<img src="./img/ios/5.jpg" alt="">
+			</section> -->
+		</section>
+		<!-- 基你太美模块 -->
+		<section id="machine-learning" class="page" >
+			<section class="per-one">
+				<img src="img/machine-learning/banner-machine-font.png" alt="" class="header-font">
+				<img src="img/machine-learning/机器学习3.jpg" alt="" class="bg">
+			</section>
+			<section class="per-two">
+				<div class="flex-box1 flex-box">
+					<div class="txt-container1">
+						<span class="show-span">TopView 机器学习组是16年成立的新组,</span>
+						<span class="show-span">我们关注机器学习算法模型,</span>
+						<span class="show-span">在理论学习的同时,</span>
+						<span class="show-span">也包含对工程项目的实践。</span>
+						<span class="show-span">我们组以Python语言为主,</span>
+						<span class="show-span">目前工作集中在爬虫技术、数据挖掘、</span>
+						<span class="show-span">机器学习、AI研究方向，</span>
+						<span class="show-span">包括金融信贷反欺诈和在线评论的情感分析等……</span>
+					</div>
+					<img src="img/machine-learning/机器学习详情页1.jpg" alt="" class="img1">
+				</div>
+				<div class="flex-box2 flex-box">
+					<img src="img/machine-learning/机器学习详情页2.jpg" alt="" class="img2">
+					<div class="txt-container2">
+						<span class="show-span">发展方向则有大数据、自然语言处理、</span>
+						<span class="show-span">计算机视觉等多个人工智能领域方向，</span>
+						<span class="show-span">并与研究生实验室有合作。</span>
+					</div>
+				</div>
+
+				<div class="txt-container3">
+					<span class="show-span">要求：</span>
+					<span class="show-span">了解使用至少一门编程语言，有自主学习能力，能承受学习基础理论学科的枯燥性，</span>
+					<span class="show-span">对学习数学相关知识，阅读外语文献不排斥（我们非常欢迎数学和英语好的同学）</span>
+					<img src="img/machine-learning/机器学习详情页3.jpg" alt="" class="img3">
+				</div>
+				<div class="bottom-bg"></div>
+			</section>
+		</section>
+
+		<!-- 跳转菜单 -->
+		<section id="menu" title="菜单">
+			<section id="menu-list">
+					<img class="menu-item" src="img/front-end/WechatIMG9.png" title="前端"/>
+					<img class="menu-item" src="img/android/WechatIMG11.png" title="安卓"/>
+					<img class="menu-item" src="img/back-stage/WechatIMG10.png" title="后台"/>
+					<img class="menu-item" src="img/ios/WechatIMG12.png" title="ios"/>
+					<img class="menu-item" src="img/machine-learning/WechatIMG13.png" title="机器学习" />
+			</section>
+			<section id="home" class="home">
+
+			</section>
+			<h2 class="des">Menu</h2>
+		</section>
+		<!-- 关闭按钮 -->
+		<!-- <section id="close-btn"></section> -->
+		<!-- 上一页按钮 -->
+		<svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
+			xmlns="http://www.w3.org/2000/svg">
+			<circle data-left="" cx="15" cy="15" r="14"></circle>
+			<g data-left="">
+				<path data-left=""
+					d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+					stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+				<line data-left="" x1="0" y1="7" x2="50" y2="7"></line>
+			</g>
+		</svg>
+		<!-- 下一页按钮 -->
+		<svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
+			xmlns="http://www.w3.org/2000/svg">
+			<circle data-right="" cx="15" cy="15" r="14"></circle>
+			<g data-right="">
+				<path data-right=""
+					d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+					stroke="#FFF" stroke-width=".6" fill="#FFF" fill-rule="evenodd"></path>
+				<line data-right="" x1="0" y1="7" x2="50" y2="7"></line>
+			</g>
+		</svg>
+		</section>
+	
+		
 		<!-- 表单 -->
-		<section id="form-page">
+		 <section id="form-page" style="display: none;">
+				<!-- <section >
+						<div class="div" style="width:20vw">
+								<button id="btn" style="width:20vw">测试</button>
+							</div>
+				</section> -->
+			<section class="preview-pane">
+				<section class="fx_external_form" 
+					style="background-color: rgb(0, 0, 0); background-image: none;">
+	
+					<div class="scene">
+						<article class="book">
+							<section class="page active zl-first-book">
+								<div class="front ">
+									<!-- <img src="./img/form/molandi2.jpg" alt=""> -->
+									<header class="htmleaf-header" style="margin-top: 20%;">
+										<h1 style="font-size: 31px;font-weight: bold;">欢迎来到topview工作室</h1>
+				
+									</header>
+									<h1 style="font-size: 24px; margin-top: 67%;">点击翻页</h1>
+									<!-- <p>
+							Sehen Sie, Webstandards sind das Regelwerk, auf dem Webseiten aufbauen. So gibt es Regeln für HTML, CSS, JavaScript oder auch XML; Worte, die Sie vielleicht schon einmal von Ihrem Entwickler gehört haben. Diese Standards sorgen dafür, dass alle Beteiligten aus einer Webseite den größten Nutzen ziehen.
+						  </p>
+						  <p>
+							Im Gegensatz zu früheren Webseiten müssen wir zum Beispiel nicht mehr zwei verschiedene Webseiten für den Internet Explorer und einen anderen Browser programmieren. Es reicht eine Seite, die - richtig angelegt - sowohl auf verschiedenen Browsern im Netz funktioniert, aber ebenso gut für den Ausdruck oder
+						  </p> -->
+				
+								</div>
+								<div class="back ">
+									<h1>– 自我介绍 –</h1>
+									<p>
+										Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen,
+										spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel?
+										Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte!
+									</p>
+								
+									<section id="form-page-one" style="cursor: default;display: none;" class="form-content">
+							<!-- <section class="form-head">
+								<section class="head-banner" style="background-color: transparent;">
+								</section>
+							
+								<section class="progress">
+										<section class="progress-one active">
+												<span class="rect">个人信息</span>
+												<span class="tri"></span>
+											</section>
+											<section class="progress-two">
+													<span class="rect"></span>
+													<span class="info">你的想法</span>
+											</section>
+								</section>
+							</section>  -->
+							<section class="form-body">
+								<section class="fui-form grid-layout" >
+									<section class="widget-wrapper">
+										<ul>
+											<li class="widget-view x-grid-col-6">
+												<section class="fl-label"><span class="label-title">姓名</span><span class="label-notnull">*</span>
+												</section>
+												<section class="fl-widget">
+													<section class="fui_text" style="width: 330px; height: 30px;"><input type="text" class="x-input"
+															name="username"></section>
+												</section>
+											</li>
+											<li class="widget-view x-grid-col-6">
+												<section class="fl-label"><span class="label-title">学号</span><span class="label-notnull">*</span>
+												</section>
+												<section class="fl-widget">
+													<section class="fui_text" style="width: 330px; height: 30px;"><input type="text" class="x-input"
+															name="student-id"></section>
+												</section>
+											</li>
+											<li class="widget-view x-grid-col-6">
+												<section class="fl-label"><span class="label-title">年级专业</span><span class="label-notnull">*</span>
+												</section>
+												<section class="fl-widget">
+													<section class="fui_text" style="width: 330px; height: 30px;"><input type="text" class="x-input"
+															name="grade-professional"></section>
+												</section>
+											</li>
+											<li class="widget-view x-grid-col-6">
+												<section class="fl-label"><span class="label-title">性别</span><span class="label-notnull">*</span>
+												</section>
+												<section class="fl-widget">
+													<section class="x-group" style="width: 330px;">
+														<section class="group_item x-radio horizontal" value="男"><i
+																class="icon-blank"></i><span>男</span></section>
+														<section class="group_item x-radio horizontal" value="女"><i
+																class="icon-blank"></i><span>女</span></section>
+													</section>
+												</section>
+											</li>
+											<li class="widget-view x-grid-col-12">
+												<section class="fl-label"><span class="label-title">手机号码</span><span class="label-notnull">*</span>
+												</section>
+												<section class="fl-widget">
+													<section class="fui_text" style="width: 720px; height: 30px;"><input type="text" class="x-input"
+															name="number"></section>
+												</section>
+											</li>
+											<li class="widget-view x-grid-col-12">
+												<section class="fl-label"><span class="label-title">邮箱</span><span class="label-notnull">*</span>
+												</section>
+												<section class="fl-description x-subhtml">
+												</section>
+												<section class="fl-widget">
+													<section class="fui_text" style="width: 720px; height: 30px;"><input type="text" class="x-input"
+															name="email"></section>
+												</section>
+											</li>
+											<li class="widget-view x-grid-col-12">
+												<section class="fl-label"><span class="label-title">自我介绍</span><span class="label-notnull">*</span>
+												</section>
+												<section class="fl-widget">
+													<section class="fui_textarea" style="width: 720px; height: 140px;"><textarea class="x-textarea"
+															name="introduction"></textarea></section>
+												</section>
+											</li>
+										</ul>
+									</section>
+								</section>
+							</section>
+							<section class="form-foot">
+								<section class="foot-btn next-step" style="background-color: rgb(49, 49, 49);">下一步</section>
+							</section>
+					
+						
+					</section> 
+								</div>
+							</section>
+							<section class="page zl-second-book">
+								<div class="front ">
+									<h1>– 你的想法 –</h1>
+									<p>
+										Sehen Sie, Webstandards sind das Regelwerk, auf dem Webseiten aufbauen. So gibt es Regeln für
+										HTML, CSS, JavaScript oder auch XML; Worte, die Sie vielleicht schon einmal von Ihrem Entwickler
+										gehört haben. Diese Standards sorgen dafür, dass alle Beteiligten aus einer Webseite den größten
+										Nutzen ziehen.
+									</p>
+					
+									<section  id="form-page-two" style="display: none;" class="form-content">
+										<!-- <section class="form-head">
+											<section class="head-banner" style="background-color: transparent;">
+											</section>
+												<section class="progress">
+													<section class="progress-one">
+															<span class="rect">个人信息</span>
+															<span class="tri"></span>
+														</section>
+														<section class="progress-two active">
+																<span class="rect"></span>
+																<span class="info">你的想法</span>
+				
+														</section>
+											</section>
+										</section> -->
+										<section class="form-body">
+											<section class="fui-form normal-layout" style="width: 780px;">
+												<section class="widget-wrapper">
+													<ul>
+														<li class="widget-view x-grid-col-12">
+															<section class="fl-label"><span class="label-title">发展方向</span><span class="label-notnull">*</span>
+															</section>
+															<section class="fl-widget">
+																<section class="fui_combo" style="width: 330px; height: 30px; line-height: 28px;"><input
+																		class="fui_trigger-input" onfocus="this.blur();" unselectable="on" name="direction"><i
+																		class="fui_trigger-btn icon-caret-down"></i>
+																</section>
+																<section class="x-dropdown">
+																	<section class="x-dropdown-list combo-list" style="max-width: 330px; min-width: 160px;"><a
+																			class="x-dropdown-item" option="前端" title="前端">前端</a><a class="x-dropdown-item" option="后台"
+																			title="后台">后台</a><a class="x-dropdown-item" option="安卓" title="安卓">安卓</a><a
+																			class="x-dropdown-item" option="iOS" title="iOS">iOS</a><a class="x-dropdown-item"
+																			option="机器学习" title="机器学习">机器学习</a>
+																	</section>
+																</section>
+															</section>
+														</li>
+														<li class="widget-view x-grid-col-12">
+															<section class="fl-label"><span class="label-title">计算机类技能经验</span>
+															</section>
+															<section class="fl-widget">
+																<section class="fui_textarea" style="width: 720px; height: 140px;">
+																	<textarea class="x-textarea" name="skills"></textarea></section>
+															</section>
+														</li>
+														<li class="widget-view x-grid-col-12">
+															<section class="fl-label"><span class="label-title">谈谈你对我们工作室的认识</span>
+															</section>
+															<section class="fl-widget">
+																<section class="fui_textarea" style="width: 720px; height: 140px;">
+																	<textarea class="x-textarea" name="idea"></textarea></section>
+															</section>
+														</li>
+													</ul>
+												</section>
+											</section>
+										</section>
+										<section class="form-foot">
+											<section class="foot-btn submit" style="background-color: rgb(49, 49, 49);">提交</section>
+											<!-- <a href="javascript:;" class="pre-step">返回上一步</a> -->
+										</section>
+									</section>
+								</div>
+								<div class="back zl-third-book">
+									<h1>– 感谢你的填写 –</h1>
+									<p>
+										Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen,
+										spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel?
+										Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte!
+									</p>
+									<p>
+										Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und
+										die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung
+										stehen zu bleiben schon hören. Gehetzt sah er sich um.
+									</p>
+								</div>
+							</section>
+						</article>
+					</div>
+				</section>
+				
+			</section>
 		</section>
-		<script src="src/js/jquery-1.12.4.min.js"></script>
-		<script src="js/index.js"></script>
-	</body>
+	
+			<!-- 切换图片的覆盖层 -->
+			<div class="bars">
+					<div class="bar bar1"></div>
+					<div class="bar bar2"></div>
+					<div class="bar bar3"></div>
+					<div class="bar bar4"></div>
+					<div class="bar bar5"></div>
+				</div>
+	<script src="src/js/jquery-1.12.4.min.js"></script>
+	<script src='js/jquery.hammer.min.js' type="text/javascript"></script>
+	<script>
+        var currentPage = 0;
+        var flag = 0;
+        $('.book')
+            .on('click', '.active', nextPage)
+            .on('click', '.flipped', prevPage);
+
+        $('.book').hammer().on("swipeleft", nextPage);
+        $('.book').hammer().on("swiperight", prevPage);
+
+        function prevPage() {
+
+            $('.flipped')
+                .last()
+                .removeClass('flipped')
+                .addClass('active')
+                .siblings('.page')
+                .removeClass('active');
+        }
+
+        function nextPage() {
+
+            $('.active')
+                .removeClass('active')
+                .addClass('flipped')
+                .next('.page')
+                .addClass('active')
+                .siblings();
+
+        }
+        $('#form-page-one').click(function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+        })
+        $('#form-page-two').click(function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+        })
+        $('.zl-first-book').click(function () {
+            if ($('.zl-first-book').hasClass('active')) {
+				flag = 0;
+				$('#form-page-two').show()
+				$('#form-page-one').show()
+                $('.scene').css({
+                    margin: '0% 5% 5% 50%'
+                })
+            } else {
+                if ($('.zl-second-book').hasClass('active') && $('.zl-first-book').hasClass('flipped')) {
+                    flag++;
+                }
+            }
+            if (flag == 3) {
+                $('.scene').css({
+                    margin: '0% 20% 5% 27%'
+                })
+                flag = 0;
+            }
+        })
+	</script>
+	<script src="js/fake-index.js"></script>
+</body>
+
 </html>
