@@ -504,7 +504,10 @@ html {
   overflow-x: hidden;
   height: 100vh;
 }
-#machine-learning .luxy-wrapper .per-one {
+#machine-learning ::selection {
+  background-color: #f8ebd8;
+}
+#machine-learning #rj-luxy-wrapper .per-one {
   width: 100%;
   z-index: 2;
   display: flex;
@@ -512,36 +515,36 @@ html {
   align-items: center;
   height: 100vh;
 }
-#machine-learning .luxy-wrapper .per-one .bg {
+#machine-learning #rj-luxy-wrapper .per-one .bg {
   width: 100%;
   filter: brightness(60%);
 }
-#machine-learning .luxy-wrapper .per-one .header-font {
+#machine-learning #rj-luxy-wrapper .per-one .header-font {
   position: absolute;
   z-index: 3;
   width: 22vw;
 }
-#machine-learning .luxy-wrapper .per-two {
+#machine-learning #rj-luxy-wrapper .per-two {
   z-index: 3;
   width: 100%;
   background-color: #fcf8f2;
 }
-#machine-learning .luxy-wrapper .per-two img {
+#machine-learning #rj-luxy-wrapper .per-two img {
   opacity: 0.8;
   transition: all 1.2s;
   z-index: 2;
 }
-#machine-learning .luxy-wrapper .per-two .flex-box {
+#machine-learning #rj-luxy-wrapper .per-two .flex-box {
   display: flex;
   flex-wrap: nowrap;
   min-width: 980px;
   width: 80vw;
   margin: 0 auto;
 }
-#machine-learning .luxy-wrapper .per-two .flex-box1 {
+#machine-learning #rj-luxy-wrapper .per-two .flex-box1 {
   padding-top: 8%;
 }
-#machine-learning .luxy-wrapper .per-two .flex-box1 .txt-container1 {
+#machine-learning #rj-luxy-wrapper .per-two .flex-box1 .txt-container1 {
   position: relative;
   width: 50%;
   padding-left: 6%;
@@ -550,46 +553,46 @@ html {
   align-content: center;
   flex-wrap: wrap;
 }
-#machine-learning .luxy-wrapper .per-two .flex-box1 .txt-container1 p {
+#machine-learning #rj-luxy-wrapper .per-two .flex-box1 .txt-container1 p {
   width: 100%;
 }
-#machine-learning .luxy-wrapper .per-two .flex-box1 .img1 {
+#machine-learning #rj-luxy-wrapper .per-two .flex-box1 .img1 {
   width: 35vw !important;
 }
-#machine-learning .luxy-wrapper .per-two .flex-box2 {
+#machine-learning #rj-luxy-wrapper .per-two .flex-box2 {
   margin-top: 2%;
   align-items: flex-end;
 }
-#machine-learning .luxy-wrapper .per-two .flex-box2 .txt-container2 {
+#machine-learning #rj-luxy-wrapper .per-two .flex-box2 .txt-container2 {
   position: relative;
   width: 50%;
   padding-left: 12%;
 }
-#machine-learning .luxy-wrapper .per-two .flex-box2 .txt-container2 span {
+#machine-learning #rj-luxy-wrapper .per-two .flex-box2 .txt-container2 span {
   text-align: start;
 }
-#machine-learning .luxy-wrapper .per-two .flex-box2 .img2 {
+#machine-learning #rj-luxy-wrapper .per-two .flex-box2 .img2 {
   width: 31vw;
   margin-left: 12%;
 }
-#machine-learning .luxy-wrapper .per-two .txt-container3 {
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 {
   padding-top: 100px;
   position: relative;
   padding-bottom: 70px;
   z-index: 2;
   bottom: 0;
 }
-#machine-learning .luxy-wrapper .per-two .txt-container3 span {
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 span {
   text-align: center;
   width: 100%;
   font-weight: bold;
   transform: scale(0.1);
 }
-#machine-learning .luxy-wrapper .per-two .txt-container3 span:first-child {
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 span:first-child {
   font-size: 2.2vw;
   line-height: 4.4vw;
 }
-#machine-learning .luxy-wrapper .per-two .img3 {
+#machine-learning #rj-luxy-wrapper .per-two .img3 {
   width: 50vw;
   position: relative;
   padding-top: 45px;
@@ -598,7 +601,7 @@ html {
   z-index: 2;
   filter: blur(0px);
 }
-#machine-learning .luxy-wrapper .per-two .bottom-bg {
+#machine-learning #rj-luxy-wrapper .per-two .bottom-bg {
   position: absolute;
   width: 100%;
   bottom: 0;
@@ -1200,29 +1203,31 @@ html {
 #banner-container #banner {
   height: 100vh;
   position: relative;
-  width: 100%;
+  width: 100vw;
   transition: all 1s, background-color 1s 1s;
 }
 #banner-container #banner .banner-btns {
   position: absolute;
-  bottom: 100px;
+  bottom: 15vh;
   left: 50%;
   transform: translate(-50%);
   text-align: center;
-  height: 12px;
+  height: 1rem;
   margin: 0 auto;
   width: 100%;
   z-index: 3;
 }
 #banner-container #banner .banner-btns .banner-btn {
   display: inline-block;
-  background-color: rgba(100, 100, 100, 0.301);
+  background-color: rgba(255, 255, 255, 0.301);
+  border-radius: 0.1vw;
   height: 100%;
   width: 3.5%;
   margin: 0 15px;
   cursor: pointer;
 }
 #banner-container #banner .banner-btns .banner-btn .bg-span {
+  border-radius: 0.1vw;
   display: inline-block;
   transition: all 0.2s;
   opacity: 0;
@@ -1230,6 +1235,13 @@ html {
   height: 100%;
   transform: scale(0);
   background-color: #fff;
+}
+#banner-container #banner .banner-btns .banner-btn:hover,
+#banner-container #banner .banner-btns .banner-btn:focus {
+  -webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+  transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+  -webkit-animation: gelatine 0.5s 1;
+  animation: gelatine 0.5s 1;
 }
 #banner-container #banner .banner-btns .banner-btn:hover .bg-span {
   opacity: 1 !important;
@@ -1259,6 +1271,7 @@ html {
   z-index: 3;
 }
 #banner-container #banner li .banner-font-container span {
+  user-select: none;
   font-family: '微软雅黑';
   text-align: center;
   display: block;
@@ -1384,6 +1397,42 @@ html {
 }
 #banner-container .next-btn {
   right: 2%;
+}
+@keyframes gelatine {
+  from,
+  to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.85, 1.15);
+    transform: scale(0.85, 1.15);
+  }
+  50% {
+    -webkit-transform: scale(1.15, 0.85);
+    transform: scale(1.15, 0.85);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+  from,
+  to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  25% {
+    -webkit-transform: scale(0.85, 1.15);
+    transform: scale(0.85, 1.15);
+  }
+  50% {
+    -webkit-transform: scale(1.15, 0.85);
+    transform: scale(1.15, 0.85);
+  }
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
 }
 #three-dimensional-btn {
   width: 100%;

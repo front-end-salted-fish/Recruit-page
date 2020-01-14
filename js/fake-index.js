@@ -85,7 +85,7 @@ $(function() {
 		var p = new Promise(function (resolve, reject) {
 			setTimeout(function () {
 				// 让某一页展示
-				$($pages[detailIndex]).show().siblings(".page").hide();
+				$($pages[detailIndex]).show().addClass("active").siblings(".page").hide().removeClass("active");
 				$($pages[detailIndex]).scrollTop(0);
 				resolve("true");
 			}, 800);
@@ -815,11 +815,14 @@ $(function() {
     });
 })();
 
+
+
 // 机器学习
 (() => {
+    
     luxy.init({
-        wrapper: '.luxy-wrapper',
-        targets: '.luxy',
+        wrapper: '#rj-luxy-wrapper',
+        targets: '.rj-luxy',
         wrapperSpeed: 0.08,
         targetSpeed: 0.01,
         targetPercentage: 0.1
@@ -838,22 +841,20 @@ $(function() {
         $headerFont.css("opacity", (1 - $machineDiv.scrollTop() / 350));
         console.log($machineDiv.scrollTop());
         if ($machineDiv.scrollTop() > 183) {
+            showImg($(".img1"));
             pMoveAnimate($($(".txt-container1")[0]), "up");
         } else {
             pMoveAnimate($($(".txt-container1")[0]), "down");
         }
-        if ($machineDiv.scrollTop() > 220) 
-        showImg($(".img1"));
-        if ($machineDiv.scrollTop() > 500) {
+        if ($machineDiv.scrollTop() > 468) {
             pMoveAnimate($($(".txt-container2")[0]), "up");
+            showImg($(".img2"));
         } else {
             pMoveAnimate($($(".txt-container2")[0]), "down");
         }
-        if ($machineDiv.scrollTop() > 540) {
-            showImg($(".img2"));
-        }
-        if ($machineDiv.scrollTop() > 730) {
+        if ($machineDiv.scrollTop() > 682)
             showImg($(".img3"));
+        if ($machineDiv.scrollTop() > 730) {
             pMoveAnimate($($(".txt-container3")[0]), "up");
         } else {
             pMoveAnimate($($(".txt-container3")[0]), "down");
