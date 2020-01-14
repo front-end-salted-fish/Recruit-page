@@ -1,5 +1,12 @@
 $(function() {
-    	//幕布函数
+    $(document).ready(function () {
+        // luxy.init({
+        //       wrapper: '#machine-learning',
+        //       targets: '.luxy',
+        //       wrapperSpeed: 0.08
+        //   });
+      })
+    //幕布函数
 	let $bar = $(".bar");
 	let $bars = $(".bars");
 
@@ -105,7 +112,88 @@ $(function() {
 				$($nextBtn).css("display", "block");
 			}
 		}
-	}
+    }
+    
+    /**
+     * @description: 文字排版及出现效果批量处理函数，换行处用"@"分开
+     * @param {
+        *      obj:所要添加文字的jq对象     
+        *      txt:文本内容（包含换行信息@）----string
+        *      style: "center","right","left" 文字对齐方式
+        * } 
+        */    
+       function splitTxt(obj, txt, style) {
+           let rows = txt.split("@");
+           let html = '';
+           $.each(rows, function (index, item) { 
+               html += '<p class="move-details-rows txtHasDown" style="text-align:' + style + '">' + item + "</p>";
+           });
+           obj.addClass("hasDown");
+           obj.append(html);
+       }
+   
+       /**
+        * @description: 文字动画退出进入
+        * @param {
+        *      obj: 文字段的父盒子jq对象
+        *      dir: "up" 和 "down",文字将要执行的动画方向
+        *           up 代表出现上升
+        *           down 代表消失下降
+        * } 
+        * @return: 
+        */    
+       function pMoveAnimate(obj, dir){
+           if((obj.hasClass("hasUp") && dir === "up") || (obj.hasClass("hasDown") && dir === "down"))
+           return ;
+
+           let children = obj.children(".move-details-rows");
+           children.stop(true, true);
+           if(dir === "up") {
+            children.each((index, item) => {
+                $(item).delay(40 * index).animate({
+                    opacity: 1
+                }, 1, function(){
+                    $(item).css({
+                        transform: "translateY(0)"
+                    })
+                })
+            })
+           } else {
+            children.css({
+                opacity: 0,
+                transform: "translateY(100px)"
+            })
+            // children.each((index, item) => {
+            //     $(item).delay(40 * (children.length - index)).animate({
+            //     }, 1, function(){
+            //         $(item).css({
+            //         })
+            //     })
+            // })
+           }
+           obj.toggleClass("hasUp hasDown");
+        //    clearInterval(obj["txtTimer"]);
+        //    let className = "txtHasUp";
+        //    let children = obj.children(".move-details-rows");
+           
+        //    if(dir === "down") {
+        //        children.removeClass().addClass("move-details-rows txtHasDown");
+        //        obj.toggleClass("hasUp hasDown");
+        //        return ;
+        //    }
+        //    let i = 0;
+        //    (function(obj){
+        //        obj["txtTimer"] = setInterval(function(){
+        //            $(children[i++]).removeClass().addClass("move-details-rows " + className);
+        //            if(i === children.length) {
+        //                clearInterval(obj["txtTimer"]);
+        //                obj["hasFinished"] = true;
+        //            }
+        //        }, 100);
+        //    })(obj);
+        //    obj.toggleClass("hasUp hasDown");
+       }
+
 	// 切换幕布
 	!(() => {
 		//左右按钮切换
@@ -319,225 +407,120 @@ $(function() {
 
   // 轮播图
 (() => {
-    // 获取轮播图索引按钮
-    let $btns = $(".banner-btn span");
+    let $btns = $(".banner-btn span");  // 获取轮播图索引按钮
     let $bannerPages = $("#banner li");
-    // 获取banner UL
-    let $bannerUl = $("#banner");
-    // 获取每一页轮播图的img、部门图片、部门边框
-    let $bannerImgs = $("#banner .outer-mask img");
-    let $bannerFont = $(".banner-font");
-    let $bannerBorder = $(".banner-border");
-
-    // index: 			0  	1  	 2   3  	 4
-    // 对应部门: 	 前端 安卓 后台 IOS 机器学习
-
-    // 存放每一张轮播图的url
-    let bannerImgScr = ["img/front-end/轮播图.jpg", "img/android/轮播图.jpg", "img/back-stage/轮播图.png", "img/ios/轮播图.jpeg", "img/machine-learning/轮播图.jpg"];
-    // 存放每一张部门文字的url
-    let bannnerFontScr = ["img/front-end/banner-frontend-font.png", "img/android/banner-android-font.png", "img/back-stage/banner-backstage-font.png", "img/ios/banner-ios-font.png", "img/machine-learning/banner-machine-font.png"];
-    // 存放每一张部门文字边框的url
-    let fontBorderScr = ["img/front-end/banner-frontend-font-border.png", "img/android/banner-android-font-border.png", "img/back-stage/banner-backstage-font-border.png", "img/ios/banner-ios-font-border.png", "img/machine-learning/banner-machine-font-border.png"];
-    // 存放切换颜色
-    let bgColors = ["#82ece4", "#113f2ef5", "rgb(15, 95, 142)", "rgb(115, 111, 110)", "rgba(244, 208, 177, 0.99)"];
-
-    let classArr = ["pre-page", "mid-page", "next-page"];
+    let $bannerUl = $("#banner");   // 获取banner UL
+    let $bannerImgs = $("#banner .outer-mask img"); // 获取每一页轮播图的img
+    let $bannerFontUp = $(".banner-center-up");     // 部门字体
+    let $bannerFontDown = $(".banner-center-down"); // 部门标签小字体
 
     let $nextBannerBtn = $("#banner-container .next-btn"); // 下一页按钮
     let $preBannerBtn = $("#banner-container .pre-btn"); // 上一页按钮
 
-    // 正在播放的页index值
-    let playIndex = 0;
-    // 设置轮播图的class
-    function resetClass1() {
-        for (let i = 0; i < $bannerPages.length; i++) {
-            $($bannerPages[i]).removeClass("pre-page mid-page next-page").addClass(classArr[i]);
-        }
-    }
-    // 清楚transition类名
-    function resetClass2() {
-        for (let i = 0; i < $bannerPages.length; i++) {
-            $($bannerPages[i]).removeClass("banner-out banner-in");
-        }
-    }
+    // index: 			0  	1  	 2   3    4
+    // 对应部门: 	    前端 安卓 后台 IOS 机器学习
 
-    // 初始化轮播图
-    (function startBanner() {
-        resetClass1();
-        // 给中间页加载前端(第一个)板块
-        preSetSrc("mid-page", 0);
-        // 设置第一个背景颜色
-        $bannerUl.css("background-color", bgColors[0]);
-        // 设置第一个按钮颜色
-        $($btns[playIndex]).css({
-                opacity: 1,
-                transform: "scale(1)"
-            }).parent(".banner-btn").siblings().children()
-            .css({
-                opacity: 0,
-                transform: "scale(0)"
-            });
-        // bindClick();
-        goBanner();
-    })();
-
-
-
-    // 启动轮播图
-    var bannerTimer;
-    function goBanner() {
-        bannerTimer = setInterval(() => {
-            nextBannerPage(playIndex + 1);
-        }, 6000);
-    }
-    // 停止轮播图
-    function stopBanner(){
-        clearInterval(bannerTimer);
-    }
-
-    // // 是否可以切换下一页 
-    // let canClick = true;
-    // // 每次动画结束重新绑定事件和重启轮播图
-
-
-    // 根据按钮设置给obj设置轮播图、部门字体、部门字体边框的src
-    // obj 为 $prePage,$midPage,$nextPage 
-    // index 设置对应index的部门内容
-    function preSetSrc(str, index) {
-        $($bannerImgs[classArr.indexOf(str)]).attr("src", bannerImgScr[index]);
-        $($bannerFont[classArr.indexOf(str)]).attr("src", bannnerFontScr[index]);
-        $($bannerBorder[classArr.indexOf(str)]).attr("src", fontBorderScr[index]);
-    }
-    // 向下翻页函数
-    // index为跳转的部门index
-    function nextBannerPage(index) {
-        // 越界判断
-        // index = index || (playIndex + 1);
-        playIndex = (index == bannerImgScr.length) ? 0 : index;
-        $bannerUl.css("background-color", bgColors[playIndex]);
-        // 更新下一张轮播图的信息
-        preSetSrc("next-page", playIndex);
-        // 清楚transition类名
-        resetClass2();
-        // 数组操作
-        $($bannerPages[classArr.indexOf("mid-page")]).addClass("banner-out");
-        $($bannerPages[classArr.indexOf("next-page")]).addClass("banner-in");
-        classArr.unshift(classArr.pop());
-        resetClass1();
-        $($btns[playIndex]).css({
-                opacity: 1,
-                transform: "scale(1)"
-            }).parent(".banner-btn").siblings().children()
-            .css({
-                opacity: 0,
-                transform: "scale(0)"
-            });
-    }
-    // 向上翻页函数
-    // index为跳转的部门index
-    function preBannerPage(index) {
-        // 越界判断
-        playIndex = (index == -1) ? bannerImgScr.length - 1 : index;
-        $bannerUl.css("background-color", bgColors[playIndex]);
-        // 更新下一张轮播图的信息
-        preSetSrc("pre-page", playIndex);
-        // 清楚transition类名
-        resetClass2();
-        // 数组操作
-        $($bannerPages[classArr.indexOf("mid-page")]).addClass("banner-out");
-        $($bannerPages[classArr.indexOf("pre-page")]).addClass("banner-in");
-        classArr.push(classArr.shift());
-        resetClass1();
-        $($btns[playIndex]).css({
-            opacity: 1,
-            transform: "scale(1)"
-            }).parent(".banner-btn").siblings().children()
-            .css({
-            opacity: 0,
-            transform: "scale(0)"
-            });
-    }
-
-
-    /*
-     * @desc 轮播图节流 时间戳版本
-     * @param func 函数
-     * @param index 跳转页面index
-      * @param wait 延迟执行毫秒数
-     */
-    // 共享previous
-    let previous = 0;
-    function throttleBanner(func, index, wait) {
-            let now = Date.now();
-            let context = this;
-            var p = new Promise(function (resolve, reject) {
-                if (now - previous > wait) {
-                    func.call(context, index); // 调用换页函数
-                    stopBanner();	// 停止轮播
-                    previous = now;	
-                    resolve();
-                }
-            });
-            return p;
-    }
-
-
-    // 跳转翻页
-    $(".banner-btns").on("click", (event) => {
-        let e = event || window.event;
-        let t = e.target;
-        if ($(t).hasClass("bg-span")) {
-            // stopBanner(); // 停止轮播
-            let index = $(t).parent(".banner-btn").index();
-            if (index > playIndex) {
-                throttleBanner(nextBannerPage, index, 3180).then(()=>{
-                    setTimeout(()=>{
-                        goBanner();
-                    }, 3180)
-                },() => alert(1));
-            } else if (index < playIndex) {
-                throttleBanner(preBannerPage, index, 3180).then(()=>{
-                    setTimeout(()=>{
-                        goBanner();
-                    }, 3180)
-                });
+    // 轮播图对象
+    let banner = {
+        playIndex: 0,   // 正在播放的页index值
+        bannerTimer: undefined, // 定时器
+        bannerTime: 6000, // 轮播时间
+        // 存放每一张轮播图的url的数组
+        bannerImgScr: ["img/front-end/轮播图.jpg", "img/android/轮播图.jpg", "img/back-stage/轮播图.png", "img/ios/轮播图.jpeg", "img/machine-learning/轮播图.jpg"],
+        // 部门名字数组
+        bannerFontUp: ["前端","安卓","后台","IOS","机器学习"],
+        // 部门标签数组
+        bannerFontDown: ["创意、前沿艺术","技术探索、培养模式","坚实后盾、严谨","优雅极致、中流砥柱","人工智能、大数据"],
+        // 背景颜色数组
+        bgColors:["#82ece4", "#113f2ef5", "rgb(15, 95, 142)", "rgb(115, 111, 110)", "rgba(244, 208, 177, 0.99)"],
+        // 位置类名的顺序数组
+        classArr:["pre-page", "mid-page", "next-page"],
+        // 初始化轮播图
+        init() {
+            this.setPosClass();
+            this.preSetSrc("mid-page", 0); // 给中间页加载前端(第一个)板块
+            this.setBackground(); // 设置第一个背景颜色
+            this.setBtn();  // 设置第一个按钮颜色
+            this.goBanner();    // 启动轮播图
+        },
+        // 按钮高亮
+        setBtn() {
+            $btns.removeClass("btn-play").eq(this.playIndex).addClass("btn-play");
+        },
+        // 设置背景颜色
+        setBackground() {
+            $bannerUl.css("background-color", this.bgColors[this.playIndex]); // 设置第一个背景颜色
+        },
+        // 设置轮播图的class
+        setPosClass() {
+            for (let i = 0; i < $bannerPages.length; i++) {
+                $($bannerPages[i]).removeClass("pre-page mid-page next-page").addClass(this.classArr[i]);
             }
-        }
-    });
-
-    // 下翻页节流
-    function throttleNextBanner() {
-        throttleBanner(nextBannerPage, (playIndex + 1), 3180).then(()=>{
-            setTimeout(()=>{
-                goBanner();
-            }, 3180)
-        });
-    }
-    $nextBannerBtn.on("click",throttleNextBanner);
-
-    // 上翻页节流
-    function throttlePreBanner(){
-        throttleBanner(preBannerPage, (playIndex - 1), 3180).then(()=>{
-            setTimeout(()=>{
-                goBanner();
-            }, 3180)
-        });
-    }
-    $preBannerBtn.on("click", throttlePreBanner);
-    
-    // 跳转至详情页
-    $("#banner li").on("click",function(event){
-        let e = event || window.event;
-        let t = e.target;
-        let index;
-        // 如果是背景图或者是字体
-        if(t.tagName === "IMG"){
-            // 获取部门index
-            if($(t).hasClass("banner-border")){
-                index = fontBorderScr.indexOf($(t).attr("src"));
+        },
+        // 清除transition类名
+        clearClass() {
+            for (let i = 0; i < $bannerPages.length; i++) {
+                $($bannerPages[i]).removeClass("banner-out banner-in");
+            }
+        },
+        // 启动录播图
+        goBanner() {
+            this.bannerTimer = setInterval(() => {
+                banner.nextBannerPage(banner.playIndex + 1);
+            }, this.bannerTime);
+        },
+        // 停止轮播图
+        stopBanner(){
+            clearInterval(this.bannerTimer);
+        },
+        // 预先设置函数：index 设置对应index的部门内容
+        preSetSrc(str, index) {
+            $bannerImgs.eq(this.classArr.indexOf(str)).attr("src", this.bannerImgScr[index]);
+            $bannerFontUp.eq(this.classArr.indexOf(str)).text(this.bannerFontUp[index]);
+            $bannerFontDown.eq(this.classArr.indexOf(str)).text(this.bannerFontDown[index]);
+        },
+        // 下翻页
+        nextBannerPage(index) {
+            this.playIndex = (index == this.bannerImgScr.length) ? 0 : index; // 越界判断
+            this.setBackground();   // 设置背景颜色
+            this.preSetSrc("next-page", this.playIndex);    // 更新下一张轮播图的信息
+            this.clearClass();  // 清除transition类名
+            // 更新位置数组并设置
+            $($bannerPages[this.classArr.indexOf("mid-page")]).addClass("banner-out");
+            $($bannerPages[this.classArr.indexOf("next-page")]).addClass("banner-in");
+            this.classArr.unshift(this.classArr.pop());
+            this.setPosClass(); 
+            this.setBtn();  // 按钮高亮
+        },
+        // 上翻页
+        preBannerPage(index) {
+            this.playIndex = (index == -1) ? this.bannerImgScr.length - 1 : index; // 越界判断
+            this.setBackground();
+            this.preSetSrc("pre-page", this.playIndex); // 更新下一张轮播图的信息
+            this.clearClass();  // 清除transition类名
+            // 更新位置数组并设置
+            $($bannerPages[this.classArr.indexOf("mid-page")]).addClass("banner-out");
+            $($bannerPages[this.classArr.indexOf("pre-page")]).addClass("banner-in");
+            this.classArr.push(this.classArr.shift());
+            this.setPosClass();
+            this.setBtn(); // 按钮高亮
+        },
+        // 节流的翻页
+        throttlePage(index, actionType) {
+            let actionFunc;
+            if(actionType  === "next") {
+                actionFunc = banner.nextBannerPage; // 下翻
             } else {
-                index = bannerImgScr.indexOf($(t).attr("src"));
+                actionFunc = banner.preBannerPage;  // 上翻
             }
+            throttleBanner(actionFunc, index, 3180).then(()=>{
+                setTimeout(()=>{
+                    banner.goBanner();
+                }, 3180)
+            }); 
+        },
+        // 跳转到详情页
+        toDetailPage(index) {
             curtainUp().then(()=>{
                 // 幕布完全上遮后更换内容
                 setTimeout(()=>{
@@ -551,7 +534,56 @@ $(function() {
                 },800);
             });
         }
+    }
+    banner.init();
+    /*  
+     * @desc 轮播图节流 时间戳版本
+     * @param func 函数
+     * @param index 跳转页面index
+     * @param wait 延迟执行毫秒数
+     */
+    // 共享previous
+    let previous = 0;
+    function throttleBanner(func, index, wait) {
+        console.log(func);
+        let now = Date.now();
+        var p = new Promise(function (resolve, reject) {
+          if (now - previous > wait) {
+            func.call(banner, index); // 调用换页函数
+            // clearInterval(rjBanner.timer);	// 停止轮播
+            banner.stopBanner();	// 停止轮播
+            previous = now;
+            resolve();
+          }
+        });
+        return p;
+    }
+
+    // 点击按钮跳转翻页
+    $(".banner-btns").on("click", ".bg-span", (event) => {
+        let e = event || window.event;
+        let t = e.target;
+        let index = $(t).parent(".banner-btn").index();      // 获取按钮位序
+        banner.stopBanner(); // 停止轮播
+        if (index > banner.playIndex) {
+            banner.throttlePage(index, "next");
+        } else if (index < banner.playIndex) {
+            banner.throttlePage(index, "pre");
+        }
     });
+    // 上下翻页
+    $nextBannerBtn.on("click",()=>{
+        banner.throttlePage(banner.playIndex + 1, "next");
+    });
+    $preBannerBtn.on("click",()=>{
+        banner.throttlePage(banner.playIndex - 1, "pre");
+    });
+    // 通过点击跳转至详情页
+    $("#banner li").on("click", ".banner-font-container",function(e){
+        let index = banner.bannerFontUp.indexOf($(e.currentTarget).find(".banner-center-up").text()); // 获取此时要进入的详情页
+        banner.toDetailPage(index);
+    });
+
 })();
 
 // 表单模块
@@ -785,83 +817,46 @@ $(function() {
 
 // 机器学习
 (() => {
+    luxy.init({
+        wrapper: '.luxy-wrapper',
+        targets: '.luxy',
+        wrapperSpeed: 0.08,
+        targetSpeed: 0.01,
+        targetPercentage: 0.1
+    });
     let $machineDiv = $("#machine-learning");
     let $headerFont = $($("#machine-learning .per-one .header-font")[0]);
-    let $spans = $("#machine-learning span");
-    let $circle = $("#detail-pages circle");
-    let $paths = $("#detail-pages path");
-    let $lines = $("#detail-pages line");
-    let $svg = $($("#detail-pages svg")[0]);
-    let height = $svg.position().top + window.outerHeight - window.innerHeight + 30;
-    // 出现文字
-    function showSpan(obj) {
-        obj.css({
-            opacity: 1,
-            transform: "translateY(0)"
-        });
-    }
+
+    splitTxt($($(".txt-container1")[0]), "TopView 机器学习组是16年成立的新组,@我们关注机器学习算法模型,@在理论学习的同时,@也包含对工程项目的实践。@我们组以Python语言为主,@目前工作集中在爬虫技术、数据挖掘、@机器学习、AI研究方向，@包括金融信贷反欺诈和在线评论的情感分析等……","left");
+    splitTxt($($(".txt-container2")[0]), "发展方向则有大数据、自然语言处理、@计算机视觉等多个人工智能领域方向，@并与研究生实验室有合作。","left");
+    splitTxt($($(".txt-container3")[0]), "要求：@了解使用至少一门编程语言，有自主学习能力，能承受学习基础理论学科的枯燥性，@对学习数学相关知识，阅读外语文献不排斥（我们非常欢迎数学和英语好的同学）","center");
     // 出现图片
     function showImg(obj) {
-        obj.css({
-            opacity: 0.85,
-            transform: "scale(1)",
-            filter: "blur(0)"
-        });
+        obj.removeClass("skewImg");
     }
-    // 出现文字2
-    function showSpan2(obj) {
-        obj.css({
-            opacity: 1,
-            transform: "translateY(0) scale(1)"
-        });
-    }
-    var div = document.getElementById("machine-learning");
     $machineDiv.on("scroll", function () {
-        $headerFont.css("opacity", (1 - $machineDiv.scrollTop() / 850));
-        if (Math.ceil(div.scrollHeight) == Math.ceil(div.scrollTop) + Math.ceil(div.clientHeight)) {
-            $(".bottom-bg").css({"height":"50vh"});
-        }  else {
-            $(".bottom-bg").css({"height":"0vh"});
-        }
-        if ($machineDiv.scrollTop() > height) {
-            $circle.css("stroke", "#000");
-            $paths.css("stroke", "#000");
-            $lines.css("stroke", "#000");
+        $headerFont.css("opacity", (1 - $machineDiv.scrollTop() / 350));
+        console.log($machineDiv.scrollTop());
+        if ($machineDiv.scrollTop() > 183) {
+            pMoveAnimate($($(".txt-container1")[0]), "up");
         } else {
-            $circle.css("stroke", "");
-            $paths.css("stroke", "");
-            $lines.css("stroke", "");
+            pMoveAnimate($($(".txt-container1")[0]), "down");
         }
-        if ($machineDiv.scrollTop() > 360) {
-            showImg($(".img1"));
-            let i = 0;
-            let timer1 = setInterval(function () {
-                showSpan($($spans[i++]));
-                if (i == 8) {
-                    clearInterval(timer1);
-                }
-            }, 100);
+        if ($machineDiv.scrollTop() > 220) 
+        showImg($(".img1"));
+        if ($machineDiv.scrollTop() > 500) {
+            pMoveAnimate($($(".txt-container2")[0]), "up");
+        } else {
+            pMoveAnimate($($(".txt-container2")[0]), "down");
         }
-        if ($machineDiv.scrollTop() > 860) {
+        if ($machineDiv.scrollTop() > 540) {
             showImg($(".img2"));
         }
-        if ($machineDiv.scrollTop() > 970) {
-            let i = 8;
-            let timer2 = setInterval(function () {
-                showSpan($($spans[i++]));
-                if (i == 11) {
-                    clearInterval(timer2);
-                }
-            }, 100);
-        }
-        if ($machineDiv.scrollTop() > 1200) {
-            let i = 11;
-            let timer3 = setInterval(function () {
-                showSpan2($($spans[i++]));
-                if (i == 14) {
-                    clearInterval(timer3);
-                }
-            }, 100);
+        if ($machineDiv.scrollTop() > 730) {
+            showImg($(".img3"));
+            pMoveAnimate($($(".txt-container3")[0]), "up");
+        } else {
+            pMoveAnimate($($(".txt-container3")[0]), "down");
         }
     })
 })();
