@@ -642,21 +642,21 @@ html {
 }
 
 // 机器学习
+// 图片倾斜
 .skewImg {
   opacity: 0 !important;
   transform: scale(0.8) skew(9deg, 11deg) translateY(100px) !important;
 }
 #machine-learning {
+  ::selection {
+    background-color: #f8ebd8;
+  }
   position: fixed;
   top: 0;
   overflow-y: auto;
   overflow-x: hidden;
-//   /* 开启透视 */
-//   // perspective: 1px;
   height: 100vh;
-
-//   // transform: scale(0.5);
-  .luxy-wrapper {
+  #rj-luxy-wrapper {
     .per-one {
       width: 100%;
       z-index: 2;
@@ -666,8 +666,6 @@ html {
       height:100vh;
       
       .bg {
-        // height: 100%;
-
         width: 100%;
         filter: brightness(60%);
       }
@@ -676,39 +674,13 @@ html {
         position: absolute;
         z-index: 3;
         width:22vw;
-        // top: 50%;
-        // left: 50%;
-        // transform: translate(-50%, -50%);
       }
     }
     .per-two {
       z-index: 3;
       width: 100%;
-  //     // transform: translateY(10px) scale(1);
       background-color: rgb(252, 248, 242);
-  //     // box-shadow: 0px 0px 100px #333;
-      // min-height: 1000vh;
-  //     // min-height: 1.5vh;
-  //     // height: 250vh;
-  //     // overflow: hidden;
-  
-  //     // .show-span {
-  //     //   display: block;
-  //     //   position: relative;
-  //     //   font-size: 1.4vw;
-  //     //   color: #222;
-  //     //   transition: all 0.7s;
-  //     //   font-weight: lighter;
-  //     //   line-height: 3vw;
-  //     //   opacity: 0;
-  //     //   transform: translateY(30px);
-  //     // }
-  
       img {
-  //       // position: absolute;
-  //       // opacity: 0;
-  //       // transform: scale(.9) skew(11deg, 5deg) translateY(100px);
-  //       // filter: blur(10px);
         opacity: .8;
         transition: all 1.2s;
         z-index: 2;
@@ -763,7 +735,6 @@ html {
       }
   
       .txt-container3 {
-  //       // height: 200px;
         padding-top: 100px;
         position: relative;
         padding-bottom: 70px;
@@ -785,7 +756,6 @@ html {
   
       .img3 {
         width: 50vw;
-  //       // bottom: -308%;
         position: relative;
         padding-top: 45px;
         left: 50%;
@@ -827,60 +797,94 @@ html {
 #detail-pages,
 #banner-container {
   position: relative;
-
-  svg {
+  .svg-container{
+    height: 39px;
+    width: 130px;
     position: absolute;
-    stroke: #fff;
-    mix-blend-mode: difference;
     top: 50%;
-    display: block;
-    opacity: 1;
-    transition: transform .5s cubic-bezier(.455, .03, .515, .955),
-      opacity .5s cubic-bezier(.455, .03, .515, .955);
-    cursor: pointer;
-
+    z-index: 7;
+    mix-blend-mode: difference;
+    .svg-txt {
+      user-select: none;
+      position: absolute;
+      font-size: 1vw;
+      color: white;
+      bottom: 28px;
+      letter-spacing: 2px;
+      transition: transform .5s cubic-bezier(.455, .03, .515, .955) .15s;
+    }
+    .svg-left-txt {
+      transform: translate(75px);
+    }
+    .svg-right-txt {
+      transform: translate(15px);
+    }
     &:hover {
+      .svg-left-txt {
+        transform: translate(55px);
+      }
+      .svg-right-txt {
+        transform: translate(35px);
+      }
+      svg {
+        circle {
+          transform: translate(80px);
+          /* 神奇属性居然能设置 */
+          r: 0;
+          opacity: 0;
+        }
+  
+        g {
+          transform: translate(30px, 9px);
+        }
+      }
+    }
+    svg {
+      position: absolute;
+      stroke: #fff;
+      // top: 50%;
+      display: block;
+      opacity: 1;
+      transition: transform .5s cubic-bezier(.455, .03, .515, .955),
+        opacity .5s cubic-bezier(.455, .03, .515, .955);
+      cursor: pointer;
       circle {
-        transform: translate(80px);
-        /* 神奇属性居然能设置 */
-        r: 0;
-        opacity: 0;
+        fill: none;
+        transform: translate(40px);
+        transition: all .5s cubic-bezier(.455, .03, .515, .955);
       }
-
+  
       g {
-        transform: translate(20px, 9px);
-      }
-    }
-
-    circle {
-      fill: none;
-      transform: translate(40px);
-      transition: all .5s cubic-bezier(.455, .03, .515, .955);
-    }
-
-    g {
-      transform: translate(10px, 9px);
-      transition: all .5s cubic-bezier(.455, .03, .515, .955);
-
-      path {
-        transform: translateX(43px);
+        transform: translate(10px, 9px);
         transition: all .5s cubic-bezier(.455, .03, .515, .955);
-      }
-
-      line {
-        transition: all .5s cubic-bezier(.455, .03, .515, .955);
+  
+        path {
+          transform: translateX(43px);
+          transition: all .5s cubic-bezier(.455, .03, .515, .955);
+        }
+  
+        line {
+          transition: all .5s cubic-bezier(.455, .03, .515, .955);
+        }
       }
     }
   }
-
-  svg[data-left] {
-    transform: translateY(-50%) scale(-1.3, 1.3);
+  .svg-next-container {
+    transform: translateY(-50%);
+    right: 10px;
+  }
+  .svg-pre-container {
+    transform: translateY(-50%);
     left: 10px;
+  }
+  svg[data-left] {
+    left:0;
+    transform: scale(-1.3, 1.3);
   }
 
   svg[data-right] {
-    transform: translateY(-50%) scale(1.3, 1.3);
-    right: 10px;
+    right:0;
+    transform: scale(1.3, 1.3);
   }
 }
 
@@ -1548,18 +1552,18 @@ html {
   #banner {
     height: 100vh;
     position: relative;
-    width: 100%;
+    width: 100vw;
     transition: all 1s, background-color 1s 1s;
 
     // transform: scale(0.3);
     // 轮播图按钮容器
     .banner-btns {
       position: absolute;
-      bottom: 100px;
+      bottom: 15vh;
       left: 50%;
       transform: translate(-50%);
       text-align: center;
-      height: 12px;
+      height: 1rem;
       margin: 0 auto;
       width: 100%;
       z-index: 3;
@@ -1567,13 +1571,15 @@ html {
       // 轮播图按钮
       .banner-btn {
         display: inline-block;
-        background-color: rgba(100, 100, 100, 0.301);
+        background-color: rgba(255, 255, 255, 0.301);
+        border-radius: .1vw;
         height: 100%;
         width: 3.5%;
         margin: 0 15px;
         cursor: pointer;
 
         .bg-span {
+          border-radius: .1vw;
           display: inline-block;
           transition: all 0.2s;
           opacity: 0;
@@ -1583,6 +1589,13 @@ html {
           background-color: #fff;
         }
 
+        &:hover,
+        &:focus {
+          -webkit-transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+          transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+          -webkit-animation: gelatine 0.5s 1;
+          animation: gelatine 0.5s 1;
+        }
         &:hover {
           .bg-span {
             opacity: 1 !important;
@@ -1618,6 +1631,7 @@ html {
         position: absolute;  
         z-index: 3;
         span {
+          user-select: none;
           font-family: '微软雅黑';
           // font-weight: lighter;
           text-align : center;
@@ -1777,7 +1791,7 @@ html {
     font-size: 50px;
     color: rgba(255, 255, 255, 0.726);
     position: absolute;
-    top: 50%;
+    // top: 50%;
     cursor: pointer;
     transition: all .5s;
 
@@ -1794,6 +1808,49 @@ html {
     right: 2%;
   }
 }
+// 按钮弹簧效果
+@keyframes gelatine {
+  from, to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  25% {
+    -webkit-transform: scale(0.85, 1.15);
+    transform: scale(0.85, 1.15);
+  }
+
+  50% {
+    -webkit-transform: scale(1.15, 0.85);
+    transform: scale(1.15, 0.85);
+  }
+
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+
+  from, to {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+
+  25% {
+    -webkit-transform: scale(0.85, 1.15);
+    transform: scale(0.85, 1.15);
+  }
+
+  50% {
+    -webkit-transform: scale(1.15, 0.85);
+    transform: scale(1.15, 0.85);
+  }
+
+  75% {
+    -webkit-transform: scale(0.95, 1.05);
+    transform: scale(0.95, 1.05);
+  }
+}
+
 
 // 3d btn
 #three-dimensional-btn {
