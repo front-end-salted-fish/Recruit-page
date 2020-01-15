@@ -5,6 +5,24 @@ html {
   min-width: 9;
 }
 
+// iconfont 字体图标的引用
+@font-face {
+  font-family: 'iconfont';  /* project id 1613212 */
+  src: url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.eot');
+  src: url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #loading-module {
   height: 100vh;
   width: 100vw;
@@ -642,10 +660,88 @@ html {
 }
 
 // 机器学习
+img {
+  user-select: none;
+}
 // 图片倾斜
 .skewImg {
   opacity: 0 !important;
   transform: scale(0.8) skew(9deg, 11deg) translateY(100px) !important;
+}
+// 详情页的回退按钮
+#detail-pages {
+  .rj-detail-page-close-btn {
+    overflow: hidden;
+    display: block;
+    user-select: none;
+    z-index: 6;
+    position: absolute;
+    right:1vw;
+    top:1vw;
+    cursor: pointer;
+    mix-blend-mode: difference;
+    padding: 0 2rem;
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(50%, -45%);
+      color: white;
+      width: 100%;
+      font-size: 3vw;
+      text-align: center;
+      opacity: 0;
+      transition: all 0.5s 0.05s;
+    }
+    span {
+      padding: 0 0.5px;
+      transition: all .35s;
+      line-height: 45px;
+      font-size: 1.3vw;
+      color: white;
+      opacity: 1;
+      display: inline-block;
+      letter-spacing: 1px;
+      transition: all .5s;
+      transform: translate(0);
+      &:nth-child(1) {
+        transition-delay: .25s;
+      }
+      &:nth-child(2) {
+        transition-delay: .2s;
+      }
+      &:nth-child(3) {
+        transition-delay: .15s;
+      }
+      &:nth-child(4) {
+        transition-delay: .1s;
+      }
+    }
+    &:hover {
+      i {
+        opacity: 1;
+        transform: translate(-50%, -45%);
+        transition-delay: .25s;
+      }
+      span {
+        opacity: 0;
+        transform: translate(-6vw);
+        &:nth-child(1) {
+          transition-delay: .05s;
+        }
+        &:nth-child(2) {
+          transition-delay: .1s;
+        }
+        &:nth-child(3) {
+          transition-delay: .15s;
+        }
+        &:nth-child(4) {
+          transition-delay: .2s;
+        }
+
+      }
+    }
+  }
 }
 #machine-learning {
   ::selection {
@@ -779,21 +875,6 @@ html {
 }
 
 // 详情页svg样式
-#detail-pages  {
-  .zl-close {
-    position: absolute;
-    z-index: 6;
-    left: 95%;
-    top: 5%;
-    cursor: pointer;
-    i {
-      font-size: 44px;
-      &:hover {
-        color: white;
-      }
-    }
-  }
-}
 #detail-pages,
 #banner-container {
   position: relative;
@@ -1638,16 +1719,17 @@ html {
           width:100%;
           -webkit-text-stroke-color: white;
           -webkit-text-stroke-width: .1vw;
+          font-weight: lighter;
         }
         .banner-center-up {
-          font-size: 7vw;
+          font-size: 6.5vw;
         }
         .banner-center-down {
           font-size: 3vw;
         }
         .banner-center-line {
           width: 29vw;
-          height: 1vh;
+          height: 0.4rem;
           background-color: white;
           border: .1vw solid white;
           margin-top: 1.5vw;

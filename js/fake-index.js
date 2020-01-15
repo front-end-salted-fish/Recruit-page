@@ -80,8 +80,8 @@ $(function() {
 	// 换页函数
 	function showPage(index) {
 		// 更新目前展示
-		detailIndex = index;
-		checkPage();
+		detailIndex = (index === 5) ? 0 : (index === -1) ? 4 : index;
+		// checkPage();
 		var p = new Promise(function (resolve, reject) {
 			setTimeout(function () {
 				// 让某一页展示
@@ -93,26 +93,26 @@ $(function() {
 		return p;
 	}
 
-	// 检查第一页或者最后一页的按钮显示/隐藏
-	function checkPage(){
-		switch(detailIndex) {
-			// 如果是第一张隐藏向上翻页按钮
-			case 0 :{
-				$($preBtn).css("display", "none");
-				$($nextBtn).css("display", "block");
-			};break;
-			// 如果是最后一张隐藏向下翻页按钮
-			case 4 :{
-				$($preBtn).css("display", "block");
-				$($nextBtn).css("display", "none");
-			};break;
-			// 否则都显示
-			default:{
-				$($preBtn).css("display", "block");
-				$($nextBtn).css("display", "block");
-			}
-		}
-    }
+	// // 检查第一页或者最后一页的按钮显示/隐藏
+	// function checkPage(){
+	// 	switch(detailIndex) {
+	// 		// 如果是第一张隐藏向上翻页按钮
+	// 		case 0 :{
+	// 			$($preBtn).css("display", "none");
+	// 			$($nextBtn).css("display", "block");
+	// 		};break;
+	// 		// 如果是最后一张隐藏向下翻页按钮
+	// 		case 4 :{
+	// 			$($preBtn).css("display", "block");
+	// 			$($nextBtn).css("display", "none");
+	// 		};break;
+	// 		// 否则都显示
+	// 		default:{
+	// 			$($preBtn).css("display", "block");
+	// 			$($nextBtn).css("display", "block");
+	// 		}
+	// 	}
+    // }
     
     /**
      * @description: 文字排版及出现效果批量处理函数，换行处用"@"分开
@@ -143,12 +143,13 @@ $(function() {
         * @return: 
         */    
        function pMoveAnimate(obj, dir){
-           if((obj.hasClass("hasUp") && dir === "up") || (obj.hasClass("hasDown") && dir === "down"))
+           if((obj.hasClass("hasUp") && dir === "up") || (obj.hasClass("hasDown") && dir === "down"))   // 防止多余调用
            return ;
 
-           let children = obj.children(".move-details-rows");
+           let children = obj.children(".move-details-rows");   // 获取每行字
            children.stop(true, true);
            if(dir === "up") {
+            //  文字出现
             children.each((index, item) => {
                 $(item).delay(40 * index).animate({
                     opacity: 1
@@ -163,35 +164,8 @@ $(function() {
                 opacity: 0,
                 transform: "translateY(100px)"
             })
-            // children.each((index, item) => {
-            //     $(item).delay(40 * (children.length - index)).animate({
-            //     }, 1, function(){
-            //         $(item).css({
-            //         })
-            //     })
-            // })
            }
            obj.toggleClass("hasUp hasDown");
-        //    clearInterval(obj["txtTimer"]);
-        //    let className = "txtHasUp";
-        //    let children = obj.children(".move-details-rows");
-           
-        //    if(dir === "down") {
-        //        children.removeClass().addClass("move-details-rows txtHasDown");
-        //        obj.toggleClass("hasUp hasDown");
-        //        return ;
-        //    }
-        //    let i = 0;
-        //    (function(obj){
-        //        obj["txtTimer"] = setInterval(function(){
-        //            $(children[i++]).removeClass().addClass("move-details-rows " + className);
-        //            if(i === children.length) {
-        //                clearInterval(obj["txtTimer"]);
-        //                obj["hasFinished"] = true;
-        //            }
-        //        }, 100);
-        //    })(obj);
-        //    obj.toggleClass("hasUp hasDown");
        }
 
 	// 切换幕布
@@ -268,7 +242,7 @@ $(function() {
     const $android = $('#android');
     const $fontBg = $('.font-bg');
     const $persOne = $('.pers-one');
-    const $close = $('.zl-close');
+    const $close = $('.rj-detail-page-close-btn');
     // 监听滚动条事件
     $android.on('scroll', function () {
         let scale = this.scrollTop / $persOne.get(0).clientHeight - 1;
@@ -420,11 +394,35 @@ $(function() {
     // index: 			0  	1  	 2   3    4
     // 对应部门: 	    前端 安卓 后台 IOS 机器学习
 
+        /*  
+     * @desc 轮播图节流 时间戳版本
+     * @param func 函数
+     * @param index 跳转页面index
+     * @param wait 延迟执行毫秒数
+     */
+    // 共享previous
+    let previous = 0;
+    function throttleBanner(func, index, wait) {
+        console.log(func);
+        let now = Date.now();
+        var p = new Promise(function (resolve, reject) {
+          if (now - previous > wait) {
+            func.call(banner, index); // 调用换页函数
+            // clearInterval(rjBanner.timer);	// 停止轮播
+            banner.stopBanner();	// 停止轮播
+            previous = now;
+            resolve();
+          }
+        });
+        return p;
+    }
+
     // 轮播图对象
     let banner = {
         playIndex: 0,   // 正在播放的页index值
         bannerTimer: undefined, // 定时器
         bannerTime: 6000, // 轮播时间
+        canChangePage: false,
         // 存放每一张轮播图的url的数组
         bannerImgScr: ["img/front-end/轮播图.jpg", "img/android/轮播图.jpg", "img/back-stage/轮播图.png", "img/ios/轮播图.jpeg", "img/machine-learning/轮播图.jpg"],
         // 部门名字数组
@@ -442,6 +440,7 @@ $(function() {
             this.setBackground(); // 设置第一个背景颜色
             this.setBtn();  // 设置第一个按钮颜色
             this.goBanner();    // 启动轮播图
+            previous = Date.now();
         },
         // 按钮高亮
         setBtn() {
@@ -536,28 +535,7 @@ $(function() {
         }
     }
     banner.init();
-    /*  
-     * @desc 轮播图节流 时间戳版本
-     * @param func 函数
-     * @param index 跳转页面index
-     * @param wait 延迟执行毫秒数
-     */
-    // 共享previous
-    let previous = 0;
-    function throttleBanner(func, index, wait) {
-        console.log(func);
-        let now = Date.now();
-        var p = new Promise(function (resolve, reject) {
-          if (now - previous > wait) {
-            func.call(banner, index); // 调用换页函数
-            // clearInterval(rjBanner.timer);	// 停止轮播
-            banner.stopBanner();	// 停止轮播
-            previous = now;
-            resolve();
-          }
-        });
-        return p;
-    }
+
 
     // 点击按钮跳转翻页
     $(".banner-btns").on("click", ".bg-span", (event) => {
@@ -819,7 +797,6 @@ $(function() {
 
 // 机器学习
 (() => {
-    
     luxy.init({
         wrapper: '#rj-luxy-wrapper',
         targets: '.rj-luxy',
