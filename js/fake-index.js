@@ -1,11 +1,14 @@
+import $ from 'jquery'
+import '../src/css/reset.css'
+import '../css/index.less'
+import luxy from '../src/js/luxy.js'
+import bannerImg1 from '../img/front-end/轮播图.jpg'
+import bannerImg2 from '../img/android/轮播图.jpg'
+import bannerImg3 from '../img/back-stage/轮播图.png'
+import bannerImg4 from '../img/ios/轮播图.jpeg'
+import bannerImg5 from '../img/machine-learning/轮播图.jpg'
+
 $(function() {
-    $(document).ready(function () {
-        // luxy.init({
-        //       wrapper: '#machine-learning',
-        //       targets: '.luxy',
-        //       wrapperSpeed: 0.08
-        //   });
-      })
     //幕布函数
 	let $bar = $(".bar");
 	let $bars = $(".bars");
@@ -424,7 +427,7 @@ $(function() {
         bannerTime: 6000, // 轮播时间
         canChangePage: false,
         // 存放每一张轮播图的url的数组
-        bannerImgScr: ["img/front-end/轮播图.jpg", "img/android/轮播图.jpg", "img/back-stage/轮播图.png", "img/ios/轮播图.jpeg", "img/machine-learning/轮播图.jpg"],
+        bannerImgScr: [bannerImg1, bannerImg2, bannerImg3, bannerImg4, bannerImg5],
         // 部门名字数组
         bannerFontUp: ["前端","安卓","后台","IOS","机器学习"],
         // 部门标签数组
