@@ -894,6 +894,7 @@ img {
   right: 0;
   overflow: auto;
   height: 100vh;
+  /* 5% 5% 5% 50%; */
 }
 #form-page .preview-pane {
   position: absolute;
@@ -905,7 +906,8 @@ img {
 #form-page .preview-pane .fx_external_form {
   width: 100%;
   height: 100%;
-  background-color: #F4F9F9;
+  background: url(../img/form/flower.jpeg);
+  background: url(../img/form/milu.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -916,8 +918,6 @@ img {
   position: relative;
   overflow: hidden;
   margin: 0 auto;
-  -webkit-box-shadow: 0 2px 9px 0 rgba(167, 167, 167, 0.5);
-  box-shadow: 0 2px 9px 0 rgba(167, 167, 167, 0.5);
 }
 #form-page .preview-pane .fx_external_form .form-content .form-head {
   height: 20vh;
@@ -1022,7 +1022,7 @@ img {
 #form-page .preview-pane .fx_external_form .form-content .form-body .fui-form .widget-wrapper ul .x-input:focus,
 #form-page .preview-pane .fx_external_form .form-content .form-body .fui-form .widget-wrapper ul select:focus,
 #form-page .preview-pane .fx_external_form .form-content .form-body .fui-form .widget-wrapper ul textarea:focus {
-  border-color: #0DB3A6;
+  border-color: #a4856d;
 }
 #form-page .preview-pane .fx_external_form .form-content .form-body .fui-form .widget-wrapper ul .x-check.horizontal:not(:last-child),
 #form-page .preview-pane .fx_external_form .form-content .form-body .fui-form .widget-wrapper ul .x-group .group_item.horizontal:not(:last-child) {
@@ -1072,7 +1072,7 @@ img {
 #form-page .preview-pane .fx_external_form .form-content .form-body .fui-form .widget-wrapper ul textarea {
   width: 100%;
   height: 100%;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #c1c1b4;
   text-indent: 0.5em;
 }
 #form-page .preview-pane .fx_external_form .form-content .form-body .fui-form .widget-wrapper ul input {
@@ -1114,9 +1114,7 @@ img {
   right: 0;
   width: 30px;
   height: 100%;
-  border-top: solid 1px transparent;
-  border-bottom: solid 1px transparent;
-  border-left: solid 1px #e0e0e0;
+  border: solid 1px #c1c1b4;
   display: inline-block;
   color: #0DB3A6;
   text-align: center;
@@ -1127,7 +1125,7 @@ img {
   display: inline-block;
   border-width: 5px;
   border-style: solid;
-  border-color: #222 transparent transparent transparent;
+  border-color: #a4856d transparent transparent transparent;
 }
 #form-page .preview-pane .fx_external_form .form-content .form-body .fui-form .widget-wrapper ul .widget-view .fl-widget .fui_combo .fui_trigger-input {
   user-select: none;
@@ -1156,12 +1154,13 @@ img {
   max-height: 200px;
   padding: 5px 0;
   overflow: auto;
+  background: #c8a68e2e;
 }
 #form-page .preview-pane .fx_external_form .form-content .form-body .fui-form .widget-wrapper ul .widget-view .fl-widget .x-dropdown .x-dropdown-list .x-dropdown-item {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #333;
+  color: #aa8d78;
   padding: 0 4px;
   display: block;
   height: 30px;
@@ -1180,7 +1179,6 @@ img {
 #form-page .preview-pane .fx_external_form .form-content .form-foot {
   border-top: solid 1px #DEDEDE;
   height: 60px;
-  background: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -1214,6 +1212,81 @@ img {
 }
 #form-page .preview-pane .fx_external_form .form-content .form-foot:hover {
   color: #807a7a;
+}
+#form-page h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #a4856d;
+  margin: 4% 0 6% 0;
+}
+#form-page .scene {
+  width: 45%;
+  height: 99%;
+  margin: 0% 20% 5% 27%;
+  perspective: 1000px;
+  transition: margin 1s;
+}
+#form-page .book {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  box-shadow: 1px 1px 30px #a4856d;
+}
+#form-page .page {
+  cursor: pointer;
+  position: absolute;
+  color: black;
+  width: 100%;
+  height: 100%;
+  transition: 1.5s transform;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+}
+#form-page .page p {
+  font-size: 16px;
+  margin-bottom: 37px;
+}
+#form-page .zl-first-book .front {
+  background: url(../img/form/invitecard.png) 50%;
+  background-size: cover;
+}
+#form-page .zl-second-book {
+  cursor: default;
+}
+#form-page .front,
+#form-page .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 2% 0% 0%;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+  background: -webkit-gradient(linear, 0% 0%, 100% 100%, from(#FFFFFF), to(#CCCCCC));
+  background: linear-gradient(to bottom right, #fff, #ccc);
+}
+#form-page .back {
+  transform: rotateY(180deg);
+}
+#form-page .page.active {
+  z-index: 1;
+}
+#form-page .page.flipped {
+  transform: rotateY(-180deg);
+}
+#form-page .page.flipped:last-of-type {
+  z-index: 1;
+}
+#form-page p {
+  margin: 0 0 0.1em;
+  text-indent: 1em;
+}
+#form-page .qr {
+  margin: 50px auto;
+  max-width: 50%;
+}
+#form-page .qr img {
+  display: block;
 }
 *,
 :after,
@@ -1613,64 +1686,6 @@ img {
   position: absolute;
   transform: translate(-50%, -50%);
   transition: 0.32s ease;
-}
-h1 {
-  text-align: center;
-}
-.scene {
-  width: 45%;
-  height: 90%;
-  margin: 0% 20% 5% 27%;
-  perspective: 1000px;
-  transition: margin 1s;
-}
-/* 5% 5% 5% 50%; */
-.book {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-.zl-first-book .front {
-  background: url(http://127.0.0.1:5500/img/form/未命名\ 的副本.png) 50%;
-  background-size: cover;
-}
-.zl-second-book {
-  cursor: default;
-}
-.front,
-.back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 10% 5% 5%;
-  box-sizing: border-box;
-  backface-visibility: hidden;
-  background: -webkit-gradient(linear, 0% 0%, 100% 100%, from(#FFFFFF), to(#CCCCCC));
-  background: linear-gradient(to bottom right, #fff, #ccc);
-}
-.back {
-  transform: rotateY(180deg);
-}
-.page.active {
-  z-index: 1;
-}
-.page.flipped {
-  transform: rotateY(-180deg);
-}
-.page.flipped:last-of-type {
-  z-index: 1;
-}
-p {
-  margin: 0 0 0.1em;
-  text-indent: 1em;
-}
-.qr {
-  margin: 50px auto;
-  max-width: 50%;
-}
-.qr img {
-  display: block;
 }
 /* iPads (portrait) ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {

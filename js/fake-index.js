@@ -2,6 +2,13 @@ import $ from 'jquery'
 import '../src/css/reset.css'
 import '../css/index.less'
 import luxy from '../src/js/luxy.js'
+import  'prefixfree'
+// import hammer from './jquery.hammer.min'
+// import from ''
+// require('./prefixfree.min.js')
+import 'jquery-hammerjs'
+// require('./jquery.hammer.min.js')
+// const hammer = require('./jquery.hammer.min.js')
 import bannerImg1 from '../img/front-end/轮播图.jpg'
 import bannerImg2 from '../img/android/轮播图.jpg'
 import bannerImg3 from '../img/back-stage/轮播图.png'
@@ -567,137 +574,7 @@ $(function() {
 
 })();
 
-// 表单模块
-!(() => {
-    // 获取表单元素
-    const $formPages = $('#form-page');
-    const $formPageOne = $('#form-page-one');
-    const $formPageTwo = $('#form-page-two');
-    const $username = $('[name=username]');
-    const $studentId = $('[name=student-id]');
-    const $gradeProfessional = $('[name=grade-professional]');
-    const $radio = $('.x-radio');
-    const $nextStep = $('.next-step'); // 下一步按钮
-    const $submit = $('.submit'); // 提交按钮
-    const $preStep = $('.pre-step'); // 上一步按钮
-    const $number = $('[name=number]');
-    const $email = $('[name=email]');
-    const $introduction = $('[name=introduction]');
-    const $direction = $('[name=direction]');
-    const $option = $('.x-dropdown'); // 获取下拉框
-    const $options = $('.x-dropdown-item'); // 获取下拉框的值
-    const $skills = $('[name=skills]');
-    const $idea = $('[name=idea]');
-    // const $triggerBtn = $('.fui_trigger-btn'); // 单选框按钮
-    const $triggerBtn = $('.fui_combo'); // 单选框按钮
-    const $button = $("#btn");
-    $button.on('click', function(event) {
-        $formPages.show();
-        $formPages.css({
-            "z-index": 100
-        });
-        event.stopPropagation()
-    })
-    
-    let formData = {
-        username: '',
-        studentId: '',
-        gradeProfessional: '',
-        sex: '',
-        number: '',
-        email: '',
-        introduction: '',
-        direction: '',
-        skills: '',
-        idea: ''
-    };
-    // 使用事件委托监听输入框的失去焦点事件
-    $formPages.on('blur', 'input', function (ev) {
-        let match = $(ev.target).attr('name');
-        let value = $(ev.target).val();
-        switch (match) {
-            case "username":
-                formData.username = value;
-                break;
-            case "student-id":
-                formData.studentId = value;
-                break;
-            case "grade-professional":
-                formData.gradeProfessional = value;
-                break;
-            case "username":
-                formData.sex = value;
-                break;
-            case "number":
-                formData.number = value;
-                break;
-            case "email":
-                formData.email = value;
-                break;
-            default:
-                break;
 
-        }
-
-    })
-    // 使用事件委托监听文本域的失去焦点事件
-    $formPages.on('blur', 'textarea', function (ev) {
-        let match = $(ev.target).attr('name');
-        let value = $(ev.target).val();
-        switch (match) {
-            case "introduction":
-                formData.introduction = value;
-                break;
-            case "idea":
-                formData.idea = value;
-                break;
-            case "skills":
-                formData.skills = value;
-                break;
-            default:
-                break;
-
-        }
-        console.log(formData)
-
-    })
-    // 给表单绑定单击函数，使下拉框消失
-    $formPages.on('click', function (ev) {
-        $option.fadeOut(100);
-    })
-    // 给性别单选按钮绑定单击响应函数
-    $radio.on('click', function (ev) {
-        let sex = $(this).attr('value');
-        $(this).children()[0].style.background = '#07190e80';
-        $(this).first().siblings().children()[0].style.background = '#fff';
-        formData.sex = sex;
-    })
-    // 给下一步按钮按钮绑定单击响应函数
-    $nextStep.on('click', function () {
-        $formPageOne.hide();
-        $formPageTwo.fadeIn();
-    })
-    // 给上一步按钮按钮绑定单击响应函数
-    $preStep.on('click', function () {
-        $formPageOne.fadeIn();
-        $formPageTwo.hide();
-    })
-    // 给单选框按钮绑定点击函数
-    $triggerBtn.on('click', function (ev) {
-        // $option.toggle(100);
-        $option.slideToggle(100);
-        ev.stopPropagation()
-    })
-    $option.on('click', function (ev) {
-        $direction.val($(ev.target).text());
-        formData.direction = $(ev.target).text();
-    })
-    // $submit.on('click', function () {
-    //     console.log(formData)
-    // })
-
-
-})();
 
 //front-end
 !(() => {
@@ -1044,4 +921,197 @@ $(function() {
 
 })();
 
+// 表单模块
+!(() => {
+    // 获取表单元素
+    const $formPages = $('#form-page');
+    const $formPageOne = $('#form-page-one');
+    const $formPageTwo = $('#form-page-two');
+    const $pages = $('#form-page .page')
+    const $username = $('[name=username]');
+    const $studentId = $('[name=student-id]');
+    const $gradeProfessional = $('[name=grade-professional]');
+    const $radio = $('.x-radio');
+    const $nextStep = $('.next-step'); // 下一步按钮
+    const $submit = $('.submit'); // 提交按钮
+    const $preStep = $('.pre-step'); // 上一步按钮
+    const $number = $('[name=number]');
+    const $email = $('[name=email]');
+    const $introduction = $('[name=introduction]');
+    const $direction = $('[name=direction]');
+    const $option = $('.x-dropdown'); // 获取下拉框
+    const $options = $('.x-dropdown-item'); // 获取下拉框的值
+    const $skills = $('[name=skills]');
+    const $idea = $('[name=idea]');
+    // const $triggerBtn = $('.fui_trigger-btn'); // 单选框按钮
+    const $triggerBtn = $('.fui_combo'); // 单选框按钮
+    const $button = $("#btn");
+    $button.on('click', function(event) {
+        console.log($('#form-page-one .form-body').get(0).clientHeight)
+
+        $formPages.show();
+        $formPages.css({
+            "z-index": 100
+        });
+        event.stopPropagation()
+    })
+    
+    let formData = {
+        username: '',
+        studentId: '',
+        gradeProfessional: '',
+        sex: '',
+        number: '',
+        email: '',
+        introduction: '',
+        direction: '',
+        skills: '',
+        idea: ''
+    };
+    // 使用事件委托监听输入框的失去焦点事件
+    $formPages.on('blur', 'input', function (ev) {
+        let match = $(ev.target).attr('name');
+        let value = $(ev.target).val();
+        switch (match) {
+            case "username":
+                formData.username = value;
+                break;
+            case "student-id":
+                formData.studentId = value;
+                break;
+            case "grade-professional":
+                formData.gradeProfessional = value;
+                break;
+            case "username":
+                formData.sex = value;
+                break;
+            case "number":
+                formData.number = value;
+                break;
+            case "email":
+                formData.email = value;
+                break;
+            default:
+                break;
+
+        }
+
+    })
+    // 使用事件委托监听文本域的失去焦点事件
+    $formPages.on('blur', 'textarea', function (ev) {
+        let match = $(ev.target).attr('name');
+        let value = $(ev.target).val();
+        switch (match) {
+            case "introduction":
+                formData.introduction = value;
+                break;
+            case "idea":
+                formData.idea = value;
+                break;
+            case "skills":
+                formData.skills = value;
+                break;
+            default:
+                break;
+
+        }
+        console.log(formData)
+
+    })
+   
+    // 给表单绑定单击函数，使下拉框消失
+    $(document).on('click', function (ev) {
+        $option.fadeOut(100);
+    })
+    // 给性别单选按钮绑定单击响应函数
+    $radio.on('click', function (ev) {
+        let sex = $(this).attr('value');
+        $(this).children()[0].style.background = '#ae8e74';
+        $(this).first().siblings().children()[0].style.background = '#fff';
+        formData.sex = sex;
+    })
+    // 给下一步按钮按钮绑定单击响应函数
+    $nextStep.on('click', function () {
+        $formPageOne.hide();
+        $formPageTwo.fadeIn();
+    })
+    // 给上一步按钮按钮绑定单击响应函数
+    $preStep.on('click', function () {
+        $formPageOne.fadeIn();
+        $formPageTwo.hide();
+    })
+    // 给单选框按钮绑定点击函数
+    $triggerBtn.on('click', function (ev) {
+        // $option.toggle(100);
+        $option.slideToggle(100);
+        ev.stopPropagation()
+    })
+    $option.on('click', function (ev) {
+        $direction.val($(ev.target).text());
+        formData.direction = $(ev.target).text();
+    })
+    // $submit.on('click', function () {
+    //     console.log(formData)
+    // })
+
+    var flag = 0;
+    $('.book')
+        .on('click', '.active', nextPage)
+        .on('click', '.flipped', prevPage);
+    $('.book').hammer().on("swipeleft", nextPage);
+    $('.book').hammer().on("swiperight", prevPage);
+    function prevPage() {
+        $('.flipped')
+            .last()
+            .removeClass('flipped')
+            .addClass('active')
+            .siblings('.page')
+            .removeClass('active');
+    }
+    function nextPage() {
+        $('.active')
+            .removeClass('active')
+            .addClass('flipped')
+            .next('.page')
+            .addClass('active')
+            .siblings();
+    }
+    $('#form-page-one').click(function(ev) {
+            $option.fadeOut(100);
+            ev.preventDefault();
+            ev.stopPropagation();
+    })
+    $('#form-page-two').click(function(ev) {
+            $option.fadeOut(100);
+            ev.preventDefault();
+            ev.stopPropagation();
+        
+    })
+    $('.zl-first-book').click(function () {
+
+        if ($('.zl-first-book').hasClass('active')) {
+            flag = 0;
+            $('#form-page-two').show()
+            $('#form-page-one').show()
+            $('.scene').css({
+                margin: '0% 5% 5% 50%'
+            })
+            console.log($('#form-page-one .form-body').get(0).clientHeight)
+            $($('#form-page-two .form-body').get(0)).css({
+                height:$('#form-page-one .form-body').get(0).clientHeight 
+            })
+            console.log($('#form-page-two .form-body').get(0).clientHeight)
+
+        } else {
+            if ($('.zl-second-book').hasClass('active') && $('.zl-first-book').hasClass('flipped')) {
+                $('.scene').css({
+                margin: '0% 20% 5% 27%'
+            })
+            }
+        }
+    })
+
+
+})();
 })
+
