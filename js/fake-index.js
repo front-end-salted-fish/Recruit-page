@@ -10,7 +10,9 @@ import 'jquery-hammerjs'
 // require('./jquery.hammer.min.js')
 // const hammer = require('./jquery.hammer.min.js')
 import bannerImg1 from '../img/front-end/轮播图.jpg'
-import bannerImg2 from '../img/android/轮播图.jpg'
+// import bannerImg2 from '../img/android/轮播图.jpg'
+// import bannerImg2 from '../img/android/timg-(1).jpg'
+import bannerImg2 from '../img/android/rain.jpeg'
 import bannerImg3 from '../img/back-stage/轮播图.png'
 import bannerImg4 from '../img/ios/轮播图.jpeg'
 import bannerImg5 from '../img/machine-learning/轮播图.jpg'
@@ -302,6 +304,11 @@ $(function() {
         //     },800);
         // });
     })
+    // $detailToFormBtn.on('click', function() {
+    //     $(this).css({
+            
+    //     })
+    // })
 })();
 //backstage
 (() => {
@@ -864,18 +871,13 @@ $(function() {
     const $idea = $('[name=idea]');
     // const $triggerBtn = $('.fui_trigger-btn'); // 单选框按钮
     const $triggerBtn = $('.fui_combo'); // 单选框按钮
-    const $button = $("#btn");
-    $button.on('click', function(event) {
-        console.log($('#form-page-one .form-body').get(0).clientHeight)
-
-        $formPages.show();
-        $formPages.css({
-            "z-index": 100
-        });
-        event.stopPropagation()
-    })
-    
-    let formData = {
+    const $button = $("#btn"); // 轮播图前往表单的按钮
+    const $backBtn = $('#form-page .zl-form-page-close-btn') //返回轮播图的按钮
+    const $bannerContainer = $('#banner-container') //获取轮播图界面
+    const $detailToFormBtns = $('.c-btn'); //获取详情页前往表单的按钮
+    let backBannerFlag = true // 标记此时默认是从轮播图的按钮进入表单界面的
+     // 初始化表单数据
+     let formData = {
         username: '',
         studentId: '',
         gradeProfessional: '',
@@ -887,6 +889,27 @@ $(function() {
         skills: '',
         idea: ''
     };
+    // 给轮播图前往表单的按钮绑定单击响应函数
+    $button.on('click', function(event) {
+        backBannerFlag = true;
+        $formPages.show();
+        $formPages.css({
+            "z-index": 100,
+        });
+        event.stopPropagation()
+    })
+    // 给返回轮播图/详情页按钮绑定单击响应函数
+    $backBtn.on('click', function () {
+            $formPages.hide(1000);
+            $formPages.css({
+                "z-index": 0
+            });
+        if (backBannerFlag) {
+            $bannerContainer.show();
+        }
+       
+    })
+   
     // 使用事件委托监听输入框的失去焦点事件
     $formPages.on('blur', 'input', function (ev) {
         let match = $(ev.target).attr('name');
@@ -961,13 +984,22 @@ $(function() {
     })
     // 给单选框按钮绑定点击函数
     $triggerBtn.on('click', function (ev) {
-        // $option.toggle(100);
         $option.slideToggle(100);
         ev.stopPropagation()
     })
+    // 下拉框
     $option.on('click', function (ev) {
         $direction.val($(ev.target).text());
         formData.direction = $(ev.target).text();
+    })
+    // 给详情页前往表单的多个按钮绑定单击响应事件
+    $detailToFormBtns.on('click', function() {
+        backBannerFlag = false; //代表此时是从详情页进入表单的
+        $formPages.show();
+        $formPages.css({
+            "z-index": 100,
+        });
+        event.stopPropagation()
     })
     // $submit.on('click', function () {
     //     console.log(formData)

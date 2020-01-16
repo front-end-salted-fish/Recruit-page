@@ -21,24 +21,8 @@
     const $idea = $('[name=idea]');
     // const $triggerBtn = $('.fui_trigger-btn'); // 单选框按钮
     const $triggerBtn = $('.fui_combo'); // 单选框按钮
-    
-    var particles = new Particles('#btn');
-    $("#btn").click(function() {
-        // Disintegrate the button into particles
-        //启动粒子特效
-        particles.disintegrate();
-    
-        // would do the opposite
-        //设置四秒后恢复
-        setTimeout(function() {
-            particles.integrate();
-        }, 4000);
-    })
-
-    
-    // $(".Btn").on('click', function() {
-    // particles.integrate(); 
-    // })
+    const $backBtn = $('#form-page .zl-form-page-close-btn') //返回轮播图的按钮
+  
     let formData = {
         username: '',
         studentId: '',
@@ -121,6 +105,10 @@
     $preStep.on('click', function () {
         $formPageOne.fadeIn();
         $formPageTwo.hide();
+    })
+    // 给返回轮播图按钮绑定单击响应函数
+    $backBtn.on('click', function () {
+        
     })
     // 给单选框按钮绑定点击函数
     $triggerBtn.on('click', function (ev) {
