@@ -1,11 +1,21 @@
+import $ from 'jquery'
+import '../src/css/reset.css'
+import '../css/index.less'
+import luxy from '../src/js/luxy.js'
+import  'prefixfree'
+// import hammer from './jquery.hammer.min'
+// import from ''
+// require('./prefixfree.min.js')
+import 'jquery-hammerjs'
+// require('./jquery.hammer.min.js')
+// const hammer = require('./jquery.hammer.min.js')
+import bannerImg1 from '../img/front-end/轮播图.jpg'
+import bannerImg2 from '../img/android/轮播图.jpg'
+import bannerImg3 from '../img/back-stage/轮播图.png'
+import bannerImg4 from '../img/ios/轮播图.jpeg'
+import bannerImg5 from '../img/machine-learning/轮播图.jpg'
+
 $(function() {
-    $(document).ready(function () {
-        // luxy.init({
-        //       wrapper: '#machine-learning',
-        //       targets: '.luxy',
-        //       wrapperSpeed: 0.08
-        //   });
-      })
     //幕布函数
 	let $bar = $(".bar");
 	let $bars = $(".bars");
@@ -80,8 +90,8 @@ $(function() {
 	// 换页函数
 	function showPage(index) {
 		// 更新目前展示
-		detailIndex = index;
-		checkPage();
+		detailIndex = (index === 5) ? 0 : (index === -1) ? 4 : index;
+		// checkPage();
 		var p = new Promise(function (resolve, reject) {
 			setTimeout(function () {
 				// 让某一页展示
@@ -93,26 +103,26 @@ $(function() {
 		return p;
 	}
 
-	// 检查第一页或者最后一页的按钮显示/隐藏
-	function checkPage(){
-		switch(detailIndex) {
-			// 如果是第一张隐藏向上翻页按钮
-			case 0 :{
-				$($preBtn).css("display", "none");
-				$($nextBtn).css("display", "block");
-			};break;
-			// 如果是最后一张隐藏向下翻页按钮
-			case 4 :{
-				$($preBtn).css("display", "block");
-				$($nextBtn).css("display", "none");
-			};break;
-			// 否则都显示
-			default:{
-				$($preBtn).css("display", "block");
-				$($nextBtn).css("display", "block");
-			}
-		}
-    }
+	// // 检查第一页或者最后一页的按钮显示/隐藏
+	// function checkPage(){
+	// 	switch(detailIndex) {
+	// 		// 如果是第一张隐藏向上翻页按钮
+	// 		case 0 :{
+	// 			$($preBtn).css("display", "none");
+	// 			$($nextBtn).css("display", "block");
+	// 		};break;
+	// 		// 如果是最后一张隐藏向下翻页按钮
+	// 		case 4 :{
+	// 			$($preBtn).css("display", "block");
+	// 			$($nextBtn).css("display", "none");
+	// 		};break;
+	// 		// 否则都显示
+	// 		default:{
+	// 			$($preBtn).css("display", "block");
+	// 			$($nextBtn).css("display", "block");
+	// 		}
+	// 	}
+    // }
     
     /**
      * @description: 文字排版及出现效果批量处理函数，换行处用"@"分开
@@ -143,12 +153,13 @@ $(function() {
         * @return: 
         */    
        function pMoveAnimate(obj, dir){
-           if((obj.hasClass("hasUp") && dir === "up") || (obj.hasClass("hasDown") && dir === "down"))
+           if((obj.hasClass("hasUp") && dir === "up") || (obj.hasClass("hasDown") && dir === "down"))   // 防止多余调用
            return ;
 
-           let children = obj.children(".move-details-rows");
+           let children = obj.children(".move-details-rows");   // 获取每行字
            children.stop(true, true);
            if(dir === "up") {
+            //  文字出现
             children.each((index, item) => {
                 $(item).delay(40 * index).animate({
                     opacity: 1
@@ -163,35 +174,8 @@ $(function() {
                 opacity: 0,
                 transform: "translateY(100px)"
             })
-            // children.each((index, item) => {
-            //     $(item).delay(40 * (children.length - index)).animate({
-            //     }, 1, function(){
-            //         $(item).css({
-            //         })
-            //     })
-            // })
            }
            obj.toggleClass("hasUp hasDown");
-        //    clearInterval(obj["txtTimer"]);
-        //    let className = "txtHasUp";
-        //    let children = obj.children(".move-details-rows");
-           
-        //    if(dir === "down") {
-        //        children.removeClass().addClass("move-details-rows txtHasDown");
-        //        obj.toggleClass("hasUp hasDown");
-        //        return ;
-        //    }
-        //    let i = 0;
-        //    (function(obj){
-        //        obj["txtTimer"] = setInterval(function(){
-        //            $(children[i++]).removeClass().addClass("move-details-rows " + className);
-        //            if(i === children.length) {
-        //                clearInterval(obj["txtTimer"]);
-        //                obj["hasFinished"] = true;
-        //            }
-        //        }, 100);
-        //    })(obj);
-        //    obj.toggleClass("hasUp hasDown");
        }
 
 	// 切换幕布
@@ -268,7 +252,7 @@ $(function() {
     const $android = $('#android');
     const $fontBg = $('.font-bg');
     const $persOne = $('.pers-one');
-    const $close = $('.zl-close');
+    const $close = $('.rj-detail-page-close-btn');
     // 监听滚动条事件
     $android.on('scroll', function () {
         let scale = this.scrollTop / $persOne.get(0).clientHeight - 1;
@@ -339,13 +323,37 @@ $(function() {
     // index: 			0  	1  	 2   3    4
     // 对应部门: 	    前端 安卓 后台 IOS 机器学习
 
+        /*  
+     * @desc 轮播图节流 时间戳版本
+     * @param func 函数
+     * @param index 跳转页面index
+     * @param wait 延迟执行毫秒数
+     */
+    // 共享previous
+    let previous = 0;
+    function throttleBanner(func, index, wait) {
+        console.log(func);
+        let now = Date.now();
+        var p = new Promise(function (resolve, reject) {
+          if (now - previous > wait) {
+            func.call(banner, index); // 调用换页函数
+            // clearInterval(rjBanner.timer);	// 停止轮播
+            banner.stopBanner();	// 停止轮播
+            previous = now;
+            resolve();
+          }
+        });
+        return p;
+    }
+
     // 轮播图对象
     let banner = {
         playIndex: 0,   // 正在播放的页index值
         bannerTimer: undefined, // 定时器
         bannerTime: 6000, // 轮播时间
+        canChangePage: false,
         // 存放每一张轮播图的url的数组
-        bannerImgScr: ["img/front-end/轮播图.jpg", "img/android/轮播图.jpg", "img/back-stage/轮播图.png", "img/ios/轮播图.jpeg", "img/machine-learning/轮播图.jpg"],
+        bannerImgScr: [bannerImg1, bannerImg2, bannerImg3, bannerImg4, bannerImg5],
         // 部门名字数组
         bannerFontUp: ["前端","安卓","后台","IOS","机器学习"],
         // 部门标签数组
@@ -361,6 +369,7 @@ $(function() {
             this.setBackground(); // 设置第一个背景颜色
             this.setBtn();  // 设置第一个按钮颜色
             this.goBanner();    // 启动轮播图
+            previous = Date.now();
         },
         // 按钮高亮
         setBtn() {
@@ -455,28 +464,7 @@ $(function() {
         }
     }
     banner.init();
-    /*  
-     * @desc 轮播图节流 时间戳版本
-     * @param func 函数
-     * @param index 跳转页面index
-     * @param wait 延迟执行毫秒数
-     */
-    // 共享previous
-    let previous = 0;
-    function throttleBanner(func, index, wait) {
-        console.log(func);
-        let now = Date.now();
-        var p = new Promise(function (resolve, reject) {
-          if (now - previous > wait) {
-            func.call(banner, index); // 调用换页函数
-            // clearInterval(rjBanner.timer);	// 停止轮播
-            banner.stopBanner();	// 停止轮播
-            previous = now;
-            resolve();
-          }
-        });
-        return p;
-    }
+
 
     // 点击按钮跳转翻页
     $(".banner-btns").on("click", ".bg-span", (event) => {
@@ -505,137 +493,7 @@ $(function() {
 
 })();
 
-// 表单模块
-!(() => {
-    // 获取表单元素
-    const $formPages = $('#form-page');
-    const $formPageOne = $('#form-page-one');
-    const $formPageTwo = $('#form-page-two');
-    const $username = $('[name=username]');
-    const $studentId = $('[name=student-id]');
-    const $gradeProfessional = $('[name=grade-professional]');
-    const $radio = $('.x-radio');
-    const $nextStep = $('.next-step'); // 下一步按钮
-    const $submit = $('.submit'); // 提交按钮
-    const $preStep = $('.pre-step'); // 上一步按钮
-    const $number = $('[name=number]');
-    const $email = $('[name=email]');
-    const $introduction = $('[name=introduction]');
-    const $direction = $('[name=direction]');
-    const $option = $('.x-dropdown'); // 获取下拉框
-    const $options = $('.x-dropdown-item'); // 获取下拉框的值
-    const $skills = $('[name=skills]');
-    const $idea = $('[name=idea]');
-    // const $triggerBtn = $('.fui_trigger-btn'); // 单选框按钮
-    const $triggerBtn = $('.fui_combo'); // 单选框按钮
-    const $button = $("#btn");
-    $button.on('click', function(event) {
-        $formPages.show();
-        $formPages.css({
-            "z-index": 100
-        });
-        event.stopPropagation()
-    })
-    
-    let formData = {
-        username: '',
-        studentId: '',
-        gradeProfessional: '',
-        sex: '',
-        number: '',
-        email: '',
-        introduction: '',
-        direction: '',
-        skills: '',
-        idea: ''
-    };
-    // 使用事件委托监听输入框的失去焦点事件
-    $formPages.on('blur', 'input', function (ev) {
-        let match = $(ev.target).attr('name');
-        let value = $(ev.target).val();
-        switch (match) {
-            case "username":
-                formData.username = value;
-                break;
-            case "student-id":
-                formData.studentId = value;
-                break;
-            case "grade-professional":
-                formData.gradeProfessional = value;
-                break;
-            case "username":
-                formData.sex = value;
-                break;
-            case "number":
-                formData.number = value;
-                break;
-            case "email":
-                formData.email = value;
-                break;
-            default:
-                break;
 
-        }
-
-    })
-    // 使用事件委托监听文本域的失去焦点事件
-    $formPages.on('blur', 'textarea', function (ev) {
-        let match = $(ev.target).attr('name');
-        let value = $(ev.target).val();
-        switch (match) {
-            case "introduction":
-                formData.introduction = value;
-                break;
-            case "idea":
-                formData.idea = value;
-                break;
-            case "skills":
-                formData.skills = value;
-                break;
-            default:
-                break;
-
-        }
-        console.log(formData)
-
-    })
-    // 给表单绑定单击函数，使下拉框消失
-    $formPages.on('click', function (ev) {
-        $option.fadeOut(100);
-    })
-    // 给性别单选按钮绑定单击响应函数
-    $radio.on('click', function (ev) {
-        let sex = $(this).attr('value');
-        $(this).children()[0].style.background = '#07190e80';
-        $(this).first().siblings().children()[0].style.background = '#fff';
-        formData.sex = sex;
-    })
-    // 给下一步按钮按钮绑定单击响应函数
-    $nextStep.on('click', function () {
-        $formPageOne.hide();
-        $formPageTwo.fadeIn();
-    })
-    // 给上一步按钮按钮绑定单击响应函数
-    $preStep.on('click', function () {
-        $formPageOne.fadeIn();
-        $formPageTwo.hide();
-    })
-    // 给单选框按钮绑定点击函数
-    $triggerBtn.on('click', function (ev) {
-        // $option.toggle(100);
-        $option.slideToggle(100);
-        ev.stopPropagation()
-    })
-    $option.on('click', function (ev) {
-        $direction.val($(ev.target).text());
-        formData.direction = $(ev.target).text();
-    })
-    // $submit.on('click', function () {
-    //     console.log(formData)
-    // })
-
-
-})();
 
 //front-end
 !(() => {
@@ -738,7 +596,6 @@ $(function() {
 
 // 机器学习
 (() => {
-    
     luxy.init({
         wrapper: '#rj-luxy-wrapper',
         targets: '.rj-luxy',
@@ -983,4 +840,197 @@ $(function() {
 
 })();
 
+// 表单模块
+!(() => {
+    // 获取表单元素
+    const $formPages = $('#form-page');
+    const $formPageOne = $('#form-page-one');
+    const $formPageTwo = $('#form-page-two');
+    const $pages = $('#form-page .page')
+    const $username = $('[name=username]');
+    const $studentId = $('[name=student-id]');
+    const $gradeProfessional = $('[name=grade-professional]');
+    const $radio = $('.x-radio');
+    const $nextStep = $('.next-step'); // 下一步按钮
+    const $submit = $('.submit'); // 提交按钮
+    const $preStep = $('.pre-step'); // 上一步按钮
+    const $number = $('[name=number]');
+    const $email = $('[name=email]');
+    const $introduction = $('[name=introduction]');
+    const $direction = $('[name=direction]');
+    const $option = $('.x-dropdown'); // 获取下拉框
+    const $options = $('.x-dropdown-item'); // 获取下拉框的值
+    const $skills = $('[name=skills]');
+    const $idea = $('[name=idea]');
+    // const $triggerBtn = $('.fui_trigger-btn'); // 单选框按钮
+    const $triggerBtn = $('.fui_combo'); // 单选框按钮
+    const $button = $("#btn");
+    $button.on('click', function(event) {
+        console.log($('#form-page-one .form-body').get(0).clientHeight)
+
+        $formPages.show();
+        $formPages.css({
+            "z-index": 100
+        });
+        event.stopPropagation()
+    })
+    
+    let formData = {
+        username: '',
+        studentId: '',
+        gradeProfessional: '',
+        sex: '',
+        number: '',
+        email: '',
+        introduction: '',
+        direction: '',
+        skills: '',
+        idea: ''
+    };
+    // 使用事件委托监听输入框的失去焦点事件
+    $formPages.on('blur', 'input', function (ev) {
+        let match = $(ev.target).attr('name');
+        let value = $(ev.target).val();
+        switch (match) {
+            case "username":
+                formData.username = value;
+                break;
+            case "student-id":
+                formData.studentId = value;
+                break;
+            case "grade-professional":
+                formData.gradeProfessional = value;
+                break;
+            case "username":
+                formData.sex = value;
+                break;
+            case "number":
+                formData.number = value;
+                break;
+            case "email":
+                formData.email = value;
+                break;
+            default:
+                break;
+
+        }
+
+    })
+    // 使用事件委托监听文本域的失去焦点事件
+    $formPages.on('blur', 'textarea', function (ev) {
+        let match = $(ev.target).attr('name');
+        let value = $(ev.target).val();
+        switch (match) {
+            case "introduction":
+                formData.introduction = value;
+                break;
+            case "idea":
+                formData.idea = value;
+                break;
+            case "skills":
+                formData.skills = value;
+                break;
+            default:
+                break;
+
+        }
+        console.log(formData)
+
+    })
+   
+    // 给表单绑定单击函数，使下拉框消失
+    $(document).on('click', function (ev) {
+        $option.fadeOut(100);
+    })
+    // 给性别单选按钮绑定单击响应函数
+    $radio.on('click', function (ev) {
+        let sex = $(this).attr('value');
+        $(this).children()[0].style.background = '#ae8e74';
+        $(this).first().siblings().children()[0].style.background = '#fff';
+        formData.sex = sex;
+    })
+    // 给下一步按钮按钮绑定单击响应函数
+    $nextStep.on('click', function () {
+        $formPageOne.hide();
+        $formPageTwo.fadeIn();
+    })
+    // 给上一步按钮按钮绑定单击响应函数
+    $preStep.on('click', function () {
+        $formPageOne.fadeIn();
+        $formPageTwo.hide();
+    })
+    // 给单选框按钮绑定点击函数
+    $triggerBtn.on('click', function (ev) {
+        // $option.toggle(100);
+        $option.slideToggle(100);
+        ev.stopPropagation()
+    })
+    $option.on('click', function (ev) {
+        $direction.val($(ev.target).text());
+        formData.direction = $(ev.target).text();
+    })
+    // $submit.on('click', function () {
+    //     console.log(formData)
+    // })
+
+    var flag = 0;
+    $('.book')
+        .on('click', '.active', nextPage)
+        .on('click', '.flipped', prevPage);
+    $('.book').hammer().on("swipeleft", nextPage);
+    $('.book').hammer().on("swiperight", prevPage);
+    function prevPage() {
+        $('.flipped')
+            .last()
+            .removeClass('flipped')
+            .addClass('active')
+            .siblings('.page')
+            .removeClass('active');
+    }
+    function nextPage() {
+        $('.active')
+            .removeClass('active')
+            .addClass('flipped')
+            .next('.page')
+            .addClass('active')
+            .siblings();
+    }
+    $('#form-page-one').click(function(ev) {
+            $option.fadeOut(100);
+            ev.preventDefault();
+            ev.stopPropagation();
+    })
+    $('#form-page-two').click(function(ev) {
+            $option.fadeOut(100);
+            ev.preventDefault();
+            ev.stopPropagation();
+        
+    })
+    $('.zl-first-book').click(function () {
+
+        if ($('.zl-first-book').hasClass('active')) {
+            flag = 0;
+            $('#form-page-two').show()
+            $('#form-page-one').show()
+            $('.scene').css({
+                margin: '0% 5% 5% 50%'
+            })
+            console.log($('#form-page-one .form-body').get(0).clientHeight)
+            $($('#form-page-two .form-body').get(0)).css({
+                height:$('#form-page-one .form-body').get(0).clientHeight 
+            })
+            console.log($('#form-page-two .form-body').get(0).clientHeight)
+
+        } else {
+            if ($('.zl-second-book').hasClass('active') && $('.zl-first-book').hasClass('flipped')) {
+                $('.scene').css({
+                margin: '0% 20% 5% 27%'
+            })
+            }
+        }
+    })
+
+
+})();
 })
+

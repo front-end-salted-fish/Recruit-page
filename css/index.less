@@ -2,7 +2,27 @@ body,
 html {
   width: 100%;
   background-color: black;
-  min-width: 9;
+  // min-width: 9;
+  height: 100vh;
+  overflow: hidden;
+}
+
+// iconfont 字体图标的引用
+@font-face {
+  font-family: 'iconfont';  /* project id 1613212 */
+  src: url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.eot');
+  src: url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1613212_yhm0u71wyd9.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #loading-module {
@@ -642,10 +662,88 @@ html {
 }
 
 // 机器学习
+img {
+  user-select: none;
+}
 // 图片倾斜
 .skewImg {
   opacity: 0 !important;
   transform: scale(0.8) skew(9deg, 11deg) translateY(100px) !important;
+}
+// 详情页的回退按钮
+#detail-pages {
+  .rj-detail-page-close-btn {
+    overflow: hidden;
+    display: block;
+    user-select: none;
+    z-index: 6;
+    position: absolute;
+    right:1vw;
+    top:1vw;
+    cursor: pointer;
+    mix-blend-mode: difference;
+    padding: 0 2rem;
+    i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(50%, -45%);
+      color: white;
+      width: 100%;
+      font-size: 3vw;
+      text-align: center;
+      opacity: 0;
+      transition: all 0.5s 0.05s;
+    }
+    span {
+      padding: 0 0.5px;
+      transition: all .35s;
+      line-height: 45px;
+      font-size: 1.3vw;
+      color: white;
+      opacity: 1;
+      display: inline-block;
+      letter-spacing: 1px;
+      transition: all .5s;
+      transform: translate(0);
+      &:nth-child(1) {
+        transition-delay: .25s;
+      }
+      &:nth-child(2) {
+        transition-delay: .2s;
+      }
+      &:nth-child(3) {
+        transition-delay: .15s;
+      }
+      &:nth-child(4) {
+        transition-delay: .1s;
+      }
+    }
+    &:hover {
+      i {
+        opacity: 1;
+        transform: translate(-50%, -45%);
+        transition-delay: .25s;
+      }
+      span {
+        opacity: 0;
+        transform: translate(-6vw);
+        &:nth-child(1) {
+          transition-delay: .05s;
+        }
+        &:nth-child(2) {
+          transition-delay: .1s;
+        }
+        &:nth-child(3) {
+          transition-delay: .15s;
+        }
+        &:nth-child(4) {
+          transition-delay: .2s;
+        }
+
+      }
+    }
+  }
 }
 #machine-learning {
   ::selection {
@@ -779,21 +877,6 @@ html {
 }
 
 // 详情页svg样式
-#detail-pages  {
-  .zl-close {
-    position: absolute;
-    z-index: 6;
-    left: 95%;
-    top: 5%;
-    cursor: pointer;
-    i {
-      font-size: 44px;
-      &:hover {
-        color: white;
-      }
-    }
-  }
-}
 #detail-pages,
 #banner-container {
   position: relative;
@@ -1032,7 +1115,9 @@ html {
     .fx_external_form {
       width: 100%;
       height: 100%;
-      background-color: #F4F9F9;
+      // background-color: #F4F9F9;
+      background: url(../img/form/flower.jpeg);
+      background: url(../img/form/milu.jpeg);
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
@@ -1046,8 +1131,8 @@ html {
         // width: 780px;
         margin: 0 auto;
         // background: #FFF;
-        -webkit-box-shadow: 0 2px 9px 0 rgba(167, 167, 167, .5);
-        box-shadow: 0 2px 9px 0 rgba(167, 167, 167, .5);
+        // -webkit-box-shadow: 0 2px 9px 0 rgba(167, 167, 167, .5);
+        // box-shadow: 0 2px 9px 0 rgba(167, 167, 167, .5);
         // height: 100%;
         .form-body {
           // height: 50vh;
@@ -1182,7 +1267,8 @@ html {
                 .x-input:focus,
                 select:focus,
                 textarea:focus {
-                  border-color: #0DB3A6;
+                  border-color: #a4856d;
+                  // border-width: 2px;
                 }
 
                 .x-check.horizontal:not(:last-child),
@@ -1241,7 +1327,7 @@ html {
                 textarea {
                   width: 100%;
                   height: 100%;
-                  border: 1px solid rgb(224, 224, 224);
+                  border: 1px solid #c1c1b4;
                   text-indent: 0.5em;
 
                 }
@@ -1292,9 +1378,9 @@ html {
                         right: 0;
                         width: 30px;
                         height: 100%;
-                        border-top: solid 1px transparent;
-                        border-bottom: solid 1px transparent;
-                        border-left: solid 1px #e0e0e0;
+                        // border-top: solid 1px transparent;
+                        // border-bottom: solid 1px transparent;
+                        border: solid 1px #c1c1b4;
                         display: inline-block;
                         color: #0DB3A6;
                         text-align: center;
@@ -1305,7 +1391,7 @@ html {
                           display: inline-block;
                           border-width: 5px;
                           border-style: solid;
-                          border-color: #222 transparent transparent transparent;
+                          border-color: #a4856d transparent transparent transparent;
                         }
                       }
 
@@ -1338,12 +1424,13 @@ html {
                         max-height: 200px;
                         padding: 5px 0;
                         overflow: auto;
+                        background: #c8a68e2e;
 
                         .x-dropdown-item {
                           overflow: hidden;
                           text-overflow: ellipsis;
                           white-space: nowrap;
-                          color: #333;
+                          color: #aa8d78;
                           padding: 0 4px;
                           display: block;
                           height: 30px;
@@ -1375,7 +1462,7 @@ html {
         .form-foot {
           border-top: solid 1px #DEDEDE;
           height: 60px;
-          background: #fff;
+          // background: #fff;
           display: -webkit-box;
           display: -ms-flexbox;
           display: -webkit-flex;
@@ -1416,6 +1503,100 @@ html {
       }
     }
   }
+  // 书本翻页效果 
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #a4856d;
+  margin: 4% 0 6% 0;
+}
+
+.scene {
+  width: 45%;
+  height: 99%;
+  margin: 0% 20% 5% 27%;
+  perspective: 1000px;
+  transition: margin 1s;
+}
+
+/* 5% 5% 5% 50%; */
+.book {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+  box-shadow: 1px 1px 30px #a4856d;
+}
+
+.page {
+  cursor: pointer;
+  position: absolute;
+  color: black;
+  width: 100%;
+  height: 100%;
+
+  transition: 1.5s transform;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  p {
+    font-size: 16px;
+    margin-bottom: 37px;
+  }
+}
+.zl-first-book .front {
+  background: url(../img/form/invitecard.png) 50%;
+  background-size: cover;
+}
+.zl-second-book {
+  cursor: default;
+}
+.front,
+.back {
+  position: absolute;
+  
+  width: 100%;
+  height: 100%;
+  padding: 2% 0% 0%;;
+  box-sizing: border-box;
+
+  backface-visibility: hidden;
+  background: -webkit-gradient(linear, 0% 0%, 100% 100%, from(#FFFFFF), to(#CCCCCC));
+  background: linear-gradient(to bottom right, #fff, #ccc);
+  
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.page.active {
+  z-index: 1;
+}
+
+.page.flipped {
+  transform: rotateY(-180deg);
+}
+
+.page.flipped:last-of-type {
+  z-index: 1;
+}
+
+p {
+  margin: 0 0 0.1em;
+  text-indent: 1em;
+}
+
+.qr {
+  margin: 50px auto;
+  max-width: 50%;
+}
+
+.qr img {
+  display: block;
+}
+
 }
 
 
@@ -1639,16 +1820,17 @@ html {
           width:100%;
           -webkit-text-stroke-color: white;
           -webkit-text-stroke-width: .1vw;
+          font-weight: lighter;
         }
         .banner-center-up {
-          font-size: 7vw;
+          font-size: 6.5vw;
         }
         .banner-center-down {
           font-size: 3vw;
         }
         .banner-center-line {
           width: 29vw;
-          height: 1vh;
+          height: 0.4rem;
           background-color: white;
           border: .1vw solid white;
           margin-top: 1.5vw;
@@ -1925,95 +2107,6 @@ html {
   }
 }
 
-// 书本翻页效果 
-
-h1 {
-  text-align: center;
-}
-
-.scene {
-  width: 45%;
-  height: 90%;
-  margin: 0% 20% 5% 27%;
-  perspective: 1000px;
-  transition: margin 1s;
-}
-
-/* 5% 5% 5% 50%; */
-.book {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  transform-style: preserve-3d;
-}
-
-// .page {
-//   cursor: pointer;
-//   position: absolute;
-//   color: black;
-//   width: 100%;
-//   height: 100%;
-
-//   transition: 1.5s transform;
-//   transform-style: preserve-3d;
-//   transform-origin: left center;
-//   p {
-//     font-size: 16px;
-//     margin-bottom: 37px;
-//   }
-// }
-.zl-first-book .front {
-  background: url(http://127.0.0.1:5500/css/../img/form/未命名\ 的副本.png) 50%;
-  background-size: cover;
-}
-.zl-second-book {
-  cursor: default;
-}
-.front,
-.back {
-  position: absolute;
-
-  width: 100%;
-  height: 100%;
-  padding: 10% 5% 5%;
-  box-sizing: border-box;
-
-  backface-visibility: hidden;
-  background: -webkit-gradient(linear, 0% 0%, 100% 100%, from(#FFFFFF), to(#CCCCCC));
-  background: linear-gradient(to bottom right, #fff, #ccc);
-  
-}
-
-.back {
-  transform: rotateY(180deg);
-}
-
-.page.active {
-  z-index: 1;
-}
-
-.page.flipped {
-  transform: rotateY(-180deg);
-}
-
-.page.flipped:last-of-type {
-  z-index: 1;
-}
-
-p {
-  margin: 0 0 0.1em;
-  text-indent: 1em;
-}
-
-.qr {
-  margin: 50px auto;
-  max-width: 50%;
-}
-
-.qr img {
-  display: block;
-}
 
 
 /* iPads (portrait) ----------- */
