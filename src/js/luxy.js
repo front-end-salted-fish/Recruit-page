@@ -101,7 +101,7 @@
 					return false;
 				}
 				this.targets = document.querySelectorAll(this.settings.targets);	// 获取视差DOM
-				this.wrapper.style.height = this.wrapper.clientHeight + 'px';			// 设置固定高度
+				this.wrapper.style.height = 0 + 'px';			// 设置固定高度
 
 				this.windowHeight = window.clientHeight;		// 窗口高度
 				this.attachEvent();
