@@ -276,6 +276,7 @@ $(function () {
                     // 让某一页展示
                     $("#detail-pages").hide();
                     $("#banner-container").show();
+                    banner.goBanner();
                     resolve("true");
                 }, 800);
             });
@@ -387,7 +388,7 @@ $(function () {
             }
         })
     })();
-
+    let banner;
     // 轮播图
     (() => {
         let $btns = $(".banner-btn span");  // 获取轮播图索引按钮
@@ -396,19 +397,17 @@ $(function () {
         let $bannerImgs = $("#banner .outer-mask img"); // 获取每一页轮播图的img
         let $bannerFontUp = $(".banner-center-up");     // 部门字体
         let $bannerFontDown = $(".banner-center-down"); // 部门标签小字体
-
         let $nextBannerBtn = $("#banner-container .next-btn"); // 下一页按钮
         let $preBannerBtn = $("#banner-container .pre-btn"); // 上一页按钮
-
         // index: 			0  	1  	 2   3    4
         // 对应部门: 	    前端 安卓 后台 IOS 机器学习
 
         /*  
-     * @desc 轮播图节流 时间戳版本
-     * @param func 函数
-     * @param index 跳转页面index
-     * @param wait 延迟执行毫秒数
-     */
+        * @desc 轮播图节流 时间戳版本
+        * @param func 函数
+        * @param index 跳转页面index
+        * @param wait 延迟执行毫秒数
+        */
         // 共享previous
         let previous = 0;
         function throttleBanner(func, index, wait) {
@@ -432,6 +431,8 @@ $(function () {
             bannerTimer: undefined, // 定时器
             bannerTime: 6000, // 轮播时间
             canChangePage: false,
+            isMoving: false,        // 是否正在动画中
+            moveCnt: 0,             // transition计数器
             // 存放每一张轮播图的url的数组
             bannerImgScr: [bannerImg1, bannerImg2, bannerImg3, bannerImg4, bannerImg5],
             // 部门名字数组
@@ -448,7 +449,7 @@ $(function () {
                 this.preSetSrc("mid-page", 0); // 给中间页加载前端(第一个)板块
                 this.setBackground(); // 设置第一个背景颜色
                 this.setBtn();  // 设置第一个按钮颜色
-                this.goBanner();    // 启动轮播图
+                // this.goBanner();    // 启动轮播图
                 previous = Date.now();
             },
             // 按钮高亮
@@ -475,6 +476,7 @@ $(function () {
             goBanner() {
                 this.bannerTimer = setInterval(() => {
                     banner.nextBannerPage(banner.playIndex + 1);
+                    banner.isMoving = true;
                 }, this.bannerTime);
             },
             // 停止轮播图
@@ -544,13 +546,22 @@ $(function () {
             }
         }
         banner.init();
-
+        $('.inner-mask img').on('webkitTransitionEnd',function(){
+            // console.log(banner.moveCnt);
+            banner.moveCnt = (banner.moveCnt + 1) % 6;
+            if(banner.moveCnt === 0) {
+                banner.isMoving = false;
+                // console.log("动画完成");
+            }
+        })
 
         // 点击按钮跳转翻页
         $(".banner-btns").on("click", ".bg-span", (event) => {
+            if(banner.isMoving) return;
             let e = event || window.event;
             let t = e.target;
             let index = $(t).parent(".banner-btn").index();      // 获取按钮位序
+            if(index === banner.playIndex) return ;
             banner.stopBanner(); // 停止轮播
             if (index > banner.playIndex) {
                 banner.throttlePage(index, "next");
@@ -560,15 +571,18 @@ $(function () {
         });
         // 上下翻页
         $nextBannerBtn.on("click", () => {
+            if(banner.isMoving) return;
             banner.throttlePage(banner.playIndex + 1, "next");
         });
         $preBannerBtn.on("click", () => {
+            if(banner.isMoving) return;
             banner.throttlePage(banner.playIndex - 1, "pre");
         });
         // 通过点击跳转至详情页
         $("#banner li").on("click", ".banner-font-container", function (e) {
             let index = banner.bannerFontUp.indexOf($(e.currentTarget).find(".banner-center-up").text()); // 获取此时要进入的详情页
             banner.toDetailPage(index);
+            banner.stopBanner();
         });
 
     })();
@@ -766,22 +780,27 @@ $(function () {
         // 开机动画消失
         let loadingOut = () => {
             if (isAllLoaded && loadingtransitionEnd) {
-                console.log(1);
+                // console.log(1);
                 $('#loading-module').animate({
                     opacity: 0
                 }, 1000, () => {
                     $('#loading-module').hide();
                 });
+                banner.goBanner();
                 // rjBanner.start();
                 // $('#rj-img-pre-load').remove();
             }
         }
         // 开机动画结束
-        $($('.row-forth .move-span')[0]).on('webkitTransitionEnd', function () {
-            $($('.row-forth .move-span')[0]).off('webkitTransitionEnd');
-            loadingtransitionEnd = true;
-            loadingOut();
-            // console.log('开机动画结束!',new Date().getTime());
+        let latestSpan = $('.row-forth .move-span').eq(0);
+        let cnt = 0;
+        latestSpan.on('webkitTransitionEnd', function () {
+            cnt++;
+            if(cnt === 3) {
+                latestSpan.off('webkitTransitionEnd');
+                loadingtransitionEnd = true;
+                loadingOut();
+            }
         })
         window.onload = function () {
             isAllLoaded = true;
@@ -970,6 +989,7 @@ $(function () {
             $formPages.css({
                 "z-index": 100,
             });
+            banner.stopBanner();
             event.stopPropagation()
         })
         // 给返回轮播图/详情页按钮绑定单击响应函数
@@ -979,6 +999,7 @@ $(function () {
                 "z-index": 0
             });
             if (backBannerFlag) {
+                banner.goBanner();
                 $bannerContainer.show();
             }
 
