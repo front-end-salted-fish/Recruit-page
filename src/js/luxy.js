@@ -203,7 +203,7 @@
 		}
 	};
 	// var luxy = new Luxy();
-
+		
 	return Luxy;
 }))
 );
