@@ -440,11 +440,11 @@ $(function () {
             // 存放每一张轮播图的url的数组
             bannerImgScr: [bannerImg1, bannerImg2, bannerImg3, bannerImg4, bannerImg5],
             // 部门名字数组
-            bannerFontUp: ["前端", "安卓", "后台", "IOS", "机器学习"],
+            bannerFontUp: ["前端", "android", "后台", "iOS", "机器学习"],
             // 部门标签数组
             bannerFontDown: ["创意、前沿艺术", "技术探索、培养模式", "坚实后盾、严谨", "优雅极致、中流砥柱", "人工智能、大数据"],
             // 背景颜色数组
-            bgColors: ["#82ece4", "#113f2ef5", "rgb(15, 95, 142)", "rgb(115, 111, 110)", "rgba(244, 208, 177, 0.99)"],
+            bgColors: ["#82ece4", "#65701e", "rgb(15, 95, 142)", "rgb(115, 111, 110)", "rgba(244, 208, 177, 0.99)"],
             // 位置类名的顺序数组
             classArr: ["pre-page", "mid-page", "next-page"],
             // 初始化轮播图
@@ -463,25 +463,20 @@ $(function () {
             },
             // 按钮高亮
             setBtn() {
-                console.log("setBtn");
-                
                 $btns.removeClass("btn-play").eq(this.playIndex).addClass("btn-play");
             },
             // 设置背景颜色
             setBackground() {
-                console.log("setBackground");
                 $bannerUl.css("background-color", this.bgColors[this.playIndex]); // 设置第一个背景颜色
             },
             // 设置轮播图的class
             setPosClass() {
-                console.log("setPosClass");
                 for (let i = 0; i < $bannerPages.length; i++) {
                     $($bannerPages[i]).removeClass("pre-page mid-page next-page").addClass(this.classArr[i]);
                 }
             },
             // 清除transition类名
             clearClass() {
-                console.log("clearClass");
                 for (let i = 0; i < $bannerPages.length; i++) {
                     $($bannerPages[i]).removeClass("banner-out banner-in");
                 }
@@ -489,7 +484,6 @@ $(function () {
             // 启动录播图
             goBanner() {
                 if(this.isLeaveBanner) return ;
-                console.log("goBanner");
                 // banner.isMoving = true;
                 this.bannerTimer = setInterval(() => {
                     banner.nextBannerPage(banner.playIndex + 1);
@@ -498,21 +492,18 @@ $(function () {
             },
             // 停止轮播图
             stopBanner() {
-                console.log("stopBanner");
                 clearInterval(this.bannerTimer);
                 banner.isMoving = false;
                 banner.moveCnt =  0;             // transition计数器
             },
             // 预先设置函数：index 设置对应index的部门内容
             preSetSrc(str, index) {
-                console.log("preSetSrc");
                 $bannerImgs.eq(this.classArr.indexOf(str)).attr("src", this.bannerImgScr[index]);
                 $bannerFontUp.eq(this.classArr.indexOf(str)).text(this.bannerFontUp[index]);
                 $bannerFontDown.eq(this.classArr.indexOf(str)).text(this.bannerFontDown[index]);
             },
             // 下翻页
             nextBannerPage(index) {
-                console.log("nextBannerPage");
                 this.playIndex = (index == this.bannerImgScr.length) ? 0 : index; // 越界判断
                 this.setBackground();   // 设置背景颜色
                 this.preSetSrc("next-page", this.playIndex);    // 更新下一张轮播图的信息
@@ -526,7 +517,6 @@ $(function () {
             },
             // 上翻页
             preBannerPage(index) {
-                console.log("preBannerPage");
                 this.playIndex = (index == -1) ? this.bannerImgScr.length - 1 : index; // 越界判断
                 this.setBackground();
                 this.preSetSrc("pre-page", this.playIndex); // 更新下一张轮播图的信息
@@ -540,7 +530,6 @@ $(function () {
             },
             // 节流的翻页
             throttlePage(index, actionType) {
-                console.log("throttlePage");
                 let actionFunc;
                 if (actionType === "next") {
                     actionFunc = banner.nextBannerPage; // 下翻
@@ -555,7 +544,6 @@ $(function () {
             },
             // 跳转到详情页
             toDetailPage(index) {
-                console.log("toDetailPage");
                 this.isLeaveBanner = true;
                 banner.stopBanner();
                 curtainUp().then(() => {
@@ -608,9 +596,6 @@ $(function () {
         // 通过点击跳转至详情页
         $("#banner li").on("click", ".banner-font-container", function (e) {
             let index = banner.bannerFontUp.indexOf($(e.currentTarget).find(".banner-center-up").text()); // 获取此时要进入的详情页
-            // banner.stopBanner();
-            console.log("index", index);
-            
             banner.toDetailPage(index);
         });
 
