@@ -252,23 +252,66 @@ $(function() {
 !(() => {
     // 获取页面元素
     const $android = $('#android');
-    const $fontBg = $('.font-bg');
-    const $persOne = $('.pers-one');
+    const $fontBg = $('#android .font-bg');
+    const $persOne = $('#android .pers-one');
     const $close = $('.rj-detail-page-close-btn');
-    // 监听滚动条事件
-    $android.on('scroll', function () {
-        let scale = this.scrollTop / $persOne.get(0).clientHeight - 1;
-        if (scale > 0) {
-            $fontBg.css({
-                opacity: 1 - scale
-            });
+
+
+    luxy.init({
+        wrapper: '#zl-luxy-wrapper',
+        targets: '.zl-luxy',
+        wrapperSpeed: 0.08,
+        targetSpeed: 0.01,
+        targetPercentage: 0.1
+    });
+    // let $machineDiv = $("#machine-learning");
+    // let $headerFont = $($("#machine-learning .pers-one .font-bg")[0]);
+
+				
+    splitTxt($($(".zl-content-one")[0]), "TopView Android组专注于有创意、@有特色的主流App开发、@Android高新技术探索以及Android系统源代码的研究。","left");
+    splitTxt($($(".zl-content-two")[0]), "Android组自成立以来，@一直有大量的师兄涌入阿里、腾讯、网易等一线互联网公司。@每年各位毕业的优秀师兄都会回来分享Android的前沿技术以及发展趋势。@Android组得益于大量的优秀师兄指导，@目前已经成为广东工业大学优秀的Android开发小组之一。","left");
+    splitTxt($($(".zl-content-three")[0]), "除此之外，每年师兄师姐都会根据招新水平，@制定详细的培养计划帮助新一届的师弟师妹快速成长，成为同届中技术的佼佼者.","center");
+    // 出现图片
+    function showImg(obj) {
+        obj.removeClass("skewImg");
+    }
+    $android.on("scroll", function () {
+        $fontBg.css("opacity", (1 - $android.scrollTop() / 350));
+        console.log($android.scrollTop());
+        if ($android.scrollTop() > 183) {
+            // showImg($(".img1"));
+            pMoveAnimate($($(".zl-content-one")[0]), "up");
+        } else {
+            pMoveAnimate($($(".zl-content-one")[0]), "down");
         }
-        if(this.scrollTop ==  0) {
-            $fontBg.css({
-                opacity: 1 
-            });
+        if ($android.scrollTop() > 468) {
+            pMoveAnimate($($(".zl-content-two")[0]), "up");
+            // showImg($(".img2"));
+        } else {
+            pMoveAnimate($($(".zl-content-two")[0]), "down");
+        }
+        if ($android.scrollTop() > 682)
+            // showImg($(".img3"));
+        if ($android.scrollTop() > 730) {
+            pMoveAnimate($($(".zl-content-three")[0]), "up");
+        } else {
+            pMoveAnimate($($(".zl-content-three")[0]), "down");
         }
     })
+    // 监听滚动条事件
+    // $android.on('scroll', function () {
+    //     let scale = this.scrollTop / $persOne.get(0).clientHeight - 1;
+    //     if (scale > 0) {
+    //         $fontBg.css({
+    //             opacity: 1 - scale
+    //         });
+    //     }
+    //     if(this.scrollTop ==  0) {
+    //         $fontBg.css({
+    //             opacity: 1 
+    //         });
+    //     }
+    // })
     function close() {
 		var p = new Promise(function (resolve, reject) {
 			setTimeout(function () {

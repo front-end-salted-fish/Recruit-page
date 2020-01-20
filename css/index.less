@@ -1017,6 +1017,11 @@ img {
     // transform: translate3d(0, 0, -6px) scale(7);
     width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+      align-items: center;
+      
+
 
     .one {
       filter: blur(1px);
@@ -1025,8 +1030,6 @@ img {
     .font-bg {
       position: absolute;
       z-index: 2;
-      top: 50%;
-      left: 50%;
       width: 22vw;
       transform: translate(-50%, -50%);
     }
@@ -1038,30 +1041,44 @@ img {
 
   .pers-two {
     position: relative;
-    box-shadow: 0 -8px #2e2e2e;
     // transform: translate3d(0, 200%, -2px) scale(3);
     width: 100%;
     height: 100vh;
+    .zl-content-one {
+      p {
+        color: white;
+      }
+    }
+    .zl-content-two {
+      p {
+        color: white;
+      }
+    }
+    
 
     .describe {
       right: 3%;
       top: 10%;
       color: #9ca8ab;
       width: 33%;
-
-      .item {
-        font-size: 24px;
-        color: #9ca8ab;
-      }
+    }
+    img {
+      width: 30%;
     }
   }
 
   .pers-three {
     position: relative;
-    box-shadow: 0 -8px #383838;
     // transform: translate3d(0, 190%, 0) scale(1);
     width: 100%;
-
+    img {
+      width: 30%;
+    }
+    .zl-content-three {
+      p {
+        color: white;
+      }
+    }
     .describe {
       width: 23%;
       right: 38%;
