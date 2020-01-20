@@ -37,6 +37,7 @@ html {
 
   // 开局动画内部盒子
   #loading-box {
+    opacity: 1 !important;
     width: 32vw;
     height: 27vw;
     position: absolute;
@@ -77,7 +78,6 @@ html {
             color: #000;
             display: inline-block;
             transform: translateX(100%);
-            transition: all 1.5s;
           }
         }
       }
@@ -130,7 +130,7 @@ html {
             display: inline-block;
             color: #000;
             transform: translateX(100%);
-            transition: all 1.5s;
+
           }
         }
       }
@@ -160,7 +160,7 @@ html {
             display: inline-block;
             transform: translateX(100%);
             color: #000;
-            transition: all 1.5s;
+
           }
         }
       }
@@ -222,7 +222,7 @@ html {
             display: inline-block;
             transform: translateX(100%);
             color: #000;
-            transition: all 1.5s;
+
           }
         }
       }
@@ -252,6 +252,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -281,6 +282,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -300,6 +302,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -308,6 +311,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -337,6 +341,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -1823,108 +1828,92 @@ img {
 
   //每个大盒子的高度
   section {
-    section {
-      height: 100vh;
-      // width: 100vw;
-    }
-
     //第二个盒子
-    .per-two {
-      background-color: #dfe8f3;
-      overflow: hidden;
-      box-shadow: 0px 0px 20px #2f1e1e;
-
-      // position: relative;
-      //详情文字
-      .cf-flexbox1 {
-        margin-top: 10vh;
-        z-index: 2;
-        display: flex;
-        justify-content: space-around;
-
-        .cf-text-container1 {
-          width: 37vw;
-          height: 30vw;
-
-          p {
-            color: #333 !important;
-            font-size: 1.6vw;
-          }
-        }
-
-        svg {
-          height: 28vw;
-          width: 28vw;
-          display: block;
-        }
-
-      }
-
-      .write-box {
-        display: none;
-        width: 300px;
-        height: 300px;
-        position: absolute;
-        right: 65%;
-        top: 12%;
-        background: url("../img/back-stage/javaicon.png") no-repeat;
-        background-size: 100%;
-
-        //svg动画
-        @keyframes dash {
-          from {
-            stroke-dashoffset: 320;
-          }
-
-          to {
-            stroke-dashoffset: 0;
-            fill: none;
-          }
-        }
-
-        #java {
-          width: 300px;
-          height: 300px;
-          display: block;
-          position: absolute;
-          top: 0%;
-
-          path {
-            stroke-dasharray: 320;
-            stroke-dashoffset: 0;
-            animation: dash 3s ease infinite;
-          }
-        }
-      }
-    }
-
-    //第一个盒子
-    .per-one {
-      // // transform: translateZ(-3px) scale(4);
-      // display: flex;
-      // overflow: hidden;
-      position: relative;
-      // justify-content: center;
-      // align-items: center;
-      width: 100%;
+  .per-two {
+    height: 120vh;
+    background-color: #dfe8f3 ;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px #2f1e1e;
+    
+    // position: relative;
+    //详情文字
+    .cf-flexbox1 {
+      margin-top: 10vh;
+      z-index: 2;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-
-      img:nth-child(1) {
-        filter: brightness(90%);
-        // width: 100%;
-        height: 100%;
-        position: absolute;
+      justify-content: space-around;
+      .cf-text-container1 {
+        width: 37vw;
+        height: 30vw;
+        p {
+        color: #333 !important;
+        font-size: 1.6vw;
+        }  
       }
-
-      .page-name {
-
-        z-index: 3;
-        width: 22vw;
+      svg{
+        height: 28vw;
+        width: 28vw;
+        display: block;
+        
       }
+      
     }
+    .cf-flexbox2 {
+      margin-top: 5vh;
+      z-index: 2;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      img {
+        height: 20vw;
+      }
+      .cf-text-container2 {
+        width: 37vw;
+        height: 15vw;
+        // display: flex;
+        p {
+        color: #333 !important;
+        font-size: 1.6vw;
+        }  
+      }
+      svg{
+        height: 28vw;
+        width: 28vw;
+        display: block;
+        
+      }
+      
+    }
+
+   
+  }
+   //第一个盒子
+   .per-one {
+    // // transform: translateZ(-3px) scale(4);
+    // display: flex;
+    // overflow: hidden;
+    position: relative;
+    // justify-content: center;
+    // align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    img:nth-child(1) {
+      filter: brightness(90%);
+      // width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    .page-name {
+
+      z-index: 3;
+      width: 22vw;
+    }
+  }
   }
 }
 
@@ -2601,7 +2590,6 @@ img {
   }
 }
 
-/* iPads (portrait) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
   .scene {
     width: 90%;
