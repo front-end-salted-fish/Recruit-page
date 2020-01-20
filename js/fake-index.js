@@ -22,7 +22,7 @@ $(function () {
     //幕布函数
     let $bar = $(".bar");
     let $bars = $(".bars");
-    
+
     // 目前展示页index
     let detailIndex = 0;
     // 获取所有详情页
@@ -324,66 +324,86 @@ $(function () {
         let $backState = $('#back-stage')
         let $svg1 = $('#back-stage svg')
         let $paths = $('#back-stage path');
-        // let path = anime.path('#back-stage path');
-        // anime({
-        //     targets: '#back-stage path',
-        //     strokeDashoffset: [anime.setDashoffset, 0],
-        //     easing: 'easeInOutSine',
-        //     duration: 500,
-        //     delay: function(el, i) { return i * 500 },
-        //     direction: 'alternate',
-        //     loop: 1
-        // });
-        console.log($('#back-stage .st17'))
-        splitTxt($($(".cf-text-container1")[0]), "TopView 后台组是与数据和信息打交道的方向，@是 Android、iOS、前端的”坚实后盾”，是每个@工作室的核心方向。TopView后台组基于Java语言，@自成立以来，一直致力于政府级、企业级项目@的实现和优化，如此大型的项目成就了@一代又一代的优秀师兄师姐。目前已有@多位师兄在腾讯、阿里、百度、美团等@一线互联网公司工作", "left");
+        splitTxt($($(".cf-text-container1")[0]), "TopView 后台组是与数据和信息打交道的@方向，是 Android、iOS、前端的@”坚实后盾”，是每个工作室的核心方向。@TopView后台组基于Java语言，@自成立以来，一直致力于@政府级、企业级项目的实现和优化.", "left");
+        splitTxt($($(".cf-text-container2")[0]), "如此大型的项目成就了@一代又一代的优秀师兄师姐。目前已有@多位师兄在腾讯、阿里、百度、美团等@一线互联网公司工作.", "right");
+
         let animation
+        let hasAnimate = false
         let runSvg = () => {
-            animation = anime.timeline({
-                duration: 700, 
-                easing: 'easeInOutSine',
-                direction: 'alternate',  
+            let delayTime = 500;
+            let comment = {
+                easing: 'spring(1, 70, 10, 0)',
+                direction: 'alternate',
                 loop: false
-              });           
-              console.log($('#back-stage svg g.outg'))
-              animation.add({
-                targets: ['#back-stage svg g.outg:nth-child(6)','#back-stage svg>g:nth-child(11)','#back-stage path.st17'],
-                translateX: -50,
+            }
+            // animation = anime.timeline({
+            //     duration: 10, 
+            //     easing: 'spring(1, 70, 10, 0)',
+            //     direction: 'alternate',  
+            //     loop: false
+            //   });           
+            anime({
+                ...comment,
+                delay: delayTime * 1,
+                targets: ['#back-stage .out-g:nth-child(7)','#back-stage .out-g:nth-child(11)','#back-stage path.st17'],
+                    translateX: ['42%', '0%'],
+                    translateY: ['22%', '0%'],
+                    opacity:[0,1]
+            })
+            anime({
+                ...comment,
+                delay: delayTime * 2,
+                targets: ['#back-stage .out-g:nth-child(6)','#back-stage .out-g:nth-child(12)','#back-stage path.st18'],
+                translateX: ['50%', '0%'],
+                translateY: ['0%', '0%'],
+                opacity:[0,1]
+            })
+            anime({
+                ...comment,
+                delay: delayTime * 3,
+                targets: ['#back-stage .out-g:nth-child(4)','#back-stage .out-g:nth-child(13)','#back-stage path.st19'],
                 // strokeDashoffset: [anime.setDashoffset, 0]
-              }).add({
-                targets: ['#back-stage svg g.outg:nth-child(5)','#back-stage svg>g:nth-child(12)','#back-stage path.st18'],
+                translateX: ['45%', '0%'],
+                translateY: ['-28%', '0%'],
+                opacity:[0,1]
+            })
+            anime({
+                ...comment,
+                delay: delayTime * 4,
+                targets: ['#back-stage .out-g:nth-child(5)', '#back-stage .out-g:nth-child(14)', '#back-stage path.st200'],
                 // strokeDashoffset: [anime.setDashoffset, 0]
-                translateX: -50,
-              }).add({
-                targets: ['#back-stage svg g.outg:nth-child(3)','#back-stage svg>g:nth-child(13)','#back-stage path.st19'],
+                translateX: ['19%', '0%'],
+                translateY: ['-46%', '0%'],
+                opacity: [0, 1]
+            })
+            anime({
+                ...comment,
+                delay: delayTime * 5,
+                targets: ['#back-stage svg .out-g:nth-child(3)', '#back-stage .out-g:nth-child(15)', '#back-stage path.st201'],
                 // strokeDashoffset: [anime.setDashoffset, 0]
-                translateX: -50,
-              }).add({
-                targets: ['#back-stage svg g.outg:nth-child(4)','#back-stage svg>g:nth-child(14)','#back-stage path.st200'],
-                // strokeDashoffset: [anime.setDashoffset, 0]
-                translateX: -50,
-              }).add({
-                targets: ['#back-stage svg .outg:nth-child(2)','#back-stage svg>g:nth-child(15)','#back-stage path.st201'],
-                // strokeDashoffset: [anime.setDashoffset, 0]
-                translateX: -50,
-              });
-            // anime({
-            //     targets: '#back-stage path',
-            //     strokeDashoffset: [anime.setDashoffset, 0],
-            //     easing: 'easeInOutSine',
-            //     duration: 300,
-            //     delay: function (el, i) { return i * 200 },
-            //     direction: 'alternate',
-            //     loop: 1
-            // });
+                translateX: ['-11%', '0%'],
+                translateY: ['-47%', '0%'],
+                opacity: [0, 1]
+            })
+            
         }
         $backState.on('scroll', function () {
-            if ($backState.scrollTop() > 200) {
+            let vh = $(window).height();
+            if ($backState.scrollTop()/vh > 0.2) {
                 $svg1.removeClass('skewImg');
                 pMoveAnimate($($(".cf-text-container1")[0]), "up");
-                runSvg();
+                if (!hasAnimate) {
+                    runSvg();
+                    hasAnimate = true;
+                }
             } else {
                 pMoveAnimate($($(".cf-text-container1")[0]), "down");
-                animation=undefined
+                animation = undefined
+            }
+            if ($backState.scrollTop()/vh > 0.4) {
+                pMoveAnimate($($(".cf-text-container2")[0]), "up");
+            } else {
+                pMoveAnimate($($(".cf-text-container2")[0]), "down");
             }
         })
     })();
