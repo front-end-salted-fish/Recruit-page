@@ -806,7 +806,7 @@ $(function () {
                 //第三行
                 this.resetStye(this.$rowThree, "row-three-first-change", "row-three-second-change", delayTime * 2);
                 //第四行
-                this.resetStye(this.$rowForth, "row-forth-first-change", "row-forth-second-change", delayTime * 3);
+                this.resetStye(this.$rowForth, "row-forth-first-change", "row-forth-second-change", delayTime * 3.1);
             }
             resetStye(obj, change1, change2, time) {
                 console.log("类名被改了")
@@ -815,7 +815,7 @@ $(function () {
                     setTimeout(function () {
                         obj.addClass(change2);
 
-                    }, 800);
+                    }, 900);
                 }, time)
             }
         }
@@ -828,8 +828,9 @@ $(function () {
         let isAllLoaded = false;  // 是否全部加载完成
         // 开机动画消失
         let loadingOut = () => {
+            console.log(1);
             if (isAllLoaded && loadingtransitionEnd) {
-                // console.log(1);
+                console.log(8888)
                 $('#loading-module').animate({
                     opacity: 0
                 }, 1000, () => {
@@ -844,10 +845,10 @@ $(function () {
         // 开机动画结束
         let latestSpan = $('.row-forth .move-span').eq(0);
         let cnt = 0;
-        latestSpan.on('webkitTransitionEnd', function () {
+        latestSpan.on('transitionend', function () {
             cnt++;
-            if(cnt === 4) {
-                latestSpan.off('webkitTransitionEnd');
+            if(cnt === 1) {
+                latestSpan.off('transitionend');
                 loadingtransitionEnd = true;
                 loadingOut();
             }
