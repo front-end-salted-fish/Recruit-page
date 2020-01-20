@@ -679,6 +679,137 @@ img {
   font-size: 2.2vw;
   line-height: 4.4vw;
 }
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn {
+  z-index: 3;
+  position: absolute;
+  left: 45%;
+  top: 85%;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__inner {
+  background-color: #283232;
+  display: block;
+  position: relative;
+  text-align: left;
+  transition: 1s;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__inner .en {
+  color: #ffffff;
+  font-family: 'Saira Semi Condensed', serif;
+  letter-spacing: 0.05em;
+  transition: 1s;
+  font-size: 16px;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__inner .icon {
+  background-color: #1c2525;
+  margin-left: auto;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  transition: 1s;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__inner .icon svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 50;
+  fill: #ffffff;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: 1s;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__border {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__border.border-h {
+  flex-wrap: wrap;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__border.border-h .border-hb {
+  position: absolute;
+  align-self: flex-end;
+  width: 0%;
+  transition: 1s;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__border.border-h .border-ht {
+  align-self: flex-start;
+  width: 0%;
+  transition: 1s;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__border.border-h > * {
+  width: 0%;
+  height: 1px;
+  background: linear-gradient(to right, #c3e060 0%, #67dfc4 100%);
+  flex: none;
+  justify-content: center;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__border.border-v {
+  justify-content: space-between;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__border.border-v .border-vl {
+  background: #c3e060;
+  height: 0%;
+  transition: 1s;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__border.border-v .border-vr {
+  background: #67dfc4;
+  height: 0%;
+  transition: 1s;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn .c-btn__border.border-v > * {
+  height: 0%;
+  width: 1px;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn button {
+  padding: 0;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn button .en {
+  vertical-align: top;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn.type-correct .c-btn__inner {
+  background-color: #7e9089;
+  text-align: center;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn.type-correct .c-btn__inner .en {
+  padding-left: 0;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn.is-white .c-btn__inner {
+  border: 1px solid #fff;
+  background: transparent;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn.is-white .c-btn__inner .icon {
+  background-color: #adbdbb;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn:hover .c-btn__inner {
+  background-color: rgba(255, 255, 255, 0);
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn:hover .en {
+  color: white;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn:hover .icon {
+  background-color: rgba(255, 255, 255, 0);
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn:hover .icon svg {
+  fill: #ffffff;
+  transform: matrix(1, 0, 0, 1, 30, 0);
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn:hover .c-btn__border .border-ht {
+  width: 100%;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn:hover .c-btn__border .border-hb {
+  width: 100%;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn:hover .c-btn__border .border-vl {
+  height: 100%;
+}
+#machine-learning #rj-luxy-wrapper .per-two .txt-container3 #rj-c-btn:hover .c-btn__border .border-vr {
+  height: 100%;
+}
 #machine-learning #rj-luxy-wrapper .per-two .img3 {
   width: 50vw;
   position: relative;
@@ -1368,6 +1499,7 @@ img {
   position: absolute;
   top: 0;
 }
+<<<<<<< HEAD
 #back-stage section .per-two {
   height: 120vh;
   background-color: #dfe8f3;
@@ -1415,6 +1547,75 @@ img {
   height: 28vw;
   width: 28vw;
   display: block;
+=======
+#back-stage section section {
+  height: 100vh;
+}
+#back-stage section .per-two {
+  background-color: #dfe8f3;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px #2f1e1e;
+}
+#back-stage section .per-two .cf-flexbox1 {
+  margin-top: 10vh;
+  z-index: 2;
+  display: flex;
+  justify-content: space-around;
+}
+#back-stage section .per-two .cf-flexbox1 .cf-text-container1 {
+  width: 37vw;
+  height: 30vw;
+}
+#back-stage section .per-two .cf-flexbox1 .cf-text-container1 p {
+  color: #333 !important;
+  font-size: 1.6vw;
+}
+#back-stage section .per-two .cf-flexbox1 svg {
+  height: 28vw;
+  width: 28vw;
+  display: block;
+}
+#back-stage section .per-two .write-box {
+  display: none;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  right: 65%;
+  top: 12%;
+  background: url("../img/back-stage/javaicon.png") no-repeat;
+  background-size: 100%;
+>>>>>>> 98167acd37424ebe047dfc445cbf732552e44752
+}
+#back-stage section .per-one {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+<<<<<<< HEAD
+#back-stage section .per-one img:nth-child(1) {
+  filter: brightness(90%);
+  height: 100%;
+=======
+#back-stage section .per-two .write-box #java {
+  width: 300px;
+  height: 300px;
+  display: block;
+>>>>>>> 98167acd37424ebe047dfc445cbf732552e44752
+  position: absolute;
+}
+<<<<<<< HEAD
+#back-stage section .per-one .page-name {
+  z-index: 3;
+  width: 22vw;
+=======
+#back-stage section .per-two .write-box #java path {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 0;
+  animation: dash 3s ease infinite;
+>>>>>>> 98167acd37424ebe047dfc445cbf732552e44752
 }
 #back-stage section .per-one {
   position: relative;
