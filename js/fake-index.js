@@ -101,7 +101,7 @@ $(function () {
                 $($pages[detailIndex]).show().addClass("active").siblings(".page").hide().removeClass("active");
                 $($pages[detailIndex]).scrollTop(0);
                 resolve("true");
-            }, 800);
+            }, 900);
         });
         return p;
     }
@@ -332,18 +332,12 @@ $(function () {
         let animation
         let hasAnimate = false
         let runSvg = () => {
-            let delayTime = 500;
+            let delayTime = 400;
             let comment = {
                 easing: 'spring(1, 70, 10, 0)',
                 direction: 'alternate',
                 loop: false
-            }
-            // animation = anime.timeline({
-            //     duration: 10, 
-            //     easing: 'spring(1, 70, 10, 0)',
-            //     direction: 'alternate',  
-            //     loop: false
-            //   });           
+            }      
             anime({
                 ...comment,
                 delay: delayTime * 1,
@@ -790,6 +784,7 @@ $(function () {
     // 开机动画
     (() => {
         let that;
+        let delayTime = 500;
         class startAnimate {
             constructor() {
                 that = this;
@@ -807,11 +802,11 @@ $(function () {
                 //第一行
                 this.resetStye(this.$rowOne, "row-one-first-change", "row-one-second-change", 0);
                 //第二行
-                this.resetStye(this.$rowTwo, "row-two-first-change", "row-two-second-change", 400);
+                this.resetStye(this.$rowTwo, "row-two-first-change", "row-two-second-change", delayTime * 1);
                 //第三行
-                this.resetStye(this.$rowThree, "row-three-first-change", "row-three-second-change", 800);
+                this.resetStye(this.$rowThree, "row-three-first-change", "row-three-second-change", delayTime * 2);
                 //第四行
-                this.resetStye(this.$rowForth, "row-forth-first-change", "row-forth-second-change", 1200);
+                this.resetStye(this.$rowForth, "row-forth-first-change", "row-forth-second-change", delayTime * 3);
             }
             resetStye(obj, change1, change2, time) {
                 console.log("类名被改了")

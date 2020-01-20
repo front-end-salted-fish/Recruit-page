@@ -37,6 +37,7 @@ html {
 
   // 开局动画内部盒子
   #loading-box {
+    opacity: 1 !important;
     width: 32vw;
     height: 27vw;
     position: absolute;
@@ -77,7 +78,6 @@ html {
             color: #000;
             display: inline-block;
             transform: translateX(100%);
-            transition: all 1.5s;
           }
         }
       }
@@ -130,7 +130,7 @@ html {
             display: inline-block;
             color: #000;
             transform: translateX(100%);
-            transition: all 1.5s;
+
           }
         }
       }
@@ -160,7 +160,7 @@ html {
             display: inline-block;
             transform: translateX(100%);
             color: #000;
-            transition: all 1.5s;
+
           }
         }
       }
@@ -222,7 +222,7 @@ html {
             display: inline-block;
             transform: translateX(100%);
             color: #000;
-            transition: all 1.5s;
+
           }
         }
       }
@@ -252,6 +252,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -281,6 +282,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -300,6 +302,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -308,6 +311,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -337,6 +341,7 @@ html {
         .move-sdiv {
           span {
             transform: translate(0%);
+            transition: all 1.5s;
           }
         }
       }
@@ -1881,33 +1886,35 @@ img {
       
     }
 
-    //第一个盒子
-    .per-one {
-      // // transform: translateZ(-3px) scale(4);
-      // display: flex;
-      // overflow: hidden;
-      position: relative;
-      // justify-content: center;
-      // align-items: center;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+   
+  }
+   //第一个盒子
+   .per-one {
+    // // transform: translateZ(-3px) scale(4);
+    // display: flex;
+    // overflow: hidden;
+    position: relative;
+    // justify-content: center;
+    // align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 
-      img:nth-child(1) {
-        filter: brightness(90%);
-        // width: 100%;
-        height: 100%;
-        position: absolute;
-      }
-
-      .page-name {
-
-        z-index: 3;
-        width: 22vw;
-      }
+    img:nth-child(1) {
+      filter: brightness(90%);
+      // width: 100%;
+      height: 100%;
+      position: absolute;
     }
+
+    .page-name {
+
+      z-index: 3;
+      width: 22vw;
+    }
+  }
   }
 }
 
@@ -2566,7 +2573,6 @@ img {
   }
 }
 
-/* iPads (portrait) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
   .scene {
     width: 90%;
