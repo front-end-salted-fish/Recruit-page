@@ -1826,7 +1826,10 @@ img {
   // perspective: 1px;
   position: absolute;
   top: 0;
-
+  ::selection {
+    background-color: #98a4b3;
+  }
+  background-color: #dfe8f3;
   //每个大盒子的高度
   section {
     //第二个盒子
@@ -1842,10 +1845,10 @@ img {
       margin-top: 10vh;
       z-index: 2;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       .cf-text-container1 {
         width: 37vw;
-        height: 30vw;
+        height: 29vw;
         p {
         color: #333 !important;
         font-size: 1.6vw;
@@ -1855,7 +1858,6 @@ img {
         height: 28vw;
         width: 28vw;
         display: block;
-        
       }
       
     }
@@ -1863,10 +1865,11 @@ img {
       margin-top: 5vh;
       z-index: 2;
       display: flex;
-      justify-content: space-around;
+      justify-content: center;
       align-items: center;
       img {
         height: 20vw;
+        margin-right: 3vh;
       }
       .cf-text-container2 {
         width: 37vw;
@@ -1877,15 +1880,18 @@ img {
         font-size: 1.6vw;
         }  
       }
-      svg{
-        height: 28vw;
-        width: 28vw;
-        display: block;
+      // svg{
+      //   height: 28vw;
+      //   width: 28vw;
+      //   display: block;
         
-      }
+      // }
       
     }
-
+    #backstage-btn {
+      margin: 0 auto;
+      margin-top: 3vw;
+    } 
    
   }
    //第一个盒子
