@@ -680,38 +680,45 @@ $(function () {
 
     })();
 
-    // ios
-    (() => {
-        const $ios = $("#ios");
-        const $img1 = $(".pre-one");
-        const $img2 = $(".pre-two");
-        const $iosword = $("#ios-pretwo");
-        const $iosThree = $("#ios-prethree");
-        $ios.on("scroll", function () {
-            console.log($ios.scrollTop());
-            $img1.css("opacity", (1 - $ios.scrollTop() / 2000));
-
-            // $iosPretwo.fadeIn("slow");
-            if ($ios.scrollTop() > 2400) {
-                $img2.css("opacity", (1 - ($ios.scrollTop() - 2400) / 900));
-                console.log($img2);
-
-                // $iosword.css("opacity", (1 - ($ios.scrollTop() - 2400) / 900));
-
-                // console.log($iosThree);
-
-            }
-            // if ($ios.scrollTop() > 2200) {
-
-            //  // $iosThree.stop(true, false).slideDown("slow");
-            //  $iosThree.stop(true, false).slideUp(4000,()=>{
-            //      $iosThree.css({display:'block'});
-            //  });
-            // }
-            // if ($ios.scrollTop() > 2000) {
-            //  $iosThree.stop(true, false).slideDown("slow");
-            // }
+     // ios
+     (() => {
+        let mqLuxy = new Luxy()
+        mqLuxy.init({
+            wrapper: '#mq-luxy-wrapper',
+            targets: '.mq-luxy',
+            wrapperSpeed: 0.08,
+            targetSpeed: 0.01,
+            targetPercentage: 0.1
         });
+        let $iosDiv = $("#ios");
+        let $headerFont = $($("#ios .per-one .header-font")[0]);
+        splitTxt($($(".mq-txt-container1")[0]), "iOS组专注于极致和优雅的主流App开发以及iOS新技术的探索。@iOS组是TopView的主要开发组之一，成立于2015年。@在TopView工作室的帮助下，工作室成员的相互交流中，iOS组已经成为工作室的中流砥柱之一。", "left");
+        splitTxt($($(".mq-txt-container2")[0]), "加入我们，相信你一定能得到锻炼与成长。@只要你有c语言基础，热爱学习，有责任心就加入iOS组吧!", "left");
+        // 出现图片
+        function showImg(obj) {
+            obj.removeClass("mq-skewImg");
+        }
+        $iosDiv.on("scroll", function () {
+            $headerFont.css("opacity", (1 - $iosDiv.scrollTop() / 350));
+            let vh = $(window).height();
+            let winTop = $(window).scrollTop();
+            if($(".mq-img1").offset().top-winTop<vh){
+                showImg($(".mq-img1"));
+            }
+            if($(".mq-txt-container1").eq(0).offset().top-winTop<vh){
+                pMoveAnimate($(".mq-txt-container1").eq(0), "up"); 
+            }else{
+                pMoveAnimate($(".mq-txt-container1").eq(0), "down");
+            }
+            if($(".mq-img2").offset().top - winTop < vh){
+                showImg($(".mq-img2"));
+            }
+            if($(".mq-txt-container2").eq(0).offset().top-winTop<vh){
+                pMoveAnimate($(".mq-txt-container2").eq(0), "up"); 
+            }else{
+                pMoveAnimate($(".mq-txt-container2").eq(0), "down");
+            }
+        })
     })();
 
 
