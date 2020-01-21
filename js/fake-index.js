@@ -22,7 +22,7 @@ $(function () {
     //幕布函数
     let $bar = $(".bar");
     let $bars = $(".bars");
-    
+
     // 目前展示页index
     let detailIndex = 0;
     // 获取所有详情页
@@ -139,7 +139,7 @@ $(function () {
         let rows = txt.split("@");
         let html = '';
         $.each(rows, function (index, item) {
-            html += '<p class="move-details-rows txtHasDown ' + (!index ? "move-rows-title" : '')  + '" style="text-align:' + style + '">' + item + "</p>";
+            html += '<p class="move-details-rows txtHasDown ' + (!index ? "move-rows-title" : '') + '" style="text-align:' + style + '">' + item + "</p>";
         });
         obj.addClass("hasDown");
         obj.append(html);
@@ -341,33 +341,33 @@ $(function () {
         let animation
         let runSvg = () => {
             animation = anime.timeline({
-                duration: 700, 
+                duration: 700,
                 easing: 'easeInOutSine',
-                direction: 'alternate',  
+                direction: 'alternate',
                 loop: false
-              });           
-              console.log($('#back-stage svg g.outg'))
-              animation.add({
-                targets: ['#back-stage svg g.outg:nth-child(6)','#back-stage svg>g:nth-child(11)','#back-stage path.st17'],
+            });
+            console.log($('#back-stage svg g.outg'))
+            animation.add({
+                targets: ['#back-stage svg g.outg:nth-child(6)', '#back-stage svg>g:nth-child(11)', '#back-stage path.st17'],
                 translateX: -50,
                 // strokeDashoffset: [anime.setDashoffset, 0]
-              }).add({
-                targets: ['#back-stage svg g.outg:nth-child(5)','#back-stage svg>g:nth-child(12)','#back-stage path.st18'],
+            }).add({
+                targets: ['#back-stage svg g.outg:nth-child(5)', '#back-stage svg>g:nth-child(12)', '#back-stage path.st18'],
                 // strokeDashoffset: [anime.setDashoffset, 0]
                 translateX: -50,
-              }).add({
-                targets: ['#back-stage svg g.outg:nth-child(3)','#back-stage svg>g:nth-child(13)','#back-stage path.st19'],
+            }).add({
+                targets: ['#back-stage svg g.outg:nth-child(3)', '#back-stage svg>g:nth-child(13)', '#back-stage path.st19'],
                 // strokeDashoffset: [anime.setDashoffset, 0]
                 translateX: -50,
-              }).add({
-                targets: ['#back-stage svg g.outg:nth-child(4)','#back-stage svg>g:nth-child(14)','#back-stage path.st200'],
+            }).add({
+                targets: ['#back-stage svg g.outg:nth-child(4)', '#back-stage svg>g:nth-child(14)', '#back-stage path.st200'],
                 // strokeDashoffset: [anime.setDashoffset, 0]
                 translateX: -50,
-              }).add({
-                targets: ['#back-stage svg .outg:nth-child(2)','#back-stage svg>g:nth-child(15)','#back-stage path.st201'],
+            }).add({
+                targets: ['#back-stage svg .outg:nth-child(2)', '#back-stage svg>g:nth-child(15)', '#back-stage path.st201'],
                 // strokeDashoffset: [anime.setDashoffset, 0]
                 translateX: -50,
-              });
+            });
             // anime({
             //     targets: '#back-stage path',
             //     strokeDashoffset: [anime.setDashoffset, 0],
@@ -385,7 +385,7 @@ $(function () {
                 runSvg();
             } else {
                 pMoveAnimate($($(".cf-text-container1")[0]), "down");
-                animation=undefined
+                animation = undefined
             }
         })
     })();
@@ -454,8 +454,8 @@ $(function () {
                 this.setBackground(); // 设置第一个背景颜色
                 this.setBtn();  // 设置第一个按钮颜色
                 // this.goBanner();    // 启动轮播图
-                $.each($preLoad, function (index, item) { 
-                    $(item).attr('src',banner.bannerImgScr[index]);
+                $.each($preLoad, function (index, item) {
+                    $(item).attr('src', banner.bannerImgScr[index]);
                 });
                 // $preLoad.forEach(function(item, index){
                 // });
@@ -464,7 +464,7 @@ $(function () {
             // 按钮高亮
             setBtn() {
                 console.log("setBtn");
-                
+
                 $btns.removeClass("btn-play").eq(this.playIndex).addClass("btn-play");
             },
             // 设置背景颜色
@@ -488,7 +488,7 @@ $(function () {
             },
             // 启动录播图
             goBanner() {
-                if(this.isLeaveBanner) return ;
+                if (this.isLeaveBanner) return;
                 console.log("goBanner");
                 // banner.isMoving = true;
                 this.bannerTimer = setInterval(() => {
@@ -501,7 +501,7 @@ $(function () {
                 console.log("stopBanner");
                 clearInterval(this.bannerTimer);
                 banner.isMoving = false;
-                banner.moveCnt =  0;             // transition计数器
+                banner.moveCnt = 0;             // transition计数器
             },
             // 预先设置函数：index 设置对应index的部门内容
             preSetSrc(str, index) {
@@ -573,10 +573,10 @@ $(function () {
             }
         }
         banner.init();
-        $('.inner-mask img').on('webkitTransitionEnd',function(){
+        $('.inner-mask img').on('webkitTransitionEnd', function () {
             // console.log(banner.moveCnt);
             banner.moveCnt = (banner.moveCnt + 1) % 6;
-            if(banner.moveCnt === 0) {
+            if (banner.moveCnt === 0) {
                 banner.isMoving = false;
                 // console.log("动画完成");
             }
@@ -584,11 +584,11 @@ $(function () {
 
         // 点击按钮跳转翻页
         $(".banner-btns").on("click", ".bg-span", (event) => {
-            if(banner.isMoving) return;
+            if (banner.isMoving) return;
             let e = event || window.event;
             let t = e.target;
             let index = $(t).parent(".banner-btn").index();      // 获取按钮位序
-            if(index === banner.playIndex) return ;
+            if (index === banner.playIndex) return;
             banner.stopBanner();    // 停止轮播
             if (index > banner.playIndex) {
                 banner.throttlePage(index, "next");
@@ -598,11 +598,11 @@ $(function () {
         });
         // 上下翻页
         $nextBannerBtn.on("click", () => {
-            if(banner.isMoving) return;
+            if (banner.isMoving) return;
             banner.throttlePage(banner.playIndex + 1, "next");
         });
         $preBannerBtn.on("click", () => {
-            if(banner.isMoving) return;
+            if (banner.isMoving) return;
             banner.throttlePage(banner.playIndex - 1, "pre");
         });
         // 通过点击跳转至详情页
@@ -610,7 +610,7 @@ $(function () {
             let index = banner.bannerFontUp.indexOf($(e.currentTarget).find(".banner-center-up").text()); // 获取此时要进入的详情页
             // banner.stopBanner();
             console.log("index", index);
-            
+
             banner.toDetailPage(index);
         });
 
@@ -619,66 +619,44 @@ $(function () {
 
 
     //front-end
-    !(() => {
-        const $frontEnd = $("#front-end");
-        const $perOne = $(".per-one");
-        const $perTwo = $(".per-two");
-        const $article1 = $(".article1 p");
-        const $article2 = $(".article2 p");
+    (() => {
+        let wfLuxy = new Luxy()
+        wfLuxy.init({
+            wrapper: '#wf-luxy-wrapper',
+            targets: '.wf-luxy',
+            wrapperSpeed: 0.08,
+            targetSpeed: 0.01,
+            targetPercentage: 0.1
+        });
+        let $frontEnd = $("#front-end")
+       // let $headerFont = $($('#front-end .per-one .header-font')[0]);
+        splitTxt($($('.wf-txt-container1')[0]), "TopView 前端组主要基于@HTML，CSS，JavaScript等@基础web前端编程语言进行开发，@同时引入前端领域前沿技术进一步构建项目。", "left");
+        splitTxt($($('.wf-txt-container2')[0]), "我们专注于展现视觉更好的页面，@打造用户体验更优的网站，@开发更有特色更有创意的产品。@如果你喜欢设计、热爱前端，@那你就是我们前端组想要的！", "left");
+        // 出现图片
+        function showImg(obj) {
+            obj.removeClass("skewImg");
+        }
         $frontEnd.on("scroll", function () {
-            //console.log($frontEnd.scrollTop())
-
-            $perOne.css("opacity", (1 - $frontEnd.scrollTop() / 2500));
-            if ($frontEnd.scrollTop() > 500) {
-                $($article1[0]).fadeIn("4000");
-            } else {
-                $($article1[0]).fadeOut();
+           // $headerFont.css("opacity", (1 - $frontEnd.scrollTop() / 350));
+            let vh = $(window).height();
+            let winTop = $(window).scrollTop();
+            if ($(".wfimg1").offset().top - winTop < vh) {
+                showImg($(".wfimg1"));
             }
-            if ($frontEnd.scrollTop() > 570) {
-                $($article1[1]).fadeIn("4000");
+            if ($(".wf-txt-container1").eq(0).offset().top - winTop < vh) {
+                pMoveAnimate($(".wf-txt-container1").eq(0), "up");
             } else {
-                $($article1[1]).fadeOut();
+                pMoveAnimate($(".wf-txt-container1").eq(0), "down");
             }
-            if ($frontEnd.scrollTop() > 640) {
-                $($article1[2]).fadeIn("4000");
-            } else {
-                $($article1[2]).fadeOut();
+            if ($(".wfimg2").offset().top - winTop < vh) {
+                showImg($(".wfimg2"));
             }
-
-            if ($frontEnd.scrollTop() > 706) {
-                $($article1[3]).fadeIn("4000");
+            if ($(".wf-txt-container2").eq(0).offset().top - winTop < vh) {
+                pMoveAnimate($(".wf-txt-container2").eq(0), "up");
             } else {
-                $($article1[3]).fadeOut();
-            }
-            //第二个article
-            if ($frontEnd.scrollTop() > 1000) {
-                $($article2[0]).fadeIn("4000");
-            } else {
-                $($article2[0]).fadeOut();
-            }
-            if ($frontEnd.scrollTop() > 1060) {
-                $($article2[1]).fadeIn("4000");
-            } else {
-                $($article2[1]).fadeOut();
-            }
-
-            if ($frontEnd.scrollTop() > 1120) {
-                $($article2[2]).fadeIn("4000");
-            } else {
-                $($article2[2]).fadeOut();
-            }
-            if ($frontEnd.scrollTop() > 1180) {
-                $($article2[3]).fadeIn("4000");
-            } else {
-                $($article2[3]).fadeOut();
-            }
-            if ($frontEnd.scrollTop() > 1260) {
-                $($article2[4]).fadeIn("4000");
-            } else {
-                $($article2[4]).fadeOut();
+                pMoveAnimate($(".wf-txt-container2").eq(0), "down");
             }
         })
-
     })();
 
     // ios
@@ -741,25 +719,25 @@ $(function () {
             $headerFont.css("opacity", (1 - $machineDiv.scrollTop() / 350));
             let vh = $(window).height();
             let winTop = $(window).scrollTop();
-            if($(".img1").offset().top - winTop < vh) {
+            if ($(".img1").offset().top - winTop < vh) {
                 showImg($(".img1"));
             }
-            if ($(".txt-container1").eq(0).offset().top - winTop <  vh) {
+            if ($(".txt-container1").eq(0).offset().top - winTop < vh) {
                 pMoveAnimate($(".txt-container1").eq(0), "up");
             } else {
                 pMoveAnimate($(".txt-container1").eq(0), "down");
             }
-            if($(".img2").offset().top - winTop <  vh) {
+            if ($(".img2").offset().top - winTop < vh) {
                 showImg($(".img2"));
             }
-            if ($(".txt-container2").eq(0).offset().top - winTop <  vh) {
+            if ($(".txt-container2").eq(0).offset().top - winTop < vh) {
                 pMoveAnimate($(".txt-container2").eq(0), "up");
             } else {
                 pMoveAnimate($(".txt-container2").eq(0), "down");
             }
-            if($(".img3").offset().top - winTop <  vh) 
+            if ($(".img3").offset().top - winTop < vh)
                 showImg($(".img3"));
-            if ($(".rj-txt3").eq(0).offset().top - winTop <  vh) {
+            if ($(".rj-txt3").eq(0).offset().top - winTop < vh) {
                 pMoveAnimate($(".rj-txt3").eq(0), "up");
             } else {
                 pMoveAnimate($(".rj-txt3").eq(0), "down");
@@ -831,7 +809,7 @@ $(function () {
         let cnt = 0;
         latestSpan.on('webkitTransitionEnd', function () {
             cnt++;
-            if(cnt === 4) {
+            if (cnt === 4) {
                 latestSpan.off('webkitTransitionEnd');
                 loadingtransitionEnd = true;
                 loadingOut();
