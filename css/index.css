@@ -1623,24 +1623,6 @@ img {
 .back {
   position: absolute;
   width: 100%;
-  padding: 2% 0% 0%;
-  box-sizing: border-box;
-}
-.front .zl-first-book .front,
-.back .zl-first-book .front {
-  background: url(../img/form/invitecard.png) 50%;
-  background-size: cover;
-}
-.front .zl-second-book,
-.back .zl-second-book {
-  cursor: default;
-}
-.front .front,
-.back .front,
-.front .back,
-.back .back {
-  position: absolute;
-  width: 100%;
   height: 100%;
   padding: 2% 0% 0%;
   box-sizing: border-box;
@@ -1648,34 +1630,27 @@ img {
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, from(#FFFFFF), to(#CCCCCC));
   background: linear-gradient(to bottom right, #fff, #ccc);
 }
-.front .back,
-.back .back {
+.back {
   transform: rotateY(180deg);
 }
-.front .page.active,
-.back .page.active {
+.page.active {
   z-index: 1;
 }
-.front .page.flipped,
-.back .page.flipped {
+.page.flipped {
   transform: rotateY(-180deg);
 }
-.front .page.flipped:last-of-type,
-.back .page.flipped:last-of-type {
+.page.flipped:last-of-type {
   z-index: 1;
 }
-.front p,
-.back p {
+p {
   margin: 0 0 0.1em;
   text-indent: 1em;
 }
-.front .qr,
-.back .qr {
+.qr {
   margin: 50px auto;
   max-width: 50%;
 }
-.front .qr img,
-.back .qr img {
+.qr img {
   display: block;
 }
 *,

@@ -1328,7 +1328,7 @@ $(function () {
 
         // 
         function prevPage() {
-            $('.flipped')
+            $('#form-page .flipped')
                 .last()
                 .removeClass('flipped')
                 .addClass('active')
@@ -1338,7 +1338,7 @@ $(function () {
         function nextPage() {
             // if (!$('zl-second-book').hasClass('active')) {
                 console.log(1)
-                $('.active')
+                $('#form-page .active')
                 .removeClass('active')
                 .addClass('flipped')
                 .next('.page')
