@@ -10,9 +10,9 @@
 	<!-- <script src="js/prefixfree.min.js"></script> -->
 </head>
 
-<body>
+<body style="overflow: hidden;">
 	<!-- 开局动画 -->
-	<header id="loading-module">
+	<header id="loading-module" style="width: 100vw;height:100vh;background-color: white; color:white;">
 		<!-- 文字及banner的容器 -->
 		<div id="loading-box">
 			<!-- 第一行 -->
@@ -180,33 +180,52 @@
 	<!-- 部门详情介绍页 -->
 	<section id="detail-pages">
 		<!-- 详情页返回按钮 -->
-		<span class="rj-detail-page-close-btn">
+		<span class="rj-detail-page-close-btn" title="返回">
 			<span>B</span><span>A</span><span>C</span><span>K</span>
 			<i class="iconfont">&#xeb90;</i>
 		</span>
 		<!-- 王菲板块 -->
 		<section id="front-end" class="page">
-			<section class="per-one">
-				<img src="img/front-end/005.jpg" alt="" class="per">
-				<img src="img/front-end/banner-frontend-font.png" alt="" class="title">
-			</section>
-			<section class="per-two">
-				<!-- <img src="img/front-end/001.jpg" alt=""> -->
-				<section class="article article1">
-					<p>TopView 前端组主要基于</p><br />
-					<p>HTML，CSS，JavaScript等</p><br />
-					<p>基础web前端编程语言进行开发，</p><br />
-					<p>同时引入前端领域前沿技术进一步构建项目。</p><br />
+			<section id="wf-luxy-wrapper">
+				<section class="per-one wf-luxy" data-speed-y="40">
+					<img src="img/front-end/005.jpg" alt="" class="per bg wf-luxy">
+					<img src="img/front-end/banner-frontend-font.png" alt="" class="title header-font wf-luxy"
+						data-speed-y="">
 				</section>
-				<section class="article article2">
-					<p>我们专注于展现视觉更好的页面，</p><br />
-					<p>打造用户体验更优的网站，</p><br />
-					<p>开发更有特色更有创意的产品。 </p><br />
-					<p>如果你喜欢设计、热爱前端，</p><br />
-					<p>那你就是我们前端组想要的！</p><br />
+				<section class="per-two wf-luxy" data-speed-y="-5">
+					<div class="flex-box1 flex-box wf-luxy" data-speed-y="-5">
+						<div class="wf-txt-container1 wf-luxy" data-speed-y="-2">
+						</div>
+						<div class="wf-luxy wf-img-container1" data-speed-y="-5">
+							<img src="img/front-end/004.jpg" alt="" class="wfimg1 skewImg">
+						</div>
+					</div>
+					<div class="flex-box2 flex-box wf-luxy" data-speed-y="-10">
+						<div class="wf-luxy wf-img-container2" data-speed-y="-3">
+							<img src="img/front-end/009.jpg" alt="" class="wfimg2 skewImg">
+						</div>
+						<div class="wf-txt-container2 wf-luxy" data-speed-y="-9">
+						</div>
+					</div>
+					<div id="wf-c-btn" class="c-btn js__sc-show-target js__sc-simple zl-to-form-btn"
+						style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+						<a class="c-btn__inner" href="javascript:void(0);">
+							<span class="en">点击报名</span>
+							<span class="icon type-arrow">
+								<svg version="1.1" fill="#fff" xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="31px" height="7px"
+									viewBox="0 0 31 7" enable-background="new 0 0 31 7" xml:space="preserve">
+									<polygon points="31,3.5 19,0 23.087,3 0,3 0,4 23.087,4 19,7 "></polygon>
+								</svg>
+							</span>
+
+							<span class="c-btn__border border-h"><span class="border-ht"></span><span
+									class="border-hb"></span></span>
+							<span class="c-btn__border border-v"><span class="border-vl"></span><span
+									class="border-vr"></span></span>
+						</a>
+					</div>
 				</section>
-				<img src="img/front-end/002.jpg" class="icon1">
-				<img src="img/front-end/008.jpg" class="icon2">
 			</section>
 			<!-- <section class="per-three">
 				<img src="img/front-end/008.jpg" alt="">
@@ -269,7 +288,8 @@
 			<section id="cf-luxy-wrapper">
 				<section class="per-one cf-luxy" data-speed-y="40">
 					<img src="img/back-stage/backstage1.jpg" alt="" class="cf-luxy" data-speed-y="30">
-					<img src="img/back-stage/banner-backstage-font.png" alt="" class="page-name cf-luxy" data-speed-y="5">
+					<img src="img/back-stage/banner-backstage-font.png" alt="" class="page-name cf-luxy"
+						data-speed-y="5">
 				</section>
 				<section class="per-two cf-luxy" data-speed-y="-5">
 					<div class="cf-flexbox1">
@@ -377,13 +397,13 @@
 									stroke-miterlimit: 10;
 								}
 							</style>
-							<g class="outg">
+							<g class="out-g">
 								<g>
 									<path
 										d="M-261.3,1595.3c1.9,0,1.9-3,0-3C-263.2,1592.3-263.2,1595.3-261.3,1595.3L-261.3,1595.3z" />
 								</g>
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<path class="st0" d="M2292.9,2196.2c-0.6,3.2,1,11.1-33.6,11.1h-427.9c-17.8,0-34.1-1.6-33.6-11.1
 									C1797.9,2196.2,2293.5,2193.1,2292.9,2196.2z" />
 								<path class="st1" d="M2292.9,2196.2c0,0,1-11.1-33.6-11.1h-427.9c-17.8,0-33,3.2-33.6,11.1
@@ -405,7 +425,7 @@
 									C2272.7,1854.5,2146.1,1854.5,2146.1,1854.5z" />
 								<line class="st8" x1="2280.9" y1="2102.1" x2="2280.9" y2="2107.4" />
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<polygon class="st1" points="713,1738.3 609.8,1738.3 637.9,1655.4 684.9,1655.4 	" />
 								<polygon class="st0" points="720.8,1733.6 648.9,1733.6 668.5,1661.7 701.2,1661.7 	" />
 								<g>
@@ -416,7 +436,8 @@
 								</g>
 								<g>
 									<g>
-										<path class="st0" d="M889.6,1321.8H430.5c-19.9,0-36.1,15.7-36.1,35v269.7c0,19.3,16.2,35,36.1,35h459.1
+										<path class="st0"
+											d="M889.6,1321.8H430.5c-19.9,0-36.1,15.7-36.1,35v269.7c0,19.3,16.2,35,36.1,35h459.1
 									c19.9,0,36.1-15.7,36.1-35v-269.7C925.7,1337.6,909.6,1321.8,889.6,1321.8z M420,1356.9c0-5.4,4.6-10.2,10.6-10.2h459.1
 									c5.8,0,10.6,4.6,10.6,10.2v249c0,5.6-4.7,10.2-10.6,10.2H430.5c-5.8,0-10.5-4.5-10.6-10.2c0,0,0-0.1,0-0.1V1356.9z" />
 										<path class="st2" d="M910.5,1617.3H410.1c-1.2,0-2.2-1-2.2-2.2v-270.2c0-1.2,1-2.2,2.2-2.2h500.4c1.2,0,2.2,1,2.2,2.2v270.2
@@ -463,7 +484,7 @@
 								</g>
 								<line class="st8" x1="444.9" y1="1748" x2="444.9" y2="1754.4" />
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<g>
 									<path class="st9" d="M1605.2,2194.1h-267.6c-1.6,0-2.8-1.3-2.8-2.8V2006c0-1.6,1.3-2.8,2.8-2.8h267.6c1.6,0,2.8,1.3,2.8,2.8v185.3
 									C1608,2192.8,1606.7,2194.1,1605.2,2194.1z" />
@@ -492,14 +513,14 @@
 									<rect x="1175.1" y="1978.2" class="st11" width="184.8" height="5.4" />
 								</g>
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<path class="st0" d="M619.2,1087H435.3c-34.8,0-63.3-28.5-63.3-63.3V693.3c0-34.8,28.5-63.3,63.3-63.3h183.9
 							c34.8,0,63.3,28.5,63.3,63.3v330.4C682.5,1058.5,654,1087,619.2,1087z" />
 								<path class="st2" d="M630,997.3H422.6c-6.6,0-12-5.4-12-12V691.2c0-6.6,5.4-12,12-12H630c6.6,0,12,5.4,12,12v294.2
 		C642,991.9,636.6,997.3,630,997.3z" />
 								<circle class="st10" cx="521" cy="1036.4" r="24.6" />
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<path class="st2" d="M885.7,353.1c-31.6,12.4-82.2,20.4-139.2,20.4s-107.5-8-139.2-20.4c-21.6,8.4-34.3,18.9-34.3,30.2
 		c0,27.9,77.7,50.5,173.5,50.5S920,411.2,920,383.3C920,372,907.2,361.5,885.7,353.1z" />
 								<path class="st7" d="M885.7,279.2c-31.6,12.4-82.2,20.4-139.2,20.4s-107.5-8-139.2-20.4c-21.6,8.4-34.3,18.9-34.3,30.2
@@ -511,48 +532,48 @@
 	c0,70.5,57.5,129.7,135.6,147c-5.1,14-7.8,28.8-7.8,44.1c0,84,81.8,152.1,182.6,152.1c48.9,0,93.3-16,126.1-42.1
 	c1.7,0.4,3.4,0.8,5.1,1.2c55,55.8,155.2,84,258.9,66c140.1-24.4,233.6-123.9,208.9-222.2c-1.9-7.7-4.6-15.2-7.8-22.4
 	c2.7-5.8,5.2-11.7,7.4-17.6C2251.6,972.7,2294.8,901.5,2277,831z" />
-							<g class="outg">
+							<g class="out-g">
 								<rect x="1679" y="679" class="st13" width="51" height="408" />
 								<g>
 									<polygon class="st13" points="1679,1089 1549,949 1679,949 		" />
 								</g>
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<rect x="1770" y="771" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 3591 1950)"
 									class="st13" width="51" height="408" />
 								<g>
 									<polygon class="st13" points="1821,769 1951,909 1821,909 		" />
 								</g>
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<circle class="st2" cx="1274.5" cy="494.5" r="24.5" />
 								<circle class="st14" cx="1198.8" cy="465.3" r="24.5" />
 								<circle class="st15" cx="1123" cy="436" r="24.5" />
 								<circle class="st16" cx="1047.3" cy="406.8" r="24.5" />
 								<circle class="st7" cx="971.5" cy="377.5" r="24.5" />
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<circle class="st2" cx="1133.3" cy="865.6" r="24.5" />
 								<circle class="st14" cx="1052.2" cy="868.3" r="24.5" />
 								<circle class="st15" cx="971" cy="871" r="24.5" />
 								<circle class="st16" cx="889.8" cy="873.7" r="24.5" />
 								<circle class="st7" cx="808.7" cy="876.4" r="24.5" />
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<circle class="st2" cx="1322.6" cy="1219.7" r="24.5" />
 								<circle class="st14" cx="1254.8" cy="1264.3" r="24.5" />
 								<circle class="st15" cx="1187" cy="1309" r="24.5" />
 								<circle class="st16" cx="1119.2" cy="1353.7" r="24.5" />
 								<circle class="st7" cx="1051.4" cy="1398.3" r="24.5" />
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<circle class="st2" cx="1556.4" cy="1397.6" r="24.5" />
 								<circle class="st14" cx="1529.7" cy="1474.3" r="24.5" />
 								<circle class="st15" cx="1503" cy="1551" r="24.5" />
 								<circle class="st16" cx="1476.3" cy="1627.7" r="24.5" />
 								<circle class="st7" cx="1449.6" cy="1704.4" r="24.5" />
 							</g>
-							<g class="outg">
+							<g class="out-g">
 								<circle class="st2" cx="1842.2" cy="1416.5" r="24.5" />
 								<circle class="st14" cx="1857.6" cy="1496.3" r="24.5" />
 								<circle class="st15" cx="1873" cy="1576" r="24.5" />
@@ -571,6 +592,32 @@
 	c47.2,0,85.7,38.6,85.7,85.7v322.5C2342.5,2227.9,2303.9,2266.5,2256.8,2266.5z" />
 						</svg>
 					</div>
+					<div class="cf-flexbox2">
+						<img src="./img/back-stage/backstage2.png" alt="">
+						<div class="cf-text-container2">
+
+						</div>
+					</div>
+					<div id="backstage-btn" class="c-btn js__sc-show-target js__sc-simple zl-to-form-btn"
+					style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+					<a class="c-btn__inner" href="javascript:void(0);">
+						<span class="en">点击报名</span>
+
+						<span class="icon type-arrow">
+							<svg version="1.1" fill="#fff" xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="31px"
+								height="7px" viewBox="0 0 31 7" enable-background="new 0 0 31 7"
+								xml:space="preserve">
+								<polygon points="31,3.5 19,0 23.087,3 0,3 0,4 23.087,4 19,7 "></polygon>
+							</svg>
+						</span>
+
+						<span class="c-btn__border border-h"><span class="border-ht"></span><span
+								class="border-hb"></span></span>
+						<span class="c-btn__border border-v"><span class="border-vl"></span><span
+								class="border-vr"></span></span>
+					</a>
+					</div>
 				</section>
 			</section>
 
@@ -580,35 +627,52 @@
 		</section>
 		<!-- 青姐模块 -->
 		<section id="ios" class="page">
-			<section class="pre-one">
-				<img class="header-icon" src="img/ios/banner-ios-font.png" alt="">
-				<!-- <div class="ios-box">
-				<h3>IOS</h3>
-				<hr>
-				<sup>优雅极致、中流砥柱</sup>
-				<br>
-				<sup  id="directionDetails" style="font-size:0.5em">〔下滑详情〕</sup> -->
-				<!-- </div> -->
-				<img src="./img/ios/13.jpg" alt="" class="bg">
-			</section>
-			<section class="pre-two">
-				<p class="cd-container infor-font" id="ios-pretwo">
-					TopView
-					iOS组专注于极致和优雅的主流App开发以及iOS新技术的探索。iOS组是TopView的主要开发组之一，成立于2015年。在TopView工作室的帮助下，工作室成员的相互交流中，iOS组已经成为工作室的中流砥柱之一。
-				</p>
-				<img src="./img/ios/19.jpg" alt="">
+			<section id="mq-luxy-wrapper">
+				<section class="per-one mq-luxy" data-speed-y="40">
+					<img class="header-font mq-luxy" src="img/ios/banner-ios-font.png" alt="" data-speed-y="30">
+					<img src="img/ios/ios1.jpg" alt="" class="bg mq-luxy">
+					<div class="bottom-bg"></div>
+				</section>
+				<section class="per-two mq-luxy" data-speed-y="-5">
+					<div class="flex-box1 flex-box mq-luxy" data-speed-y="-5">
+						<div class="mq-txt-container1 mq-luxy" data-speed-y="-2">
+						</div>
+						<div class="mq-luxy" data-speed-y="-5">
+							<img src="img/ios/16.jpg" alt="" class="mq-img1 mq-skewImg">
+						</div>
+					</div>
+					<div class="flex-box2 flex-box mq-luxy" data-speed-y="-10">
+						<div class="mq-luxy" data-speed-y="-3">
+							<img src="img/ios/13.jpg" alt="" class="mq-img2 mq-skewImg">
+						</div>
+						<div class="mq-txt-container2 mq-luxy" data-speed-y="-9">
+						</div>
+						<div class="c-btn js__sc-show-target js__sc-simple zl-to-form-btn"
+					style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+					<a class="c-btn__inner" href="javascript:void(0);">
+						<span class="en">点击报名</span>
 
+						<span class="icon type-arrow">
+							<svg version="1.1" fill="#fff" xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="31px" height="7px"
+								viewBox="0 0 31 7" enable-background="new 0 0 31 7" xml:space="preserve">
+								<polygon points="31,3.5 19,0 23.087,3 0,3 0,4 23.087,4 19,7 "></polygon>
+							</svg>
+						</span>
 
+						<span class="c-btn__border border-h"><span class="border-ht"></span><span
+								class="border-hb"></span></span>
+						<span class="c-btn__border border-v"><span class="border-vl"></span><span
+								class="border-vr"></span></span>
+					</a>
+						</div>
+						
+					</div>
+					<div class="bottom-bg2"></div>
+					
+				</section>
+				
 			</section>
-			<section class="pre-three">
-				<img src="./img/ios/轮播图.jpeg" alt="">
-				<p class="cd-container infor-font" id="ios-prethree">
-					加入我们，相信你一定能得到锻炼与成长。只要你有c语言基础，热爱学习，有责任心就加入iOS组吧!
-				</p>
-			</section>
-			<!-- <section class="pre-four">
-				<img src="./img/ios/5.jpg" alt="">
-			</section> -->
 		</section>
 		<!-- 基你太美模块 -->
 		<section id="machine-learning" class="page">
@@ -622,20 +686,44 @@
 					<div class="flex-box1 flex-box rj-luxy" data-speed-y="-5">
 						<div class="txt-container1 rj-luxy" data-speed-y="-2">
 						</div>
-						<div class="rj-luxy" data-speed-y="-5">
+						<div class="rj-luxy rj-img-container1" data-speed-y="-5">
 							<img src="img/machine-learning/机器学习详情页1.jpg" alt="" class="img1 skewImg">
 						</div>
 					</div>
 					<div class="flex-box2 flex-box rj-luxy" data-speed-y="-10">
-						<div class="rj-luxy" data-speed-y="-3">
+						<div class="rj-luxy rj-img-container2" data-speed-y="-3">
 							<img src="img/machine-learning/机器学习详情页2.jpg" alt="" class="img2 skewImg">
 						</div>
 						<div class="txt-container2 rj-luxy" data-speed-y="-9">
 						</div>
 					</div>
-					<div class="txt-container3 rj-luxy" data-speed-y="-6">
+					<div class="txt-container3" data-speed-y="-6">
+						<div class="rj-txt3">
+							<div id="rj-c-btn" class="c-btn js__sc-show-target js__sc-simple zl-to-form-btn"
+								style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+								<a class="c-btn__inner" href="javascript:void(0);">
+									<span class="en">点击报名</span>
+
+									<span class="icon type-arrow">
+										<svg version="1.1" fill="#fff" xmlns="http://www.w3.org/2000/svg"
+											xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="31px"
+											height="7px" viewBox="0 0 31 7" enable-background="new 0 0 31 7"
+											xml:space="preserve">
+											<polygon points="31,3.5 19,0 23.087,3 0,3 0,4 23.087,4 19,7 "></polygon>
+										</svg>
+									</span>
+
+									<span class="c-btn__border border-h"><span class="border-ht"></span><span
+											class="border-hb"></span></span>
+									<span class="c-btn__border border-v"><span class="border-vl"></span><span
+											class="border-vr"></span></span>
+								</a>
+							</div>
+						</div>
 						<img src="img/machine-learning/机器学习详情页3.jpg" alt="" class="img3 skewImg">
+
 					</div>
+					<!-- <div class="rj-white-bg"></div> -->
 					<div class="bottom-bg"></div>
 				</section>
 			</section>
@@ -931,6 +1019,14 @@
 		<div class="bar bar3"></div>
 		<div class="bar bar4"></div>
 		<div class="bar bar5"></div>
+	</div>
+	<!-- 提前加载图片后删除 -->
+	<div id="rj-img-pre-load" style="display:none">
+		<img>
+		<img>
+		<img>
+		<img>
+		<img>
 	</div>
 	<!-- <script src="src/js/jquery-1.12.4.min.js"></script> -->
 	<script src='js/jquery.hammer.min.js' type="text/javascript"></script>
