@@ -818,7 +818,10 @@ img {
   overflow-x: hidden;
   height: 100vh;
   top: -24px;
-  background: #333;
+  background: #f8f8fb;
+}
+#android ::selection {
+  background-color: #63dcae;
 }
 #android .pers-one {
   width: 100%;
@@ -838,17 +841,34 @@ img {
 }
 #android img {
   width: 100%;
+  transition: all 0.2s;
 }
 #android .pers-two {
   position: relative;
   width: 100%;
   height: 100vh;
 }
+#android .pers-two .flex-box1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40vh;
+}
+#android .pers-two .zl-content-one {
+  position: relative;
+  z-index: 10;
+  margin-left: 13vw;
+}
 #android .pers-two .zl-content-one p {
-  color: white;
+  color: black;
+}
+#android .pers-two .flex-box2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #android .pers-two .zl-content-two p {
-  color: white;
+  color: black;
 }
 #android .pers-two .describe {
   right: 3%;
@@ -860,14 +880,24 @@ img {
   width: 30%;
 }
 #android .pers-three {
+  margin-top: 30vh;
+  margin-bottom: 45px;
   position: relative;
   width: 100%;
+}
+#android .pers-three .flex-box3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #android .pers-three img {
   width: 30%;
 }
+#android .pers-three .zl-content-three {
+  margin-left: 4vw;
+}
 #android .pers-three .zl-content-three p {
-  color: white;
+  color: black;
 }
 #android .pers-three .describe {
   width: 23%;
@@ -886,6 +916,42 @@ img {
 #android .pers-three .describe:hover {
   background-color: #2e2e2e;
   color: white;
+}
+#android .pers-three .c-btn {
+  left: 59%;
+}
+#android .pers-three .c-btn .c-btn__inner {
+  background-color: #283232;
+}
+#android .pers-three .c-btn .c-btn__inner .en {
+  color: #ffffff;
+}
+#android .pers-three .c-btn .c-btn__inner .icon {
+  background-color: #1c2525;
+}
+#android .pers-three .c-btn .c-btn__inner .icon svg {
+  fill: #ffffff;
+}
+#android .pers-three .c-btn .c-btn__border.border-h > * {
+  background: linear-gradient(to right, #c3e060 0%, #67dfc4 100%);
+}
+#android .pers-three .c-btn .c-btn__border.border-v .border-vl {
+  background: #c3e060;
+}
+#android .pers-three .c-btn .c-btn__border.border-v .border-vr {
+  background: #67dfc4;
+}
+#android .pers-three .c-btn:hover .c-btn__inner {
+  background-color: #f0f4e7;
+}
+#android .pers-three .c-btn:hover .en {
+  color: black;
+}
+#android .pers-three .c-btn:hover .icon {
+  background-color: #f0f4e7;
+}
+#android .pers-three .c-btn:hover .icon svg {
+  fill: #000000;
 }
 #android .describe {
   position: absolute;
@@ -982,7 +1048,6 @@ img {
 #form-page .preview-pane .fx_external_form {
   width: 100%;
   height: 100%;
-  background: url(../img/form/flower.jpeg);
   background: url(../img/form/milu.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -1307,14 +1372,12 @@ img {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  box-shadow: 1px 1px 30px #a4856d;
 }
 #form-page .page {
-  cursor: pointer;
   position: absolute;
   color: black;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   transition: 1.5s transform;
   transform-style: preserve-3d;
   transform-origin: left center;
@@ -1326,6 +1389,18 @@ img {
 #form-page .zl-first-book .front {
   background: url(../img/form/invitecard.png) 50%;
   background-size: cover;
+  height: 100%;
+}
+#form-page .zl-first-book .front h1 {
+  position: absolute;
+  cursor: pointer;
+  font-size: 24px;
+  color: #a4856d;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  left: 50%;
+  margin: 0;
+  margin-bottom: 10px;
 }
 #form-page .zl-second-book {
   cursor: default;
@@ -1334,7 +1409,6 @@ img {
 #form-page .back {
   position: absolute;
   width: 100%;
-  height: 100%;
   padding: 2% 0% 0%;
   box-sizing: border-box;
   backface-visibility: hidden;
@@ -1373,63 +1447,39 @@ img {
 }
 #back-stage {
   height: 100vh;
-  width: 100vw;
   overflow-y: overlay;
   overflow-x: hidden;
-  perspective: 1px;
   position: absolute;
   top: 0;
 }
-#back-stage section {
-  width: 100vw;
+#back-stage section section {
+  height: 100vh;
 }
-#back-stage .per-one {
-  transform: translateZ(-3px) scale(4);
+#back-stage section .per-two {
+  background-color: #dfe8f3;
   overflow: hidden;
+  box-shadow: 0px 0px 20px #2f1e1e;
 }
-#back-stage .per-one img:nth-child(1) {
-  width: 100%;
-  height: 100%;
-  box-shadow: 0px 0px 100px #2f1e1e;
+#back-stage section .per-two .cf-flexbox1 {
+  margin-top: 10vh;
+  z-index: 2;
+  display: flex;
+  justify-content: space-around;
 }
-#back-stage .per-one .page-name {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -55%) scale(0.27);
+#back-stage section .per-two .cf-flexbox1 .cf-text-container1 {
+  width: 37vw;
+  height: 30vw;
 }
-#back-stage .per-two {
-  transform: translate3D(0px, 858px, -1px) scale(2);
-  overflow: hidden;
-  position: relative;
+#back-stage section .per-two .cf-flexbox1 .cf-text-container1 p {
+  color: #333 !important;
+  font-size: 1.6vw;
 }
-#back-stage .per-two img {
-  width: 100%;
-  height: 100%;
-  box-shadow: 0px 0px 100px #2f1e1e;
+#back-stage section .per-two .cf-flexbox1 svg {
+  height: 28vw;
+  width: 28vw;
+  display: block;
 }
-#back-stage .per-two .bcak-stage-content {
-  position: absolute;
-  right: 210px;
-  top: 150px;
-  text-align: center;
-  width: 750px;
-  height: 500px;
-  overflow: hidden;
-}
-#back-stage .per-two .bcak-stage-content p {
-  position: absolute;
-  font-size: 30px;
-  color: #fff;
-  line-height: 1.5;
-}
-#back-stage .per-two .bcak-stage-content p:nth-child(2n) {
-  right: -750px;
-}
-#back-stage .per-two .bcak-stage-content p:nth-child(2n+1) {
-  left: -750px;
-}
-#back-stage .per-two .write-box {
+#back-stage section .per-two .write-box {
   display: none;
   width: 300px;
   height: 300px;
@@ -1448,17 +1498,34 @@ img {
     fill: none;
   }
 }
-#back-stage .per-two .write-box #java {
+#back-stage section .per-two .write-box #java {
   width: 300px;
   height: 300px;
   display: block;
   position: absolute;
   top: 0%;
 }
-#back-stage .per-two .write-box #java path {
+#back-stage section .per-two .write-box #java path {
   stroke-dasharray: 320;
   stroke-dashoffset: 0;
   animation: dash 3s ease infinite;
+}
+#back-stage section .per-one {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#back-stage section .per-one img:nth-child(1) {
+  filter: brightness(90%);
+  height: 100%;
+  position: absolute;
+}
+#back-stage section .per-one .page-name {
+  z-index: 3;
+  width: 22vw;
 }
 #banner-container {
   height: 100vh;
@@ -1722,8 +1789,8 @@ img {
   border: none;
   border-radius: 0.5em;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50vh;
+  left: 50vw;
   transform: translate(-50%, -50%) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
   overflow: hidden;
   transition: 0.22s cubic-bezier(0.34, 0.34, 0.17, 1.55);
@@ -1762,6 +1829,47 @@ img {
   position: absolute;
   transform: translate(-50%, -50%);
   transition: 0.32s ease;
+}
+.zl-turn-btn {
+  transform: translateX(-50%);
+  position: absolute;
+  top: 90%;
+  left: 50vw;
+}
+.zl-turn-btn figure {
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  perspective: 500px;
+}
+.zl-turn-btn figure div {
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 0.25s;
+}
+.zl-turn-btn figure div span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  border: 5px solid #fff;
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 50px;
+  font-size: 17pt;
+  text-align: center;
+  text-transform: uppercase;
+}
+.zl-turn-btn figure div span:nth-child(1) {
+  color: #fff;
+  transform: translate3d(0, 0, 30px);
+}
+.zl-turn-btn figure div span:nth-child(2) {
+  color: #737f39;
+  background: #fff;
+  transform: rotateX(90deg) translate3d(0, 0, 30px);
+}
+.zl-turn-btn figure:hover div {
+  transform: rotateX(-90deg);
 }
 .c-btn {
   position: absolute;
