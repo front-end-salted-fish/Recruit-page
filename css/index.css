@@ -1173,6 +1173,15 @@ img {
   font-size: 24px;
   line-height: 48px;
 }
+#code {
+  font-family: Arial;
+  font-style: italic;
+  font-weight: bold;
+  border: 0;
+  letter-spacing: 2px;
+  color: #aa8d78;
+  position: absolute;
+}
 #form-page {
   position: absolute;
   top: 0;

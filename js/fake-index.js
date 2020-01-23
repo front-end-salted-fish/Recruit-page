@@ -1182,16 +1182,23 @@ $(function () {
         $submit.on('click', function () {
            
             if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
-                if (!formData.direction) {
-                    alert('必须选择一个发展方向')
-                    return false
-                }
                 if (!formData.sex) {
                     alert('必须选择性别')
                     return false
                 }
+                if (!formData.direction) {
+                    alert('必须选择一个发展方向')
+                    return false
+                }
+                if (!check()) {
+                    return false
+                }
+                $($('#form-page-two .form-body').get(0)).css({
+                    transition: 'none'
+                })
                 flag = true
-            } else {
+            }
+             else {
                alert("请正确输入信息");
                $($('#form-page-two .form-body').get(0)).css({
                 height: $('#form-page-one .form-body').get(0).clientHeight,
@@ -1201,6 +1208,7 @@ $(function () {
             }
             flag = confirm('确定提交吗？')
             if (flag) {
+               
                 $('.scene').css({
                     margin: '0% 20% 5% 72%'
                 }) //调整书本位置
@@ -1216,14 +1224,8 @@ $(function () {
                         location.reload() //三秒后刷新页面
                     }
                 },1000)
-                console.log($time.text());
-                 
             }
-            
         })
-   
-        
-
             $username.on("blur", nameCheck);//1.名字
             function nameCheck() {
                 let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
@@ -1301,7 +1303,7 @@ $(function () {
                 $(".zl-intro-span").html("");
                 return true;
             }
-            $skills.on("blur", skillsCheck);
+            $skills.on("blur", skillsCheck); // 技能
             function skillsCheck() {
                 let skills = $skills.val();
                 if (skills == '') {
@@ -1313,7 +1315,7 @@ $(function () {
                 $(".zl-skills-span").html("");
                 return true;
             }
-            $idea.on("blur", cogCheck);
+            $idea.on("blur", cogCheck); // 想法
             function cogCheck() {
                 let cog = $idea.val();
                 if (cog == '') {
@@ -1325,8 +1327,36 @@ $(function () {
                 $(".zl-idea-span").html("");
                 return true;
             }
-
-        // 
+            //产生验证码  
+            createCode();
+            var code; //在全局定义验证码  
+            function createCode() {
+                code = "";
+                var codeLength = 4; //验证码的长度  
+                var checkCode = document.getElementById("code");
+                var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+                    'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数  
+                for(var i = 0; i < codeLength; i++) { //循环操作  
+                    var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
+                    code += random[index]; //根据索引取得随机数加到code上  
+                }
+                checkCode.value = code; //把code值赋给验证码  
+            }
+            // 
+            function check(){
+            var inputCode = document.getElementById("ctl00_txtcode").value.toUpperCase();
+                if(inputCode==""){
+                    alert("验证码不能为空");
+                    return false;
+                }else if(inputCode!=code){
+                    alert("验证码输入错误,请重新输入！");
+                    createCode(); //刷新验证码  
+                    document.getElementById("ctl00_txtcode").value = ""; //清空文本框
+                    return false;
+                }
+                return true;
+            }
+        // 书本前一页
         function prevPage() {
             $('#form-page .flipped')
                 .last()
@@ -1335,9 +1365,8 @@ $(function () {
                 .siblings('.page')
                 .removeClass('active');
         }
+        //书本下一页
         function nextPage() {
-            // if (!$('zl-second-book').hasClass('active')) {
-                console.log(1)
                 $('#form-page .active')
                 .removeClass('active')
                 .addClass('flipped')
@@ -1345,9 +1374,6 @@ $(function () {
                 .addClass('active')
                 .siblings();
                 $('.zl-second-book').removeClass('.flipped')
-
-            // }
-           
         }
         $('#form-page-one').click(function (ev) {
             $($('#form-page-two .form-body').get(0)).css({
