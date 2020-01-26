@@ -1031,7 +1031,6 @@ img {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100vh;
-  top: -24px;
   background: #f8f8fb;
 }
 #android ::selection {
@@ -1190,7 +1189,6 @@ img {
   right: 0;
   overflow: auto;
   height: 100vh;
-  /* 5% 5% 5% 50%; */
 }
 #form-page .zl-form-page-close-btn {
   overflow: hidden;
@@ -1542,7 +1540,6 @@ img {
 }
 #form-page .preview-pane .fx_external_form .form-content .form-foot {
   border-top: solid 1px #DEDEDE;
-  height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -1577,26 +1574,27 @@ img {
 #form-page .preview-pane .fx_external_form .form-content .form-foot:hover {
   color: #807a7a;
 }
-#form-page h1 {
-  text-align: center;
-  font-size: 24px;
-  color: #a4856d;
-  margin: 4% 0 6% 0;
-}
 #form-page .scene {
   width: 45%;
   height: 99%;
   margin: 0% 20% 5% 27%;
   perspective: 1000px;
   transition: margin 1s;
+  /* 5% 5% 5% 50%; */
 }
-#form-page .book {
+#form-page .scene .book {
   position: relative;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
 }
-#form-page .page {
+#form-page .scene .book h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #a4856d;
+  margin: 4% 0 6% 0;
+}
+#form-page .scene .book .page {
   position: absolute;
   color: black;
   width: 100%;
@@ -1605,7 +1603,7 @@ img {
   transform-style: preserve-3d;
   transform-origin: left center;
 }
-#form-page .page p {
+#form-page .scene .book .page p {
   font-size: 16px;
   margin-bottom: 37px;
 }
@@ -1633,7 +1631,6 @@ img {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 2% 0% 0%;
   box-sizing: border-box;
   backface-visibility: hidden;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, from(#FFFFFF), to(#CCCCCC));
@@ -1642,24 +1639,24 @@ img {
 .back {
   transform: rotateY(180deg);
 }
-.page.active {
+#form-page .page.active {
   z-index: 1;
 }
-.page.flipped {
+#form-page .page.flipped {
   transform: rotateY(-180deg);
 }
-.page.flipped:last-of-type {
+#form-page .page.flipped:last-of-type {
   z-index: 1;
 }
-p {
+#form-page p {
   margin: 0 0 0.1em;
   text-indent: 1em;
 }
-.qr {
+#form-page .qr {
   margin: 50px auto;
   max-width: 50%;
 }
-.qr img {
+#form-page .qr img {
   display: block;
 }
 *,
