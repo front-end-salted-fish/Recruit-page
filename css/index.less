@@ -2257,6 +2257,65 @@ img {
   }
 }
 
+// 轮播图中间字体样式
+.banner-font-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 40vw;
+  height: 50vh;
+  position: absolute;
+  z-index: 3;
+
+  span {
+    white-space: nowrap;
+    user-select: none;
+    font-family: '微软雅黑';
+    // font-weight: lighter;
+    text-align: center;
+    display: block;
+    width: 100%;
+    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-width: .1vw;
+    font-weight: lighter;
+  }
+
+  .banner-center-up {
+    font-size: 6.5vw;
+  }
+
+  .banner-center-down {
+    font-size: 3vw;
+  }
+
+  .banner-center-line {
+    width: 29vw;
+    height: 0.4rem;
+    background-color: white;
+    border: .1vw solid white;
+    margin-top: 1.5vw;
+    margin-bottom: 1vw;
+  }
+
+  .banner-font {
+    color: white;
+  }
+}
+#detail-pages {
+  .page {
+    .banner-center-up {
+      font-size: 5vw;
+    }
+  
+    .banner-center-down {
+      font-size: 2.5vw;
+    }
+    .banner-center-line {
+      width: 25vw;
+    }
+  }
+}
 // 轮播图
 #banner-container {
   height: 100vh;
@@ -2337,51 +2396,6 @@ img {
       display: flex;
       align-items: center;
       justify-content: center;
-
-      // 轮播图中间字体样式
-      .banner-font-container {
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-wrap: wrap;
-        width: 40vw;
-        height: 50vh;
-        position: absolute;
-        z-index: 3;
-
-        span {
-          user-select: none;
-          font-family: '微软雅黑';
-          // font-weight: lighter;
-          text-align: center;
-          display: block;
-          width: 100%;
-          -webkit-text-stroke-color: white;
-          -webkit-text-stroke-width: .1vw;
-          font-weight: lighter;
-        }
-
-        .banner-center-up {
-          font-size: 6.5vw;
-        }
-
-        .banner-center-down {
-          font-size: 3vw;
-        }
-
-        .banner-center-line {
-          width: 29vw;
-          height: 0.4rem;
-          background-color: white;
-          border: .1vw solid white;
-          margin-top: 1.5vw;
-          margin-bottom: 1vw;
-        }
-
-        .banner-font {
-          color: white;
-        }
-      }
 
       // 部门字体和字体边框
       // .banner-font,

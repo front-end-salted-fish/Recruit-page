@@ -779,7 +779,7 @@ $(function () {
             targetPercentage: 0.1
         });
         let $machineDiv = $("#machine-learning");
-        let $headerFont = $($("#machine-learning .per-one .header-font")[0]);
+        let $headerFont = $($("#machine-learning .per-one .banner-font-container")[0]);
 
         splitTxt($($(".txt-container1")[0]), "TopView 机器学习组是16年成立的新组,@我们关注机器学习算法模型,@在理论学习的同时,@也包含对工程项目的实践。@我们组以Python语言为主,@目前工作集中在爬虫技术、数据挖掘、@机器学习、AI研究方向，@包括金融信贷反欺诈和在线评论的情感分析等", "left");
         splitTxt($($(".txt-container2")[0]), "发展方向则有大数据、自然语言处理、@计算机视觉等多个人工智能领域方向，@并与研究生实验室有合作。", "left");
