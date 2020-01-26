@@ -533,8 +533,7 @@ $(function () {
             },
             // 按钮高亮
             setBtn() {
-                console.log("setBtn");
-
+                // console.log("setBtn");
                 $btns.removeClass("btn-play").eq(this.playIndex).addClass("btn-play");
             },
             // 设置背景颜色
@@ -668,6 +667,10 @@ $(function () {
         // 通过点击跳转至详情页
         $("#banner li").on("click", ".banner-font-container", function (e) {
             let index = banner.bannerFontUp.indexOf($(e.currentTarget).find(".banner-center-up").text()); // 获取此时要进入的详情页
+            banner.toDetailPage(index);
+        });
+        $("#banner li").on("click", ".inner-mask img", function (e) {
+            let index = banner.bannerImgScr.indexOf($(e.currentTarget).attr('src')); // 获取此时要进入的详情页
             banner.toDetailPage(index);
         });
 
@@ -875,9 +878,9 @@ $(function () {
         let cnt = 0;
         latestSpan.on('transitionend', function () {
             cnt++;
-            if (cnt === 4) {
-                latestSpan.off('webkitTransitionEnd');
-            }
+            // if (cnt === 4) {
+            //     latestSpan.off('webkitTransitionEnd');
+            // }
             if (cnt === 1) {
                 latestSpan.off('transitionend');
                 loadingtransitionEnd = true;

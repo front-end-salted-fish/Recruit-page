@@ -34,6 +34,7 @@ html {
   background: #fff;
   position: absolute;
   z-index: 10;
+  user-select: none;
 
   // 开局动画内部盒子
   #loading-box {
@@ -391,6 +392,8 @@ html {
     position: absolute;
     left: 0;
     top: 0;
+    right: 3vw;
+    bottom: 5vh;
     width: 50px;
     height: 50px;
     background: url(../img/logo/logo.png);
@@ -401,7 +404,9 @@ html {
 
   .des {
     position: absolute;
-    left: 8px;
+    // left: 8px;
+    padding-top: 5px;
+    width:100%;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -908,6 +913,9 @@ img {
 
 // 详情页的回退按钮
 #detail-pages {
+  .page {
+    display: none;  // 刚进来的时候不应该出现在轮播图后面
+  }
   .rj-detail-page-close-btn {
     overflow: hidden;
     display: block;
@@ -2292,7 +2300,7 @@ h1 {
         background-color: rgba(255, 255, 255, 0.301);
         border-radius: .1vw;
         height: 100%;
-        width: 3.5%;
+        width: 4.5rem;
         margin: 0 15px;
         cursor: pointer;
 
@@ -2422,6 +2430,10 @@ h1 {
           }
         }
       }
+    }
+
+    .mid-page {
+      z-index: 2;
     }
 
     // 上一页的初始样式
@@ -2682,9 +2694,12 @@ h1 {
 // @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
 //轮播图界面报名按钮样式
 .zl-turn-btn {
+  user-select: none;
   transform: translateX(-50%);
   position: absolute;
-  top: 90%;
+  // top: 90%;
+  z-index: 3;
+  bottom: 3vh;
   left: 50vw;
   figure {
     width: 200px;
@@ -2713,7 +2728,7 @@ h1 {
       }
       
       span:nth-child(2) {
-        color: #737f39;
+        // color: #737f39;
         background: #fff;
         transform: rotateX(90deg) translate3d(0, 0, 30px);
       }
