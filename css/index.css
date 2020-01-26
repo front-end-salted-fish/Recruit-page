@@ -575,7 +575,7 @@ img {
   z-index: -1;
 }
 #front-end {
-  background-color: black;
+  background-color: rgba(196, 199, 216);
   margin: 0px;
   padding: 0px;
   position: absolute;
@@ -585,15 +585,16 @@ img {
   overflow-y: overlay;
   overflow-x: hidden;
   perspective: 1px;
+  /*   .per {
+    filter: brightness(0.7);
+  } */
+}
+#front-end .skewImg {
+  opacity: 0 !important;
+  transform: scale(0.8) skew(9deg, 11deg) translateY(100px) !important;
 }
 #front-end img {
   width: 100%;
-  box-shadow: 0px 0px 100px #2f1e1e;
-}
-#front-end .per-one {
-  transform: translateZ(-6px) scale(7);
-  position: relative;
-  display: flex;
 }
 #front-end .title {
   width: 30%;
@@ -603,58 +604,76 @@ img {
   z-index: 8;
   box-shadow: none;
 }
-#front-end .per {
-  filter: brightness(0.7);
+#front-end section section {
+  height: 150vh;
 }
-#front-end .per-two {
-  background-color: gray;
-  transform: translate3d(0px, 90%, -1px) scale(2);
+#front-end section .per-two {
+  background-color: rgba(196, 199, 216);
+  overflow: hidden;
+  box-shadow: 0px 0px 20px #2f1e1e;
+}
+#front-end section .per-two img {
+  width: 30vw;
+}
+#front-end section .per-two .flex-box1 {
+  margin-top: 20vh;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+#front-end section .per-two .flex-box1 .wf-txt-container1 {
+  position: absolute;
+  width: 37vw;
+  height: 30vw;
+  left: 15vh;
+}
+#front-end section .per-two .flex-box1 .wf-txt-container1 p {
+  color: #333 !important;
+  font-size: 1.6vw;
+}
+#front-end section .per-two .flex-box1 .wf-img-container1 {
+  position: absolute;
+  right: 5vh;
+}
+#front-end section .per-two .flex-box1 .wf-img-container1 .wfimg1 {
+  position: absolute;
+  top: -8vh;
+  right: 10vw;
+  border-radius: 10%;
+  box-shadow: 0px 0px 20px #b5b3a6;
+}
+#front-end section .per-two .flex-box2 {
+  z-index: 2;
+  position: absolute;
+  top: 80vh;
+}
+#front-end section .per-two .flex-box2 .wf-txt-container2 {
+  width: 37vw;
+  height: 30vw;
+  position: absolute;
+  left: 60vw;
+}
+#front-end section .per-two .flex-box2 .wf-txt-container2 p {
+  color: #333 !important;
+  font-size: 1.6vw;
+}
+#front-end section .per-two .flex-box2 .wf-img-container2 {
+  position: absolute;
+  left: 15vh;
+  top: -5vh;
+}
+#front-end section .per-two .flex-box2 .wf-img-container2 .wfimg2 {
+  border-radius: 10%;
+  box-shadow: 0px 0px 20px #b5b3a6;
+}
+#front-end section .per-one {
   position: relative;
   width: 100%;
-  height: 180vh;
-}
-#front-end .per-two .article1 {
-  position: absolute;
-  top: 10%;
-  left: 3%;
-  z-index: 2;
-}
-#front-end .per-two .article1 p {
-  font-size: 25px;
-  color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  display: none;
-}
-#front-end .per-two .article2 {
-  position: absolute;
-  top: 33%;
-  right: 5%;
-  z-index: 2;
-}
-#front-end .per-two .article2 p {
-  font-size: 25px;
-  color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  display: none;
-}
-#front-end .per-two .icon1 {
-  z-index: 9;
-  width: 35%;
-  position: absolute;
-  top: 3%;
-  right: 5%;
-  border-radius: 25%;
-}
-#front-end .per-two .icon2 {
-  z-index: 9;
-  width: 35%;
-  position: absolute;
-  top: 30%;
-  left: 5%;
-  border-radius: 25%;
-}
-#front-end .per-three {
-  transform: translate3d(0px, 70%, 0px) scale(1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 img {
   user-select: none;
@@ -1013,12 +1032,17 @@ img {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100vh;
-  top: -24px;
-  background: #333;
+  background: #f8f8fb;
+}
+#android ::selection {
+  background-color: #63dcae;
 }
 #android .pers-one {
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #android .pers-one .one {
   filter: blur(1px);
@@ -1026,19 +1050,39 @@ img {
 #android .pers-one .font-bg {
   position: absolute;
   z-index: 2;
-  top: 50%;
-  left: 50%;
   width: 22vw;
   transform: translate(-50%, -50%);
 }
 #android img {
   width: 100%;
+  transition: all 0.2s;
 }
 #android .pers-two {
   position: relative;
-  box-shadow: 0 -8px #2e2e2e;
   width: 100%;
   height: 100vh;
+}
+#android .pers-two .flex-box1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40vh;
+}
+#android .pers-two .zl-content-one {
+  position: relative;
+  z-index: 10;
+  margin-left: 13vw;
+}
+#android .pers-two .zl-content-one p {
+  color: black;
+}
+#android .pers-two .flex-box2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#android .pers-two .zl-content-two p {
+  color: black;
 }
 #android .pers-two .describe {
   right: 3%;
@@ -1046,14 +1090,28 @@ img {
   color: #9ca8ab;
   width: 33%;
 }
-#android .pers-two .describe .item {
-  font-size: 24px;
-  color: #9ca8ab;
+#android .pers-two img {
+  width: 30%;
 }
 #android .pers-three {
+  margin-top: 30vh;
+  margin-bottom: 45px;
   position: relative;
-  box-shadow: 0 -8px #383838;
   width: 100%;
+}
+#android .pers-three .flex-box3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#android .pers-three img {
+  width: 30%;
+}
+#android .pers-three .zl-content-three {
+  margin-left: 4vw;
+}
+#android .pers-three .zl-content-three p {
+  color: black;
 }
 #android .pers-three .describe {
   width: 23%;
@@ -1073,11 +1131,56 @@ img {
   background-color: #2e2e2e;
   color: white;
 }
+#android .pers-three .c-btn {
+  left: 59%;
+}
+#android .pers-three .c-btn .c-btn__inner {
+  background-color: #283232;
+}
+#android .pers-three .c-btn .c-btn__inner .en {
+  color: #ffffff;
+}
+#android .pers-three .c-btn .c-btn__inner .icon {
+  background-color: #1c2525;
+}
+#android .pers-three .c-btn .c-btn__inner .icon svg {
+  fill: #ffffff;
+}
+#android .pers-three .c-btn .c-btn__border.border-h > * {
+  background: linear-gradient(to right, #c3e060 0%, #67dfc4 100%);
+}
+#android .pers-three .c-btn .c-btn__border.border-v .border-vl {
+  background: #c3e060;
+}
+#android .pers-three .c-btn .c-btn__border.border-v .border-vr {
+  background: #67dfc4;
+}
+#android .pers-three .c-btn:hover .c-btn__inner {
+  background-color: #f0f4e7;
+}
+#android .pers-three .c-btn:hover .en {
+  color: black;
+}
+#android .pers-three .c-btn:hover .icon {
+  background-color: #f0f4e7;
+}
+#android .pers-three .c-btn:hover .icon svg {
+  fill: #000000;
+}
 #android .describe {
   position: absolute;
   z-index: 4;
   font-size: 24px;
   line-height: 48px;
+}
+#code {
+  font-family: Arial;
+  font-style: italic;
+  font-weight: bold;
+  border: 0;
+  letter-spacing: 2px;
+  color: #aa8d78;
+  position: absolute;
 }
 #form-page {
   position: absolute;
@@ -1087,7 +1190,6 @@ img {
   right: 0;
   overflow: auto;
   height: 100vh;
-  /* 5% 5% 5% 50%; */
 }
 #form-page .zl-form-page-close-btn {
   overflow: hidden;
@@ -1168,7 +1270,6 @@ img {
 #form-page .preview-pane .fx_external_form {
   width: 100%;
   height: 100%;
-  background: url(../img/form/flower.jpeg);
   background: url(../img/form/milu.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -1440,7 +1541,6 @@ img {
 }
 #form-page .preview-pane .fx_external_form .form-content .form-foot {
   border-top: solid 1px #DEDEDE;
-  height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -1475,59 +1575,69 @@ img {
 #form-page .preview-pane .fx_external_form .form-content .form-foot:hover {
   color: #807a7a;
 }
-#form-page h1 {
-  text-align: center;
-  font-size: 24px;
-  color: #a4856d;
-  margin: 4% 0 6% 0;
-}
 #form-page .scene {
   width: 45%;
   height: 99%;
   margin: 0% 20% 5% 27%;
   perspective: 1000px;
   transition: margin 1s;
+  /* 5% 5% 5% 50%; */
 }
-#form-page .book {
+#form-page .scene .book {
   position: relative;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  box-shadow: 1px 1px 30px #a4856d;
 }
-#form-page .page {
-  cursor: pointer;
+#form-page .scene .book h1 {
+  text-align: center;
+  font-size: 24px;
+  color: #a4856d;
+  margin: 4% 0 6% 0;
+}
+#form-page .scene .book .page {
   position: absolute;
   color: black;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   transition: 1.5s transform;
   transform-style: preserve-3d;
   transform-origin: left center;
 }
-#form-page .page p {
+#form-page .scene .book .page p {
   font-size: 16px;
   margin-bottom: 37px;
 }
-#form-page .zl-first-book .front {
+.zl-first-book .front {
   background: url(../img/form/invitecard.png) 50%;
   background-size: cover;
+  height: 100%;
 }
-#form-page .zl-second-book {
+.zl-first-book .front h1 {
+  position: absolute;
+  cursor: pointer;
+  font-size: 24px;
+  color: #a4856d;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  left: 50%;
+  margin: 0;
+  margin-bottom: 10px;
+}
+.zl-second-book {
   cursor: default;
 }
-#form-page .front,
-#form-page .back {
+.front,
+.back {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 2% 0% 0%;
   box-sizing: border-box;
   backface-visibility: hidden;
   background: -webkit-gradient(linear, 0% 0%, 100% 100%, from(#FFFFFF), to(#CCCCCC));
   background: linear-gradient(to bottom right, #fff, #ccc);
 }
-#form-page .back {
+.back {
   transform: rotateY(180deg);
 }
 #form-page .page.active {
@@ -1911,8 +2021,8 @@ img {
   border: none;
   border-radius: 0.5em;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 50vh;
+  left: 50vw;
   transform: translate(-50%, -50%) rotateX(var(--rx, 0)) rotateY(var(--ry, 0));
   overflow: hidden;
   transition: 0.22s cubic-bezier(0.34, 0.34, 0.17, 1.55);
@@ -1951,6 +2061,47 @@ img {
   position: absolute;
   transform: translate(-50%, -50%);
   transition: 0.32s ease;
+}
+.zl-turn-btn {
+  transform: translateX(-50%);
+  position: absolute;
+  top: 90%;
+  left: 50vw;
+}
+.zl-turn-btn figure {
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  perspective: 500px;
+}
+.zl-turn-btn figure div {
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: 0.25s;
+}
+.zl-turn-btn figure div span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  border: 5px solid #fff;
+  font-family: 'Source Sans Pro', sans-serif;
+  line-height: 50px;
+  font-size: 17pt;
+  text-align: center;
+  text-transform: uppercase;
+}
+.zl-turn-btn figure div span:nth-child(1) {
+  color: #fff;
+  transform: translate3d(0, 0, 30px);
+}
+.zl-turn-btn figure div span:nth-child(2) {
+  color: #737f39;
+  background: #fff;
+  transform: rotateX(90deg) translate3d(0, 0, 30px);
+}
+.zl-turn-btn figure:hover div {
+  transform: rotateX(-90deg);
 }
 .c-btn {
   position: absolute;

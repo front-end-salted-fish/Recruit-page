@@ -139,7 +139,7 @@ $(function () {
         let rows = txt.split("@");
         let html = '';
         $.each(rows, function (index, item) {
-            html += '<p class="move-details-rows txtHasDown ' + (!index ? "move-rows-title" : '')  + '" style="text-align:' + style + '">' + item + "</p>";
+            html += '<p class="move-details-rows txtHasDown ' + (!index ? "move-rows-title" : '') + '" style="text-align:' + style + '">' + item + "</p>";
         });
         obj.addClass("hasDown");
         obj.append(html);
@@ -208,82 +208,116 @@ $(function () {
     })();
 
     // 3d按钮模块
+//     !(() => {
+//         let
+//             $button = $("#btn"),
+//             btncoords = $button[0].getBoundingClientRect(),
+//             $wrap = $('#three-dimensional-btn'),
+//             styles = $wrap[0].style,
+//             $glare = $("#btn .glare");
+
+//         // function rotate(e) {
+//         //     let
+//         //         x = e.clientX - btncoords.left,
+//         //         y = e.clientY - btncoords.top,
+//         //         cx = btncoords.width / 2,
+//         //         cy = btncoords.height / 2,
+//         //         dx = x - cx,
+//         //         dy = y - cy;
+//         //     styles.setProperty("--rx", `${(dy / -1.5)}deg`);
+//         //     styles.setProperty("--ry", `${(dx / 10)}deg`);
+//         //     $glare.css({
+//         //         transform: "translate(" + (-x / 2) + "%, " + -y + "%)"
+//         //     });
+//         // };
+
+//     // function restore(e) {
+//     //     styles.setProperty("--rx", `${0}deg`);
+//     //     styles.setProperty("--ry", `${0}deg`);
+//     //     $glare.css({
+//     //         transform: "translate(" + (-50) + "%, " + -50 + "%)"
+//     //     });
+//     // }
+//     // $button.on('mousemove', rotate);
+//     // $button.on('mouseleave', restore);
+//     $button.on('click', function () {
+//         $('#form-page').fadeIn();
+//         $('#banner-container').fadeOut();
+//     })
+//     window.onresize = function () {
+//         styles = $wrap[0].style;
+//         btncoords = $button[0].getBoundingClientRect();
+//     }
+// })();
+
+// 轮播图翻转报名按钮模块
     !(() => {
-        let
-            $button = $("#btn"),
-            btncoords = $button[0].getBoundingClientRect(),
-            $wrap = $('#three-dimensional-btn'),
-            styles = $wrap[0].style,
-            $glare = $("#btn .glare");
-
-        // function rotate(e) {
-        //     let
-        //         x = e.clientX - btncoords.left,
-        //         y = e.clientY - btncoords.top,
-        //         cx = btncoords.width / 2,
-        //         cy = btncoords.height / 2,
-        //         dx = x - cx,
-        //         dy = y - cy;
-        //     styles.setProperty("--rx", `${(dy / -1.5)}deg`);
-        //     styles.setProperty("--ry", `${(dx / 10)}deg`);
-        //     $glare.css({
-        //         transform: "translate(" + (-x / 2) + "%, " + -y + "%)"
-        //     });
-        // };
-
-        // function restore(e) {
-        //     styles.setProperty("--rx", `${0}deg`);
-        //     styles.setProperty("--ry", `${0}deg`);
-        //     $glare.css({
-        //         transform: "translate(" + (-50) + "%, " + -50 + "%)"
-        //     });
-        // }
-        // $button.on('mousemove', rotate);
-        // $button.on('mouseleave', restore);
+        let $button = $(".zl-turn-btn");
         $button.on('click', function () {
-            $('#form-page').fadeIn();
-            $('#banner-container').fadeOut();
-        })
-        window.onresize = function () {
-            styles = $wrap[0].style;
-            btncoords = $button[0].getBoundingClientRect();
+        $('#banner-container').fadeOut();
+        $('#detail-pages').hide();
+        $('#form-page').fadeIn();
+    })
+})();
+// android模块
+!(() => {
+    // 获取页面元素
+    const $android = $('#android');
+    const $fontBg = $('#android .font-bg');
+    const $persOne = $('#android .pers-one');
+    const $close = $('.rj-detail-page-close-btn');
+    let zlLuxy = new Luxy()
+
+    zlLuxy.init({
+        wrapper: '#zl-luxy-wrapper',
+        targets: '.zl-luxy',
+        wrapperSpeed: 0.08,
+        targetSpeed: 0.01,
+        targetPercentage: 0.1
+    });
+
+    splitTxt($($(".zl-content-one")[0]), "TopView Android组专注于有创意、@有特色的主流App开发、@Android高新技术探索以及Android系统源代码的研究。","left");
+    splitTxt($($(".zl-content-two")[0]), "Android组自成立以来，@一直有大量的师兄涌入@阿里、腾讯、网易等一线互联网公司。@每年各位毕业的优秀师兄都会回来@分享Android的前沿技术以及发展趋势。@Android组得益于大量的优秀师兄指导，@目前已经成为广东工业大学优秀的Android开发小组之一。","left");
+    splitTxt($($(".zl-content-three")[0]), "除此之外，每年师兄师姐都会根据招新水平，@制定详细的培养计划帮助新一届的师弟师妹快速成长，@成为同届中技术的佼佼者.@只要你热爱Android，热爱Android开发，@就来吧！加入Android组吧！","center");
+    // 出现图片
+    function showImg(obj) {
+        obj.removeClass("skewImg");
+    }
+    $android.on("scroll", function () {
+        $fontBg.css("opacity", (1 - $android.scrollTop() / 350));
+        console.log($android.scrollTop());
+        if ($android.scrollTop() > 183) {
+            showImg($(".detail-img1"));
+            pMoveAnimate($($(".zl-content-one")[0]), "up");
+        } else {
+            pMoveAnimate($($(".zl-content-one")[0]), "down");
         }
-    })();
-    // android模块
-    !(() => {
-        // 获取页面元素
-        const $android = $('#android');
-        const $fontBg = $('.font-bg');
-        const $persOne = $('.pers-one');
-        const $close = $('.rj-detail-page-close-btn');
-        // 监听滚动条事件
-        $android.on('scroll', function () {
-            let scale = this.scrollTop / $persOne.get(0).clientHeight - 1;
-            if (scale > 0) {
-                $fontBg.css({
-                    opacity: 1 - scale
-                });
-            }
-            if (this.scrollTop == 0) {
-                $fontBg.css({
-                    opacity: 1
-                });
-            }
-        })
-        function close() {
-            var p = new Promise(function (resolve, reject) {
-                setTimeout(function () {
-                    // 让某一页展示
-                    $("#detail-pages").hide();
-                    $("#banner-container").show();
-                    banner.isLeaveBanner = false;
-                    banner.goBanner();
-                    resolve("true");
-                }, 800);
-            });
-            return p;
+        if ($android.scrollTop() > 468) {
+            pMoveAnimate($($(".zl-content-two")[0]), "up");
+            showImg($(".detail-img2"));
+        } else {
+            pMoveAnimate($($(".zl-content-two")[0]), "down");
         }
-        $close.click(function () {
+        if ($android.scrollTop() > 682)
+            showImg($(".detail-img3"));
+        if ($android.scrollTop() > 730) {
+            pMoveAnimate($($(".zl-content-three")[0]), "up");
+        } else {
+            pMoveAnimate($($(".zl-content-three")[0]), "down");
+        }
+    })
+    function close() {
+		var p = new Promise(function (resolve, reject) {
+			setTimeout(function () {
+				// 让某一页展示
+                $("#detail-pages").hide();
+                $("#banner-container").show();
+				resolve("true");
+			}, 800);
+		});
+		return p;
+	}
+    $close.click(function() {
 
             curtainUp().then(() => {
                 // 幕布完全上遮后更换内容
@@ -296,22 +330,7 @@ $(function () {
                     $($bars).css("z-index", -1);
                 }, 800);
             });
-
-            // curtainUp().then(()=>{
-            //     $('#detail-pages').hide();
-            //     return 'true';
-            // }).then(curtainDown).then(function() {
-            //     $("#banner-container").show();
-            //     setTimeout(function(){
-            //         $($bars).css("z-index", -1);
-            //     },800);
-            // });
         })
-        // $detailToFormBtn.on('click', function() {
-        //     $(this).css({
-
-        //     })
-        // })
     })();
     //backstage
     (() => {
@@ -332,36 +351,73 @@ $(function () {
         let animation
         let hasAnimate = false
         let runSvg = () => {
+            animation = anime.timeline({
+                duration: 700,
+                easing: 'easeInOutSine',
+                direction: 'alternate',
+                loop: false
+            });
+            console.log($('#back-stage svg g.outg'))
+            animation.add({
+                targets: ['#back-stage svg g.outg:nth-child(6)', '#back-stage svg>g:nth-child(11)', '#back-stage path.st17'],
+                translateX: -50,
+                // strokeDashoffset: [anime.setDashoffset, 0]
+            }).add({
+                targets: ['#back-stage svg g.outg:nth-child(5)', '#back-stage svg>g:nth-child(12)', '#back-stage path.st18'],
+                // strokeDashoffset: [anime.setDashoffset, 0]
+                translateX: -50,
+            }).add({
+                targets: ['#back-stage svg g.outg:nth-child(3)', '#back-stage svg>g:nth-child(13)', '#back-stage path.st19'],
+                // strokeDashoffset: [anime.setDashoffset, 0]
+                translateX: -50,
+            }).add({
+                targets: ['#back-stage svg g.outg:nth-child(4)', '#back-stage svg>g:nth-child(14)', '#back-stage path.st200'],
+                // strokeDashoffset: [anime.setDashoffset, 0]
+                translateX: -50,
+            }).add({
+                targets: ['#back-stage svg .outg:nth-child(2)', '#back-stage svg>g:nth-child(15)', '#back-stage path.st201'],
+                // strokeDashoffset: [anime.setDashoffset, 0]
+                translateX: -50,
+            });
+            // anime({
+            //     targets: '#back-stage path',
+            //     strokeDashoffset: [anime.setDashoffset, 0],
+            //     easing: 'easeInOutSine',
+            //     duration: 300,
+            //     delay: function (el, i) { return i * 200 },
+            //     direction: 'alternate',
+            //     loop: 1
+            // });
             let delayTime = 400;
             let comment = {
                 easing: 'spring(1, 70, 10, 0)',
                 direction: 'alternate',
                 loop: false
-            }      
+            }
             anime({
                 ...comment,
                 delay: delayTime * 1,
-                targets: ['#back-stage .out-g:nth-child(7)','#back-stage .out-g:nth-child(11)','#back-stage path.st17'],
-                    translateX: ['42%', '0%'],
-                    translateY: ['22%', '0%'],
-                    opacity:[0,1]
+                targets: ['#back-stage .out-g:nth-child(7)', '#back-stage .out-g:nth-child(11)', '#back-stage path.st17'],
+                translateX: ['42%', '0%'],
+                translateY: ['22%', '0%'],
+                opacity: [0, 1]
             })
             anime({
                 ...comment,
                 delay: delayTime * 2,
-                targets: ['#back-stage .out-g:nth-child(6)','#back-stage .out-g:nth-child(12)','#back-stage path.st18'],
+                targets: ['#back-stage .out-g:nth-child(6)', '#back-stage .out-g:nth-child(12)', '#back-stage path.st18'],
                 translateX: ['50%', '0%'],
                 translateY: ['0%', '0%'],
-                opacity:[0,1]
+                opacity: [0, 1]
             })
             anime({
                 ...comment,
                 delay: delayTime * 3,
-                targets: ['#back-stage .out-g:nth-child(4)','#back-stage .out-g:nth-child(13)','#back-stage path.st19'],
+                targets: ['#back-stage .out-g:nth-child(4)', '#back-stage .out-g:nth-child(13)', '#back-stage path.st19'],
                 // strokeDashoffset: [anime.setDashoffset, 0]
                 translateX: ['45%', '0%'],
                 translateY: ['-28%', '0%'],
-                opacity:[0,1]
+                opacity: [0, 1]
             })
             anime({
                 ...comment,
@@ -381,11 +437,11 @@ $(function () {
                 translateY: ['-47%', '0%'],
                 opacity: [0, 1]
             })
-            
+
         }
         $backState.on('scroll', function () {
             let vh = $(window).height();
-            if ($backState.scrollTop()/vh > 0.2) {
+            if ($backState.scrollTop() / vh > 0.2) {
                 $svg1.removeClass('skewImg');
                 pMoveAnimate($($(".cf-text-container1")[0]), "up");
                 if (!hasAnimate) {
@@ -396,7 +452,7 @@ $(function () {
                 pMoveAnimate($($(".cf-text-container1")[0]), "down");
                 animation = undefined
             }
-            if ($backState.scrollTop()/vh > 0.4) {
+            if ($backState.scrollTop() / vh > 0.4) {
                 pMoveAnimate($($(".cf-text-container2")[0]), "up");
             } else {
                 pMoveAnimate($($(".cf-text-container2")[0]), "down");
@@ -468,8 +524,8 @@ $(function () {
                 this.setBackground(); // 设置第一个背景颜色
                 this.setBtn();  // 设置第一个按钮颜色
                 // this.goBanner();    // 启动轮播图
-                $.each($preLoad, function (index, item) { 
-                    $(item).attr('src',banner.bannerImgScr[index]);
+                $.each($preLoad, function (index, item) {
+                    $(item).attr('src', banner.bannerImgScr[index]);
                 });
                 // $preLoad.forEach(function(item, index){
                 // });
@@ -477,6 +533,8 @@ $(function () {
             },
             // 按钮高亮
             setBtn() {
+                console.log("setBtn");
+
                 $btns.removeClass("btn-play").eq(this.playIndex).addClass("btn-play");
             },
             // 设置背景颜色
@@ -497,7 +555,7 @@ $(function () {
             },
             // 启动录播图
             goBanner() {
-                if(this.isLeaveBanner) return ;
+                if (this.isLeaveBanner) return;
                 // banner.isMoving = true;
                 this.bannerTimer = setInterval(() => {
                     banner.nextBannerPage(banner.playIndex + 1);
@@ -508,7 +566,7 @@ $(function () {
             stopBanner() {
                 clearInterval(this.bannerTimer);
                 banner.isMoving = false;
-                banner.moveCnt =  0;             // transition计数器
+                banner.moveCnt = 0;             // transition计数器
             },
             // 预先设置函数：index 设置对应index的部门内容
             preSetSrc(str, index) {
@@ -575,10 +633,10 @@ $(function () {
             }
         }
         banner.init();
-        $('.inner-mask img').on('webkitTransitionEnd',function(){
+        $('.inner-mask img').on('webkitTransitionEnd', function () {
             // console.log(banner.moveCnt);
             banner.moveCnt = (banner.moveCnt + 1) % 6;
-            if(banner.moveCnt === 0) {
+            if (banner.moveCnt === 0) {
                 banner.isMoving = false;
                 // console.log("动画完成");
             }
@@ -586,11 +644,11 @@ $(function () {
 
         // 点击按钮跳转翻页
         $(".banner-btns").on("click", ".bg-span", (event) => {
-            if(banner.isMoving) return;
+            if (banner.isMoving) return;
             let e = event || window.event;
             let t = e.target;
             let index = $(t).parent(".banner-btn").index();      // 获取按钮位序
-            if(index === banner.playIndex) return ;
+            if (index === banner.playIndex) return;
             banner.stopBanner();    // 停止轮播
             if (index > banner.playIndex) {
                 banner.throttlePage(index, "next");
@@ -600,11 +658,11 @@ $(function () {
         });
         // 上下翻页
         $nextBannerBtn.on("click", () => {
-            if(banner.isMoving) return;
+            if (banner.isMoving) return;
             banner.throttlePage(banner.playIndex + 1, "next");
         });
         $preBannerBtn.on("click", () => {
-            if(banner.isMoving) return;
+            if (banner.isMoving) return;
             banner.throttlePage(banner.playIndex - 1, "pre");
         });
         // 通过点击跳转至详情页
@@ -618,70 +676,48 @@ $(function () {
 
 
     //front-end
-    !(() => {
-        const $frontEnd = $("#front-end");
-        const $perOne = $(".per-one");
-        const $perTwo = $(".per-two");
-        const $article1 = $(".article1 p");
-        const $article2 = $(".article2 p");
+    (() => {
+        let wfLuxy = new Luxy()
+        wfLuxy.init({
+            wrapper: '#wf-luxy-wrapper',
+            targets: '.wf-luxy',
+            wrapperSpeed: 0.08,
+            targetSpeed: 0.01,
+            targetPercentage: 0.1
+        });
+        let $frontEnd = $("#front-end")
+        // let $headerFont = $($('#front-end .per-one .header-font')[0]);
+        splitTxt($($('.wf-txt-container1')[0]), "TopView 前端组主要基于@HTML，CSS，JavaScript等@基础web前端编程语言进行开发，@同时引入前端领域前沿技术进一步构建项目。", "left");
+        splitTxt($($('.wf-txt-container2')[0]), "我们专注于展现视觉更好的页面，@打造用户体验更优的网站，@开发更有特色更有创意的产品。@如果你喜欢设计、热爱前端，@那你就是我们前端组想要的！", "left");
+        // 出现图片
+        function showImg(obj) {
+            obj.removeClass("skewImg");
+        }
         $frontEnd.on("scroll", function () {
-            //console.log($frontEnd.scrollTop())
-
-            $perOne.css("opacity", (1 - $frontEnd.scrollTop() / 2500));
-            if ($frontEnd.scrollTop() > 500) {
-                $($article1[0]).fadeIn("4000");
-            } else {
-                $($article1[0]).fadeOut();
+            // $headerFont.css("opacity", (1 - $frontEnd.scrollTop() / 350));
+            let vh = $(window).height();
+            let winTop = $(window).scrollTop();
+            if ($(".wfimg1").offset().top - winTop < vh) {
+                showImg($(".wfimg1"));
             }
-            if ($frontEnd.scrollTop() > 570) {
-                $($article1[1]).fadeIn("4000");
+            if ($(".wf-txt-container1").eq(0).offset().top - winTop < vh) {
+                pMoveAnimate($(".wf-txt-container1").eq(0), "up");
             } else {
-                $($article1[1]).fadeOut();
+                pMoveAnimate($(".wf-txt-container1").eq(0), "down");
             }
-            if ($frontEnd.scrollTop() > 640) {
-                $($article1[2]).fadeIn("4000");
-            } else {
-                $($article1[2]).fadeOut();
+            if ($(".wfimg2").offset().top - winTop < vh) {
+                showImg($(".wfimg2"));
             }
-
-            if ($frontEnd.scrollTop() > 706) {
-                $($article1[3]).fadeIn("4000");
+            if ($(".wf-txt-container2").eq(0).offset().top - winTop < vh) {
+                pMoveAnimate($(".wf-txt-container2").eq(0), "up");
             } else {
-                $($article1[3]).fadeOut();
-            }
-            //第二个article
-            if ($frontEnd.scrollTop() > 1000) {
-                $($article2[0]).fadeIn("4000");
-            } else {
-                $($article2[0]).fadeOut();
-            }
-            if ($frontEnd.scrollTop() > 1060) {
-                $($article2[1]).fadeIn("4000");
-            } else {
-                $($article2[1]).fadeOut();
-            }
-
-            if ($frontEnd.scrollTop() > 1120) {
-                $($article2[2]).fadeIn("4000");
-            } else {
-                $($article2[2]).fadeOut();
-            }
-            if ($frontEnd.scrollTop() > 1180) {
-                $($article2[3]).fadeIn("4000");
-            } else {
-                $($article2[3]).fadeOut();
-            }
-            if ($frontEnd.scrollTop() > 1260) {
-                $($article2[4]).fadeIn("4000");
-            } else {
-                $($article2[4]).fadeOut();
+                pMoveAnimate($(".wf-txt-container2").eq(0), "down");
             }
         })
-
     })();
 
-     // ios
-     (() => {
+    // ios
+    (() => {
         let mqLuxy = new Luxy()
         mqLuxy.init({
             wrapper: '#mq-luxy-wrapper',
@@ -702,20 +738,20 @@ $(function () {
             $headerFont.css("opacity", (1 - $iosDiv.scrollTop() / 350));
             let vh = $(window).height();
             let winTop = $(window).scrollTop();
-            if($(".mq-img1").offset().top-winTop<vh){
+            if ($(".mq-img1").offset().top - winTop < vh) {
                 showImg($(".mq-img1"));
             }
-            if($(".mq-txt-container1").eq(0).offset().top-winTop<vh){
-                pMoveAnimate($(".mq-txt-container1").eq(0), "up"); 
-            }else{
+            if ($(".mq-txt-container1").eq(0).offset().top - winTop < vh) {
+                pMoveAnimate($(".mq-txt-container1").eq(0), "up");
+            } else {
                 pMoveAnimate($(".mq-txt-container1").eq(0), "down");
             }
-            if($(".mq-img2").offset().top - winTop < vh){
+            if ($(".mq-img2").offset().top - winTop < vh) {
                 showImg($(".mq-img2"));
             }
-            if($(".mq-txt-container2").eq(0).offset().top-winTop<vh){
-                pMoveAnimate($(".mq-txt-container2").eq(0), "up"); 
-            }else{
+            if ($(".mq-txt-container2").eq(0).offset().top - winTop < vh) {
+                pMoveAnimate($(".mq-txt-container2").eq(0), "up");
+            } else {
                 pMoveAnimate($(".mq-txt-container2").eq(0), "down");
             }
         })
@@ -747,25 +783,25 @@ $(function () {
             $headerFont.css("opacity", (1 - $machineDiv.scrollTop() / 350));
             let vh = $(window).height();
             let winTop = $(window).scrollTop();
-            if($(".img1").offset().top - winTop < vh) {
+            if ($(".img1").offset().top - winTop < vh) {
                 showImg($(".img1"));
             }
-            if ($(".txt-container1").eq(0).offset().top - winTop <  vh) {
+            if ($(".txt-container1").eq(0).offset().top - winTop < vh) {
                 pMoveAnimate($(".txt-container1").eq(0), "up");
             } else {
                 pMoveAnimate($(".txt-container1").eq(0), "down");
             }
-            if($(".img2").offset().top - winTop <  vh) {
+            if ($(".img2").offset().top - winTop < vh) {
                 showImg($(".img2"));
             }
-            if ($(".txt-container2").eq(0).offset().top - winTop <  vh) {
+            if ($(".txt-container2").eq(0).offset().top - winTop < vh) {
                 pMoveAnimate($(".txt-container2").eq(0), "up");
             } else {
                 pMoveAnimate($(".txt-container2").eq(0), "down");
             }
-            if($(".img3").offset().top - winTop <  vh) 
+            if ($(".img3").offset().top - winTop < vh)
                 showImg($(".img3"));
-            if ($(".rj-txt3").eq(0).offset().top - winTop <  vh) {
+            if ($(".rj-txt3").eq(0).offset().top - winTop < vh) {
                 pMoveAnimate($(".rj-txt3").eq(0), "up");
             } else {
                 pMoveAnimate($(".rj-txt3").eq(0), "down");
@@ -839,7 +875,10 @@ $(function () {
         let cnt = 0;
         latestSpan.on('transitionend', function () {
             cnt++;
-            if(cnt === 1) {
+            if (cnt === 4) {
+                latestSpan.off('webkitTransitionEnd');
+            }
+            if (cnt === 1) {
                 latestSpan.off('transitionend');
                 loadingtransitionEnd = true;
                 loadingOut();
@@ -994,7 +1033,7 @@ $(function () {
         const $studentId = $('[name=student-id]');
         const $gradeProfessional = $('[name=grade-professional]');
         const $radio = $('.x-radio');
-        const $nextStep = $('.next-step'); // 下一步按钮
+        const $nextStep = $('.next-step'); // 下一步按钮(返回封面)
         const $submit = $('.submit'); // 提交按钮
         const $preStep = $('.pre-step'); // 上一步按钮
         const $number = $('[name=number]');
@@ -1011,7 +1050,9 @@ $(function () {
         const $backBtn = $('#form-page .zl-form-page-close-btn') //返回轮播图的按钮
         const $bannerContainer = $('#banner-container') //获取轮播图界面
         const $detailToFormBtns = $('.c-btn'); //获取详情页前往表单的按钮
+        const $time = $('.zl-third-book .time');// 获取倒计时的秒数
         let backBannerFlag = true // 标记此时默认是从轮播图的按钮进入表单界面的
+        let flag = false;
         // 初始化表单数据
         let formData = {
             username: '',
@@ -1112,16 +1153,12 @@ $(function () {
             $(this).first().siblings().children()[0].style.background = '#fff';
             formData.sex = sex;
         })
-        // 给下一步按钮按钮绑定单击响应函数
-        $nextStep.on('click', function () {
-            $formPageOne.hide();
-            $formPageTwo.fadeIn();
-        })
+
         // 给上一步按钮按钮绑定单击响应函数
-        $preStep.on('click', function () {
-            $formPageOne.fadeIn();
-            $formPageTwo.hide();
-        })
+        // $preStep.on('click', function () {
+        //     $formPageOne.fadeIn();
+        //     $formPageTwo.hide();
+        // })
         // 给单选框按钮绑定点击函数
         $triggerBtn.on('click', function (ev) {
             $option.slideToggle(100);
@@ -1141,33 +1178,211 @@ $(function () {
             });
             event.stopPropagation()
         })
-        // $submit.on('click', function () {
-        //     console.log(formData)
-        // })
-
-        var flag = 0;
-        $('.book')
-            .on('click', '.active', nextPage)
-            .on('click', '.flipped', prevPage);
-        $('.book').hammer().on("swipeleft", nextPage);
-        $('.book').hammer().on("swiperight", prevPage);
+        // 提交按钮
+        $submit.on('click', function () {
+           
+            if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
+                if (!formData.sex) {
+                    alert('必须选择性别')
+                    return false
+                }
+                if (!formData.direction) {
+                    alert('必须选择一个发展方向')
+                    return false
+                }
+                if (!check()) {
+                    return false
+                }
+                $($('#form-page-two .form-body').get(0)).css({
+                    transition: 'none'
+                })
+                flag = true
+            }
+             else {
+               alert("请正确输入信息");
+               $($('#form-page-two .form-body').get(0)).css({
+                height: $('#form-page-one .form-body').get(0).clientHeight,
+                transition: '1s'
+            })
+               return false
+            }
+            flag = confirm('确定提交吗？')
+            if (flag) {
+               
+                $('.scene').css({
+                    margin: '0% 20% 5% 72%'
+                }) //调整书本位置
+                nextPage() //翻页
+                console.log(formData) 
+                $('.book').off() // 解除书本的事件监听
+                $('.zl-second-book').off() 
+                $('.zl-form-page-close-btn').hide() //隐藏回退按钮
+                let time = $time.text()*1
+                setInterval(() => {
+                    $time.text(time--)
+                    if (time <= 0) {
+                        location.reload() //三秒后刷新页面
+                    }
+                },1000)
+            }
+        })
+            $username.on("blur", nameCheck);//1.名字
+            function nameCheck() {
+                let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
+                let name = $username.val();
+                if (!reg.test(name) || name == '') {
+                    $username.css("border", "1px solid red");
+                    $(".zl-name-span").html("<span class='red-form'>请输入2~10位中文</span>");
+                    return false;
+                }
+                $username.css("border", "");
+                $(".zl-name-span").html("");
+                return true;
+            }
+            $studentId.on("blur", idCheck);//2.学号
+            function idCheck() {
+                let reg = /^\d{9,12}$/;//十位数字
+                let id = $studentId.val();
+                if (!reg.test(id) || id == '') {
+                    $studentId.css("border", "1px solid red");
+                    $(".zl-id-span").html("<span class='red-form'>请输入正确的学号</span>");
+                    return false;
+                }
+                $studentId.css("border", "");
+                $(".zl-id-span").html("");
+                return true;
+            }
+            $gradeProfessional.on("blur", gradeCheck);//3.年级专业
+            function gradeCheck() {
+                let grade = $gradeProfessional.val();
+                if (grade == '') {
+                    $gradeProfessional.css("border", "1px solid red");
+                    $(".zl-grade-span").html("<span class='red-form'>不能为空！</span>");
+                    return false;
+                }
+                $gradeProfessional.css("border", "");
+                $(".zl-grade-span").html("");
+                return true;
+            }
+            $number.on("blur", phoneCheck);//4.手机
+            function phoneCheck() {
+                let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
+                let phone = $number.val();
+                if (!reg.test(phone) || phone == '') {
+                    $number.css("border", "1px solid red");
+                    $(".zl-phone-span").html("<span class='red-form'>请输入正确的手机号码</span>");
+                    return false;
+                }
+                $number.css("border", "");
+                $(".zl-phone-span").html("");
+                return true;
+            }
+            
+            $email.on("blur", emailCheck);//5.邮箱
+            function emailCheck() {
+                let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+                let email = $email.val();
+                if (!reg.test(email) || email == '') {
+                    $email.css("border", "1px solid red");
+                    $(".zl-email-span").html("<span class='red-form'>请输入正确的邮箱</span>");
+                    return false;
+                }
+                $email.css("border", "");
+                $(".zl-email-span").html("");
+                return true;
+            }
+            $introduction.on("blur", introCheck);//6.自我介绍
+            function introCheck() {
+                let intro = $introduction.val();
+                if (intro == '') {
+                    $introduction.css("border", "1px solid red");
+                    $(".zl-intro-span").html("<span class='red-form'>不能为空！</span>");
+                    return false;
+                }
+                $introduction.css("border", "");
+                $(".zl-intro-span").html("");
+                return true;
+            }
+            $skills.on("blur", skillsCheck); // 技能
+            function skillsCheck() {
+                let skills = $skills.val();
+                if (skills == '') {
+                    $skills.css("border", "1px solid red");
+                    $(".zl-skills-span").html("<span class='red-form'>不能为空！</span>");
+                    return false;
+                }
+                $skills.css("border", "");
+                $(".zl-skills-span").html("");
+                return true;
+            }
+            $idea.on("blur", cogCheck); // 想法
+            function cogCheck() {
+                let cog = $idea.val();
+                if (cog == '') {
+                    $idea.css("border", "1px solid red");
+                    $(".zl-idea-span").html("<span class='red-form'>不能为空！</span>");
+                    return false;
+                }
+                $idea.css("border", "");
+                $(".zl-idea-span").html("");
+                return true;
+            }
+            //产生验证码  
+            createCode();
+            var code; //在全局定义验证码  
+            function createCode() {
+                code = "";
+                var codeLength = 4; //验证码的长度  
+                var checkCode = document.getElementById("code");
+                var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+                    'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数  
+                for(var i = 0; i < codeLength; i++) { //循环操作  
+                    var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
+                    code += random[index]; //根据索引取得随机数加到code上  
+                }
+                checkCode.value = code; //把code值赋给验证码  
+            }
+            // 
+            function check(){
+            var inputCode = document.getElementById("ctl00_txtcode").value.toUpperCase();
+                if(inputCode==""){
+                    alert("验证码不能为空");
+                    return false;
+                }else if(inputCode!=code){
+                    alert("验证码输入错误,请重新输入！");
+                    createCode(); //刷新验证码  
+                    document.getElementById("ctl00_txtcode").value = ""; //清空文本框
+                    return false;
+                }
+                return true;
+            }
+        // 书本前一页
         function prevPage() {
-            $('.flipped')
+            $('#form-page .flipped')
                 .last()
                 .removeClass('flipped')
                 .addClass('active')
                 .siblings('.page')
                 .removeClass('active');
         }
+        //书本下一页
         function nextPage() {
-            $('.active')
+                $('#form-page .active')
                 .removeClass('active')
                 .addClass('flipped')
                 .next('.page')
                 .addClass('active')
                 .siblings();
+                $('.zl-second-book').removeClass('.flipped')
         }
         $('#form-page-one').click(function (ev) {
+            $($('#form-page-two .form-body').get(0)).css({
+                height: $('#form-page-one .form-body').get(0).clientHeight,
+                transition: '1s'
+            })
+            $('.zl-first-book').eq(0).css({
+                height: $('.zl-first-book .back').get(0).clientHeight,
+            })
             $option.fadeOut(100);
             ev.preventDefault();
             ev.stopPropagation();
@@ -1178,30 +1393,37 @@ $(function () {
             ev.stopPropagation();
 
         })
-        $('.zl-first-book').click(function () {
-
+        function changePage () {
             if ($('.zl-first-book').hasClass('active')) {
-                flag = 0;
+                $('.zl-first-book .front h1').hide()
                 $('#form-page-two').show()
                 $('#form-page-one').show()
                 $('.scene').css({
                     margin: '0% 5% 5% 50%'
                 })
-                console.log($('#form-page-one .form-body').get(0).clientHeight)
                 $($('#form-page-two .form-body').get(0)).css({
                     height: $('#form-page-one .form-body').get(0).clientHeight
                 })
-                console.log($('#form-page-two .form-body').get(0).clientHeight)
-
-            } else {
-                if ($('.zl-second-book').hasClass('active') && $('.zl-first-book').hasClass('flipped')) {
+            } 
+        }
+     
+        $('.book').one('click', '.active', nextPage) // 注册一次点击事件
+        $('.zl-first-book').click(changePage)
+        // 给返回封面按钮绑定单击响应函数
+        $nextStep.on('click', () => {
+            changePage()
+            prevPage()
+                //    if ($('.zl-second-book').hasClass('active') && $('.zl-first-book').hasClass('flipped')) {
                     $('.scene').css({
                         margin: '0% 20% 5% 27%'
                     })
-                }
-            }
-        })
+                    setTimeout(function() {
+                        $('.zl-first-book .front h1').show()
+                    },1000)
 
+                // }
+                $('.book').one('click', '.active', nextPage)
+        })
 
     })();
 })
