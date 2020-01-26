@@ -1363,21 +1363,14 @@ img {
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  // perspective: 1px;
   height: 100vh;
-  top: -24px;
   background: #f8f8fb;
-
   .pers-one {
-    // transform: translate3d(0, 0, -6px) scale(7);
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-      
-
-
     .one {
       filter: blur(1px);
     }
@@ -1994,7 +1987,7 @@ img {
 
         .form-foot {
           border-top: solid 1px #DEDEDE;
-          height: 60px;
+          // height: 60px;
           // background: #fff;
           display: -webkit-box;
           display: -ms-flexbox;
@@ -2039,49 +2032,48 @@ img {
 
   // 书本翻页效果 
 
-h1 {
-  
-  text-align: center;
-  font-size: 24px;
-  color: #a4856d;
-  margin: 4% 0 6% 0;
-}
 
-  .scene {
+
+.scene {
     width: 45%;
     height: 99%;
     margin: 0% 20% 5% 27%;
     perspective: 1000px;
     transition: margin 1s;
-  }
+      /* 5% 5% 5% 50%; */
+    .book {
+      position: relative;
+      width: 100%;
+      height: 100%;
 
-  /* 5% 5% 5% 50%; */
-  .book {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-  transform-style: preserve-3d;
-  // box-shadow: 1px 1px 30px #a4856d;
-}
-
-.page {
-  // cursor: pointer;
-  position: absolute;
-  color: black;
-  width: 100%;
-  height: 100vh;
-
-    transition: 1.5s transform;
     transform-style: preserve-3d;
-    transform-origin: left center;
+    // box-shadow: 1px 1px 30px #a4856d;
+      h1 {
 
-    p {
-      font-size: 16px;
-      margin-bottom: 37px;
+        text-align: center;
+        font-size: 24px;
+        color: #a4856d;
+        margin: 4% 0 6% 0;
+      }
+      .page {
+        // cursor: pointer;
+        position: absolute;
+        color: black;
+        width: 100%;
+        height: 100vh;
+      
+          transition: 1.5s transform;
+          transform-style: preserve-3d;
+          transform-origin: left center;
+      
+          p {
+            font-size: 16px;
+            margin-bottom: 37px;
+          }
+        }
+      }
     }
   }
-}
 .zl-first-book .front {
   background: url(../img/form/invitecard.png) 50%;
   background-size: cover;
@@ -2103,14 +2095,12 @@ h1 {
   cursor: default;
 }
 
-  .front,
-  .back {
+.front,
+.back {
     position: absolute;
-
     width: 100%;
     height: 100%;
-    padding: 2% 0% 0%;
-    ;
+    // padding: 2% 0% 0%;
     box-sizing: border-box;
 
     backface-visibility: hidden;
@@ -2123,29 +2113,29 @@ h1 {
     transform: rotateY(180deg);
   }
 
-  .page.active {
+  #form-page .page.active {
     z-index: 1;
   }
 
-  .page.flipped {
+  #form-page .page.flipped {
     transform: rotateY(-180deg);
   }
 
-  .page.flipped:last-of-type {
+  #form-page .page.flipped:last-of-type {
     z-index: 1;
   }
 
-  p {
+  #form-page  p {
     margin: 0 0 0.1em;
     text-indent: 1em;
   }
 
-  .qr {
+  #form-page .qr {
     margin: 50px auto;
     max-width: 50%;
   }
 
-  .qr img {
+  #form-page .qr img {
     display: block;
   }
 
