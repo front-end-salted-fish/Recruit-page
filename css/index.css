@@ -364,7 +364,8 @@ img {
 }
 #ios #mq-luxy-wrapper .per-one .bg {
   width: 100%;
-  filter: brightness(60%);
+  height: 100%;
+  filter: brightness(90%);
 }
 #ios #mq-luxy-wrapper .per-one .header-font {
   position: absolute;
@@ -374,7 +375,7 @@ img {
 #ios #mq-luxy-wrapper .per-one .bottom-bg {
   position: absolute;
   width: 100%;
-  bottom: 50px;
+  bottom: 0;
   height: 60vh;
   background-color: rgba(175, 192, 247, 0.349);
   transition: all cubic-bezier(0.25, 0.74, 0.19, 2.1) 1s;
@@ -539,13 +540,13 @@ img {
   background-color: #adbdbb;
 }
 #ios #mq-luxy-wrapper .per-two .flex-box2 .c-btn:hover .c-btn__inner {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #7084f8;
 }
 #ios #mq-luxy-wrapper .per-two .flex-box2 .c-btn:hover .en {
   color: white;
 }
 #ios #mq-luxy-wrapper .per-two .flex-box2 .c-btn:hover .icon {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #7084f8;
 }
 #ios #mq-luxy-wrapper .per-two .flex-box2 .c-btn:hover .icon svg {
   fill: #ffffff;
@@ -567,7 +568,7 @@ img {
   opacity: 0.2;
   position: absolute;
   width: 100%;
-  bottom: 50px;
+  bottom: 0;
   height: 60vh;
   background-color: #afc0f7;
   transition: all cubic-bezier(0.25, 0.74, 0.19, 2.1) 1s;
