@@ -1200,10 +1200,10 @@ $(function () {
             }
              else {
                alert("请正确输入信息");
-               $($('#form-page-two .form-body').get(0)).css({
-                height: $('#form-page-one .form-body').get(0).clientHeight,
-                transition: '1s'
-            })
+            //    $($('#form-page-two .form-body').get(0)).css({
+            //     height: $('#form-page-one .form-body').get(0).clientHeight,
+            //     transition: '1s'
+            // })
                return false
             }
             flag = confirm('确定提交吗？')
@@ -1376,18 +1376,32 @@ $(function () {
                 $('.zl-second-book').removeClass('.flipped')
         }
         $('#form-page-one').click(function (ev) {
-            $($('#form-page-two .form-body').get(0)).css({
-                height: $('#form-page-one .form-body').get(0).clientHeight,
-                transition: '1s'
-            })
-            $('.zl-first-book').eq(0).css({
-                height: $('.zl-first-book .back').get(0).clientHeight,
-            })
+            // $($('#form-page-two .form-body').get(0)).css({
+            //     height: $('#form-page-one .form-body').get(0).clientHeight,
+            //     transition: '1s'
+            // })
+            // $('.zl-first-book').eq(0).css({
+            //     height: $('.zl-first-book .back').get(0).clientHeight,
+            // })
             $option.fadeOut(100);
             ev.preventDefault();
             ev.stopPropagation();
         })
         $('#form-page-two').click(function (ev) {
+            // $($('#form-page-one .form-body').get(0)).css({
+            //     height: $('#form-page-two .fui-form').get(0).clientHeight,
+            //     transition: '1s'
+            // })
+            // $($('#form-page-two .form-body').get(0)).css({
+            //     height: $('#form-page-two .fui-form').get(0).clientHeight,
+            //     transition: '1s'
+            // })
+            // $('.zl-first-book').eq(0).css({
+            //     height: $('.zl-first-book .back').get(0).clientHeight,
+            // })
+            $option.fadeOut(100);
+            ev.preventDefault();
+            ev.stopPropagation();
             $option.fadeOut(100);
             ev.preventDefault();
             ev.stopPropagation();
@@ -1401,9 +1415,9 @@ $(function () {
                 $('.scene').css({
                     margin: '0% 5% 5% 50%'
                 })
-                $($('#form-page-two .form-body').get(0)).css({
-                    height: $('#form-page-one .form-body').get(0).clientHeight
-                })
+                // $($('#form-page-two .form-body').get(0)).css({
+                //     height: $('#form-page-one .form-body').get(0).clientHeight
+                // })
             } 
         }
      
