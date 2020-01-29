@@ -17,7 +17,7 @@ import bannerImg2 from '../img/android/rain.jpeg'
 import bannerImg3 from '../img/back-stage/轮播图.png'
 import bannerImg4 from '../img/ios/轮播图.jpeg'
 import bannerImg5 from '../img/machine-learning/轮播图.jpg'
-
+import filterXSS from 'xss'
 $(function () {
     //幕布函数
     let $bar = $(".bar");
@@ -1240,6 +1240,7 @@ $(function () {
             function nameCheck() {
                 let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
                 let name = $username.val();
+                name = filterXSS(name)
                 if (!reg.test(name) || name == '') {
                     $username.css("border", "1px solid red");
                     $(".zl-name-span").html("<span class='red-form'>请输入2~10位中文</span>");
@@ -1253,6 +1254,7 @@ $(function () {
             function idCheck() {
                 let reg = /^\d{9,12}$/;//十位数字
                 let id = $studentId.val();
+                id = filterXSS(id)
                 if (!reg.test(id) || id == '') {
                     $studentId.css("border", "1px solid red");
                     $(".zl-id-span").html("<span class='red-form'>请输入正确的学号</span>");
@@ -1265,6 +1267,7 @@ $(function () {
             $gradeProfessional.on("blur", gradeCheck);//3.年级专业
             function gradeCheck() {
                 let grade = $gradeProfessional.val();
+                grade = filterXSS(grade)
                 if (grade == '') {
                     $gradeProfessional.css("border", "1px solid red");
                     $(".zl-grade-span").html("<span class='red-form'>不能为空！</span>");
@@ -1278,6 +1281,7 @@ $(function () {
             function phoneCheck() {
                 let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
                 let phone = $number.val();
+                phone = filterXSS(phone)
                 if (!reg.test(phone) || phone == '') {
                     $number.css("border", "1px solid red");
                     $(".zl-phone-span").html("<span class='red-form'>请输入正确的手机号码</span>");
@@ -1292,6 +1296,7 @@ $(function () {
             function emailCheck() {
                 let reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
                 let email = $email.val();
+                email = filterXSS(email)
                 if (!reg.test(email) || email == '') {
                     $email.css("border", "1px solid red");
                     $(".zl-email-span").html("<span class='red-form'>请输入正确的邮箱</span>");
@@ -1304,6 +1309,7 @@ $(function () {
             $introduction.on("blur", introCheck);//6.自我介绍
             function introCheck() {
                 let intro = $introduction.val();
+                intro = filterXSS(intro)
                 if (intro == '') {
                     $introduction.css("border", "1px solid red");
                     $(".zl-intro-span").html("<span class='red-form'>不能为空！</span>");
@@ -1316,6 +1322,7 @@ $(function () {
             $skills.on("blur", skillsCheck); // 技能
             function skillsCheck() {
                 let skills = $skills.val();
+                skills = filterXSS(skills)
                 if (skills == '') {
                     $skills.css("border", "1px solid red");
                     $(".zl-skills-span").html("<span class='red-form'>不能为空！</span>");
@@ -1328,6 +1335,7 @@ $(function () {
             $idea.on("blur", cogCheck); // 想法
             function cogCheck() {
                 let cog = $idea.val();
+                cog = filterXSS(cog)
                 if (cog == '') {
                     $idea.css("border", "1px solid red");
                     $(".zl-idea-span").html("<span class='red-form'>不能为空！</span>");
@@ -1409,9 +1417,6 @@ $(function () {
             // $('.zl-first-book').eq(0).css({
             //     height: $('.zl-first-book .back').get(0).clientHeight,
             // })
-            $option.fadeOut(100);
-            ev.preventDefault();
-            ev.stopPropagation();
             $option.fadeOut(100);
             ev.preventDefault();
             ev.stopPropagation();
