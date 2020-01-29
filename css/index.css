@@ -1468,12 +1468,9 @@ img {
 }
 #back-stage section .per-two #cf-c-btn {
   margin: 0 auto;
-  margin-top: 3vw;
+  margin-top: 4vw;
   z-index: 3;
   opacity: 1;
-  transform: matrix(1, 0, 0, 1, 0, 0) translate(-50%) !important;
-  left: 50%;
-  top: 24vw;
 }
 #back-stage section .per-two #cf-c-btn .c-btn__inner {
   background-color: #283232;
