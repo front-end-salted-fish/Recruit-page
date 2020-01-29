@@ -1055,7 +1055,7 @@ $(function () {
         const $idea = $('[name=idea]');
         // const $triggerBtn = $('.fui_trigger-btn'); // 单选框按钮
         const $triggerBtn = $('.fui_combo'); // 单选框按钮
-        const $button = $("#btn"); // 轮播图前往表单的按钮
+        const $button = $(".zl-turn-btn"); // 轮播图前往表单的按钮
         const $backBtn = $('#form-page .zl-form-page-close-btn') //返回轮播图的按钮
         const $bannerContainer = $('#banner-container') //获取轮播图界面
         const $detailToFormBtns = $('.c-btn'); //获取详情页前往表单的按钮
@@ -1078,22 +1078,29 @@ $(function () {
         // 给轮播图前往表单的按钮绑定单击响应函数
         $button.on('click', function (event) {
             backBannerFlag = true;
-            $formPages.show();
-            $formPages.css({
-                "z-index": 100,
-            });
+            // $formPages.show();
+            // $formPages.css({
+            //     "z-index": 100,
+            // });
+            console.log(1);
+            
+            $formPages.removeClass('zl-form-out')
+
+            $formPages.addClass('zl-form-in')
             banner.isLeaveBanner = true;
             banner.stopBanner();
             event.stopPropagation()
         })
         // 给返回轮播图/详情页按钮绑定单击响应函数
         $backBtn.on('click', function () {
-            $formPages.hide(1000);
-            $formPages.css({
-                "z-index": 0
-            });
+            $formPages.removeClass('zl-form-in')
+            $formPages.addClass('zl-form-out')
+            // $formPages.hide(1000);
+            // $formPages.css({
+            //     "z-index": 0
+            // });
             if (backBannerFlag) {
-								banner.backSetFunc();
+				banner.backSetFunc();
                 // banner.isLeaveBanner = false;
                 // banner.goBanner();
                 $bannerContainer.show();
@@ -1182,10 +1189,12 @@ $(function () {
         // 给详情页前往表单的多个按钮绑定单击响应事件
         $detailToFormBtns.on('click', function () {
             backBannerFlag = false; //代表此时是从详情页进入表单的
-            $formPages.show();
-            $formPages.css({
-                "z-index": 100,
-            });
+            // $formPages.show();
+            // $formPages.css({
+            //     "z-index": 100,
+            // });
+            $formPages.removeClass('zl-form-out')
+            $formPages.addClass('zl-form-in')
             event.stopPropagation()
         })
         // 提交按钮

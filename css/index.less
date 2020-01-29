@@ -1368,7 +1368,7 @@ img {
   background: #f8f8fb;
   .pers-one {
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1534,6 +1534,24 @@ img {
   letter-spacing: 2px;
   color: #aa8d78;
   position: absolute;
+}
+.zl-form-out {
+  opacity: 0;
+  filter: brightness(1) blur(1);
+  transform: scale(1.2);
+  display: block !important;
+   transition: all ease 0.5s;
+   position: absolute;
+   z-index: -1;
+}
+
+.zl-form-in {
+   opacity: 1;
+   filter: brightness(1) blur(1);
+   transform: scale(1);
+   display: block !important;
+   position: absolute;
+   transition: all ease 0.5s;
 }
 // 表单
 #form-page {
