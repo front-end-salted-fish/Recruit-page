@@ -1719,11 +1719,10 @@ img {
 }
 #back-stage section .per-two .cf-flexbox1 .cf-text-container1 p {
   color: #333 !important;
-  font-size: 1.6vw;
+  font-size: 1.4vw;
 }
 #back-stage section .per-two .cf-flexbox1 svg {
-  height: 28vw;
-  width: 28vw;
+  height: 27vw;
   display: block;
 }
 #back-stage section .per-two .cf-flexbox2 {
@@ -1743,7 +1742,7 @@ img {
 }
 #back-stage section .per-two .cf-flexbox2 .cf-text-container2 p {
   color: #333 !important;
-  font-size: 1.6vw;
+  font-size: 1.4vw;
 }
 #back-stage section .per-two #cf-c-btn {
   margin: 0 auto;
@@ -1935,12 +1934,9 @@ img {
   left: 0vw;
   position: absolute;
   filter: brightness(0.9);
-<<<<<<< HEAD
-=======
 }
 #banner-container #banner .mid-page {
   z-index: 2;
->>>>>>> 6cc53af01a62fe3565cd2fb53e1e3070dacca32e
 }
 #banner-container #banner .pre-page {
   transform: translate(-100vw);
