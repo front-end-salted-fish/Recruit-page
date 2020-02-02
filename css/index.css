@@ -1035,11 +1035,10 @@ img {
 }
 #android {
   position: absolute;
-  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 100vh;
-  background: #f8f8fb;
+  height: 100%;
+  background: #defaed;
 }
 #android ::selection {
   background-color: #63dcae;
