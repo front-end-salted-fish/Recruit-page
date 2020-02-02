@@ -1035,11 +1035,10 @@ img {
 }
 #android {
   position: absolute;
-  width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 100vh;
-  background: #f8f8fb;
+  height: 100%;
+  background: #defaed;
 }
 #android ::selection {
   background-color: #63dcae;
@@ -1162,13 +1161,13 @@ img {
   background: #67dfc4;
 }
 #android .pers-three .c-btn:hover .c-btn__inner {
-  background-color: #f0f4e7;
+  background-color: #d8fced;
 }
 #android .pers-three .c-btn:hover .en {
   color: black;
 }
 #android .pers-three .c-btn:hover .icon {
-  background-color: #f0f4e7;
+  background-color: #d8fced;
 }
 #android .pers-three .c-btn:hover .icon svg {
   fill: #000000;
@@ -1204,6 +1203,7 @@ img {
   display: block !important;
   position: absolute;
   transition: all ease 0.5s;
+  z-index: 7;
 }
 #form-page {
   position: absolute;
