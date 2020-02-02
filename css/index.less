@@ -2203,12 +2203,12 @@ img {
         height: 29vw;
         p {
         color: #333 !important;
-        font-size: 1.6vw;
+        font-size: 1.4vw;
         }  
       }
       svg{
-        height: 28vw;
-        width: 28vw;
+        height: 27vw;
+        // width: 28vw;
         display: block;
       }
       
@@ -2229,7 +2229,7 @@ img {
         // display: flex;
         p {
         color: #333 !important;
-        font-size: 1.6vw;
+        font-size: 1.4vw;
         }  
       }
       // svg{
@@ -2240,11 +2240,66 @@ img {
       // }
       
     }
-    #backstage-btn {
+    #cf-c-btn {
       margin: 0 auto;
-      margin-top: 3vw;
+      margin-top: 4vw;
+      z-index: 3;
+      opacity: 1;
+      .c-btn__inner {
+        background-color: rgb(40, 50, 50); // 按钮左半部分的内部颜色
+
+        .en {
+          color: rgb(255, 255, 255); //文本的颜色
+        }
+
+        .icon {
+          background-color: rgb(28, 37, 37); // 按钮右半部分的内部颜色
+        }
+
+        .icon svg {
+          fill: rgb(255, 255, 255); //箭头的颜色
+        }
+      }
+
+      .c-btn__border {
+
+        &.border-h>* {
+          background: linear-gradient(to right, #d4c03a 0%, #ee7076 100%); // 上边框和下边框的渐变颜色
+        }
+
+        &.border-v {
+          .border-vl {
+            background: #d4c03a; //左边框的颜色
+          }
+
+          .border-vr {
+            background: #ee7076; //右边框的颜色
+          }
+        }
+      }
+
+      &.type-correct .c-btn__inner {
+        background-color: #7e9089;
+      }
+
+      &:hover {
+        .c-btn__inner {
+          background-color: rgba(255, 255, 255, 0); //hover时按钮左半部分的内部颜色
+        }
+
+        .en {
+          color: black; //hover时文本的颜色
+        }
+
+        .icon {
+          background-color: rgba(255, 255, 255, 0); //hover时按钮右半部分的内部颜色
+
+          svg {
+            fill: rgb(0, 0, 0); // hover时箭头的颜色
+          }
+        }
+      }
     } 
-   
   }
    //第一个盒子
    .per-one {

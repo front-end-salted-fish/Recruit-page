@@ -1718,11 +1718,10 @@ img {
 }
 #back-stage section .per-two .cf-flexbox1 .cf-text-container1 p {
   color: #333 !important;
-  font-size: 1.6vw;
+  font-size: 1.4vw;
 }
 #back-stage section .per-two .cf-flexbox1 svg {
-  height: 28vw;
-  width: 28vw;
+  height: 27vw;
   display: block;
 }
 #back-stage section .per-two .cf-flexbox2 {
@@ -1742,11 +1741,49 @@ img {
 }
 #back-stage section .per-two .cf-flexbox2 .cf-text-container2 p {
   color: #333 !important;
-  font-size: 1.6vw;
+  font-size: 1.4vw;
 }
-#back-stage section .per-two #backstage-btn {
+#back-stage section .per-two #cf-c-btn {
   margin: 0 auto;
-  margin-top: 3vw;
+  margin-top: 4vw;
+  z-index: 3;
+  opacity: 1;
+}
+#back-stage section .per-two #cf-c-btn .c-btn__inner {
+  background-color: #283232;
+}
+#back-stage section .per-two #cf-c-btn .c-btn__inner .en {
+  color: #ffffff;
+}
+#back-stage section .per-two #cf-c-btn .c-btn__inner .icon {
+  background-color: #1c2525;
+}
+#back-stage section .per-two #cf-c-btn .c-btn__inner .icon svg {
+  fill: #ffffff;
+}
+#back-stage section .per-two #cf-c-btn .c-btn__border.border-h > * {
+  background: linear-gradient(to right, #d4c03a 0%, #ee7076 100%);
+}
+#back-stage section .per-two #cf-c-btn .c-btn__border.border-v .border-vl {
+  background: #d4c03a;
+}
+#back-stage section .per-two #cf-c-btn .c-btn__border.border-v .border-vr {
+  background: #ee7076;
+}
+#back-stage section .per-two #cf-c-btn.type-correct .c-btn__inner {
+  background-color: #7e9089;
+}
+#back-stage section .per-two #cf-c-btn:hover .c-btn__inner {
+  background-color: rgba(255, 255, 255, 0);
+}
+#back-stage section .per-two #cf-c-btn:hover .en {
+  color: black;
+}
+#back-stage section .per-two #cf-c-btn:hover .icon {
+  background-color: rgba(255, 255, 255, 0);
+}
+#back-stage section .per-two #cf-c-btn:hover .icon svg {
+  fill: #000000;
 }
 #back-stage section .per-one {
   position: relative;

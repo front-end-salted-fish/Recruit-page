@@ -348,8 +348,10 @@ $(function () {
         let $backState = $('#back-stage')
         let $svg1 = $('#back-stage svg')
         let $paths = $('#back-stage path');
-        splitTxt($($(".cf-text-container1")[0]), "TopView 后台组是与数据和信息打交道的@方向，是 Android、iOS、前端的@”坚实后盾”，是每个工作室的核心方向。@TopView后台组基于Java语言，@自成立以来，一直致力于@政府级、企业级项目的实现和优化.", "left");
-        splitTxt($($(".cf-text-container2")[0]), "如此大型的项目成就了@一代又一代的优秀师兄师姐。目前已有@多位师兄在腾讯、阿里、百度、美团等@一线互联网公司工作.", "right");
+        splitTxt($($(".cf-text-container1")[0]), 'TopView 后台组是与数据和信息打交道的方向，@是 Android、iOS、前端的”坚实后盾是每@个工作室的核心方向。TopView后台组基于@Java语言，自成立以来，一直致力于政府级@ 、企业级项目的实现和优化，如此大型的项目@成就了一代又一代的优秀师兄师姐。@目前已有多位师兄在腾讯、阿里、@百度、美团等一线互联网公司工作。', "left");
+        
+
+        splitTxt($($(".cf-text-container2")[0]), "现在后台组开发了众多优秀的事务管理系统以及 P2P@服务平台，如海口应急指挥调度系统，优校云等等。这些@大型的项目使我们得到历练，快速成长。优秀@而又热情的你可以用扎实的C语言@编程基础武装自己，加入后台组吧！", "right");
 
         let animation
         let hasAnimate = false
