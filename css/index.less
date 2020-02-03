@@ -406,7 +406,7 @@ html {
     position: absolute;
     // left: 8px;
     padding-top: 5px;
-    width:100%;
+    width: 100%;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -483,6 +483,7 @@ img {
   overflow-x: hidden;
   height: 100vh;
   background: rgb(217, 225, 243);
+
   #mq-luxy-wrapper {
     .per-one {
       width: 100%;
@@ -744,8 +745,9 @@ img {
 
           }
         }
-        
+
       }
+
       .bottom-bg2 {
         opacity: .2;
         position: absolute;
@@ -765,7 +767,7 @@ img {
 
 // 前端
 #front-end {
-  background-color: rgba(196, 199, 216);
+  background-color: rgba(150,84,88);
   margin: 0px;
   padding: 0px;
   position: absolute;
@@ -808,9 +810,64 @@ img {
 
     //第二个盒子
     .per-two {
-      background-color: rgba(196, 199, 216);
+      //background-color: rgba(196, 199, 216);
+      background-color: rgba(150,84,88);
       overflow: hidden;
       box-shadow: 0px 0px 20px #2f1e1e;
+
+      .c-btn {
+        left: 42%; //按页面需要适当修改
+
+        .c-btn__inner {
+          background-color: rgb(40, 50, 50); // 按钮左半部分的内部颜色
+
+          .en {
+            color: rgb(255, 255, 255); //文本的颜色
+          }
+
+          .icon {
+            background-color: rgb(28, 37, 37); // 按钮右半部分的内部颜色
+          }
+
+          .icon svg {
+            fill: rgb(255, 255, 255); //箭头的颜色
+          }
+        }
+
+        .c-btn__border {
+          &.border-h>* {
+            background: linear-gradient(to right, #c3e060 0%, #67dfc4 100%); // 上边框和下边框的渐变颜色
+          }
+
+          &.border-v {
+            .border-vl {
+              background: #c3e060; //左边框的颜色
+            }
+
+            .border-vr {
+              background: #67dfc4; //右边框的颜色
+            }
+          }
+        }
+
+        &:hover {
+          .c-btn__inner {
+            background-color:  rgba(150,84,88); //hover时按钮左半部分的内部颜色
+          }
+
+          .en {
+            color: rgb(253, 253, 253); //hover时文本的颜色
+          }
+
+          .icon {
+            background-color: rgba(150,84,88); //hover时按钮右半部分的内部颜色
+
+            svg {
+              fill: rgb(253, 253, 253); // hover时箭头的颜色
+            }
+          }
+        }
+      }
 
       img {
         width: 30vw;
@@ -832,7 +889,7 @@ img {
           left: 15vw;
 
           p {
-            color: #333 !important;
+            color: rgb(252, 246, 246) !important;
             font-size: 1.6vw;
           }
         }
@@ -846,7 +903,7 @@ img {
             top: -8vh;
             right: 12vw;
             //border-radius: 10%;
-            box-shadow: 0px 0px 20px #b5b3a6;
+            //box-shadow: 0px 0px 20px #b5b3a6;
           }
         }
       }
@@ -863,7 +920,7 @@ img {
           left: 60vw;
 
           p {
-            color: #333 !important;
+            color: rgb(250, 246, 246) !important;
             font-size: 1.6vw;
           }
         }
@@ -872,9 +929,10 @@ img {
           position: absolute;
           left: 15vw;
           top: -5vh;
-          .wfimg2{
+
+          .wfimg2 {
             //border-radius: 10%;
-            box-shadow: 0px 0px 20px #b5b3a6;
+            //box-shadow: 0px 0px 20px #b5b3a6;
           }
         }
 
@@ -896,6 +954,7 @@ img {
       justify-content: center;
       align-items: center;
       height: 100vh;
+
       .per {
         height: 100%;
       }
@@ -917,8 +976,9 @@ img {
 // 详情页的回退按钮
 #detail-pages {
   .page {
-    display: none;  // 刚进来的时候不应该出现在轮播图后面
+    display: none; // 刚进来的时候不应该出现在轮播图后面
   }
+
   .rj-detail-page-close-btn {
     overflow: hidden;
     display: block;
@@ -932,6 +992,7 @@ img {
     padding: 0 2rem;
 
     @delay: 0.04s;
+
     i {
       position: absolute;
       top: 50%;
@@ -942,8 +1003,9 @@ img {
       font-size: 3vw;
       text-align: center;
       opacity: 0;
-      transition: all 0.5s cubic-bezier(.5,.52,0,1) @delay;
+      transition: all 0.5s cubic-bezier(.5, .52, 0, 1) @delay;
     }
+
     span {
       padding: 0 0.5px;
       transition: all .35s;
@@ -953,8 +1015,9 @@ img {
       opacity: 1;
       display: inline-block;
       letter-spacing: 1px;
-      transition: all .5s cubic-bezier(.5,.52,0,1);
+      transition: all .5s cubic-bezier(.5, .52, 0, 1);
       transform: translate(0);
+
       &:nth-child(1) {
         transition-delay: 5 * @delay;
       }
@@ -1008,6 +1071,7 @@ img {
   ::selection {
     background-color: #f8ebd8;
   }
+
   background: #dccbbb;
   position: fixed;
   top: 0;
@@ -1360,20 +1424,24 @@ img {
 // 安卓
 #android {
   ::selection {
-    background-color: #63dcae;;
+    background-color: #63dcae;
+    ;
   }
+
   position: absolute;
   // width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
   background: #defaed;
+
   .pers-one {
     width: 100%;
     // height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+
     .one {
       filter: blur(1px);
     }
@@ -1396,6 +1464,7 @@ img {
     // transform: translate3d(0, 200%, -2px) scale(3);
     width: 100%;
     height: 100vh;
+
     .flex-box1 {
       display: flex;
       justify-content: center;
@@ -1403,31 +1472,36 @@ img {
       margin-top: 40vh;
 
     }
+
     .zl-content-one {
       position: relative;
       z-index: 10;
       margin-left: 13vw;
+
       p {
         color: black;
       }
     }
+
     .flex-box2 {
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
     .zl-content-two {
       p {
         color: black;
       }
     }
-    
+
     .describe {
       right: 3%;
       top: 10%;
       color: #9ca8ab;
       width: 33%;
     }
+
     img {
       width: 30%;
     }
@@ -1436,23 +1510,29 @@ img {
   .pers-three {
     margin-top: 30vh;
     margin-bottom: 45px;
+
     .flex-box3 {
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
     position: relative;
     // transform: translate3d(0, 190%, 0) scale(1);
     width: 100%;
+
     img {
       width: 30%;
     }
+
     .zl-content-three {
       margin-left: 4vw;
+
       p {
         color: black;
       }
     }
+
     .describe {
       width: 23%;
       right: 38%;
@@ -1474,45 +1554,56 @@ img {
       }
 
     }
+
     .c-btn {
       left: 59%; //按页面需要适当修改
+
       .c-btn__inner {
         background-color: rgb(40, 50, 50); // 按钮左半部分的内部颜色
+
         .en {
           color: rgb(255, 255, 255); //文本的颜色
         }
+
         .icon {
           background-color: rgb(28, 37, 37); // 按钮右半部分的内部颜色
         }
+
         .icon svg {
           fill: rgb(255, 255, 255); //箭头的颜色
         }
       }
-     
+
       .c-btn__border {
         &.border-h>* {
           background: linear-gradient(to right, #c3e060 0%, #67dfc4 100%); // 上边框和下边框的渐变颜色
         }
+
         &.border-v {
           .border-vl {
             background: #c3e060; //左边框的颜色
           }
+
           .border-vr {
             background: #67dfc4; //右边框的颜色
           }
         }
       }
+
       &:hover {
         .c-btn__inner {
           background-color: #d8fced; //hover时按钮左半部分的内部颜色
         }
+
         .en {
           color: black; //hover时文本的颜色
         }
+
         .icon {
           background-color: #d8fced; //hover时按钮右半部分的内部颜色
+
           svg {
-            fill: rgb(0, 0, 0);// hover时箭头的颜色
+            fill: rgb(0, 0, 0); // hover时箭头的颜色
           }
         }
       }
@@ -1527,6 +1618,7 @@ img {
   }
 
 }
+
 //验证码
 #code {
   font-family: Arial;
@@ -1537,25 +1629,27 @@ img {
   color: #aa8d78;
   position: absolute;
 }
+
 .zl-form-out {
   opacity: 0;
   filter: brightness(1) blur(1);
   transform: scale(1.2);
   display: block !important;
-   transition: all ease 0.5s;
-   position: absolute;
-   z-index: -1;
+  transition: all ease 0.5s;
+  position: absolute;
+  z-index: -1;
 }
 
 .zl-form-in {
-   opacity: 1;
-   filter: brightness(1) blur(1);
-   transform: scale(1);
-   display: block !important;
-   position: absolute;
-   transition: all ease 0.5s;
-   z-index: 7;
+  opacity: 1;
+  filter: brightness(1) blur(1);
+  transform: scale(1);
+  display: block !important;
+  position: absolute;
+  transition: all ease 0.5s;
+  z-index: 7;
 }
+
 // 表单
 #form-page {
   position: absolute;
@@ -1567,6 +1661,7 @@ img {
   // background: #EBF8F7;
   height: 100vh;
   user-select: none;
+
   .zl-form-page-close-btn {
     overflow: hidden;
     display: block;
@@ -2056,20 +2151,22 @@ img {
 
 
 
-.scene {
+  .scene {
     width: 45%;
     height: 99%;
     margin: 0% 20% 5% 27%;
     perspective: 1000px;
     transition: margin 1s;
-      /* 5% 5% 5% 50%; */
+
+    /* 5% 5% 5% 50%; */
     .book {
       position: relative;
       width: 100%;
       height: 100%;
 
-    transform-style: preserve-3d;
-    // box-shadow: 1px 1px 30px #a4856d;
+      transform-style: preserve-3d;
+
+      // box-shadow: 1px 1px 30px #a4856d;
       h1 {
 
         text-align: center;
@@ -2077,25 +2174,27 @@ img {
         color: #a4856d;
         margin: 4% 0 6% 0;
       }
+
       .page {
         // cursor: pointer;
         position: absolute;
         color: black;
         width: 100%;
         height: 100vh;
-      
-          transition: 1.5s transform;
-          transform-style: preserve-3d;
-          transform-origin: left center;
-      
-          p {
-            font-size: 16px;
-            margin-bottom: 37px;
-          }
+
+        transition: 1.5s transform;
+        transform-style: preserve-3d;
+        transform-origin: left center;
+
+        p {
+          font-size: 16px;
+          margin-bottom: 37px;
         }
       }
     }
   }
+}
+
 .zl-first-book .front {
   background: url(../img/form/invitecard.png) 50%;
   background-size: cover;
@@ -2113,53 +2212,54 @@ img {
     margin-bottom: 10px;
   }
 }
+
 .zl-second-book {
   cursor: default;
 }
 
 .front,
 .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    // padding: 2% 0% 0%;
-    box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // padding: 2% 0% 0%;
+  box-sizing: border-box;
 
-    backface-visibility: hidden;
-    background: -webkit-gradient(linear, 0% 0%, 100% 100%, from(#FFFFFF), to(#CCCCCC));
-    background: linear-gradient(to bottom right, #fff, #ccc);
+  backface-visibility: hidden;
+  background: -webkit-gradient(linear, 0% 0%, 100% 100%, from(#FFFFFF), to(#CCCCCC));
+  background: linear-gradient(to bottom right, #fff, #ccc);
 
-  }
+}
 
-  .back {
-    transform: rotateY(180deg);
-  }
+.back {
+  transform: rotateY(180deg);
+}
 
-  #form-page .page.active {
-    z-index: 1;
-  }
+#form-page .page.active {
+  z-index: 1;
+}
 
-  #form-page .page.flipped {
-    transform: rotateY(-180deg);
-  }
+#form-page .page.flipped {
+  transform: rotateY(-180deg);
+}
 
-  #form-page .page.flipped:last-of-type {
-    z-index: 1;
-  }
+#form-page .page.flipped:last-of-type {
+  z-index: 1;
+}
 
-  #form-page  p {
-    margin: 0 0 0.1em;
-    text-indent: 1em;
-  }
+#form-page p {
+  margin: 0 0 0.1em;
+  text-indent: 1em;
+}
 
-  #form-page .qr {
-    margin: 50px auto;
-    max-width: 50%;
-  }
+#form-page .qr {
+  margin: 50px auto;
+  max-width: 50%;
+}
 
-  #form-page .qr img {
-    display: block;
-  }
+#form-page .qr img {
+  display: block;
+}
 
 // }
 
@@ -2181,156 +2281,171 @@ img {
   // perspective: 1px;
   position: absolute;
   top: 0;
+
   ::selection {
     background-color: #98a4b3;
   }
+
   background-color: #dfe8f3;
+
   //每个大盒子的高度
   section {
+
     //第二个盒子
-  .per-two {
-    height: 150vh;
-    background-color: #dfe8f3 ;
-    overflow: hidden;
-    box-shadow: 0px 0px 20px #2f1e1e;
-    
-    // position: relative;
-    //详情文字
-    .cf-flexbox1 {
-      margin-top: 10vh;
-      z-index: 2;
-      display: flex;
-      justify-content: center;
-      .cf-text-container1 {
-        width: 37vw;
-        height: 29vw;
-        p {
-        color: #333 !important;
-        font-size: 1.4vw;
-        }  
+    .per-two {
+      height: 150vh;
+      background-color: #dfe8f3;
+      overflow: hidden;
+      box-shadow: 0px 0px 20px #2f1e1e;
+
+      // position: relative;
+      //详情文字
+      .cf-flexbox1 {
+        margin-top: 10vh;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+
+        .cf-text-container1 {
+          width: 37vw;
+          height: 29vw;
+
+          p {
+            color: #333 !important;
+            font-size: 1.4vw;
+          }
+        }
+
+        svg {
+          height: 27vw;
+          // width: 28vw;
+          display: block;
+        }
+
       }
-      svg{
-        height: 27vw;
-        // width: 28vw;
-        display: block;
+
+      .cf-flexbox2 {
+        margin-top: 5vh;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: 21vw;
+          margin-right: 3vw;
+        }
+
+        .cf-text-container2 {
+          width: 37vw;
+          height: 15vw;
+
+          // display: flex;
+          p {
+            color: #333 !important;
+            font-size: 1.4vw;
+          }
+        }
+
+        // svg{
+        //   height: 28vw;
+        //   width: 28vw;
+        //   display: block;
+
+        // }
+
       }
-      
+
+      #cf-c-btn {
+        margin: 0 auto;
+        margin-top: 10vh;
+        z-index: 3;
+        opacity: 1;
+
+        .c-btn__inner {
+          background-color: rgb(40, 50, 50); // 按钮左半部分的内部颜色
+
+          .en {
+            color: rgb(255, 255, 255); //文本的颜色
+          }
+
+          .icon {
+            background-color: rgb(28, 37, 37); // 按钮右半部分的内部颜色
+          }
+
+          .icon svg {
+            fill: rgb(255, 255, 255); //箭头的颜色
+          }
+        }
+
+        .c-btn__border {
+
+          &.border-h>* {
+            background: linear-gradient(to right, #25B0F3 0%, #81D841 100%); // 上边框和下边框的渐变颜色
+          }
+
+          &.border-v {
+            .border-vl {
+              background: #25B0F3; //左边框的颜色
+            }
+
+            .border-vr {
+              background: #81D841; //右边框的颜色
+            }
+          }
+        }
+
+        &.type-correct .c-btn__inner {
+          background-color: #7e9089;
+        }
+
+        &:hover {
+          .c-btn__inner {
+            background-color: rgba(255, 255, 255, 0); //hover时按钮左半部分的内部颜色
+          }
+
+          .en {
+            color: black; //hover时文本的颜色
+          }
+
+          .icon {
+            background-color: rgba(255, 255, 255, 0); //hover时按钮右半部分的内部颜色
+
+            svg {
+              fill: rgb(0, 0, 0); // hover时箭头的颜色
+            }
+          }
+        }
+      }
     }
-    .cf-flexbox2 {
-      margin-top: 5vh;
-      z-index: 2;
+
+    //第一个盒子
+    .per-one {
+      // // transform: translateZ(-3px) scale(4);
+      // display: flex;
+      // overflow: hidden;
+      position: relative;
+      // justify-content: center;
+      // align-items: center;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      img {
-        height: 21vw;
-        margin-right: 3vw;
+      height: 100vh;
+
+      img:nth-child(1) {
+        filter: brightness(90%);
+        // width: 100%;
+        height: 100%;
+        position: absolute;
       }
-      .cf-text-container2 {
-        width: 37vw;
-        height: 15vw;
-        // display: flex;
-        p {
-        color: #333 !important;
-        font-size: 1.4vw;
-        }  
+
+      .page-name {
+
+        z-index: 3;
+        width: 22vw;
       }
-      // svg{
-      //   height: 28vw;
-      //   width: 28vw;
-      //   display: block;
-        
-      // }
-      
     }
-    #cf-c-btn {
-      margin: 0 auto;
-      margin-top: 10vh;
-      z-index: 3;
-      opacity: 1;
-      .c-btn__inner {
-        background-color: rgb(40, 50, 50); // 按钮左半部分的内部颜色
-
-        .en {
-          color: rgb(255, 255, 255); //文本的颜色
-        }
-
-        .icon {
-          background-color: rgb(28, 37, 37); // 按钮右半部分的内部颜色
-        }
-
-        .icon svg {
-          fill: rgb(255, 255, 255); //箭头的颜色
-        }
-      }
-
-      .c-btn__border {
-
-        &.border-h>* {
-          background: linear-gradient(to right, #25B0F3 0%, #81D841 100%); // 上边框和下边框的渐变颜色
-        }
-
-        &.border-v {
-          .border-vl {
-            background: #25B0F3; //左边框的颜色
-          }
-
-          .border-vr {
-            background: #81D841; //右边框的颜色
-          }
-        }
-      }
-
-      &.type-correct .c-btn__inner {
-        background-color: #7e9089;
-      }
-
-      &:hover {
-        .c-btn__inner {
-          background-color: rgba(255, 255, 255, 0); //hover时按钮左半部分的内部颜色
-        }
-
-        .en {
-          color: black; //hover时文本的颜色
-        }
-
-        .icon {
-          background-color: rgba(255, 255, 255, 0); //hover时按钮右半部分的内部颜色
-
-          svg {
-            fill: rgb(0, 0, 0); // hover时箭头的颜色
-          }
-        }
-      }
-    } 
-  }
-   //第一个盒子
-   .per-one {
-    // // transform: translateZ(-3px) scale(4);
-    // display: flex;
-    // overflow: hidden;
-    position: relative;
-    // justify-content: center;
-    // align-items: center;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
-    img:nth-child(1) {
-      filter: brightness(90%);
-      // width: 100%;
-      height: 100%;
-      position: absolute;
-    }
-
-    .page-name {
-
-      z-index: 3;
-      width: 22vw;
-    }
-  }
   }
 }
 
@@ -2379,20 +2494,23 @@ img {
     color: white;
   }
 }
+
 #detail-pages {
   .page {
     .banner-center-up {
       font-size: 5vw;
     }
-  
+
     .banner-center-down {
       font-size: 2.5vw;
     }
+
     .banner-center-line {
       width: 25vw;
     }
   }
 }
+
 // 轮播图
 #banner-container {
   height: 100vh;
@@ -2583,14 +2701,17 @@ img {
         color: transparent !important;
         // transition: all @firstPart;
       }
+
       .banner-center-up {
-        transition: all @firstPart,transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) @firstPart;
+        transition: all @firstPart, transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) @firstPart;
       }
+
       .banner-center-line {
-        transition: all @firstPart,transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) (@firstPart + .05s);
+        transition: all @firstPart, transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) (@firstPart + .05s);
       }
-      .banner-center-down{
-        transition: all @firstPart,transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) (@firstPart + .1s);
+
+      .banner-center-down {
+        transition: all @firstPart, transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) (@firstPart + .1s);
       }
 
       .outer-mask {
@@ -2610,14 +2731,17 @@ img {
         color: white !important;
         // transition: all @thirdPart (@firstPart + @secondPart),  transform @thirdPart cubic-bezier(0.49, 0.03, 0.04, 0.99) (@secondPart );
       }
+
       .banner-center-up {
-        transition: all @thirdPart (@firstPart + @secondPart),transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) @secondPart;
+        transition: all @thirdPart (@firstPart + @secondPart), transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) @secondPart;
       }
+
       .banner-center-line {
-        transition: all @thirdPart (@firstPart + @secondPart),transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) (@secondPart + .05s);
+        transition: all @thirdPart (@firstPart + @secondPart), transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) (@secondPart + .05s);
       }
-      .banner-center-down{
-        transition: all @thirdPart (@firstPart + @secondPart),transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) (@secondPart + .1s);
+
+      .banner-center-down {
+        transition: all @thirdPart (@firstPart + @secondPart), transform @firstPart cubic-bezier(0.49, 0.03, 0.04, 0.99) (@secondPart + .1s);
       }
 
       .outer-mask {
@@ -2782,41 +2906,46 @@ img {
   z-index: 3;
   bottom: 3vh;
   left: 50vw;
+
   figure {
     width: 200px;
     height: 60px;
     cursor: pointer;
     perspective: 500px;
+
     div {
       height: 100%;
       transform-style: preserve-3d;
       transition: 0.25s;
+
       span {
         width: 100%;
         height: 100%;
         position: absolute;
         box-sizing: border-box;
         border: 5px solid #fff;
-        font-family: 'Source Sans Pro',sans-serif;
+        font-family: 'Source Sans Pro', sans-serif;
         line-height: 50px;
         font-size: 17pt;
         text-align: center;
         text-transform: uppercase;
       }
+
       span:nth-child(1) {
         color: #fff;
         transform: translate3d(0, 0, 30px);
       }
-      
+
       span:nth-child(2) {
         // color: #737f39;
         background: #fff;
         transform: rotateX(90deg) translate3d(0, 0, 30px);
       }
     }
+
     &:hover div {
       transform: rotateX(-90deg);
-  
+
     }
   }
 }

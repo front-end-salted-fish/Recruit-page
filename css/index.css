@@ -579,7 +579,7 @@ img {
   z-index: -1;
 }
 #front-end {
-  background-color: rgba(196, 199, 216);
+  background-color: rgba(150, 84, 88);
   margin: 0px;
   padding: 0px;
   position: absolute;
@@ -612,9 +612,45 @@ img {
   height: 150vh;
 }
 #front-end section .per-two {
-  background-color: rgba(196, 199, 216);
+  background-color: rgba(150, 84, 88);
   overflow: hidden;
   box-shadow: 0px 0px 20px #2f1e1e;
+}
+#front-end section .per-two .c-btn {
+  left: 42%;
+}
+#front-end section .per-two .c-btn .c-btn__inner {
+  background-color: #283232;
+}
+#front-end section .per-two .c-btn .c-btn__inner .en {
+  color: #ffffff;
+}
+#front-end section .per-two .c-btn .c-btn__inner .icon {
+  background-color: #1c2525;
+}
+#front-end section .per-two .c-btn .c-btn__inner .icon svg {
+  fill: #ffffff;
+}
+#front-end section .per-two .c-btn .c-btn__border.border-h > * {
+  background: linear-gradient(to right, #c3e060 0%, #67dfc4 100%);
+}
+#front-end section .per-two .c-btn .c-btn__border.border-v .border-vl {
+  background: #c3e060;
+}
+#front-end section .per-two .c-btn .c-btn__border.border-v .border-vr {
+  background: #67dfc4;
+}
+#front-end section .per-two .c-btn:hover .c-btn__inner {
+  background-color: rgba(150, 84, 88);
+}
+#front-end section .per-two .c-btn:hover .en {
+  color: #fdfdfd;
+}
+#front-end section .per-two .c-btn:hover .icon {
+  background-color: rgba(150, 84, 88);
+}
+#front-end section .per-two .c-btn:hover .icon svg {
+  fill: #fdfdfd;
 }
 #front-end section .per-two img {
   width: 30vw;
@@ -633,7 +669,7 @@ img {
   left: 15vw;
 }
 #front-end section .per-two .flex-box1 .wf-txt-container1 p {
-  color: #333 !important;
+  color: #fcf6f6 !important;
   font-size: 1.6vw;
 }
 #front-end section .per-two .flex-box1 .wf-img-container1 {
@@ -644,7 +680,6 @@ img {
   position: absolute;
   top: -8vh;
   right: 12vw;
-  box-shadow: 0px 0px 20px #b5b3a6;
 }
 #front-end section .per-two .flex-box2 {
   z-index: 2;
@@ -658,16 +693,13 @@ img {
   left: 60vw;
 }
 #front-end section .per-two .flex-box2 .wf-txt-container2 p {
-  color: #333 !important;
+  color: #faf6f6 !important;
   font-size: 1.6vw;
 }
 #front-end section .per-two .flex-box2 .wf-img-container2 {
   position: absolute;
   left: 15vw;
   top: -5vh;
-}
-#front-end section .per-two .flex-box2 .wf-img-container2 .wfimg2 {
-  box-shadow: 0px 0px 20px #b5b3a6;
 }
 #front-end section .per-one {
   position: relative;
