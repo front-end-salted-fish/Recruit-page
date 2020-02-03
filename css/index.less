@@ -767,6 +767,9 @@ img {
 
 // 前端
 #front-end {
+  ::selection {
+    background-color: rgba(243, 201, 166, 0.4);
+  }
   background-color: rgba(150,84,88);
   margin: 0px;
   padding: 0px;
@@ -783,10 +786,10 @@ img {
   }
 
   // transform-style: preserve-3d;
-  img {
-    width: 100%;
-    //box-shadow: 0px 0px 100px #2f1e1e;
-  }
+  // img {
+  //   width: 100%;
+  //   //box-shadow: 0px 0px 100px #2f1e1e;
+  // }
 
   .title {
     width: 30%;
@@ -811,7 +814,7 @@ img {
     //第二个盒子
     .per-two {
       //background-color: rgba(196, 199, 216);
-      background-color: rgba(150,84,88);
+      background-color: #ffeae7;
       overflow: hidden;
       box-shadow: 0px 0px 20px #2f1e1e;
 
@@ -836,34 +839,34 @@ img {
 
         .c-btn__border {
           &.border-h>* {
-            background: linear-gradient(to right, #c3e060 0%, #67dfc4 100%); // 上边框和下边框的渐变颜色
+            background: linear-gradient(to right, red 0%, orange 100%); // 上边框和下边框的渐变颜色
           }
 
           &.border-v {
             .border-vl {
-              background: #c3e060; //左边框的颜色
+              background: red; //左边框的颜色
             }
 
             .border-vr {
-              background: #67dfc4; //右边框的颜色
+              background: orange; //右边框的颜色
             }
           }
         }
 
         &:hover {
           .c-btn__inner {
-            background-color:  rgba(150,84,88); //hover时按钮左半部分的内部颜色
+            background-color:  transparent; //hover时按钮左半部分的内部颜色
           }
 
           .en {
-            color: rgb(253, 253, 253); //hover时文本的颜色
+            color: #000; //hover时文本的颜色
           }
 
           .icon {
-            background-color: rgba(150,84,88); //hover时按钮右半部分的内部颜色
+            background-color: transparent; //hover时按钮右半部分的内部颜色
 
             svg {
-              fill: rgb(253, 253, 253); // hover时箭头的颜色
+              fill: #000; // hover时箭头的颜色
             }
           }
         }
@@ -889,7 +892,7 @@ img {
           left: 15vw;
 
           p {
-            color: rgb(252, 246, 246) !important;
+            color: #000 !important;
             font-size: 1.6vw;
           }
         }
@@ -902,6 +905,7 @@ img {
             position: absolute;
             top: -8vh;
             right: 12vw;
+            transition: all 1.2s;
             //border-radius: 10%;
             //box-shadow: 0px 0px 20px #b5b3a6;
           }
@@ -920,7 +924,7 @@ img {
           left: 60vw;
 
           p {
-            color: rgb(250, 246, 246) !important;
+            color: #000 !important;
             font-size: 1.6vw;
           }
         }
@@ -931,6 +935,7 @@ img {
           top: -5vh;
 
           .wfimg2 {
+            transition: all 1.2s;
             //border-radius: 10%;
             //box-shadow: 0px 0px 20px #b5b3a6;
           }
@@ -956,7 +961,7 @@ img {
       height: 100vh;
 
       .per {
-        height: 100%;
+        height: 120%;
       }
     }
   }
@@ -969,6 +974,7 @@ img {
 
 // 图片倾斜
 .skewImg {
+  transition: all 1.2s;
   opacity: 0 !important;
   transform: scale(0.8) skew(9deg, 11deg) translateY(100px) !important;
 }
