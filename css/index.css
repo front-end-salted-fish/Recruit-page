@@ -1213,6 +1213,7 @@ img {
   right: 0;
   overflow: auto;
   height: 100vh;
+  user-select: none;
 }
 #form-page .zl-form-page-close-btn {
   overflow: hidden;
