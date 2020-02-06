@@ -1067,16 +1067,18 @@ $(function () {
     let flag = false;
     // 初始化表单数据,用于发给后台的表单数据
     let formData = {
-      username: '',
-      studentId: '',
-      gradeProfessional: '',
-      sex: '',
-      number: '',
-      email: '',
-      introduction: '',
-      direction: '',
-      skills: '',
-      idea: ''
+      username: '', // 姓名
+      studentId: '', // 学号
+      gradeProfessional: '', // 年级班级
+      sex: '', // 性别
+      phone: '', // 手机号码
+      email: '', // 邮箱
+      introduction: '', // 自我介绍
+      direction: '', // 选择的方向
+      skills: '', // 你所掌握的技能
+      idea: '', // 你对我们工作室的想法
+      checkFront: '', // 前端动态生成的验证码
+      checkBack: '' // 用户填写的验证码
     };
     // 给轮播图前往表单的按钮绑定单击响应函数
     $button.on('click', function (event) {
@@ -1085,10 +1087,7 @@ $(function () {
       // $formPages.css({
       //     "z-index": 100,
       // });
-      console.log(1);
-
       $formPages.removeClass('zl-form-out')
-
       $formPages.addClass('zl-form-in')
       banner.isLeaveBanner = true;
       banner.stopBanner();
@@ -1104,11 +1103,8 @@ $(function () {
       // });
       if (backBannerFlag) {
         banner.backSetFunc();
-        // banner.isLeaveBanner = false;
-        // banner.goBanner();
         $bannerContainer.show();
       }
-
     })
 
     // 使用事件委托监听输入框的失去焦点事件
@@ -1130,7 +1126,7 @@ $(function () {
           formData.sex = value;
           break;
         case "number":
-          formData.number = value;
+          formData.phone = value;
           break;
         case "email":
           formData.email = value;
@@ -1174,12 +1170,6 @@ $(function () {
       $(this).first().siblings().children()[0].style.background = '#fff';
       formData.sex = sex;
     })
-
-    // 给上一步按钮按钮绑定单击响应函数
-    // $preStep.on('click', function () {
-    //     $formPageOne.fadeIn();
-    //     $formPageTwo.hide();
-    // })
     // 给单选框按钮绑定点击函数
     $triggerBtn.on('click', function (ev) {
       $option.slideToggle(100);
@@ -1193,17 +1183,13 @@ $(function () {
     // 给详情页前往表单的多个按钮绑定单击响应事件
     $detailToFormBtns.on('click', function () {
       backBannerFlag = false; //代表此时是从详情页进入表单的
-      // $formPages.show();
-      // $formPages.css({
-      //     "z-index": 100,
-      // });
       $formPages.removeClass('zl-form-out')
       $formPages.addClass('zl-form-in')
       event.stopPropagation()
     })
     // 提交按钮
     $submit.on('click', function () {
-
+      console.log(formData)
       if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
         if (!formData.sex) {
           alert('必须选择性别')
@@ -1371,11 +1357,14 @@ $(function () {
         var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
         code += random[index]; //根据索引取得随机数加到code上  
       }
+      formData.checkFront = code;
       checkCode.value = code; //把code值赋给验证码  
     }
     // 
     function check() {
       var inputCode = document.getElementById("ctl00_txtcode").value.toUpperCase();
+      inputCode = filterXSS(inputCode)
+      formData.checkBack = inputCode
       if (inputCode == "") {
         alert("验证码不能为空");
         return false;
