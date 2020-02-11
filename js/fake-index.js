@@ -207,49 +207,6 @@ $(function () {
     });
   })();
 
-  // 3d按钮模块
-  //     !(() => {
-  //         let
-  //             $button = $("#btn"),
-  //             btncoords = $button[0].getBoundingClientRect(),
-  //             $wrap = $('#three-dimensional-btn'),
-  //             styles = $wrap[0].style,
-  //             $glare = $("#btn .glare");
-
-  //         // function rotate(e) {
-  //         //     let
-  //         //         x = e.clientX - btncoords.left,
-  //         //         y = e.clientY - btncoords.top,
-  //         //         cx = btncoords.width / 2,
-  //         //         cy = btncoords.height / 2,
-  //         //         dx = x - cx,
-  //         //         dy = y - cy;
-  //         //     styles.setProperty("--rx", `${(dy / -1.5)}deg`);
-  //         //     styles.setProperty("--ry", `${(dx / 10)}deg`);
-  //         //     $glare.css({
-  //         //         transform: "translate(" + (-x / 2) + "%, " + -y + "%)"
-  //         //     });
-  //         // };
-
-  //     // function restore(e) {
-  //     //     styles.setProperty("--rx", `${0}deg`);
-  //     //     styles.setProperty("--ry", `${0}deg`);
-  //     //     $glare.css({
-  //     //         transform: "translate(" + (-50) + "%, " + -50 + "%)"
-  //     //     });
-  //     // }
-  //     // $button.on('mousemove', rotate);
-  //     // $button.on('mouseleave', restore);
-  //     $button.on('click', function () {
-  //         $('#form-page').fadeIn();
-  //         $('#banner-container').fadeOut();
-  //     })
-  //     window.onresize = function () {
-  //         styles = $wrap[0].style;
-  //         btncoords = $button[0].getBoundingClientRect();
-  //     }
-  // })();
-
   // 轮播图翻转报名按钮模块
   !(() => {
     let $button = $(".zl-turn-btn");
@@ -1083,10 +1040,6 @@ $(function () {
     // 给轮播图前往表单的按钮绑定单击响应函数
     $button.on('click', function (event) {
       backBannerFlag = true;
-      // $formPages.show();
-      // $formPages.css({
-      //     "z-index": 100,
-      // });
       $formPages.removeClass('zl-form-out')
       $formPages.addClass('zl-form-in')
       banner.isLeaveBanner = true;
@@ -1097,10 +1050,6 @@ $(function () {
     $backBtn.on('click', function () {
       $formPages.removeClass('zl-form-in')
       $formPages.addClass('zl-form-out')
-      // $formPages.hide(1000);
-      // $formPages.css({
-      //     "z-index": 0
-      // });
       if (backBannerFlag) {
         banner.backSetFunc();
         $bannerContainer.show();
@@ -1396,33 +1345,14 @@ $(function () {
       $('.zl-second-book').removeClass('.flipped')
     }
     $('#form-page-one').click(function (ev) {
-      // $($('#form-page-two .form-body').get(0)).css({
-      //     height: $('#form-page-one .form-body').get(0).clientHeight,
-      //     transition: '1s'
-      // })
-      // $('.zl-first-book').eq(0).css({
-      //     height: $('.zl-first-book .back').get(0).clientHeight,
-      // })
       $option.fadeOut(100);
       ev.preventDefault();
       ev.stopPropagation();
     })
     $('#form-page-two').click(function (ev) {
-      // $($('#form-page-one .form-body').get(0)).css({
-      //     height: $('#form-page-two .fui-form').get(0).clientHeight,
-      //     transition: '1s'
-      // })
-      // $($('#form-page-two .form-body').get(0)).css({
-      //     height: $('#form-page-two .fui-form').get(0).clientHeight,
-      //     transition: '1s'
-      // })
-      // $('.zl-first-book').eq(0).css({
-      //     height: $('.zl-first-book .back').get(0).clientHeight,
-      // })
       $option.fadeOut(100);
       ev.preventDefault();
       ev.stopPropagation();
-
     })
     function changePage() {
       if ($('.zl-first-book').hasClass('active')) {
@@ -1432,30 +1362,22 @@ $(function () {
         $('.scene').css({
           margin: '0% 5% 5% 50%'
         })
-        // $($('#form-page-two .form-body').get(0)).css({
-        //     height: $('#form-page-one .form-body').get(0).clientHeight
-        // })
       }
     }
-
     $('.book').one('click', '.active', nextPage) // 注册一次点击事件
     $('.zl-first-book').click(changePage)
     // 给返回封面按钮绑定单击响应函数
     $nextStep.on('click', () => {
       changePage()
       prevPage()
-      //    if ($('.zl-second-book').hasClass('active') && $('.zl-first-book').hasClass('flipped')) {
       $('.scene').css({
         margin: '0% 20% 5% 27%'
       })
       setTimeout(function () {
         $('.zl-first-book .front h1').show()
       }, 1000)
-
-      // }
       $('.book').one('click', '.active', nextPage)
     })
-
   })();
 })
 
