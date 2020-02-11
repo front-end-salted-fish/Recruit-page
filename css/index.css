@@ -367,8 +367,7 @@ img {
   height: 100vh;
 }
 #ios #mq-luxy-wrapper .per-one .bg {
-  width: 100%;
-  height: 100%;
+  height: 140%;
   filter: brightness(90%);
 }
 #ios #mq-luxy-wrapper .per-one .header-font {
@@ -593,12 +592,12 @@ img {
     filter: brightness(0.7);
   } */
 }
+#front-end ::selection {
+  background-color: rgba(243, 201, 166, 0.4);
+}
 #front-end .skewImg {
   opacity: 0 !important;
   transform: scale(0.8) skew(9deg, 11deg) translateY(100px) !important;
-}
-#front-end img {
-  width: 100%;
 }
 #front-end .title {
   width: 30%;
@@ -612,7 +611,7 @@ img {
   height: 150vh;
 }
 #front-end section .per-two {
-  background-color: rgba(150, 84, 88);
+  background-color: #ffeae7;
   overflow: hidden;
   box-shadow: 0px 0px 20px #2f1e1e;
 }
@@ -632,25 +631,25 @@ img {
   fill: #ffffff;
 }
 #front-end section .per-two .c-btn .c-btn__border.border-h > * {
-  background: linear-gradient(to right, #c3e060 0%, #67dfc4 100%);
+  background: linear-gradient(to right, red 0%, orange 100%);
 }
 #front-end section .per-two .c-btn .c-btn__border.border-v .border-vl {
-  background: #c3e060;
+  background: red;
 }
 #front-end section .per-two .c-btn .c-btn__border.border-v .border-vr {
-  background: #67dfc4;
+  background: orange;
 }
 #front-end section .per-two .c-btn:hover .c-btn__inner {
-  background-color: rgba(150, 84, 88);
+  background-color: transparent;
 }
 #front-end section .per-two .c-btn:hover .en {
-  color: #fdfdfd;
+  color: #000;
 }
 #front-end section .per-two .c-btn:hover .icon {
-  background-color: rgba(150, 84, 88);
+  background-color: transparent;
 }
 #front-end section .per-two .c-btn:hover .icon svg {
-  fill: #fdfdfd;
+  fill: #000;
 }
 #front-end section .per-two img {
   width: 30vw;
@@ -669,7 +668,7 @@ img {
   left: 15vw;
 }
 #front-end section .per-two .flex-box1 .wf-txt-container1 p {
-  color: #fcf6f6 !important;
+  color: #000 !important;
   font-size: 1.6vw;
 }
 #front-end section .per-two .flex-box1 .wf-img-container1 {
@@ -680,6 +679,7 @@ img {
   position: absolute;
   top: -8vh;
   right: 12vw;
+  transition: all 1.2s;
 }
 #front-end section .per-two .flex-box2 {
   z-index: 2;
@@ -693,13 +693,16 @@ img {
   left: 60vw;
 }
 #front-end section .per-two .flex-box2 .wf-txt-container2 p {
-  color: #faf6f6 !important;
+  color: #000 !important;
   font-size: 1.6vw;
 }
 #front-end section .per-two .flex-box2 .wf-img-container2 {
   position: absolute;
   left: 15vw;
   top: -5vh;
+}
+#front-end section .per-two .flex-box2 .wf-img-container2 .wfimg2 {
+  transition: all 1.2s;
 }
 #front-end section .per-one {
   position: relative;
@@ -710,12 +713,13 @@ img {
   height: 100vh;
 }
 #front-end section .per-one .per {
-  height: 100%;
+  height: 120%;
 }
 img {
   user-select: none;
 }
 .skewImg {
+  transition: all 1.2s;
   opacity: 0 !important;
   transform: scale(0.8) skew(9deg, 11deg) translateY(100px) !important;
 }
@@ -1078,12 +1082,16 @@ img {
 }
 #android .pers-one {
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 #android .pers-one .one {
-  filter: blur(1px);
+  filter: blur(1px) brightness(0.95);
+  height: 135%;
+  width: auto;
 }
 #android .pers-one .font-bg {
   position: absolute;
@@ -1096,6 +1104,7 @@ img {
   transition: all 0.2s;
 }
 #android .pers-two {
+  z-index: 2;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -1225,7 +1234,6 @@ img {
   filter: brightness(1) blur(1);
   transform: scale(1.2);
   display: block !important;
-  transition: all ease 0.5s;
   position: absolute;
   z-index: -1;
 }
@@ -1235,7 +1243,6 @@ img {
   transform: scale(1);
   display: block !important;
   position: absolute;
-  transition: all ease 0.5s;
   z-index: 7;
 }
 #form-page {
@@ -1967,7 +1974,7 @@ img {
   transform: translateY(-50%) scale(1.1);
   left: 0vw;
   position: absolute;
-  filter: brightness(0.9);
+  filter: brightness(0.95);
 }
 #banner-container #banner .mid-page {
   z-index: 2;

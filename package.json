@@ -2,7 +2,7 @@
   "name": "recruit-page",
   "version": "1.0.0",
   "description": "",
-  "main": "fake-index.js",
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },

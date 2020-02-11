@@ -1,17 +1,9 @@
-/*
- * @Author: your name
- * @Date: 2020-01-15 10:49:02
- * @LastEditTime : 2020-01-15 12:58:02
- * @LastEditors  : Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \youxiaoyun2019d:\桌面文件\github仓库\Recruit-Page\Recruit-page\webpack.config.js
- */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './js/fake-index.js',
+    entry: './js/index.js',
 
     output: {
         filename: 'bundle.js',
@@ -27,22 +19,19 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Output Management',
             template: path.join(__dirname, 'index.html'), 
-            filename: 'index.html'
-        })
+            filename: 'index.html',
+            favicon: './img/bitbug_favicon.ico'
+        }),
     ],
     module: {
         rules: [
-            // {
-            //     test: require.resolve('zepto'),
-            //     loader: 'exports-loader?window.Zepto!script-loader'
-            // },
             {
                 test: /\.(png|jpg|gif|jpeg)$/,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192,
+                            limit: 5000, // 5kb
                             esModule: false,
                             outputPath: 'assets'
                         }
