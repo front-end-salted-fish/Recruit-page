@@ -67,10 +67,126 @@
 	</section>
 	<!-- 部门轮播图容器 -->
 	<section id="banner-container">
-		<!-- 轮播图ul -->
-		<ul id="banner">
+		<div id="slider">
+			<img src="https://www.hotelparticulier.com/wp-content/uploads/2019/04/1920x1080-HP-TH-NEW-01-1920x1080.jpg" alt="">
+			<img src="https://www.hotelparticulier.com/wp-content/uploads/2019/01/hotel-bar-le-tres-particulier-1-1920x1080.jpg"
+				alt="">
+			<img src="https://www.hotelparticulier.com/wp-content/uploads/2019/01/hotel-suite-junior-superieur-1-1920x1080.jpg"
+				alt="">
+			<img src="https://www.hotelparticulier.com/wp-content/uploads/2019/04/1920x1080-GS-HP-1920x1080.jpg" alt="">
+			<img src="https://www.hotelparticulier.com/wp-content/uploads/2019/01/hotel-bar-le-tres-particulier-1-1920x1080.jpg" alt="">
+			<!-- <img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-12/f00d3841ee54413997932a68530716001581508685624/%E8%BD%AE%E6%92%AD%E5%9B%BE.jpg" alt="">
+			<img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-12/4dded98cf9d24fd9b4fede5ac9df87fc1581508793886/rain.jpeg"
+				alt="">
+			<img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-12/f8be80b0247e4634b6a1241f4575e4231581508748476/%E8%BD%AE%E6%92%AD%E5%9B%BE.png"
+			alt="">
+			<img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-12/7aaa081ea0394b2d8770b4072203e7051581508864275/%E8%BD%AE%E6%92%AD%E5%9B%BE.jpeg" alt="">
+			<img src="https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-12/0a5b91c7f6b94f019dcd6b88898c4a101581509752599/7a2e283a-ed0f-405f-9014-44749413acfb.png" alt=""> -->
+			<div id="slider-pagination" class="slider__pagination">
+				<span class="slider__pagination__timer" style></span>
+				<div id="silder-btns">
+					<button class="active" data-slide="0"></button>
+					<button class="" data-slide="1"></button>
+					<button class="" data-slide="2"></button>
+					<button class="" data-slide="3"></button>
+					<button class="" data-slide="4"></button>
+				</div>
+			</div>
+			<div id="slider-content" class="slider__content">
+				<p id="slide-pretitle" class="slider__pretitle"
+					style="filter: blur(0px); visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></p>
+				<p id="slide-title" class="slider__title h1 title-effect no-instance"
+					style="filter: blur(0px); visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></p>
+				<div id="slide-subtitle" class="slider__subtitle content"
+					style="filter: blur(0px); visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+				<span data-slide-title="0">前端</span>
+				<span data-slide-subtitle="0"><p>创意、前沿艺术</p></span>
+				<span data-slide-title="1">android</span>
+				<span data-slide-subtitle="1"><p>技术探索、培养模式</p></span>
+				<span data-slide-title="2">后台</span>
+				<span data-slide-subtitle="2"><p>坚实后盾、严谨</p></span>
+				<span data-slide-title="3">iOS</span>
+				<span data-slide-subtitle="3"><p>优雅极致、中流砥柱</p></span>
+				<span data-slide-title="4">机器学习</span>
+				<span data-slide-subtitle="4"><p>人工智能、大数据</p></span>
+			</div>
+			<!-- 上一页按钮 -->
+			<div class="svg-container svg-pre-container">
+				<span class="svg-txt svg-left-txt">PRE</span>
+				<svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
+					xmlns="http://www.w3.org/2000/svg">
+					<circle data-left="" cx="15" cy="15" r="14"></circle>
+					<g data-left="">
+						<path data-left=""
+							d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+							stroke="#FFF" stroke-width="1" fill="#FFF" fill-rule="evenodd"></path>
+						<line data-left="" x1="-10" y1="7" x2="50" y2="7"></line>
+					</g>
+				</svg>
+			</div>
+			<!-- 下一页按钮 -->
+			<div class="svg-container svg-next-container">
+				<span class="svg-txt svg-right-txt">NEXT</span>
+				<svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
+					xmlns="http://www.w3.org/2000/svg">
+					<circle data-right="" cx="15" cy="15" r="14"></circle>
+					<g data-right="">
+						<path data-right=""
+							d="M6.946 7.126a.184.184 0 0 0 0-.26L1.1 1.057c-.172-.171-.43.086-.258.258l5.392 5.373c.073.073.047.131-.054.131.085.281.103.446.054.494L.842 12.687c-.171.17.086.428.258.257l5.846-5.818z"
+							stroke="#FFF" stroke-width="1" fill="#FFF" fill-rule="evenodd"></path>
+						<line data-right="" x1="-10" y1="7" x2="50" y2="7"></line>
+					</g>
+				</svg>
+			</div>
+			<!-- <div id="top-view-silder-icon">
+				<div class="rj-line rj-line-1">
+					<span class="rj-hide-span"></span>
+					<span style="margin-left:.2vw">W</span>
+					<span>E</span>
+					<span>L</span>
+					<span style="margin-right:.2vw">-</span>
+					<span class="rj-show-span"></span>
+				</div>
+				<div class="rj-line rj-line-2">
+					<span class="rj-show-span"></span>
+					<span style="margin-left:.2vw">C</span>
+					<span>O</span>
+					<span>M</span>
+					<span style="margin-right:.2vw">E</span>
+					<span class="rj-hide-span"></span>
+				</div>
+				<div class="rj-line rj-line-3">
+					<span>T</span>
+					<span style="margin-right:.2vw">O</span>
+					<span class="rj-show-span"></span>
+					<span style="margin-left:.2vw">T</span>
+					<span>O</span>
+					<span>P</span>
+					<span>-</span>
+				</div>
+				<div class="rj-line rj-line-4">
+					<span class="rj-show-span"></span>
+					<span style="margin-left:.2vw">V</span>
+					<span>I</span>
+					<span>E</span>
+					<span style="margin-right:.2vw">W</span>
+					<span class="rj-show-span"></span>
+					<span class="rj-hide-span"></span>
+				</div>
+			</div>	 -->
+			<!-- <span id="tv-stdio">TopView Stdio</span> -->
+			<span id="slider-pages-current" class="slider__pages__current"></span>
+			<section class="zl-turn-btn">
+				<figure>
+					<div>
+						<span>点击报名</span>
+						<span>WelCome!</span>
+					</div>
+				</figure>
+			</section>
+		</div>
+		<!-- <ul id="banner">
 			<li class="">
-				<!-- 轮播图中心字体 -->
 				<div class="banner-font-container">
 					<span class="banner-center-up banner-font"></span>
 					<span class="banner-center-line"></span>
@@ -78,13 +194,11 @@
 				</div>
 				<section class="outer-mask">
 					<section class="inner-mask">
-						<!-- 轮播图 -->
 						<img>
 					</section>
 				</section>
 			</li>
 			<li class="">
-				<!-- 轮播图中心字体 -->
 				<div class="banner-font-container">
 					<span class="banner-center-up banner-font"></span>
 					<span class="banner-center-line"></span>
@@ -92,13 +206,11 @@
 				</div>
 				<section class="outer-mask">
 					<section class="inner-mask">
-						<!-- 轮播图 -->
 						<img>
 					</section>
 				</section>
 			</li>
 			<li class="">
-				<!-- 轮播图中心字体 -->
 				<div class="banner-font-container">
 					<span class="banner-center-up banner-font"></span>
 					<span class="banner-center-line"></span>
@@ -106,7 +218,6 @@
 				</div>
 				<section class="outer-mask">
 					<section class="inner-mask">
-						<!-- 轮播图 -->
 						<img>
 					</section>
 				</section>
@@ -118,8 +229,6 @@
 						class="bg-span"></span></span>
 			</div>
 		</ul>
-
-		<!-- 上一页按钮 -->
 		<div class="svg-container svg-pre-container">
 			<span class="svg-txt svg-left-txt">PRE</span>
 			<svg class="switch-btn pre-btn" data-left="" width="100" height="30" viewBox="0 0 100 30"
@@ -133,7 +242,6 @@
 				</g>
 			</svg>
 		</div>
-		<!-- 下一页按钮 -->
 		<div class="svg-container svg-next-container">
 			<span class="svg-txt svg-right-txt">NEXT</span>
 			<svg class="switch-btn next-btn" data-right="" width="100" height="30" viewBox="0 0 100 30"
@@ -154,7 +262,7 @@
 				  <span>点击报名</span>
 				</div>
 			  </figure>
-		</section>
+		</section> -->
 	</section>
 	<!-- 部门详情介绍页 -->
 	<section id="detail-pages">
