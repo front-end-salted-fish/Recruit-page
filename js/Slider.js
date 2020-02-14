@@ -244,7 +244,10 @@ export default class Slider {
       t.windowY = window.innerHeight / 2
       renderWidth = t.parent.offsetWidth
       renderHeight = t.parent.offsetHeight
-
+      if(!t.isAnimating)  {
+        renderWidth = $(t.parent).width();
+        renderHeight = $(t.parent).height();
+      }
       renderer.setSize(renderWidth, renderHeight)
     }, 200))
 

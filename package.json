@@ -20,7 +20,6 @@
     "hammerjs": "^1.0.5",
     "jquery": "^1.12.4",
     "jquery-hammerjs": "^1.0.5",
-    "picnic": "^6.5.2",
     "prefixfree": "^1.0.0",
     "three.js": "^0.77.1",
     "url": "^0.11.0",
