@@ -452,6 +452,22 @@ $(function () {
     }
     $('#slider').on('click','canvas',slider.toDetailPage);
 
+
+    let scrollPromot = `
+      <div class="rj-scroll-promot">
+        <span></span>
+      </div>
+    `;
+    $('.per-one').append($(scrollPromot));
+    $('.pers-one').append($(scrollPromot));
+    // $('.rj-scroll-promot').on('click',function() {
+    //   console.log($(window).height());
+    //   console.log($(this).parents('.page'));
+    //   let parent = $(this).parent();
+
+    //   $(this).parents('.page').scrollTop((parent.siblings('.per-two') || parent.siblings('.pers-two')).offset().top);
+    // });
+
     // let $btns = $(".banner-btn span");  // 获取轮播图索引按钮
     // let $bannerPages = $("#banner li");
     // let $bannerUl = $("#banner");   // 获取banner UL
@@ -681,7 +697,7 @@ $(function () {
       targetPercentage: 0.1
     });
     let $frontEnd = $("#front-end")
-    // let $headerFont = $($('#front-end .per-one .header-font')[0]);
+    let $headerFont = $($('#front-end .per-one .header-font')[0]);
     splitTxt($($('.wf-txt-container1')[0]), "TopView 前端组主要基于@HTML，CSS，JavaScript等@基础web前端编程语言进行开发，@同时引入前端领域前沿技术进一步构建项目。", "left");
     splitTxt($($('.wf-txt-container2')[0]), "我们专注于展现视觉更好的页面，@打造用户体验更优的网站，@开发更有特色更有创意的产品。@如果你喜欢设计、热爱前端，@那你就是我们前端组想要的！", "left");
     // 出现图片
@@ -689,7 +705,7 @@ $(function () {
       obj.removeClass("skewImg");
     }
     $frontEnd.on("scroll", function () {
-      // $headerFont.css("opacity", (1 - $frontEnd.scrollTop() / 350));
+      $headerFont.css("opacity", (1 - $frontEnd.scrollTop() / 350));
       let vh = $(window).height();
       let winTop = $(window).scrollTop();
       if ($(".wfimg1").offset().top - winTop < vh) {
@@ -766,7 +782,7 @@ $(function () {
     });
     let $machineDiv = $("#machine-learning");
     let $headerFont = $($("#machine-learning .per-one .banner-font-container")[0]);
-
+    let $machineP1 = $($("#machine-learning .per-one")[0]);
     splitTxt($($(".txt-container1")[0]), "TopView 机器学习组是16年成立的新组,@我们关注机器学习算法模型,@在理论学习的同时,@也包含对工程项目的实践。@我们组以Python语言为主,@目前工作集中在爬虫技术、数据挖掘、@机器学习、AI研究方向，@包括金融信贷反欺诈和在线评论的情感分析等", "left");
     splitTxt($($(".txt-container2")[0]), "发展方向则有大数据、自然语言处理、@计算机视觉等多个人工智能领域方向，@并与研究生实验室有合作。", "left");
     splitTxt($($(".rj-txt3")[0]), "要求@了解使用至少一门编程语言，有自主学习能力，@能承受学习基础理论学科的枯燥性，@对学习数学相关知识，阅读外语文献不排斥@我们非常欢迎数学和英语好的同学", "center");
