@@ -1267,7 +1267,8 @@ $(function () {
     })
     $username.on("blur", nameCheck);//1.名字
     function nameCheck() {
-      let reg = /^[\u4e00-\u9fa5]{2,20}$/;//2-20位中文
+      // let reg = /^[\u4e00-\u9fa5｜·]{2,20}$/;//2-20位中文
+      let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
       let name = $username.val();
       if (!reg.test(name) || name == '') {
         $username.css("border", "1px solid red");
