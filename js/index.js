@@ -4,13 +4,8 @@ import '../css/index.less'
 import Luxy from '../src/js/luxy.js'
 import 'prefixfree'
 import anime from 'animejs'
-// import hammer from './jquery.hammer.min'
-// import from ''
-// require('./prefixfree.min.js')
-import 'jquery-hammerjs'
-// require('./jquery.hammer.min.js')
-// const hammer = require('./jquery.hammer.min.js')
 import bannerImg1 from '../img/front-end/轮播图.jpg'
+import '../css/modal.css'
 // import bannerImg2 from '../img/android/轮播图.jpg'
 // import bannerImg2 from '../img/android/timg-(1).jpg'
 import bannerImg2 from '../img/android/rain.jpeg'
@@ -1037,38 +1032,38 @@ $(function () {
   // 表单模块
   !(() => {
     // 获取表单元素
-    const $formPages = $('#form-page');
-    const $formPageOne = $('#form-page-one');
-    const $formPageTwo = $('#form-page-two');
-    const $pages = $('#form-page .page')
-    const $username = $('[name=username]');
-    const $studentId = $('[name=student-id]');
-    const $gradeProfessional = $('[name=grade-professional]');
-    const $radio = $('.x-radio');
+    const $formPages = $('#form-page');// 整个表单页面
+    const $formPageOne = $('#form-page-one'); // 表单第一页
+    const $formPageTwo = $('#form-page-two');// 表单第二页
+    const $username = $('[name=username]'); // 姓名
+    const $studentId = $('[name=student-id]'); // 学号
+    const $gradeProfessional = $('[name=grade-professional]'); // 年级专业
+    const $radio = $('.x-radio'); // 性别
     const $nextStep = $('.next-step'); // 下一步按钮(返回封面)
     const $submit = $('.submit'); // 提交按钮
-    const $preStep = $('.pre-step'); // 上一步按钮
-    const $number = $('[name=number]');
-    const $email = $('[name=email]');
+    const $number = $('[name=number]'); // 手机号
+    const $email = $('[name=email]'); // 邮箱
     const $introduction = $('[name=introduction]');
-    const $direction = $('[name=direction]');
-    const $option = $('.x-dropdown'); // 获取下拉框
-    const $options = $('.x-dropdown-item'); // 获取下拉框的值
-    const $skills = $('[name=skills]');
-    const $idea = $('[name=idea]');
-    // const $triggerBtn = $('.fui_trigger-btn'); // 单选框按钮
-    const $triggerBtn = $('.fui_combo'); // 单选框按钮
+    const $direction = $('[name=direction]'); // 方向
+    const $academy = $('[name=academy]'); // 学院
+    const $option = $('.direction-dropdown'); // 获取方向下拉框
+    const $academyOption = $('.academy-dropdown'); // 获取学院下拉框
+    const $skills = $('[name=skills]'); // 技能
+    const $idea = $('[name=idea]'); // 想法
+    const $triggerBtn = $('.direction-combo'); // 方向单选框按钮
+    const $academyBtn = $('.academy-combo'); // 学院单选框按钮
     const $button = $(".zl-turn-btn"); // 轮播图前往表单的按钮
     const $backBtn = $('#form-page .zl-form-page-close-btn') //返回轮播图的按钮
     const $bannerContainer = $('#banner-container') //获取轮播图界面
     const $detailToFormBtns = $('.c-btn'); //获取详情页前往表单的按钮
     const $time = $('.zl-third-book .time');// 获取倒计时的秒数
     let backBannerFlag = true // 标记此时默认是从轮播图的按钮进入表单界面的
-    let flag = false;
+    let flag = false; // 是否提交的标识
     // 初始化表单数据,用于发给后台的表单数据
     let formData = {
       username: '', // 姓名
       studentId: '', // 学号
+      academy: '', // 学院
       gradeProfessional: '', // 年级班级
       sex: '', // 性别
       phone: '', // 手机号码
@@ -1080,6 +1075,7 @@ $(function () {
       checkFront: '', // 前端动态生成的验证码
       checkBack: '' // 用户填写的验证码
     };
+  
     // 给轮播图前往表单的按钮绑定单击响应函数
     $button.on('click', function (event) {
       backBannerFlag = true;
@@ -1107,11 +1103,15 @@ $(function () {
         })
       }
     })
+    function myTrim(x) {
+      return x.replace(/^\s+|\s+$/gm,'');
+    }
 
     // 使用事件委托监听输入框的失去焦点事件
     $formPages.on('blur', 'input', function (ev) {
       let match = $(ev.target).attr('name');
-      let value = $(ev.target).val();
+      let value = $(ev.target).val().trim();
+      console.log(value)
       value = filterXSS(value)
       switch (match) {
         case "username":
@@ -1122,9 +1122,6 @@ $(function () {
           break;
         case "grade-professional":
           formData.gradeProfessional = value;
-          break;
-        case "username":
-          formData.sex = value;
           break;
         case "number":
           formData.phone = value;
@@ -1141,7 +1138,8 @@ $(function () {
     // 使用事件委托监听文本域的失去焦点事件
     $formPages.on('blur', 'textarea', function (ev) {
       let match = $(ev.target).attr('name');
-      let value = $(ev.target).val();
+      let value = $(ev.target).val().trim();
+      console.log(value)
       value = filterXSS(value)
       switch (match) {
         case "introduction":
@@ -1163,7 +1161,13 @@ $(function () {
     // 给表单绑定单击函数，使下拉框消失
     $(document).on('click', function (ev) {
       $option.fadeOut(100);
+      $academyOption.fadeOut(100);
+      $('.modal').hide() // 隐藏整个对话框和模板
     })
+    // 设置性别默认为男性
+    let sex = $radio.attr('value');
+    $radio.children()[0].style.background = '#ae8e74';
+    formData.sex = sex;
     // 给性别单选按钮绑定单击响应函数
     $radio.on('click', function (ev) {
       let sex = $(this).attr('value');
@@ -1171,64 +1175,43 @@ $(function () {
       $(this).first().siblings().children()[0].style.background = '#fff';
       formData.sex = sex;
     })
-    // 给单选框按钮绑定点击函数
+    // 给方向下选框按钮绑定点击函数
     $triggerBtn.on('click', function (ev) {
       $option.slideToggle(100);
       ev.stopPropagation()
     })
-    // 下拉框
+    // 给学院下选框按钮绑定点击函数
+    $academyBtn.on('click', function(ev) {
+      $academyOption.slideToggle(100);
+      ev.stopPropagation()
+    })
+    // 方向下拉框
     $option.on('click', function (ev) {
       $direction.val($(ev.target).text());
       formData.direction = $(ev.target).text();
     })
+     // 学院下拉框
+     $academyOption.on('click', function (ev) {
+      $academy.val($(ev.target).text());
+      formData.academy = $(ev.target).text();
+    })
     // 给详情页前往表单的多个按钮绑定单击响应事件
     $detailToFormBtns.on('click', function () {
       backBannerFlag = false; //代表此时是从详情页进入表单的
-      console.log(111)
       $formPages.removeClass('zl-form-out')
       $formPages.addClass('zl-form-in')
-      // $formPages.animate({
-      //   opacity: 1,
-      //   // filter: 'brightness(1) blur(1)',
-      //   transform: 'scale(1)',
-      //   display: 'block !important',
-      //   position: 'absolute',
-      //   zIndex: 9,
-      // },1000,"linear", function() {
-      // });
       event.stopPropagation()
     })
-    // 提交按钮
-    $submit.on('click', function () {
-      console.log(formData)
-      if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
-        if (!formData.sex) {
-          alert('必须选择性别')
-          return false
-        }
-        if (!formData.direction) {
-          alert('必须选择一个发展方向')
-          return false
-        }
-        if (!check()) {
-          return false
-        }
-        $($('#form-page-two .form-body').get(0)).css({
-          transition: 'none'
-        })
-        flag = true
-      }
-      else {
-        alert("请正确输入信息");
-        //    $($('#form-page-two .form-body').get(0)).css({
-        //     height: $('#form-page-one .form-body').get(0).clientHeight,
-        //     transition: '1s'
-        // })
-        return false
-      }
-      flag = confirm('确定提交吗？')
+    // 对话框的'x'按钮
+    $('.modal .close').click(function() {
+      flag = false;
+      $('.modal').hide() // 隐藏整个对话框和模板
+    })
+    // 对话框确定提交
+    $('.modal .zl-confirm').click(function() {
+      flag = true;
+      $('.modal').hide() // 隐藏整个对话框和模板
       if (flag) {
-
         $('.scene').css({
           margin: '0% 20% 5% 72%'
         }) //调整书本位置
@@ -1245,15 +1228,50 @@ $(function () {
           }
         }, 1000)
       }
+
+    })
+     // 对话框取消提交
+     $('.modal .zl-thinking').click(function() {
+      flag = false;
+      $('.modal').hide() // 隐藏整个对话框和模板
+    })
+    // 对话框
+    $('.modal article').click(function(ev) {
+      ev.stopPropagation()
+    })
+    // 提交按钮
+    $submit.on('click', function () {
+      formData.direction = $direction.val()
+      formData.academy = $academy.val()
+        console.log(formData)
+      if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
+        if (!check()) {
+          return false
+        }
+        $($('#form-page-two .form-body').get(0)).css({
+          transition: 'none'
+        })
+        // flag = true
+      }
+      else {
+        alert("请正确输入信息");
+        return false
+      }
+      $('.modal').show() // 显示整个对话框和模板
+      // 对话框
+      $('.modal article').css({
+        '-webkit-transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
+        'transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
+        'display': 'block'
+      })
     })
     $username.on("blur", nameCheck);//1.名字
     function nameCheck() {
-      let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
+      let reg = /^[\u4e00-\u9fa5]{2,20}$/;//2-20位中文
       let name = $username.val();
-      // name = filterXSS(name)
       if (!reg.test(name) || name == '') {
         $username.css("border", "1px solid red");
-        $(".zl-name-span").html("<span class='red-form'>请输入2~10位中文</span>");
+        $(".zl-name-span").html("<span class='red-form'>请输入2~20位中文</span>");
         return false;
       }
       $username.css("border", "");
@@ -1319,7 +1337,6 @@ $(function () {
     $introduction.on("blur", introCheck);//6.自我介绍
     function introCheck() {
       let intro = $introduction.val();
-      // intro = filterXSS(intro)
       if (intro == '') {
         $introduction.css("border", "1px solid red");
         $(".zl-intro-span").html("<span class='red-form'>不能为空！</span>");
@@ -1332,7 +1349,6 @@ $(function () {
     $skills.on("blur", skillsCheck); // 技能
     function skillsCheck() {
       let skills = $skills.val();
-      // skills = filterXSS(skills)
       if (skills == '') {
         $skills.css("border", "1px solid red");
         $(".zl-skills-span").html("<span class='red-form'>不能为空！</span>");
@@ -1345,7 +1361,6 @@ $(function () {
     $idea.on("blur", cogCheck); // 想法
     function cogCheck() {
       let cog = $idea.val();
-      // cog = filterXSS(cog)
       if (cog == '') {
         $idea.css("border", "1px solid red");
         $(".zl-idea-span").html("<span class='red-form'>不能为空！</span>");
@@ -1406,46 +1421,26 @@ $(function () {
         .siblings();
       $('.zl-second-book').removeClass('.flipped')
     }
-    $('#form-page-one').click(function (ev) {
-      // $($('#form-page-two .form-body').get(0)).css({
-      //     height: $('#form-page-one .form-body').get(0).clientHeight,
-      //     transition: '1s'
-      // })
-      // $('.zl-first-book').eq(0).css({
-      //     height: $('.zl-first-book .back').get(0).clientHeight,
-      // })
+    $formPageOne.click(function (ev) {
       $option.fadeOut(100);
+      $academyOption.fadeOut(100);
       ev.preventDefault();
       ev.stopPropagation();
     })
-    $('#form-page-two').click(function (ev) {
-      // $($('#form-page-one .form-body').get(0)).css({
-      //     height: $('#form-page-two .fui-form').get(0).clientHeight,
-      //     transition: '1s'
-      // })
-      // $($('#form-page-two .form-body').get(0)).css({
-      //     height: $('#form-page-two .fui-form').get(0).clientHeight,
-      //     transition: '1s'
-      // })
-      // $('.zl-first-book').eq(0).css({
-      //     height: $('.zl-first-book .back').get(0).clientHeight,
-      // })
+    $formPageTwo.click(function (ev) {
       $option.fadeOut(100);
+      $academyOption.fadeOut(100);
       ev.preventDefault();
       ev.stopPropagation();
-
     })
     function changePage() {
       if ($('.zl-first-book').hasClass('active')) {
         $('.zl-first-book .front h1').hide()
-        $('#form-page-two').show()
-        $('#form-page-one').show()
+        $formPageTwo.show()
+        $formPageOne.show()
         $('.scene').css({
           margin: '0% 5% 5% 50%'
         })
-        // $($('#form-page-two .form-body').get(0)).css({
-        //     height: $('#form-page-one .form-body').get(0).clientHeight
-        // })
       }
     }
 
@@ -1455,18 +1450,14 @@ $(function () {
     $nextStep.on('click', () => {
       changePage()
       prevPage()
-      //    if ($('.zl-second-book').hasClass('active') && $('.zl-first-book').hasClass('flipped')) {
       $('.scene').css({
         margin: '0% 20% 5% 27%'
       })
       setTimeout(function () {
         $('.zl-first-book .front h1').show()
       }, 1000)
-
-      // }
       $('.book').one('click', '.active', nextPage)
     })
-
   })();
 })
 
