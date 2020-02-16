@@ -460,6 +460,8 @@ $(function () {
       }
       if ($backState.scrollTop() / vh > 0.4) {
         pMoveAnimate($($(".cf-text-container2")[0]), "up");
+        console.log('000');
+        // $('#back-stage .cf-flexbox2 img').removeClass('translate-img');
       } else {
         pMoveAnimate($($(".cf-text-container2")[0]), "down");
       }
