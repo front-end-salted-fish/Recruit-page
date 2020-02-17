@@ -4,8 +4,13 @@ import '../css/index.less'
 import Luxy from '../src/js/luxy.js'
 import 'prefixfree'
 import anime from 'animejs'
+// import hammer from './jquery.hammer.min'
+// import from ''
+// require('./prefixfree.min.js')
+import 'jquery-hammerjs'
+// require('./jquery.hammer.min.js')
+// const hammer = require('./jquery.hammer.min.js')
 import bannerImg1 from '../img/front-end/轮播图.jpg'
-import '../css/modal.css'
 // import bannerImg2 from '../img/android/轮播图.jpg'
 // import bannerImg2 from '../img/android/timg-(1).jpg'
 import bannerImg2 from '../img/android/rain.jpeg'
@@ -13,12 +18,6 @@ import bannerImg3 from '../img/back-stage/轮播图.png'
 import bannerImg4 from '../img/ios/轮播图.jpeg'
 import bannerImg5 from '../img/machine-learning/轮播图.jpg'
 import filterXSS, { FilterXSS } from 'xss'
-import Slider from './Slider'
-
-// 轮播图模块
-var slider = new Slider();
-slider.initialize();
-
 $(function () {
   //幕布函数
   let $bar = $(".bar");
@@ -208,13 +207,55 @@ $(function () {
     });
   })();
 
+  // 3d按钮模块
+  //     !(() => {
+  //         let
+  //             $button = $("#btn"),
+  //             btncoords = $button[0].getBoundingClientRect(),
+  //             $wrap = $('#three-dimensional-btn'),
+  //             styles = $wrap[0].style,
+  //             $glare = $("#btn .glare");
+
+  //         // function rotate(e) {
+  //         //     let
+  //         //         x = e.clientX - btncoords.left,
+  //         //         y = e.clientY - btncoords.top,
+  //         //         cx = btncoords.width / 2,
+  //         //         cy = btncoords.height / 2,
+  //         //         dx = x - cx,
+  //         //         dy = y - cy;
+  //         //     styles.setProperty("--rx", `${(dy / -1.5)}deg`);
+  //         //     styles.setProperty("--ry", `${(dx / 10)}deg`);
+  //         //     $glare.css({
+  //         //         transform: "translate(" + (-x / 2) + "%, " + -y + "%)"
+  //         //     });
+  //         // };
+
+  //     // function restore(e) {
+  //     //     styles.setProperty("--rx", `${0}deg`);
+  //     //     styles.setProperty("--ry", `${0}deg`);
+  //     //     $glare.css({
+  //     //         transform: "translate(" + (-50) + "%, " + -50 + "%)"
+  //     //     });
+  //     // }
+  //     // $button.on('mousemove', rotate);
+  //     // $button.on('mouseleave', restore);
+  //     $button.on('click', function () {
+  //         $('#form-page').fadeIn();
+  //         $('#banner-container').fadeOut();
+  //     })
+  //     window.onresize = function () {
+  //         styles = $wrap[0].style;
+  //         btncoords = $button[0].getBoundingClientRect();
+  //     }
+  // })();
+
   // 轮播图翻转报名按钮模块
   !(() => {
     let $button = $(".zl-turn-btn");
     $button.on('click', function () {
-      // banner.isLeaveBanner = true;
-      // banner.stopBanner();
-      slider.stopSlider();
+      banner.isLeaveBanner = true;
+      banner.stopBanner();
       $('#banner-container').fadeOut();
       $('#detail-pages').hide();
       $('#form-page').fadeIn();
@@ -270,8 +311,7 @@ $(function () {
     function close() {
       var p = new Promise(function (resolve, reject) {
         setTimeout(function () {
-          // banner.backSetFunc();
-          slider.startSlider();
+          banner.backSetFunc();
           // 让某一页展示
           $("#detail-pages").hide();
           $("#banner-container").show();
@@ -420,61 +460,26 @@ $(function () {
       }
       if ($backState.scrollTop() / vh > 0.4) {
         pMoveAnimate($($(".cf-text-container2")[0]), "up");
-        $('#back-stage .cf-flexbox2 img').removeClass('translate-img');
-
+        console.log('000');
+        // $('#back-stage .cf-flexbox2 img').removeClass('translate-img');
       } else {
         pMoveAnimate($($(".cf-text-container2")[0]), "down");
-        $('#back-stage .cf-flexbox2 img').addClass('translate-img');
       }
     })
   })();
-  // let banner;
+  let banner;
+  // let bannerTimer = undefined;
   // 轮播图
   (() => {
-    $('#detail-pages').hide();
-    // 跳转到详情页
-    slider.toDetailPage = function () {
-      slider.stopSlider();
-      curtainUp().then(() => {
-        // 幕布完全上遮后更换内容
-        setTimeout(() => {
-          $("#detail-pages").show();
-          $("#banner-container").hide();
-        }, 800);
-        return showPage(slider.currentSlide);
-      }).then(curtainDown).then(function () {
-        setTimeout(function () {
-          $($bars).css("z-index", -1);
-        }, 800);
-      });
-    }
-    $('#slider').on('click','canvas',slider.toDetailPage);
-
-
-    let scrollPromot = `
-      <div class="rj-scroll-promot">
-        <span></span>
-      </div>
-    `;
-    $('.per-one').append($(scrollPromot));
-    $('.pers-one').append($(scrollPromot));
-    // $('.rj-scroll-promot').on('click',function() {
-    //   console.log($(window).height());
-    //   console.log($(this).parents('.page'));
-    //   let parent = $(this).parent();
-
-    //   $(this).parents('.page').scrollTop((parent.siblings('.per-two') || parent.siblings('.pers-two')).offset().top);
-    // });
-
-    // let $btns = $(".banner-btn span");  // 获取轮播图索引按钮
-    // let $bannerPages = $("#banner li");
-    // let $bannerUl = $("#banner");   // 获取banner UL
-    // let $bannerImgs = $("#banner .outer-mask img"); // 获取每一页轮播图的img
-    // let $bannerFontUp = $(".banner-center-up");     // 部门字体
-    // let $bannerFontDown = $(".banner-center-down"); // 部门标签小字体
-    // let $nextBannerBtn = $("#banner-container .next-btn"); // 下一页按钮
-    // let $preBannerBtn = $("#banner-container .pre-btn"); // 上一页按钮
-    // let $preLoad = $('#rj-img-pre-load img');
+    let $btns = $(".banner-btn span");  // 获取轮播图索引按钮
+    let $bannerPages = $("#banner li");
+    let $bannerUl = $("#banner");   // 获取banner UL
+    let $bannerImgs = $("#banner .outer-mask img"); // 获取每一页轮播图的img
+    let $bannerFontUp = $(".banner-center-up");     // 部门字体
+    let $bannerFontDown = $(".banner-center-down"); // 部门标签小字体
+    let $nextBannerBtn = $("#banner-container .next-btn"); // 下一页按钮
+    let $preBannerBtn = $("#banner-container .pre-btn"); // 上一页按钮
+    let $preLoad = $('#rj-img-pre-load img');
     // index: 			0  	1  	 2   3    4
     // 对应部门: 	    前端 安卓 后台 IOS 机器学习
 
@@ -485,200 +490,200 @@ $(function () {
     * @param wait 延迟执行毫秒数
     */
     // 共享previous
-    // let previous = 0;
-    // function throttleBanner(func, index, wait) {
-    //   // console.log(func);
-    //   let now = Date.now();
-    //   var p = new Promise(function (resolve, reject) {
-    //     if (now - previous > wait) {
-    //       func.call(banner, index); // 间距时间超过wait则调用相应的函数
-    //       banner.stopBanner();			// 停止轮播
-    //       previous = now;						// 更新以前的值
-    //       resolve();
-    //     }
-    //   });
-    //   return p;
-    // }
+    let previous = 0;
+    function throttleBanner(func, index, wait) {
+      // console.log(func);
+      let now = Date.now();
+      var p = new Promise(function (resolve, reject) {
+        if (now - previous > wait) {
+          func.call(banner, index); // 间距时间超过wait则调用相应的函数
+          banner.stopBanner();			// 停止轮播
+          previous = now;						// 更新以前的值
+          resolve();
+        }
+      });
+      return p;
+    }
 
     // 轮播图对象
-    // banner = {
-    //   playIndex: 0,   // 正在播放的页index值
-    //   bannerTimer: undefined, // 定时器
-    //   bannerTime: 4000, // 轮播时间
-    //   // canChangePage: false,
+    banner = {
+      playIndex: 0,   // 正在播放的页index值
+      bannerTimer: undefined, // 定时器
+      bannerTime: 4000, // 轮播时间
+      // canChangePage: false,
 
-    //   isMoving: false,        // 是否正在动画中
-    //   moveCnt: 0,             // transition计数器
-    //   isLeaveBanner: false,      // 是否离开了轮播图
+      isMoving: false,        // 是否正在动画中
+      moveCnt: 0,             // transition计数器
+      isLeaveBanner: false,      // 是否离开了轮播图
 
-    //   // 存放每一张轮播图的url的数组
-    //   bannerImgScr: [bannerImg1, bannerImg2, bannerImg3, bannerImg4, bannerImg5],
-    //   // 部门名字数组
-    //   bannerFontUp: ["前端", "android", "后台", "iOS", "机器学习"],
-    //   // 部门标签数组
-    //   bannerFontDown: ["创意、前沿艺术", "技术探索、培养模式", "坚实后盾、严谨", "优雅极致、中流砥柱", "人工智能、大数据"],
-    //   // 背景颜色数组
-    //   bgColors: ["#97e0da", "#a5ae6c", "rgb(76, 137, 172)", "rgb(115, 111, 110)", "rgba(244, 208, 177, 0.99)"],
-    //   // 位置类名的顺序数组
-    //   classArr: ["pre-page", "mid-page", "next-page"],
-    //   // 初始化轮播图
-    //   init() {
-    //     this.setPosClass();
-    //     this.preSetSrc("mid-page", this.playIndex); // 给中间页加载前端(第一个)板块
-    //     this.setBackground(); // 设置第一个背景颜色
-    //     this.setBtn();  // 设置第一个按钮颜色
-    //     // 预先加载图片
-    //     $.each($preLoad, function (index, item) {
-    //       $(item).attr('src', banner.bannerImgScr[index]);
-    //     });
-    //   },
-    //   // 按钮高亮
-    //   setBtn() {
-    //     $btns.removeClass("btn-play").eq(this.playIndex).addClass("btn-play");
-    //   },
-    //   // 设置背景颜色
-    //   setBackground() {
-    //     $bannerUl.css("background-color", this.bgColors[this.playIndex]); // 设置第一个背景颜色
-    //   },
-    //   // 设置轮播图的class
-    //   setPosClass() {
-    //     for (let i = 0; i < $bannerPages.length; i++) {
-    //       $bannerPages.eq(i).removeClass("pre-page mid-page next-page").addClass(this.classArr[i]);
-    //     }
-    //   },
-    //   // 清除transition类名
-    //   clearClass() {
-    //     for (let i = 0; i < $bannerPages.length; i++) {
-    //       $bannerPages.eq(i).removeClass("banner-out banner-in");
-    //     }
-    //   },
-    //   // 启动录播图
-    //   goBanner() {
-    //     if (this.isLeaveBanner) return;     // 如果已经离开了轮播图，那就不要启动轮播图了
-    //     this.bannerTimer = setInterval(() => {
-    //       banner.nextBannerPage(banner.playIndex + 1);        // 开始下翻页
-    //     }, this.bannerTime);
-    //   },
-    //   // 停止轮播图
-    //   stopBanner() {
-    //     clearInterval(banner.bannerTimer);        // 清除定时器
-    //     banner.isMoving = false;
-    //     banner.moveCnt = 0;             // transition计数器
-    //   },
-    //   // 预先设置函数：index 设置对应index的部门内容
-    //   preSetSrc(str, index) {
-    //     $bannerImgs.eq(this.classArr.indexOf(str)).attr("src", this.bannerImgScr[index]);
-    //     $bannerFontUp.eq(this.classArr.indexOf(str)).text(this.bannerFontUp[index]);
-    //     $bannerFontDown.eq(this.classArr.indexOf(str)).text(this.bannerFontDown[index]);
-    //   },
-    //   // 下翻页
-    //   nextBannerPage(index) {
-    //     this.playIndex = (index == this.bannerImgScr.length) ? 0 : index; // 越界判断
-    //     this.setBackground();   // 设置背景颜色
-    //     this.preSetSrc("next-page", this.playIndex);    // 更新下一张轮播图的信息
-    //     this.clearClass();  // 清除transition类名
-    //     // 更新位置数组并设置
-    //     $($bannerPages[this.classArr.indexOf("mid-page")]).addClass("banner-out");
-    //     $($bannerPages[this.classArr.indexOf("next-page")]).addClass("banner-in");
-    //     banner.isMoving = true;
-    //     this.classArr.unshift(this.classArr.pop());
-    //     this.setPosClass();
-    //     this.setBtn();  // 按钮高亮
-    //   },
-    //   // 上翻页
-    //   preBannerPage(index) {
-    //     this.playIndex = (index == -1) ? this.bannerImgScr.length - 1 : index; // 越界判断
-    //     this.setBackground();
-    //     this.preSetSrc("pre-page", this.playIndex); // 更新下一张轮播图的信息
-    //     this.clearClass();  // 清除transition类名
-    //     // 更新位置数组并设置
-    //     $($bannerPages[this.classArr.indexOf("mid-page")]).addClass("banner-out");
-    //     $($bannerPages[this.classArr.indexOf("pre-page")]).addClass("banner-in");
-    //     banner.isMoving = true;
-    //     this.classArr.push(this.classArr.shift());
-    //     this.setPosClass();
-    //     this.setBtn(); // 按钮高亮
-    //   },
-    //   // 节流的翻页
-    //   throttlePage(index, actionType) {
-    //     let actionFunc = (actionType === "next") ? banner.nextBannerPage : banner.preBannerPage;
-    //     // 3180是动画的持续时间
-    //     throttleBanner(actionFunc, index, 3180).then(() => {
-    //       setTimeout(() => {
-    //         banner.goBanner();
-    //       }, 3180)
-    //     });
-    //   },
-    //   // 跳转到详情页
-    //   toDetailPage(index) {
-    //     this.isLeaveBanner = true;  // 离开轮播图
-    //     banner.stopBanner();
+      // 存放每一张轮播图的url的数组
+      bannerImgScr: [bannerImg1, bannerImg2, bannerImg3, bannerImg4, bannerImg5],
+      // 部门名字数组
+      bannerFontUp: ["前端", "android", "后台", "iOS", "机器学习"],
+      // 部门标签数组
+      bannerFontDown: ["创意、前沿艺术", "技术探索、培养模式", "坚实后盾、严谨", "优雅极致、中流砥柱", "人工智能、大数据"],
+      // 背景颜色数组
+      bgColors: ["#82ece4", "#65701e", "rgb(15, 95, 142)", "rgb(115, 111, 110)", "rgba(244, 208, 177, 0.99)"],
+      // 位置类名的顺序数组
+      classArr: ["pre-page", "mid-page", "next-page"],
+      // 初始化轮播图
+      init() {
+        this.setPosClass();
+        this.preSetSrc("mid-page", this.playIndex); // 给中间页加载前端(第一个)板块
+        this.setBackground(); // 设置第一个背景颜色
+        this.setBtn();  // 设置第一个按钮颜色
+        // 预先加载图片
+        $.each($preLoad, function (index, item) {
+          $(item).attr('src', banner.bannerImgScr[index]);
+        });
+      },
+      // 按钮高亮
+      setBtn() {
+        $btns.removeClass("btn-play").eq(this.playIndex).addClass("btn-play");
+      },
+      // 设置背景颜色
+      setBackground() {
+        $bannerUl.css("background-color", this.bgColors[this.playIndex]); // 设置第一个背景颜色
+      },
+      // 设置轮播图的class
+      setPosClass() {
+        for (let i = 0; i < $bannerPages.length; i++) {
+          $bannerPages.eq(i).removeClass("pre-page mid-page next-page").addClass(this.classArr[i]);
+        }
+      },
+      // 清除transition类名
+      clearClass() {
+        for (let i = 0; i < $bannerPages.length; i++) {
+          $bannerPages.eq(i).removeClass("banner-out banner-in");
+        }
+      },
+      // 启动录播图
+      goBanner() {
+        if (this.isLeaveBanner) return;     // 如果已经离开了轮播图，那就不要启动轮播图了
+        this.bannerTimer = setInterval(() => {
+          banner.nextBannerPage(banner.playIndex + 1);        // 开始下翻页
+        }, this.bannerTime);
+      },
+      // 停止轮播图
+      stopBanner() {
+        clearInterval(banner.bannerTimer);        // 清除定时器
+        banner.isMoving = false;
+        banner.moveCnt = 0;             // transition计数器
+      },
+      // 预先设置函数：index 设置对应index的部门内容
+      preSetSrc(str, index) {
+        $bannerImgs.eq(this.classArr.indexOf(str)).attr("src", this.bannerImgScr[index]);
+        $bannerFontUp.eq(this.classArr.indexOf(str)).text(this.bannerFontUp[index]);
+        $bannerFontDown.eq(this.classArr.indexOf(str)).text(this.bannerFontDown[index]);
+      },
+      // 下翻页
+      nextBannerPage(index) {
+        this.playIndex = (index == this.bannerImgScr.length) ? 0 : index; // 越界判断
+        this.setBackground();   // 设置背景颜色
+        this.preSetSrc("next-page", this.playIndex);    // 更新下一张轮播图的信息
+        this.clearClass();  // 清除transition类名
+        // 更新位置数组并设置
+        $($bannerPages[this.classArr.indexOf("mid-page")]).addClass("banner-out");
+        $($bannerPages[this.classArr.indexOf("next-page")]).addClass("banner-in");
+        banner.isMoving = true;
+        this.classArr.unshift(this.classArr.pop());
+        this.setPosClass();
+        this.setBtn();  // 按钮高亮
+      },
+      // 上翻页
+      preBannerPage(index) {
+        this.playIndex = (index == -1) ? this.bannerImgScr.length - 1 : index; // 越界判断
+        this.setBackground();
+        this.preSetSrc("pre-page", this.playIndex); // 更新下一张轮播图的信息
+        this.clearClass();  // 清除transition类名
+        // 更新位置数组并设置
+        $($bannerPages[this.classArr.indexOf("mid-page")]).addClass("banner-out");
+        $($bannerPages[this.classArr.indexOf("pre-page")]).addClass("banner-in");
+        banner.isMoving = true;
+        this.classArr.push(this.classArr.shift());
+        this.setPosClass();
+        this.setBtn(); // 按钮高亮
+      },
+      // 节流的翻页
+      throttlePage(index, actionType) {
+        let actionFunc = (actionType === "next") ? banner.nextBannerPage : banner.preBannerPage;
+        // 3180是动画的持续时间
+        throttleBanner(actionFunc, index, 3180).then(() => {
+          setTimeout(() => {
+            banner.goBanner();
+          }, 3180)
+        });
+      },
+      // 跳转到详情页
+      toDetailPage(index) {
+        this.isLeaveBanner = true;  // 离开轮播图
+        banner.stopBanner();
 
-    //     curtainUp().then(() => {
-    //       // 幕布完全上遮后更换内容
-    //       setTimeout(() => {
-    //         $("#detail-pages").show();
-    //         $("#banner-container").hide();
-    //       }, 800);
-    //       return showPage(index);
-    //     }).then(curtainDown).then(function () {
-    //       setTimeout(function () {
-    //         $($bars).css("z-index", -1);
-    //       }, 800);
-    //     });
-    //   },
-    //   // 从其他模块回来的时候设置
-    //   backSetFunc() {
-    //     this.isMoving = false;
-    //     this.moveCnt = 0;
-    //     this.isLeaveBanner = false;
-    //     this.goBanner();
-    //   },
-    // }
+        curtainUp().then(() => {
+          // 幕布完全上遮后更换内容
+          setTimeout(() => {
+            $("#detail-pages").show();
+            $("#banner-container").hide();
+          }, 800);
+          return showPage(index);
+        }).then(curtainDown).then(function () {
+          setTimeout(function () {
+            $($bars).css("z-index", -1);
+          }, 800);
+        });
+      },
+      // 从其他模块回来的时候设置
+      backSetFunc() {
+        this.isMoving = false;
+        this.moveCnt = 0;
+        this.isLeaveBanner = false;
+        this.goBanner();
+      },
+    }
 
-    // banner.init();
+    banner.init();
 
-    // $('.inner-mask img').on('webkitTransitionEnd', function () {
-    //   console.log(banner.moveCnt);
-    //   banner.moveCnt = (banner.moveCnt + 1) % 6;
-    //   if (banner.moveCnt === 0) {
-    //     banner.isMoving = false;
-    //     console.log("动画完成");
-    //   }
-    // })
+    $('.inner-mask img').on('webkitTransitionEnd', function () {
+      console.log(banner.moveCnt);
+      banner.moveCnt = (banner.moveCnt + 1) % 6;
+      if (banner.moveCnt === 0) {
+        banner.isMoving = false;
+        console.log("动画完成");
+      }
+    })
 
     // 点击按钮跳转翻页
-    // $(".banner-btns").on("click", ".bg-span", (event) => {
-    //   if (banner.isMoving) return;
-    //   let e = event || window.event;
-    //   let t = e.target;
-    //   let index = $(t).parent(".banner-btn").index();      // 获取按钮位序
-    //   if (index === banner.playIndex) return;
-    //   banner.stopBanner();    // 停止轮播
-    //   if (index > banner.playIndex) {
-    //     banner.throttlePage(index, "next");
-    //   } else if (index < banner.playIndex) {
-    //     banner.throttlePage(index, "pre");
-    //   }
-    // });
+    $(".banner-btns").on("click", ".bg-span", (event) => {
+      if (banner.isMoving) return;
+      let e = event || window.event;
+      let t = e.target;
+      let index = $(t).parent(".banner-btn").index();      // 获取按钮位序
+      if (index === banner.playIndex) return;
+      banner.stopBanner();    // 停止轮播
+      if (index > banner.playIndex) {
+        banner.throttlePage(index, "next");
+      } else if (index < banner.playIndex) {
+        banner.throttlePage(index, "pre");
+      }
+    });
     // 上下翻页
-    // $nextBannerBtn.on("click", () => {
-    //   if (banner.isMoving) return;
-    //   banner.throttlePage(banner.playIndex + 1, "next");
-    // });
-    // $preBannerBtn.on("click", () => {
-    //   if (banner.isMoving) return;
-    //   banner.throttlePage(banner.playIndex - 1, "pre");
-    // });
+    $nextBannerBtn.on("click", () => {
+      if (banner.isMoving) return;
+      banner.throttlePage(banner.playIndex + 1, "next");
+    });
+    $preBannerBtn.on("click", () => {
+      if (banner.isMoving) return;
+      banner.throttlePage(banner.playIndex - 1, "pre");
+    });
     // 通过点击跳转至详情页
-    // $("#banner li").on("click", ".banner-font-container", function (e) {
-    //   let index = banner.bannerFontUp.indexOf($(e.currentTarget).find(".banner-center-up").text()); // 获取此时要进入的详情页
-    //   banner.toDetailPage(index);
-    // });
-    // $("#banner li").on("click", ".inner-mask img", function (e) {
-    //   let index = banner.bannerImgScr.indexOf($(e.currentTarget).attr('src')); // 获取此时要进入的详情页
-    //   banner.toDetailPage(index);
-    // });
+    $("#banner li").on("click", ".banner-font-container", function (e) {
+      let index = banner.bannerFontUp.indexOf($(e.currentTarget).find(".banner-center-up").text()); // 获取此时要进入的详情页
+      banner.toDetailPage(index);
+    });
+    $("#banner li").on("click", ".inner-mask img", function (e) {
+      let index = banner.bannerImgScr.indexOf($(e.currentTarget).attr('src')); // 获取此时要进入的详情页
+      banner.toDetailPage(index);
+    });
 
   })();
 
@@ -695,7 +700,7 @@ $(function () {
       targetPercentage: 0.1
     });
     let $frontEnd = $("#front-end")
-    let $headerFont = $($('#front-end .per-one .header-font')[0]);
+    // let $headerFont = $($('#front-end .per-one .header-font')[0]);
     splitTxt($($('.wf-txt-container1')[0]), "TopView 前端组主要基于@HTML，CSS，JavaScript等@基础web前端编程语言进行开发，@同时引入前端领域前沿技术进一步构建项目。", "left");
     splitTxt($($('.wf-txt-container2')[0]), "我们专注于展现视觉更好的页面，@打造用户体验更优的网站，@开发更有特色更有创意的产品。@如果你喜欢设计、热爱前端，@那你就是我们前端组想要的！", "left");
     // 出现图片
@@ -703,7 +708,7 @@ $(function () {
       obj.removeClass("skewImg");
     }
     $frontEnd.on("scroll", function () {
-      $headerFont.css("opacity", (1 - $frontEnd.scrollTop() / 350));
+      // $headerFont.css("opacity", (1 - $frontEnd.scrollTop() / 350));
       let vh = $(window).height();
       let winTop = $(window).scrollTop();
       if ($(".wfimg1").offset().top - winTop < vh) {
@@ -780,7 +785,7 @@ $(function () {
     });
     let $machineDiv = $("#machine-learning");
     let $headerFont = $($("#machine-learning .per-one .banner-font-container")[0]);
-    let $machineP1 = $($("#machine-learning .per-one")[0]);
+
     splitTxt($($(".txt-container1")[0]), "TopView 机器学习组是16年成立的新组,@我们关注机器学习算法模型,@在理论学习的同时,@也包含对工程项目的实践。@我们组以Python语言为主,@目前工作集中在爬虫技术、数据挖掘、@机器学习、AI研究方向，@包括金融信贷反欺诈和在线评论的情感分析等", "left");
     splitTxt($($(".txt-container2")[0]), "发展方向则有大数据、自然语言处理、@计算机视觉等多个人工智能领域方向，@并与研究生实验室有合作。", "left");
     splitTxt($($(".rj-txt3")[0]), "要求@了解使用至少一门编程语言，有自主学习能力，@能承受学习基础理论学科的枯燥性，@对学习数学相关知识，阅读外语文献不排斥@我们非常欢迎数学和英语好的同学", "center");
@@ -873,9 +878,8 @@ $(function () {
         }, 1000, () => {
           $('#loading-module').hide();
         });
-        // banner.moveCnt = 0;
-        // banner.goBanner();
-        slider.init();
+        banner.moveCnt = 0;
+        banner.goBanner();
         $('#rj-img-pre-load').remove();
         // rjBanner.start();
       }
@@ -1035,86 +1039,84 @@ $(function () {
   // 表单模块
   !(() => {
     // 获取表单元素
-    const $formPages = $('#form-page');// 整个表单页面
-    const $formPageOne = $('#form-page-one'); // 表单第一页
-    const $formPageTwo = $('#form-page-two');// 表单第二页
-    const $username = $('[name=username]'); // 姓名
-    const $studentId = $('[name=student-id]'); // 学号
-    const $gradeProfessional = $('[name=grade-professional]'); // 年级专业
-    const $radio = $('.x-radio'); // 性别
+    const $formPages = $('#form-page');
+    const $formPageOne = $('#form-page-one');
+    const $formPageTwo = $('#form-page-two');
+    const $pages = $('#form-page .page')
+    const $username = $('[name=username]');
+    const $studentId = $('[name=student-id]');
+    const $gradeProfessional = $('[name=grade-professional]');
+    const $radio = $('.x-radio');
     const $nextStep = $('.next-step'); // 下一步按钮(返回封面)
     const $submit = $('.submit'); // 提交按钮
-    const $number = $('[name=number]'); // 手机号
-    const $email = $('[name=email]'); // 邮箱
+    const $preStep = $('.pre-step'); // 上一步按钮
+    const $number = $('[name=number]');
+    const $email = $('[name=email]');
     const $introduction = $('[name=introduction]');
-    const $direction = $('[name=direction]'); // 方向
-    const $academy = $('[name=academy]'); // 学院
-    const $option = $('.direction-dropdown'); // 获取方向下拉框
-    const $academyOption = $('.academy-dropdown'); // 获取学院下拉框
-    const $skills = $('[name=skills]'); // 技能
-    const $idea = $('[name=idea]'); // 想法
-    const $triggerBtn = $('.direction-combo'); // 方向单选框按钮
-    const $academyBtn = $('.academy-combo'); // 学院单选框按钮
+    const $direction = $('[name=direction]');
+    const $option = $('.x-dropdown'); // 获取下拉框
+    const $options = $('.x-dropdown-item'); // 获取下拉框的值
+    const $skills = $('[name=skills]');
+    const $idea = $('[name=idea]');
+    // const $triggerBtn = $('.fui_trigger-btn'); // 单选框按钮
+    const $triggerBtn = $('.fui_combo'); // 单选框按钮
     const $button = $(".zl-turn-btn"); // 轮播图前往表单的按钮
     const $backBtn = $('#form-page .zl-form-page-close-btn') //返回轮播图的按钮
     const $bannerContainer = $('#banner-container') //获取轮播图界面
     const $detailToFormBtns = $('.c-btn'); //获取详情页前往表单的按钮
     const $time = $('.zl-third-book .time');// 获取倒计时的秒数
     let backBannerFlag = true // 标记此时默认是从轮播图的按钮进入表单界面的
-    let flag = false; // 是否提交的标识
+    let flag = false;
     // 初始化表单数据,用于发给后台的表单数据
     let formData = {
-      username: '', // 姓名
-      studentId: '', // 学号
-      academy: '', // 学院
-      gradeProfessional: '', // 年级班级
-      sex: '', // 性别
-      phone: '', // 手机号码
-      email: '', // 邮箱
-      introduction: '', // 自我介绍
-      direction: '', // 选择的方向
-      skills: '', // 你所掌握的技能
-      idea: '', // 你对我们工作室的想法
-      checkFront: '', // 前端动态生成的验证码
-      checkBack: '' // 用户填写的验证码
+      username: '',
+      studentId: '',
+      gradeProfessional: '',
+      sex: '',
+      number: '',
+      email: '',
+      introduction: '',
+      direction: '',
+      skills: '',
+      idea: ''
     };
-  
     // 给轮播图前往表单的按钮绑定单击响应函数
     $button.on('click', function (event) {
       backBannerFlag = true;
+      // $formPages.show();
+      // $formPages.css({
+      //     "z-index": 100,
+      // });
+      console.log(1);
+
       $formPages.removeClass('zl-form-out')
+
       $formPages.addClass('zl-form-in')
-      // banner.isLeaveBanner = true;
-      // banner.stopBanner();
-      slider.stopSlider();
+      banner.isLeaveBanner = true;
+      banner.stopBanner();
       event.stopPropagation()
     })
     // 给返回轮播图/详情页按钮绑定单击响应函数
     $backBtn.on('click', function () {
       $formPages.removeClass('zl-form-in')
       $formPages.addClass('zl-form-out')
+      // $formPages.hide(1000);
+      // $formPages.css({
+      //     "z-index": 0
+      // });
       if (backBannerFlag) {
-        slider.startSlider();
-        // banner.backSetFunc();
+        banner.backSetFunc();
+        // banner.isLeaveBanner = false;
+        // banner.goBanner();
         $bannerContainer.show();
-         $bannerContainer.css({
-            'z-index': 0
-          })
-        $bannerContainer.animate({
-          'z-index': 9
-        },1000, function(){
-        })
       }
+
     })
-    function myTrim(x) {
-      return x.replace(/^\s+|\s+$/gm,'');
-    }
 
     // 使用事件委托监听输入框的失去焦点事件
     $formPages.on('blur', 'input', function (ev) {
       let match = $(ev.target).attr('name');
-      let value = $(ev.target).val().trim();
-      console.log(value)
+      let value = $(ev.target).val();
       value = filterXSS(value)
       switch (match) {
         case "username":
@@ -1126,8 +1128,11 @@ $(function () {
         case "grade-professional":
           formData.gradeProfessional = value;
           break;
+        case "username":
+          formData.sex = value;
+          break;
         case "number":
-          formData.phone = value;
+          formData.number = value;
           break;
         case "email":
           formData.email = value;
@@ -1141,8 +1146,7 @@ $(function () {
     // 使用事件委托监听文本域的失去焦点事件
     $formPages.on('blur', 'textarea', function (ev) {
       let match = $(ev.target).attr('name');
-      let value = $(ev.target).val().trim();
-      console.log(value)
+      let value = $(ev.target).val();
       value = filterXSS(value)
       switch (match) {
         case "introduction":
@@ -1164,13 +1168,7 @@ $(function () {
     // 给表单绑定单击函数，使下拉框消失
     $(document).on('click', function (ev) {
       $option.fadeOut(100);
-      $academyOption.fadeOut(100);
-      $('.modal').hide() // 隐藏整个对话框和模板
     })
-    // 设置性别默认为男性
-    let sex = $radio.attr('value');
-    $radio.children()[0].style.background = '#ae8e74';
-    formData.sex = sex;
     // 给性别单选按钮绑定单击响应函数
     $radio.on('click', function (ev) {
       let sex = $(this).attr('value');
@@ -1178,43 +1176,64 @@ $(function () {
       $(this).first().siblings().children()[0].style.background = '#fff';
       formData.sex = sex;
     })
-    // 给方向下选框按钮绑定点击函数
+
+    // 给上一步按钮按钮绑定单击响应函数
+    // $preStep.on('click', function () {
+    //     $formPageOne.fadeIn();
+    //     $formPageTwo.hide();
+    // })
+    // 给单选框按钮绑定点击函数
     $triggerBtn.on('click', function (ev) {
       $option.slideToggle(100);
       ev.stopPropagation()
     })
-    // 给学院下选框按钮绑定点击函数
-    $academyBtn.on('click', function(ev) {
-      $academyOption.slideToggle(100);
-      ev.stopPropagation()
-    })
-    // 方向下拉框
+    // 下拉框
     $option.on('click', function (ev) {
       $direction.val($(ev.target).text());
       formData.direction = $(ev.target).text();
     })
-     // 学院下拉框
-     $academyOption.on('click', function (ev) {
-      $academy.val($(ev.target).text());
-      formData.academy = $(ev.target).text();
-    })
     // 给详情页前往表单的多个按钮绑定单击响应事件
     $detailToFormBtns.on('click', function () {
       backBannerFlag = false; //代表此时是从详情页进入表单的
+      // $formPages.show();
+      // $formPages.css({
+      //     "z-index": 100,
+      // });
       $formPages.removeClass('zl-form-out')
       $formPages.addClass('zl-form-in')
       event.stopPropagation()
     })
-    // 对话框的'x'按钮
-    $('.modal .close').click(function() {
-      flag = false;
-      $('.modal').hide() // 隐藏整个对话框和模板
-    })
-    // 对话框确定提交
-    $('.modal .zl-confirm').click(function() {
-      flag = true;
-      $('.modal').hide() // 隐藏整个对话框和模板
+    // 提交按钮
+    $submit.on('click', function () {
+
+      if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
+        if (!formData.sex) {
+          alert('必须选择性别')
+          return false
+        }
+        if (!formData.direction) {
+          alert('必须选择一个发展方向')
+          return false
+        }
+        if (!check()) {
+          return false
+        }
+        $($('#form-page-two .form-body').get(0)).css({
+          transition: 'none'
+        })
+        flag = true
+      }
+      else {
+        alert("请正确输入信息");
+        //    $($('#form-page-two .form-body').get(0)).css({
+        //     height: $('#form-page-one .form-body').get(0).clientHeight,
+        //     transition: '1s'
+        // })
+        return false
+      }
+      flag = confirm('确定提交吗？')
       if (flag) {
+
         $('.scene').css({
           margin: '0% 20% 5% 72%'
         }) //调整书本位置
@@ -1223,64 +1242,23 @@ $(function () {
         $('.book').off() // 解除书本的事件监听
         $('.zl-second-book').off()
         $('.zl-form-page-close-btn').hide() //隐藏回退按钮
-        // let time = $time.text() * 1
-        // setInterval(() => {
-        //   $time.text(time--)
-        //   if (time <= 0) {
-        //     location.reload() //三秒后刷新页面
-        //   }
-        // }, 1000)
+        let time = $time.text() * 1
+        setInterval(() => {
+          $time.text(time--)
+          if (time <= 0) {
+            location.reload() //三秒后刷新页面
+          }
+        }, 1000)
       }
-
-    })
-     // 对话框取消提交
-     $('.modal .zl-thinking').click(function() {
-      flag = false;
-      $('.modal').hide() // 隐藏整个对话框和模板
-    })
-    // 对话框
-    $('.modal article').click(function(ev) {
-      ev.stopPropagation()
-    })
-    // 返回首页的刷新按钮
-    $('#zl-reload-btn').click(function() {
-        // setTimeout(function() {
-          location.reload() //刷新页面
-        // }, 2000)
-    })
-    // 提交按钮
-    $submit.on('click', function () {
-      formData.direction = $direction.val()
-      formData.academy = $academy.val()
-        console.log(formData)
-      if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
-        if (!check()) {
-          return false
-        }
-        $($('#form-page-two .form-body').get(0)).css({
-          transition: 'none'
-        })
-        // flag = true
-      }
-      else {
-        alert("请正确输入信息");
-        return false
-      }
-      $('.modal').show() // 显示整个对话框和模板
-      // 对话框
-      $('.modal article').css({
-        '-webkit-transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
-        'transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
-        'display': 'block'
-      })
     })
     $username.on("blur", nameCheck);//1.名字
     function nameCheck() {
-      let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
+      let reg = /^[\u4e00-\u9fa5]{2,10}$/;//2-10位中文
       let name = $username.val();
+      // name = filterXSS(name)
       if (!reg.test(name) || name == '') {
         $username.css("border", "1px solid red");
-        $(".zl-name-span").html("<span class='red-form'>请输入2~20位中文(可包含·)</span>");
+        $(".zl-name-span").html("<span class='red-form'>请输入2~10位中文</span>");
         return false;
       }
       $username.css("border", "");
@@ -1291,9 +1269,10 @@ $(function () {
     function idCheck() {
       let reg = /^\d{9,12}$/;//十位数字
       let id = $studentId.val();
+      // id = filterXSS(id)
       if (!reg.test(id) || id == '') {
         $studentId.css("border", "1px solid red");
-        $(".zl-id-span").html("<span class='red-form'>你确定这是广工学子的学号？</span><img class='wangchai' src='https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png'>");
+        $(".zl-id-span").html("<span class='red-form'>请输入正确的学号</span>");
         return false;
       }
       $studentId.css("border", "");
@@ -1303,9 +1282,10 @@ $(function () {
     $gradeProfessional.on("blur", gradeCheck);//3.年级专业
     function gradeCheck() {
       let grade = $gradeProfessional.val();
+      // grade = filterXSS(grade)
       if (grade == '') {
         $gradeProfessional.css("border", "1px solid red");
-        $(".zl-grade-span").html("<span class='red-form'>你究竟是何方神圣？</span>");
+        $(".zl-grade-span").html("<span class='red-form'>不能为空！</span>");
         return false;
       }
       $gradeProfessional.css("border", "");
@@ -1316,9 +1296,10 @@ $(function () {
     function phoneCheck() {
       let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
       let phone = $number.val();
+      // phone = filterXSS(phone)
       if (!reg.test(phone) || phone == '') {
         $number.css("border", "1px solid red");
-        $(".zl-phone-span").html("<span class='red-form'>这号码好像不太对劲</span>");
+        $(".zl-phone-span").html("<span class='red-form'>请输入正确的手机号码</span>");
         return false;
       }
       $number.css("border", "");
@@ -1333,7 +1314,7 @@ $(function () {
       // email = filterXSS(email)
       if (!reg.test(email) || email == '') {
         $email.css("border", "1px solid red");
-        $(".zl-email-span").html("<span class='red-form'>这可能是个假邮箱</span>");
+        $(".zl-email-span").html("<span class='red-form'>请输入正确的邮箱</span>");
         return false;
       }
       $email.css("border", "");
@@ -1343,9 +1324,10 @@ $(function () {
     $introduction.on("blur", introCheck);//6.自我介绍
     function introCheck() {
       let intro = $introduction.val();
+      // intro = filterXSS(intro)
       if (intro == '') {
         $introduction.css("border", "1px solid red");
-        $(".zl-intro-span").html("<span class='red-form'>填点什么吧，我们好想认识你呀！</span>");
+        $(".zl-intro-span").html("<span class='red-form'>不能为空！</span>");
         return false;
       }
       $introduction.css("border", "");
@@ -1355,9 +1337,10 @@ $(function () {
     $skills.on("blur", skillsCheck); // 技能
     function skillsCheck() {
       let skills = $skills.val();
+      // skills = filterXSS(skills)
       if (skills == '') {
         $skills.css("border", "1px solid red");
-        $(".zl-skills-span").html("<span class='red-form'>啥都不会？好歹会吹水吧？</span>");
+        $(".zl-skills-span").html("<span class='red-form'>不能为空！</span>");
         return false;
       }
       $skills.css("border", "");
@@ -1367,9 +1350,10 @@ $(function () {
     $idea.on("blur", cogCheck); // 想法
     function cogCheck() {
       let cog = $idea.val();
+      // cog = filterXSS(cog)
       if (cog == '') {
         $idea.css("border", "1px solid red");
-        $(".zl-idea-span").html("<span class='red-form'>总得吹点水吧</span><img class='wangchai' src='https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png'>");
+        $(".zl-idea-span").html("<span class='red-form'>不能为空！</span>");
         return false;
       }
       $idea.css("border", "");
@@ -1389,19 +1373,16 @@ $(function () {
         var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
         code += random[index]; //根据索引取得随机数加到code上  
       }
-      formData.checkFront = code;
       checkCode.value = code; //把code值赋给验证码  
     }
     // 
     function check() {
       var inputCode = document.getElementById("ctl00_txtcode").value.toUpperCase();
-      inputCode = filterXSS(inputCode)
-      formData.checkBack = inputCode
       if (inputCode == "") {
         alert("验证码不能为空");
         return false;
       } else if (inputCode != code) {
-        alert("看清楚点噢！");
+        alert("验证码输入错误,请重新输入！");
         createCode(); //刷新验证码  
         document.getElementById("ctl00_txtcode").value = ""; //清空文本框
         return false;
@@ -1427,26 +1408,46 @@ $(function () {
         .siblings();
       $('.zl-second-book').removeClass('.flipped')
     }
-    $formPageOne.click(function (ev) {
+    $('#form-page-one').click(function (ev) {
+      // $($('#form-page-two .form-body').get(0)).css({
+      //     height: $('#form-page-one .form-body').get(0).clientHeight,
+      //     transition: '1s'
+      // })
+      // $('.zl-first-book').eq(0).css({
+      //     height: $('.zl-first-book .back').get(0).clientHeight,
+      // })
       $option.fadeOut(100);
-      $academyOption.fadeOut(100);
       ev.preventDefault();
       ev.stopPropagation();
     })
-    $formPageTwo.click(function (ev) {
+    $('#form-page-two').click(function (ev) {
+      // $($('#form-page-one .form-body').get(0)).css({
+      //     height: $('#form-page-two .fui-form').get(0).clientHeight,
+      //     transition: '1s'
+      // })
+      // $($('#form-page-two .form-body').get(0)).css({
+      //     height: $('#form-page-two .fui-form').get(0).clientHeight,
+      //     transition: '1s'
+      // })
+      // $('.zl-first-book').eq(0).css({
+      //     height: $('.zl-first-book .back').get(0).clientHeight,
+      // })
       $option.fadeOut(100);
-      $academyOption.fadeOut(100);
       ev.preventDefault();
       ev.stopPropagation();
+
     })
     function changePage() {
       if ($('.zl-first-book').hasClass('active')) {
         $('.zl-first-book .front h1').hide()
-        $formPageTwo.show()
-        $formPageOne.show()
+        $('#form-page-two').show()
+        $('#form-page-one').show()
         $('.scene').css({
           margin: '0% 5% 5% 50%'
         })
+        // $($('#form-page-two .form-body').get(0)).css({
+        //     height: $('#form-page-one .form-body').get(0).clientHeight
+        // })
       }
     }
 
@@ -1456,16 +1457,18 @@ $(function () {
     $nextStep.on('click', () => {
       changePage()
       prevPage()
+      //    if ($('.zl-second-book').hasClass('active') && $('.zl-first-book').hasClass('flipped')) {
       $('.scene').css({
         margin: '0% 20% 5% 27%'
       })
       setTimeout(function () {
         $('.zl-first-book .front h1').show()
       }, 1000)
+
+      // }
       $('.book').one('click', '.active', nextPage)
     })
+
   })();
 })
 
-// console.log('\n\n\n\n  ███████████                    █████   █████  ███                          \n ░█░░░███░░░█                   ░░███   ░░███  ░░░                           \n ░   ░███  ░   ██████  ████████  ░███    ░███  ████   ██████  █████ ███ █████\n     ░███     ███░░███░░███░░███ ░███    ░███ ░░███  ███░░███░░███ ░███░░███ \n     ░███    ░███ ░███ ░███ ░███ ░░███   ███   ░███ ░███████  ░███ ░███ ░███ \n     ░███    ░███ ░███ ░███ ░███  ░░░█████░    ░███ ░███░░░   ░░███████████  \n     █████   ░░██████  ░███████     ░░███      █████░░██████   ░░████░████   \n    ░░░░░     ░░░░░░   ░███░░░       ░░░      ░░░░░  ░░░░░░     ░░░░ ░░░░    \n                       ░███                                                  \n                       █████                                                 \n                      ░░░░░                                                  \nTopView前端欢迎热爱前端的小伙伴 ^_^ !!');
-console.log('\n\n\n\n  ████████╗ ██████╗ ██████╗ ██╗   ██╗██╗███████╗██╗    ██╗\n  ╚══██╔══╝██╔═══██╗██╔══██╗██║   ██║██║██╔════╝██║    ██║\n     ██║   ██║   ██║██████╔╝██║   ██║██║█████╗  ██║ █╗ ██║\n     ██║   ██║   ██║██╔═══╝ ╚██╗ ██╔╝██║██╔══╝  ██║███╗██║\n     ██║   ╚██████╔╝██║      ╚████╔╝ ██║███████╗╚███╔███╔╝\n     ╚═╝    ╚═════╝ ╚═╝       ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ \n\n\nTopView欢迎各位小伙伴 ^_^ !!!');
