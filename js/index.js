@@ -4,14 +4,14 @@ import '../css/index.less'
 import Luxy from '../src/js/luxy.js'
 import 'prefixfree'
 import anime from 'animejs'
-import bannerImg1 from '../img/front-end/轮播图.jpg'
+// import bannerImg1 from '../img/front-end/轮播图.jpg'
 import '../css/modal.css'
 // import bannerImg2 from '../img/android/轮播图.jpg'
 // import bannerImg2 from '../img/android/timg-(1).jpg'
-import bannerImg2 from '../img/android/rain.jpeg'
-import bannerImg3 from '../img/back-stage/轮播图.png'
-import bannerImg4 from '../img/ios/轮播图.jpeg'
-import bannerImg5 from '../img/machine-learning/轮播图.jpg'
+// import bannerImg2 from '../img/android/rain.jpeg'
+// import bannerImg3 from '../img/back-stage/轮播图.png'
+// import bannerImg4 from '../img/ios/轮播图.jpeg'
+// import bannerImg5 from '../img/machine-learning/轮播图.jpg'
 import filterXSS, { FilterXSS } from 'xss'
 import Slider from './Slider'
 
@@ -1223,13 +1223,13 @@ $(function () {
         $('.book').off() // 解除书本的事件监听
         $('.zl-second-book').off()
         $('.zl-form-page-close-btn').hide() //隐藏回退按钮
-        let time = $time.text() * 1
-        setInterval(() => {
-          $time.text(time--)
-          if (time <= 0) {
-            location.reload() //三秒后刷新页面
-          }
-        }, 1000)
+        // let time = $time.text() * 1
+        // setInterval(() => {
+        //   $time.text(time--)
+        //   if (time <= 0) {
+        //     location.reload() //三秒后刷新页面
+        //   }
+        // }, 1000)
       }
 
     })
@@ -1241,6 +1241,12 @@ $(function () {
     // 对话框
     $('.modal article').click(function(ev) {
       ev.stopPropagation()
+    })
+    // 返回首页的刷新按钮
+    $('#zl-reload-btn').click(function() {
+        // setTimeout(function() {
+          location.reload() //刷新页面
+        // }, 2000)
     })
     // 提交按钮
     $submit.on('click', function () {
@@ -1270,12 +1276,11 @@ $(function () {
     })
     $username.on("blur", nameCheck);//1.名字
     function nameCheck() {
-      // let reg = /^[\u4e00-\u9fa5｜·]{2,20}$/;//2-20位中文
       let reg = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/
       let name = $username.val();
       if (!reg.test(name) || name == '') {
         $username.css("border", "1px solid red");
-        $(".zl-name-span").html("<span class='red-form'>请输入2~20位中文</span>");
+        $(".zl-name-span").html("<span class='red-form'>请输入2~20位中文(可包含·)</span>");
         return false;
       }
       $username.css("border", "");
@@ -1286,10 +1291,9 @@ $(function () {
     function idCheck() {
       let reg = /^\d{9,12}$/;//十位数字
       let id = $studentId.val();
-      // id = filterXSS(id)
       if (!reg.test(id) || id == '') {
         $studentId.css("border", "1px solid red");
-        $(".zl-id-span").html("<span class='red-form'>请输入正确的学号</span>");
+        $(".zl-id-span").html("<span class='red-form'>你确定这是广工学子的学号？</span><img class='wangchai' src='https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png'>");
         return false;
       }
       $studentId.css("border", "");
@@ -1299,10 +1303,9 @@ $(function () {
     $gradeProfessional.on("blur", gradeCheck);//3.年级专业
     function gradeCheck() {
       let grade = $gradeProfessional.val();
-      // grade = filterXSS(grade)
       if (grade == '') {
         $gradeProfessional.css("border", "1px solid red");
-        $(".zl-grade-span").html("<span class='red-form'>不能为空！</span>");
+        $(".zl-grade-span").html("<span class='red-form'>你究竟是何方神圣？</span>");
         return false;
       }
       $gradeProfessional.css("border", "");
@@ -1313,10 +1316,9 @@ $(function () {
     function phoneCheck() {
       let reg = /^1(3|4|5|6|7|8|9)\d{9}$/;
       let phone = $number.val();
-      // phone = filterXSS(phone)
       if (!reg.test(phone) || phone == '') {
         $number.css("border", "1px solid red");
-        $(".zl-phone-span").html("<span class='red-form'>请输入正确的手机号码</span>");
+        $(".zl-phone-span").html("<span class='red-form'>这号码好像不太对劲</span>");
         return false;
       }
       $number.css("border", "");
@@ -1331,7 +1333,7 @@ $(function () {
       // email = filterXSS(email)
       if (!reg.test(email) || email == '') {
         $email.css("border", "1px solid red");
-        $(".zl-email-span").html("<span class='red-form'>请输入正确的邮箱</span>");
+        $(".zl-email-span").html("<span class='red-form'>这可能是个假邮箱</span>");
         return false;
       }
       $email.css("border", "");
@@ -1343,7 +1345,7 @@ $(function () {
       let intro = $introduction.val();
       if (intro == '') {
         $introduction.css("border", "1px solid red");
-        $(".zl-intro-span").html("<span class='red-form'>不能为空！</span>");
+        $(".zl-intro-span").html("<span class='red-form'>填点什么吧，我们好想认识你呀！</span>");
         return false;
       }
       $introduction.css("border", "");
@@ -1355,7 +1357,7 @@ $(function () {
       let skills = $skills.val();
       if (skills == '') {
         $skills.css("border", "1px solid red");
-        $(".zl-skills-span").html("<span class='red-form'>不能为空！</span>");
+        $(".zl-skills-span").html("<span class='red-form'>啥都不会？好歹会吹水吧？</span>");
         return false;
       }
       $skills.css("border", "");
@@ -1367,7 +1369,7 @@ $(function () {
       let cog = $idea.val();
       if (cog == '') {
         $idea.css("border", "1px solid red");
-        $(".zl-idea-span").html("<span class='red-form'>不能为空！</span>");
+        $(".zl-idea-span").html("<span class='red-form'>总得吹点水吧</span><img class='wangchai' src='https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png'>");
         return false;
       }
       $idea.css("border", "");
@@ -1399,7 +1401,7 @@ $(function () {
         alert("验证码不能为空");
         return false;
       } else if (inputCode != code) {
-        alert("验证码输入错误,请重新输入！");
+        alert("看清楚点噢！");
         createCode(); //刷新验证码  
         document.getElementById("ctl00_txtcode").value = ""; //清空文本框
         return false;
