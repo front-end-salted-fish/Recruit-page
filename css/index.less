@@ -358,7 +358,32 @@ html {
     }
   }
 }
-
+@keyframes menuShadow {
+  //0% {
+  //  box-shadow: rgba(0,0,0, .3) 0 0 1px 0;
+  //}
+  //20% {
+  //  box-shadow: rgba(0,0,0, .2) 0 0 1px 9px;
+  //}
+  //40% {
+  //  box-shadow: rgba(0,0,0, .1) 0 0 1px 18px;
+  //}
+  //60% {
+  //  box-shadow: rgba(0,0,0, .1) 0 0 1px 18px;
+  //}
+  //80% {
+  //  box-shadow: rgba(0,0,0, .2) 0 0 1px 9px;
+  //}
+  //100% {
+  //  box-shadow: rgba(0,0,0, .3) 0 0 1px 0;
+  //}
+  from {
+    box-shadow: rgba(0,0,0, .5) 0 0 1px 0;
+  }
+  to {
+    box-shadow: rgba(0,0,0, 0) 0 0 1px 20px;
+  }
+}
 #menu {
   position: fixed;
   right: 29px;
@@ -367,7 +392,17 @@ html {
   height: 50px;
   cursor: pointer;
   z-index: 7;
-
+  border-radius: 50%;
+  transition: box-shadow ease;
+  animation: menuShadow ease infinite 2s;
+  &::before {
+    position: absolute;
+    content: '';
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation: menuShadow ease infinite 2s .7s;
+  }
   #menu-list {
     position: relative;
     width: 42px;
@@ -3298,7 +3333,7 @@ img {
             opacity: 0;
             transition: opacity .4s cubic-bezier(.165,.84,.44,1),transform .8s cubic-bezier(.165,.84,.44,1),-webkit-transform .8s cubic-bezier(.165,.84,.44,1);
           }
-  
+
         }
         .active {
           opacity: 1;
@@ -3315,7 +3350,7 @@ img {
     .slider__content span {
       display: none;
     }
-    .slider__subtitle, 
+    .slider__subtitle,
     .slider__title {
         color: #fff;
         text-align: center;
@@ -3372,16 +3407,16 @@ img {
       position: absolute;
       cursor: pointer;
       transition: all .5s;
-  
+
       &:hover {
         color: white;
       }
     }
-  
+
     .pre-btn {
       left: 2%;
     }
-  
+
     .next-btn {
       right: 2%;
     }
@@ -3391,7 +3426,7 @@ img {
     .svg-next-container {
       right: -5vw;
     }
-  
+
     .slider__pages__current {
       font-size: 2rem;
       font-weight: 500;
@@ -3431,7 +3466,7 @@ img {
       user-select: none;
       transform: scale(.5);
       transform-origin: 0 0;
-      
+
       .rj-line {
         width:100%;
         height:2.4vw;
@@ -3477,7 +3512,7 @@ img {
           }
         }
       }
-  
+
     }
   }
 }
