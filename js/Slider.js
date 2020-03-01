@@ -519,7 +519,7 @@ export default class Slider {
       this.initInterval()
     }
     this.stopSlider = function () {
-      console.log('stopSlider');
+      // console.log('stopSlider');
       this.cancelAnimate()
       this.initInterval(false)
     }

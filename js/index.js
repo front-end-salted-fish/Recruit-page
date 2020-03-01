@@ -64,7 +64,7 @@ $(function () {
   // 幕布下拉
   function curtainDown(data) {
     if (data == "true") {
-      console.log('true')
+      // console.log('true')
       var p = new Promise(function (resolve, reject) {
         setTimeout(function () {
           $($bar[0]).animate({
@@ -246,7 +246,7 @@ $(function () {
     }
     $android.on("scroll", function () {
       $fontBg.css("opacity", (1 - $android.scrollTop() / 350));
-      console.log($android.scrollTop());
+      // console.log($android.scrollTop());
       if ($android.scrollTop() > 183) {
         showImg($(".detail-img1"));
         pMoveAnimate($($(".zl-content-one")[0]), "up");
@@ -322,7 +322,7 @@ $(function () {
         direction: 'alternate',
         loop: false
       });
-      console.log($('#back-stage svg g.outg'))
+      // console.log($('#back-stage svg g.outg'))
       animation.add({
         targets: ['#back-stage svg g.outg:nth-child(6)', '#back-stage svg>g:nth-child(11)', '#back-stage path.st17'],
         translateX: -50,
@@ -835,7 +835,7 @@ $(function () {
         this.$rowForth = $("#loading-module #loading-box .row-forth");
       }
       init() {
-        console.log(this.$rowOne);
+        // console.log(this.$rowOne);
         //第一行
         this.resetStye(this.$rowOne, "row-one-first-change", "row-one-second-change", 0);
         //第二行
@@ -846,7 +846,7 @@ $(function () {
         this.resetStye(this.$rowForth, "row-forth-first-change", "row-forth-second-change", delayTime * 3.1);
       }
       resetStye(obj, change1, change2, time) {
-        console.log("类名被改了")
+        // console.log("类名被改了")
         setTimeout(function () {
           obj.addClass(change1);
           setTimeout(function () {
@@ -865,9 +865,9 @@ $(function () {
     let isAllLoaded = false;  // 是否全部加载完成
     // 开机动画消失
     let loadingOut = () => {
-      console.log(1);
+      // console.log(1);
       if (isAllLoaded && loadingtransitionEnd) {
-        console.log(8888)
+        // console.log(8888)
         $('#loading-module').animate({
           opacity: 0
         }, 1000, () => {
@@ -1114,7 +1114,7 @@ $(function () {
     $formPages.on('blur', 'input', function (ev) {
       let match = $(ev.target).attr('name');
       let value = $(ev.target).val().trim();
-      console.log(value)
+      // console.log(value)
       value = filterXSS(value)
       switch (match) {
         case "username":
@@ -1142,7 +1142,7 @@ $(function () {
     $formPages.on('blur', 'textarea', function (ev) {
       let match = $(ev.target).attr('name');
       let value = $(ev.target).val().trim();
-      console.log(value)
+      // console.log(value)
       value = filterXSS(value)
       switch (match) {
         case "introduction":
@@ -1158,7 +1158,7 @@ $(function () {
           break;
 
       }
-      console.log(formData)
+      // console.log(formData)
     })
 
     // 给表单绑定单击函数，使下拉框消失
@@ -1219,7 +1219,7 @@ $(function () {
           margin: '0% 20% 5% 72%'
         }) //调整书本位置
         nextPage() //翻页
-        console.log(formData)
+        // console.log(formData)
         $('.book').off() // 解除书本的事件监听
         $('.zl-second-book').off()
         $('.zl-form-page-close-btn').hide() //隐藏回退按钮
@@ -1252,7 +1252,7 @@ $(function () {
     $submit.on('click', function () {
       formData.direction = $direction.val()
       formData.academy = $academy.val()
-        console.log(formData)
+        // console.log(formData)
       if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
         if (!check()) {
           return false
