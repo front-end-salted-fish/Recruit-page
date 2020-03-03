@@ -1212,6 +1212,7 @@ $(function () {
     })
     // 对话框确定提交
     $('.modal .zl-confirm').click(function() {
+      console.log(formData)
       flag = true;
       $('.modal').hide() // 隐藏整个对话框和模板
       if (flag) {
