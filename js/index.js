@@ -1299,7 +1299,7 @@ $(function () {
       let id = $studentId.val();
       if (!reg.test(id) || id == '') {
         $studentId.css("border", "1px solid red");
-        $(".zl-id-span").html("<span class='red-form'>你确定这是广工学子的学号？</span><img class='wangchai' src='https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png'>");
+        $(".zl-id-span").html("<span class='red-form'>你确定这是广工学子的学号？</span><img class='wangchai' src='https://education.topviewclub.cn/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png'>");
         return false;
       }
       $studentId.css("border", "");
@@ -1375,7 +1375,7 @@ $(function () {
       let cog = $idea.val();
       if (cog == '') {
         $idea.css("border", "1px solid red");
-        $(".zl-idea-span").html("<span class='red-form'>总得吹点水吧</span><img class='wangchai' src='https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png'>");
+        $(".zl-idea-span").html("<span class='red-form'>总得吹点水吧</span><img class='wangchai' src='https://education.topviewclub.cn/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png'>");
         return false;
       }
       $idea.css("border", "");

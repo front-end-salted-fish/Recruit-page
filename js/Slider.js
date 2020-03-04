@@ -167,7 +167,7 @@ export default class Slider {
       loader = new THREE.TextureLoader()
     // loader.setCrossOrigin( "Anonymous" );
     loader.crossOrigin = "";
-    let dispImage = "https://xiao-education.oss-cn-shenzhen.aliyuncs.com/homework-file/2020-2-19/6f4dfe5afc2f4938a62f32cc574ae0301582118751737/displacement.png";
+    let dispImage = "https://education.topviewclub.cn/homework-file/2020-2-19/6f4dfe5afc2f4938a62f32cc574ae0301582118751737/displacement.png";
     let disp = loader.load(dispImage)
 
     disp.wrapS = disp.wrapT = THREE.RepeatWrapping; // 1000
