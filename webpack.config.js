@@ -14,7 +14,14 @@ module.exports = {
         open: true,
         port: 3000,
         hot: true,
-        contentBase: './dist'
+        contentBase: './dist',
+        proxy: {
+            "/api/*": {
+                target: "https://recruit.topviewclub.cn/",
+                ws: true,
+                changeOrigin: true,
+            }
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({

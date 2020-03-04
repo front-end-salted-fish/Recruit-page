@@ -4,7 +4,6 @@
 <head>
 	<meta charset="utf-8">
 	<title>TopView工作室</title>
-	<script src="gt.js"></script>
 </head>
 
 <body style="overflow: hidden;">
@@ -1100,13 +1099,13 @@
 															<section class="x-dropdown direction-dropdown">
 																<section class="x-dropdown-list combo-list"
 																	style="max-width: 330px; min-width: 160px;"><a
-																		class="x-dropdown-item" option="前端"
+																		class="x-dropdown-item" option="前端" data-index="0"
 																		title="前端">前端</a><a class="x-dropdown-item"
-																		option="后台" title="后台">后台</a><a
-																		class="x-dropdown-item" option="安卓"
+																		option="后台" data-index="1" title="后台">后台</a><a
+																		class="x-dropdown-item" option="安卓" data-index="2"
 																		title="安卓">android</a><a class="x-dropdown-item"
-																		option="iOS" title="iOS">iOS</a><a
-																		class="x-dropdown-item" option="机器学习"
+																		option="iOS" data-index="3" title="iOS">iOS</a><a
+																		class="x-dropdown-item" option="机器学习" data-index="4"
 																		title="机器学习">机器学习</a>
 																</section>
 															</section>
@@ -1147,7 +1146,7 @@
 													</li>
 
 												</ul>
-												<table cellpadding="0" cellspacing="20" border="0" class="form_table"
+												<!-- <table cellpadding="0" cellspacing="20" border="0" class="form_table"
 													align="center" style="margin-left: 6%;margin-bottom: 5%;">
 													<tr>
 														<td valign="middle" align="right">
@@ -1161,8 +1160,8 @@
 															<input type="button" style="width: auto;" id="code">
 														</td>
 													</tr>
-													<!-- <span class="zl-check-span"></span> -->
-												</table>
+												</table> -->
+												<!-- <span class="zl-check-span"></span> -->
 											</section>
 										</section>
 									</section>
@@ -1182,9 +1181,14 @@
 								<p style="text-align: center;text-indent: 0em;">
 									风里雨里TopView等你！
 								</p>
-								<img style="width: 100%;" src="./img/form/logo.png" alt="">
+								<p style="text-align: center;text-indent: 0em;">
+									请保存下方的小程序二维码，或者打开微信扫码进入小程序
+								</p>
+								<img id="ewm-img"  alt="">
+								<p class="button" id="zl-save-img">
+									保存二维码
+								</p>
 								<p class="button" id="zl-reload-btn">
-									<!-- <span class="time" style="font-size: 16px;">3</span>秒后返回首页 -->
 									返回首页
 								</p>
 							</div>
@@ -1204,11 +1208,14 @@
 				<h3 style="font-size: 2em;">温馨提示</h3>
 				<label for="modal_1" class="close">&times;</label>
 			</header>
-			<section class="content" style="font-size: 2em;">
-				你确认提交吗？
+			<section class="content" style="line-height: 2.5em;">
+				<h3 style="font-size: 1.8em;
+				font-weight: bold;">你确认提交吗？</h3>
+				<p style="font-size: 1.2em;">请再确认一遍自己所填的个人信息是否有误，<span style="font-size: 1em; color: red;">重复提交后果自负</span> ！</p>
+				<p style="font-size: 1.2em;">请再检查一次<span class="ckeck-phone" style="font-size: 1em; font-weight: bolder;color: red;"></span>是否为你可以正常接受短信的手机号！</p>
 			</section>
 			<footer>
-				<a class="button zl-confirm" href="javascript:void(0);" style="font-size: 1.4em;">确定提交</a>
+				<a id="rj-jy-btn" class="button zl-confirm" href="javascript:void(0);" style="font-size: 1.4em;">确定提交</a>
 				<label for="modal_1" class="button dangerous zl-thinking" style="font-size: 1.4em;">
 					我再考虑一下
 				</label>

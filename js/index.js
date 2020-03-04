@@ -14,7 +14,7 @@ import '../css/modal.css'
 // import bannerImg5 from '../img/machine-learning/轮播图.jpg'
 import filterXSS, { FilterXSS } from 'xss'
 import Slider from './Slider'
-
+import './gt'
 // 轮播图模块
 var slider = new Slider();
 slider.initialize();
@@ -1060,23 +1060,37 @@ $(function () {
     const $bannerContainer = $('#banner-container') //获取轮播图界面
     const $detailToFormBtns = $('.c-btn'); //获取详情页前往表单的按钮
     const $time = $('.zl-third-book .time');// 获取倒计时的秒数
+    const $ewmImg = $('#ewm-img'); // 获取存放小程序二维码的元素
     let backBannerFlag = true // 标记此时默认是从轮播图的按钮进入表单界面的
     let flag = false; // 是否提交的标识
     // 初始化表单数据,用于发给后台的表单数据
+    // let formData = {
+    //   username: '', // 姓名
+    //   studentId: '', // 学号
+    //   academy: '', // 学院
+    //   gradeProfessional: '', // 年级班级
+    //   sex: '', // 性别
+    //   phone: '', // 手机号码
+    //   email: '', // 邮箱
+    //   introduction: '', // 自我介绍
+    //   direction: '', // 选择的方向
+    //   skills: '', // 你所掌握的技能
+    //   idea: '', // 你对我们工作室的想法
+    //   // checkFront: '', // 前端动态生成的验证码
+    //   // checkBack: '' // 用户填写的验证码
+    // };
     let formData = {
-      username: '', // 姓名
-      studentId: '', // 学号
-      academy: '', // 学院
-      gradeProfessional: '', // 年级班级
-      sex: '', // 性别
+      name: '', // 姓名
+      schoolId: '', // 学号
+      institute: '', // 学院
+      major: '', // 年级班级
+      sex: 0, // 性别(默认男（ 0-男，1-女）)
       phone: '', // 手机号码
-      email: '', // 邮箱
+      mail: '', // 邮箱
       introduction: '', // 自我介绍
-      direction: '', // 选择的方向
-      skills: '', // 你所掌握的技能
-      idea: '', // 你对我们工作室的想法
-      checkFront: '', // 前端动态生成的验证码
-      checkBack: '' // 用户填写的验证码
+      direction: 0, // 选择的方向（默认前端，（0-前端、1-后台、2-安卓、3-iOS、4-机器学习））
+      skill: '', // 你所掌握的技能
+      know: '', // 你对我们工作室的想法
     };
   
     // 给轮播图前往表单的按钮绑定单击响应函数
@@ -1118,19 +1132,19 @@ $(function () {
       value = filterXSS(value)
       switch (match) {
         case "username":
-          formData.username = value;
+          formData.name = value;
           break;
         case "student-id":
-          formData.studentId = value;
+          formData.schoolId = value;
           break;
         case "grade-professional":
-          formData.gradeProfessional = value;
+          formData.major = value;
           break;
         case "number":
           formData.phone = value;
           break;
         case "email":
-          formData.email = value;
+          formData.mail = value;
           break;
         default:
           break;
@@ -1149,10 +1163,10 @@ $(function () {
           formData.introduction = value;
           break;
         case "idea":
-          formData.idea = value;
+          formData.know = value;
           break;
         case "skills":
-          formData.skills = value;
+          formData.skill = value;
           break;
         default:
           break;
@@ -1168,15 +1182,16 @@ $(function () {
       $('.modal').hide() // 隐藏整个对话框和模板
     })
     // 设置性别默认为男性
-    let sex = $radio.attr('value');
+    // let sex = $radio.attr('value');
     $radio.children()[0].style.background = '#ae8e74';
-    formData.sex = sex;
+    // formData.sex = sex;
     // 给性别单选按钮绑定单击响应函数
     $radio.on('click', function (ev) {
       let sex = $(this).attr('value');
       $(this).children()[0].style.background = '#ae8e74';
       $(this).first().siblings().children()[0].style.background = '#fff';
-      formData.sex = sex;
+      formData.sex = (sex === '男') ? 0 : 1;
+
     })
     // 给方向下选框按钮绑定点击函数
     $triggerBtn.on('click', function (ev) {
@@ -1191,12 +1206,13 @@ $(function () {
     // 方向下拉框
     $option.on('click', function (ev) {
       $direction.val($(ev.target).text());
-      formData.direction = $(ev.target).text();
+      // formData.direction = $(ev.target).text();
+      formData.direction = $(ev.target).attr('data-index');
     })
      // 学院下拉框
      $academyOption.on('click', function (ev) {
       $academy.val($(ev.target).text());
-      formData.academy = $(ev.target).text();
+      formData.institute = $(ev.target).text();
     })
     // 给详情页前往表单的多个按钮绑定单击响应事件
     $detailToFormBtns.on('click', function () {
@@ -1210,30 +1226,35 @@ $(function () {
       flag = false;
       $('.modal').hide() // 隐藏整个对话框和模板
     })
+    // 这段代码给我搬过去等二次验证完再执行翻页等操作
     // 对话框确定提交
-    $('.modal .zl-confirm').click(function() {
-      console.log(formData)
-      flag = true;
-      $('.modal').hide() // 隐藏整个对话框和模板
-      if (flag) {
-        $('.scene').css({
-          margin: '0% 20% 5% 72%'
-        }) //调整书本位置
-        nextPage() //翻页
-        // console.log(formData)
-        $('.book').off() // 解除书本的事件监听
-        $('.zl-second-book').off()
-        $('.zl-form-page-close-btn').hide() //隐藏回退按钮
-        // let time = $time.text() * 1
-        // setInterval(() => {
-        //   $time.text(time--)
-        //   if (time <= 0) {
-        //     location.reload() //三秒后刷新页面
-        //   }
-        // }, 1000)
-      }
+    // $('.modal .zl-confirm').click(function() {
+    //   if (formData.sex == '男') {
+    //     formData.sex = 0
+    //   } else {
+    //     formData.sex = 1
+    //   }
+    //   flag = true;
+    //   $('.modal').hide() // 隐藏整个对话框和模板
+    //   if (flag) {
+    //     $('.scene').css({
+    //       margin: '0% 20% 5% 72%'
+    //     }) //调整书本位置
+    //     nextPage() //翻页
+    //     // console.log(formData)
+    //     $('.book').off() // 解除书本的事件监听
+    //     $('.zl-second-book').off()
+    //     $('.zl-form-page-close-btn').hide() //隐藏回退按钮
+    //     // let time = $time.text() * 1
+    //     // setInterval(() => {
+    //     //   $time.text(time--)
+    //     //   if (time <= 0) {
+    //     //     location.reload() //三秒后刷新页面
+    //     //   }
+    //     // }, 1000)
+    //   }
 
-    })
+    // })
      // 对话框取消提交
      $('.modal .zl-thinking').click(function() {
       flag = false;
@@ -1251,13 +1272,13 @@ $(function () {
     })
     // 提交按钮
     $submit.on('click', function () {
-      formData.direction = $direction.val()
-      formData.academy = $academy.val()
-        // console.log(formData)
+      // formData.direction = $direction.val()
+      formData.institute = $academy.val()
+      console.log(formData)
       if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
-        if (!check()) {
-          return false
-        }
+        // if (!check()) {
+        //   return false
+        // }
         $($('#form-page-two .form-body').get(0)).css({
           transition: 'none'
         })
@@ -1268,6 +1289,7 @@ $(function () {
         return false
       }
       $('.modal').show() // 显示整个对话框和模板
+      $('.modal .ckeck-phone').text(formData.phone)
       // 对话框
       $('.modal article').css({
         '-webkit-transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
@@ -1377,38 +1399,149 @@ $(function () {
       $(".zl-idea-span").html("");
       return true;
     }
-    //产生验证码  
-    createCode();
-    var code; //在全局定义验证码  
-    function createCode() {
-      code = "";
-      var codeLength = 4; //验证码的长度  
-      var checkCode = document.getElementById("code");
-      var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-        'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数  
-      for (var i = 0; i < codeLength; i++) { //循环操作  
-        var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
-        code += random[index]; //根据索引取得随机数加到code上  
+    // 用于保存图片到本地的函数（解决跨域）
+    function downloadIamge(selector, name) {
+      var image =new Image() // 解决跨域 Canvas 污染问题 
+      image.setAttribute('crossOrigin', 'anonymous') 
+      image.onload = function () { 
+      var canvas = document.createElement('canvas') 
+      canvas.width = image.width
+       canvas.height = image.height 
+       var context = canvas.getContext('2d')
+        context.drawImage(image, 0, 0, image.width, image.height) 
+        var url = canvas.toDataURL('image/png') 
+        // 生成一个a元素 
+        var a = document.createElement('a') 
+        // 创建一个单击事件 
+        var event = new MouseEvent('click') 
+        // 将a的download属性设置为我们想要下载的图片名称，若name不存在则使用‘下载图片名称’作为默认名称 
+        a.download = name || '下载图片名称' 
+        // 将生成的URL设置为a.href属性
+         a.href = url 
+         // 触发a的单击事件 
+         a.dispatchEvent(event) 
+      } 
+      image.src = document.querySelector(selector).src 
+  } 
+  // 调用方式 
+  // 参数一： 选择器，代表img标签 
+  // 参数二： 图片名称，可选 downloadIamge('canvas', '图片名称')
+    // 图片保存
+    $('#zl-save-img').click(function() {
+      downloadIamge('#ewm-img', 'topview_mini.png')
+ 
+    })
+
+    // API1 调用初始化函数进行初始化
+    $.ajax({
+      url: 'api/captcha/generate',
+      type: "get",
+      dataType: "json",
+      success: function (data) {
+          // 请检测data的数据结构， 保证data.gt, data.challenge, data.success有值
+          initGeetest({
+            product: 'bind',
+            lang: 'zh-cn',
+            // 以下配置参数来自服务端 SDK
+            gt: data.gt,
+            challenge: data.challenge,
+            offline: !data.success,
+            new_captcha: true,
+          }, function (captchaObj) {
+            document.getElementById('rj-jy-btn').addEventListener('click', function () {
+              // if (check()) { // 检查是否可以进行提交
+              captchaObj.verify();
+              // }
+            });
+            captchaObj.onSuccess(function () {
+                // 用户验证成功后，进行实际的提交行为
+                var result = captchaObj.getValidate();
+                $.ajax({
+                  url: 'api/captcha/verify',
+                  type: 'post',
+                  data: {
+                    geetest_challenge: result.geetest_challenge,
+                    geetest_validate: result.geetest_validate,
+                    geetest_seccode: result.geetest_seccode,
+                  },
+                  dataType: "text",
+                  success: function(data) {
+                      if(data === '') {     // 空字符串则验证失败
+                        captchaObj.reset(); // 调用该接口进行重置
+                      } else {
+                        formData.captchaToken = data;  // 获取到token
+                        }
+                        // TODO: 在此发送ajax请求之类的
+                        $.ajax({
+                          method: "post",
+                          url:'api/student/submitSignUp',
+                          data: JSON.stringify(formData),
+                          dataType: "json",
+                          contentType: "application/json",
+                          success: function (data) {
+                            console.log(data)
+                            $('.modal').hide() // 隐藏整个对话框和模板
+                            if (data.success == true && data.code == 200) {
+                              flag = true;
+                              // $('.modal').hide() // 隐藏整个对话框和模板
+                              if (flag) {
+                                $('.scene').css({
+                                  margin: '0% 20% 5% 72%'
+                                }) //调整书本位置
+                                $formPageOne.fadeOut()
+                                $formPageTwo.fadeOut()
+                                nextPage() //翻页
+                                // console.log(formData)
+                                $('.book').off() // 解除书本的事件监听
+                                $('.zl-second-book').off()
+                                $('.zl-form-page-close-btn').hide() //隐藏回退按钮
+                                // 设置二维码
+                                $ewmImg.get(0).src = data.message
+                            }
+                          } else {
+                            alert(data.message)
+                          }
+                        }
+                        })
+                      }
+                  })
+                })
+            })
+          // })
       }
-      formData.checkFront = code;
-      checkCode.value = code; //把code值赋给验证码  
-    }
-    // 
-    function check() {
-      var inputCode = document.getElementById("ctl00_txtcode").value.toUpperCase();
-      inputCode = filterXSS(inputCode)
-      formData.checkBack = inputCode
-      if (inputCode == "") {
-        alert("验证码不能为空");
-        return false;
-      } else if (inputCode != code) {
-        alert("看清楚点噢！");
-        createCode(); //刷新验证码  
-        document.getElementById("ctl00_txtcode").value = ""; //清空文本框
-        return false;
-      }
-      return true;
-    }
+    })
+    // //产生验证码  
+    // createCode();
+    // var code; //在全局定义验证码  
+    // function createCode() {
+    //   code = "";
+    //   var codeLength = 4; //验证码的长度  
+    //   var checkCode = document.getElementById("code");
+    //   var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+    //     'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数  
+    //   for (var i = 0; i < codeLength; i++) { //循环操作  
+    //     var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
+    //     code += random[index]; //根据索引取得随机数加到code上  
+    //   }
+    //   formData.checkFront = code;
+    //   checkCode.value = code; //把code值赋给验证码  
+    // }
+    // // 
+    // function check() {
+    //   var inputCode = document.getElementById("ctl00_txtcode").value.toUpperCase();
+    //   inputCode = filterXSS(inputCode)
+    //   formData.checkBack = inputCode
+    //   if (inputCode == "") {
+    //     alert("验证码不能为空");
+    //     return false;
+    //   } else if (inputCode != code) {
+    //     alert("看清楚点噢！");
+    //     createCode(); //刷新验证码  
+    //     document.getElementById("ctl00_txtcode").value = ""; //清空文本框
+    //     return false;
+    //   }
+    //   return true;
+    // }
     // 书本前一页
     function prevPage() {
       $('#form-page .flipped')
@@ -1468,5 +1601,4 @@ $(function () {
   })();
 })
 
-// console.log('\n\n\n\n  ███████████                    █████   █████  ███                          \n ░█░░░███░░░█                   ░░███   ░░███  ░░░                           \n ░   ░███  ░   ██████  ████████  ░███    ░███  ████   ██████  █████ ███ █████\n     ░███     ███░░███░░███░░███ ░███    ░███ ░░███  ███░░███░░███ ░███░░███ \n     ░███    ░███ ░███ ░███ ░███ ░░███   ███   ░███ ░███████  ░███ ░███ ░███ \n     ░███    ░███ ░███ ░███ ░███  ░░░█████░    ░███ ░███░░░   ░░███████████  \n     █████   ░░██████  ░███████     ░░███      █████░░██████   ░░████░████   \n    ░░░░░     ░░░░░░   ░███░░░       ░░░      ░░░░░  ░░░░░░     ░░░░ ░░░░    \n                       ░███                                                  \n                       █████                                                 \n                      ░░░░░                                                  \nTopView前端欢迎热爱前端的小伙伴 ^_^ !!');
 console.log('\n\n\n\n  ████████╗ ██████╗ ██████╗ ██╗   ██╗██╗███████╗██╗    ██╗\n  ╚══██╔══╝██╔═══██╗██╔══██╗██║   ██║██║██╔════╝██║    ██║\n     ██║   ██║   ██║██████╔╝██║   ██║██║█████╗  ██║ █╗ ██║\n     ██║   ██║   ██║██╔═══╝ ╚██╗ ██╔╝██║██╔══╝  ██║███╗██║\n     ██║   ╚██████╔╝██║      ╚████╔╝ ██║███████╗╚███╔███╔╝\n     ╚═╝    ╚═════╝ ╚═╝       ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ \n\n\nTopView欢迎各位小伙伴 ^_^ !!!');
