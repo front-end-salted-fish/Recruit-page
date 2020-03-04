@@ -7,7 +7,7 @@ module.exports = {
     entry: './js/index.js',
 
     output: {
-        filename: 'bundle.js',
+        filename: 'pc-bundle.js',
         path: path.resolve(__dirname, './dist')
     },
     devServer: {
@@ -17,7 +17,7 @@ module.exports = {
         contentBase: './dist',
         proxy: {
             "/api/*": {
-                target: "https://recruit.topviewclub.cn/",
+                target: "https://recruit.topviewclub.cn",
                 ws: true,
                 changeOrigin: true,
             }
@@ -28,7 +28,12 @@ module.exports = {
             title: 'Output Management',
             template: path.join(__dirname, 'index.html'), 
             filename: 'index.html',
-            favicon: './img/bitbug_favicon.ico'
+            favicon: './img/bitbug_favicon.ico',
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                minifyCSS: true,
+            }
         }),
     ],
     module: {

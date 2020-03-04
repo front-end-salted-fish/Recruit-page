@@ -64,7 +64,7 @@ $(function () {
   // 幕布下拉
   function curtainDown(data) {
     if (data == "true") {
-      // console.log('true')
+      // 
       var p = new Promise(function (resolve, reject) {
         setTimeout(function () {
           $($bar[0]).animate({
@@ -246,7 +246,7 @@ $(function () {
     }
     $android.on("scroll", function () {
       $fontBg.css("opacity", (1 - $android.scrollTop() / 350));
-      // console.log($android.scrollTop());
+      // 
       if ($android.scrollTop() > 183) {
         showImg($(".detail-img1"));
         pMoveAnimate($($(".zl-content-one")[0]), "up");
@@ -322,7 +322,7 @@ $(function () {
         direction: 'alternate',
         loop: false
       });
-      // console.log($('#back-stage svg g.outg'))
+      // )
       animation.add({
         targets: ['#back-stage svg g.outg:nth-child(6)', '#back-stage svg>g:nth-child(11)', '#back-stage path.st17'],
         translateX: -50,
@@ -459,8 +459,8 @@ $(function () {
     $('.per-one').append($(scrollPromot));
     $('.pers-one').append($(scrollPromot));
     // $('.rj-scroll-promot').on('click',function() {
-    //   console.log($(window).height());
-    //   console.log($(this).parents('.page'));
+    //   
+    //   
     //   let parent = $(this).parent();
 
     //   $(this).parents('.page').scrollTop((parent.siblings('.per-two') || parent.siblings('.pers-two')).offset().top);
@@ -487,7 +487,7 @@ $(function () {
     // 共享previous
     // let previous = 0;
     // function throttleBanner(func, index, wait) {
-    //   // console.log(func);
+    //   // 
     //   let now = Date.now();
     //   var p = new Promise(function (resolve, reject) {
     //     if (now - previous > wait) {
@@ -639,11 +639,11 @@ $(function () {
     // banner.init();
 
     // $('.inner-mask img').on('webkitTransitionEnd', function () {
-    //   console.log(banner.moveCnt);
+    //   
     //   banner.moveCnt = (banner.moveCnt + 1) % 6;
     //   if (banner.moveCnt === 0) {
     //     banner.isMoving = false;
-    //     console.log("动画完成");
+    //     
     //   }
     // })
 
@@ -835,7 +835,7 @@ $(function () {
         this.$rowForth = $("#loading-module #loading-box .row-forth");
       }
       init() {
-        // console.log(this.$rowOne);
+        // 
         //第一行
         this.resetStye(this.$rowOne, "row-one-first-change", "row-one-second-change", 0);
         //第二行
@@ -846,7 +846,7 @@ $(function () {
         this.resetStye(this.$rowForth, "row-forth-first-change", "row-forth-second-change", delayTime * 3.1);
       }
       resetStye(obj, change1, change2, time) {
-        // console.log("类名被改了")
+        // 
         setTimeout(function () {
           obj.addClass(change1);
           setTimeout(function () {
@@ -865,9 +865,9 @@ $(function () {
     let isAllLoaded = false;  // 是否全部加载完成
     // 开机动画消失
     let loadingOut = () => {
-      // console.log(1);
+      // 
       if (isAllLoaded && loadingtransitionEnd) {
-        // console.log(8888)
+        // 
         $('#loading-module').animate({
           opacity: 0
         }, 1000, () => {
@@ -876,7 +876,7 @@ $(function () {
         // banner.moveCnt = 0;
         // banner.goBanner();
         slider.init();
-        $('#rj-img-pre-load').remove();
+        // $('#rj-img-pre-load').remove();
         // rjBanner.start();
       }
     }
@@ -897,7 +897,7 @@ $(function () {
     window.onload = function () {
       isAllLoaded = true;
       loadingOut();
-      // console.log('资源加载结束!',new Date().getTime());
+      // 
     }
   })();
   // 旋转菜单模块
@@ -986,7 +986,7 @@ $(function () {
       });
       $(this).on("transitionend", end);
 
-      // console.log($(this).index());
+      // 
       curtainUp().then(() => {
         // 幕布完全上遮后更换内容
         setTimeout(() => {
@@ -1128,7 +1128,7 @@ $(function () {
     $formPages.on('blur', 'input', function (ev) {
       let match = $(ev.target).attr('name');
       let value = $(ev.target).val().trim();
-      // console.log(value)
+      // 
       value = filterXSS(value)
       switch (match) {
         case "username":
@@ -1156,7 +1156,7 @@ $(function () {
     $formPages.on('blur', 'textarea', function (ev) {
       let match = $(ev.target).attr('name');
       let value = $(ev.target).val().trim();
-      // console.log(value)
+      // 
       value = filterXSS(value)
       switch (match) {
         case "introduction":
@@ -1172,7 +1172,7 @@ $(function () {
           break;
 
       }
-      // console.log(formData)
+      // 
     })
 
     // 给表单绑定单击函数，使下拉框消失
@@ -1241,7 +1241,7 @@ $(function () {
     //       margin: '0% 20% 5% 72%'
     //     }) //调整书本位置
     //     nextPage() //翻页
-    //     // console.log(formData)
+    //     // 
     //     $('.book').off() // 解除书本的事件监听
     //     $('.zl-second-book').off()
     //     $('.zl-form-page-close-btn').hide() //隐藏回退按钮
@@ -1274,7 +1274,7 @@ $(function () {
     $submit.on('click', function () {
       // formData.direction = $direction.val()
       formData.institute = $academy.val()
-      console.log(formData)
+      
       if (nameCheck() && idCheck() && gradeCheck() && phoneCheck() && emailCheck() && introCheck() && skillsCheck() && cogCheck()) {
         // if (!check()) {
         //   return false
@@ -1318,7 +1318,7 @@ $(function () {
       let id = $studentId.val();
       if (!reg.test(id) || id == '') {
         $studentId.css("border", "1px solid red");
-        $(".zl-id-span").html("<span class='red-form'>你确定这是广工学子的学号？</span><img class='wangchai' src='https://education.topviewclub.cn/homework-file/2020-2-16/aa48207b0d0d4865b60d7b725e5615ad1581857853142/wangchai.png'>");
+        $(".zl-id-span").html("<span class='red-form'>你确定这是广工学子的学号？</span><img class='wangchai' src='https://education.topviewclub.cn/file/assert/wangchai.png'>");
         return false;
       }
       $studentId.css("border", "");
@@ -1436,7 +1436,7 @@ $(function () {
 
     // API1 调用初始化函数进行初始化
     $.ajax({
-      url: 'api/captcha/generate',
+      url: '/api/captcha/generate',
       type: "get",
       dataType: "json",
       success: function (data) {
@@ -1461,7 +1461,7 @@ $(function () {
                 // 用户验证成功后，进行实际的提交行为
                 var result = captchaObj.getValidate();
                 $.ajax({
-                  url: 'api/captcha/verify',
+                  url: '/api/captcha/verify',
                   type: 'post',
                   data: {
                     geetest_challenge: result.geetest_challenge,
@@ -1478,12 +1478,12 @@ $(function () {
                         // TODO: 在此发送ajax请求之类的
                         $.ajax({
                           method: "post",
-                          url:'api/student/submitSignUp',
+                          url:'/api/student/submitSignUp',
                           data: JSON.stringify(formData),
                           dataType: "json",
                           contentType: "application/json",
                           success: function (data) {
-                            console.log(data)
+                            
                             if (data.success == true && data.code == 200) {
                               flag = true;
                               // $('.modal').hide() // 隐藏整个对话框和模板
@@ -1494,7 +1494,7 @@ $(function () {
                                 $formPageOne.fadeOut()
                                 $formPageTwo.fadeOut()
                                 nextPage() //翻页
-                                // console.log(formData)
+                                // 
                                 $('.book').off() // 解除书本的事件监听
                                 $('.zl-second-book').off()
                                 $('.zl-form-page-close-btn').hide() //隐藏回退按钮
