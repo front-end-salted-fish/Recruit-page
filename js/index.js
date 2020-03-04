@@ -1288,10 +1288,12 @@ $(function () {
         alert("请正确输入信息");
         return false
       }
-      $('.modal').show() // 显示整个对话框和模板
-      $('.modal .ckeck-phone').text(formData.phone)
+      $('.modal_1').show() // 显示整个对话框和模板
+      $('.modal_1 .check-phone').text(formData.phone)
+      $('.modal_1 .check-id').text(formData.schoolId)
+      $('.modal_1 .check-name').text(formData.name)
       // 对话框
-      $('.modal article').css({
+      $('.modal_1 article').css({
         '-webkit-transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
         'transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
         'display': 'block'
@@ -1451,6 +1453,8 @@ $(function () {
             document.getElementById('rj-jy-btn').addEventListener('click', function () {
               // if (check()) { // 检查是否可以进行提交
               captchaObj.verify();
+              $('.modal').hide() // 隐藏整个对话框和模板
+
               // }
             });
             captchaObj.onSuccess(function () {
@@ -1480,7 +1484,6 @@ $(function () {
                           contentType: "application/json",
                           success: function (data) {
                             console.log(data)
-                            $('.modal').hide() // 隐藏整个对话框和模板
                             if (data.success == true && data.code == 200) {
                               flag = true;
                               // $('.modal').hide() // 隐藏整个对话框和模板
@@ -1499,7 +1502,15 @@ $(function () {
                                 $ewmImg.get(0).src = data.message
                             }
                           } else {
-                            alert(data.message)
+                              $('.modal_2').show() // 隐藏整个对话框和模板
+                              $('.modal_2 article').css({
+                                '-webkit-transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
+                                'transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
+                                'display': 'block'
+                              })
+                              $('.modal_2 .message').text(data.message)
+
+                            // alert(data.message)
                           }
                         }
                         })
