@@ -1,26 +1,35 @@
 .modal {
     position: absolute;
     top: 50%;
-    width: 50%;
-    left: 25%;
+    width: 600px;
+    left: 50%;
     margin: auto;
+    transform: translate(-50%, -50%);
     display: none;
+    transition: all .3s;
+    z-index: 9;
 }
 .modal .overlay {
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: fixed;
+    /* top: 0; */ 
+    /* left: 0; */
+    /* bottom: 0; */
+    /* right: 0; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
     margin: 0;
     border-radius: 0;
-    background: rgba(17,17,17,0.6);
+    /* background: rgba(17,17,17,0.6); */
     transition: all 0.3s;
-    z-index: 100000;
+    z-index: 9;
     display: block;
     opacity: 1;
     max-height: 10000px;
     transition: all 0.3s;
+    /* z-index: 20; */
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
 }
 .modal>input ~ * {
     opacity: 0;
@@ -34,7 +43,6 @@
 .modal article {
     max-height: 90%;
     overflow: auto;
-   
     display: block;
     opacity: 1;
     max-height: 10000px;
@@ -45,7 +53,7 @@
     transition: all 0.3s;
     position: relative;
     box-shadow: 0;
-    border-radius: .2em;
+    border-radius: .5em;
     border: 1px solid #ccc;
     overflow: hidden;
     text-align: left;
@@ -57,23 +65,26 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%) scale(0.2, 0.2);
-    z-index: 1000000;
+    transform: translateX(-50%) translateY(-50%) scale(0, 0);
+    transform-origin: 50% 50%;
+    z-index: 9;
     transition: all 0.3s;
 }
 .modal .overlay ~ * {
     border: 0;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    /* top: 50%; */
+    /* left: 50%; */
+    top: 0;
+    left: 0;
     /* transform: translateX(-50%) translateY(-50%) scale(0.2, 0.2); */
-    z-index: 1000000;
+    z-index: 9;
     transition: all 0.3s;
 }
 .card, .modal .overlay ~ * {
     position: relative;
     box-shadow: 0;
-    border-radius: .2em;
+    border-radius: .4em;
     border: 1px solid #ccc;
     overflow: hidden;
     text-align: left;
@@ -100,9 +111,10 @@ button, .button, [type=submit], .dropimage {
     text-align: center;
     letter-spacing: inherit;
     margin: 0;
-    padding: 3% 9%;
+    padding: 10px;
     vertical-align: middle;
     background: #0074d9;
+    transition: all .3s;
     color: #fff;
     border: 0;
     border-radius: .2em;
@@ -120,7 +132,7 @@ button, .button, [type=submit], .dropimage {
 .card header, .modal .overlay ~ * header {
     font-weight: bold;
     position: relative;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .card header, .modal .overlay ~ * header, .card section, .modal .overlay ~ * section, .card>p, .modal .overlay ~ *>p {
@@ -132,7 +144,7 @@ button, .button, [type=submit], .dropimage {
 }.card header, .modal .overlay ~ * header {
     font-weight: bold;
     position: relative;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .card header, .modal .overlay ~ * header, .card section, .modal .overlay ~ * section, .card>p, .modal .overlay ~ *>p {
@@ -168,17 +180,46 @@ button, .button, [type=submit], .dropimage {
 }
 .card .close, .modal .overlay ~ * .close {
     position: absolute;
-    top: .4em;
+    /* top: .4em; */
     right: .3em;
-    font-size: 2.2em;
+    font-size: 2.5em;
     padding: 0 .5em;
     cursor: pointer;
     width: auto;
 }
 .card .dangerous, .modal .overlay ~ * .dangerous {
-    background: #ff4136;
-    float: right;
+    background: white;
+    border: 1px solid #ff4136;
+    color: #ff4136;
+    margin-left: 13px;
+    transition: all .2s;
+    /* float: right; */
+}
+.modal .overlay ~ * .dangerous:hover {
+    background: #ff4136 !important;
+    color: white !important;
+    /* float: right; */
 }
 .card footer, .modal .overlay ~ * footer {
-    padding: 4%;
+    display: flex;
+    justify-content: flex-end;
+    /* padding: 4%; */
+    padding: 3% 4%;
+    border-top: 1px solid #e0e0e0;
+}
+.modal_1 header,
+.modal_2 header {
+    text-align: center;
+    display: flex !important;
+    justify-content: center;
+    align-items: center !important;
+}
+.modal header h3 {
+    margin: 0 !important;
+}
+#rj-jy-btn {
+    margin-left: 13px;
+}
+.zl-confirm:hover {
+    background: #3d93de;
 }

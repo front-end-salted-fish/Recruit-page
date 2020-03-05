@@ -1676,18 +1676,25 @@ img {
   #ewm-img{
     width: 40%;
     display: block;
-    margin: auto;
     border-radius: 50% 50%;
+    margin: 9% auto;
   }
   #zl-save-img {
-    position: absolute;
-    cursor: pointer;
+    // position: absolute; 
+    pointer-events: all;
+    cursor: pointer !important;
     text-align: center;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #3753a4;
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+    color: #3753a4;
+    background: none;
+    border: 1px solid #3753a4;
     text-indent: 0;
-    margin-top: 5%;
+  
+  }
+  #zl-save-img:hover {
+    background: #3753a4;
+    color: white;
   }
 
   .zl-form-page-close-btn {
@@ -2130,7 +2137,7 @@ img {
         }
 
         .form-foot {
-          border-top: solid 1px #DEDEDE;
+          // border-top: solid 1px #DEDEDE;
           // height: 60px;
           // background: #fff;
           display: -webkit-box;
@@ -2200,7 +2207,7 @@ img {
         text-align: center;
         font-size: 24px;
         color: #a4856d;
-        margin: 4% 0 6% 0;
+        margin: 4% 0 8% 0;
       }
 
       .page {
@@ -2283,12 +2290,20 @@ img {
 }
 #form-page #zl-reload-btn {
   text-align: center;
-  position: absolute;
-  bottom: 0;
+  /* position: absolute; */
+  /* bottom: 0; */
+  margin-left: 30px;
   left: 50%;
-  transform: translateX(-50%);
-  background-color: #a4856d;
+  /* transform: translateX(-50%); */
+  color: #a4856d;
   text-indent: 0em;
+  border: 1px solid #a4856d;
+  background: none;
+  transition: all .2s;
+}
+#form-page #zl-reload-btn:hover {
+  background: #a4856d;
+  color: white;
 }
 
 #form-page .qr {

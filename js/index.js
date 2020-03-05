@@ -1175,11 +1175,23 @@ $(function () {
       // 
     })
 
+    // 关闭弹窗动画效果
+    function modalHide() {
+      $('.modal').delay(300).hide(1); // 隐藏整个对话框和模板
+      $('.modal article').css({
+        '-webkit-transform': 'translateX(0) translateY(0) scale(0,0)',
+        'transform': 'translateX(0) translateY(0) scale(0, 0)',
+      });
+      $('.modal .overlay').css({
+        background: ''
+      });
+    }
+
     // 给表单绑定单击函数，使下拉框消失
     $(document).on('click', function (ev) {
       $option.fadeOut(100);
       $academyOption.fadeOut(100);
-      $('.modal').hide() // 隐藏整个对话框和模板
+      modalHide();
     })
     // 设置性别默认为男性
     // let sex = $radio.attr('value');
@@ -1224,7 +1236,7 @@ $(function () {
     // 对话框的'x'按钮
     $('.modal .close').click(function() {
       flag = false;
-      $('.modal').hide() // 隐藏整个对话框和模板
+      modalHide();
     })
     // 这段代码给我搬过去等二次验证完再执行翻页等操作
     // 对话框确定提交
@@ -1258,7 +1270,7 @@ $(function () {
      // 对话框取消提交
      $('.modal .zl-thinking').click(function() {
       flag = false;
-      $('.modal').hide() // 隐藏整个对话框和模板
+      modalHide();
     })
     // 对话框
     $('.modal article').click(function(ev) {
@@ -1288,16 +1300,24 @@ $(function () {
         alert("请正确输入信息");
         return false
       }
-      $('.modal_1').show() // 显示整个对话框和模板
       $('.modal_1 .check-phone').text(formData.phone)
       $('.modal_1 .check-id').text(formData.schoolId)
       $('.modal_1 .check-name').text(formData.name)
+      $('.modal_1').show(0, () => {
+        $('.modal_1 article').css({
+          '-webkit-transform': 'translateX(0) translateY(0) scale(1, 1)',
+          'transform': 'translateX(0) translateY(0) scale(1, 1)',
+        })
+        $('.modal_1 .overlay').css({
+          background: 'rgba(17,17,17,0.6)'
+        })
+      }) // 显示整个对话框和模板
       // 对话框
-      $('.modal_1 article').css({
-        '-webkit-transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
-        'transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
-        'display': 'block'
-      })
+      // $('.modal_1 article').css({
+      //   '-webkit-transform': 'translateX(0) translateY(0) scale(1, 1)',
+      //   'transform': 'translateX(0) translateY(0) scale(1, 1)',
+      //   'display': 'block'
+      // })
     })
     $username.on("blur", nameCheck);//1.名字
     function nameCheck() {
@@ -1453,8 +1473,7 @@ $(function () {
             document.getElementById('rj-jy-btn').addEventListener('click', function () {
               // if (check()) { // 检查是否可以进行提交
               captchaObj.verify();
-              $('.modal').hide() // 隐藏整个对话框和模板
-
+              modalHide(); // 隐藏整个对话框和模板
               // }
             });
             captchaObj.onSuccess(function () {
@@ -1494,6 +1513,10 @@ $(function () {
                                 $formPageOne.fadeOut()
                                 $formPageTwo.fadeOut()
                                 nextPage() //翻页
+                                setTimeout(()=>{
+                                  $('.zl-second-book .front').remove();
+                                  $('.zl-first-book').remove();
+                                },1500);
                                 // 
                                 $('.book').off() // 解除书本的事件监听
                                 $('.zl-second-book').off()
@@ -1502,12 +1525,21 @@ $(function () {
                                 $ewmImg.get(0).src = data.message
                             }
                           } else {
-                              $('.modal_2').show() // 隐藏整个对话框和模板
+                            $('.modal_2').show(0, () => {
                               $('.modal_2 article').css({
-                                '-webkit-transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
-                                'transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
-                                'display': 'block'
+                                '-webkit-transform': 'translateX(0) translateY(0) scale(1, 1)',
+                                'transform': 'translateX(0) translateY(0) scale(1, 1)',
                               })
+                              $('.modal_2 .overlay').css({
+                                background: 'rgba(17,17,17,0.6)'
+                              })
+                            }) // 显示整个对话框和模板
+                            // $('.modal_2').show() // 隐藏整个对话框和模板
+                            // $('.modal_2 article').css({
+                            //   '-webkit-transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
+                            //   'transform': 'translateX(-50%) translateY(-50%) scale(1, 1)',
+                            //   'display': 'block'
+                            // })
                               $('.modal_2 .message').text(data.message)
 
                             // alert(data.message)
