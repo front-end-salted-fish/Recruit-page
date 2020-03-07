@@ -219,6 +219,25 @@ $(function () {
     }
     obj.toggleClass("hasUp hasDown");
   }
+  let detialHeadImgs = document.querySelectorAll('.detail-header-img');
+  function resizeDetailImgs() {
+    $.each(detialHeadImgs,(index, headImg) => {
+      let $headImg = $(headImg);
+      let imgAspectRatio = $headImg.context.naturalWidth / $headImg.context.naturalHeight;  // 宽高比
+      let windowAspectRatio = window.innerWidth / window.innerHeight; // 窗口宽高比
+      if(imgAspectRatio < windowAspectRatio) {
+        $headImg.css({
+          width: '100%',
+          height: 'auto'
+        })
+      } else {
+        $headImg.css({
+          height: '100%',
+          width: 'auto'
+        })
+      }
+    })
+  }
 
   // 切换幕布
   !(() => {
@@ -900,6 +919,7 @@ $(function () {
     window.onload = function () {
       isAllLoaded = true;
       loadingOut();
+      resizeDetailImgs();
       // 
     }
   })();

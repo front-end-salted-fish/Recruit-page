@@ -374,6 +374,7 @@ export default class Slider {
                 TweenMax.to(t.slideTitleEl, t.animationDuration / 2, {
                   autoAlpha: 1,
                   filter: 'blur(0px)',
+                  color: t.nextSlide === 3 ? '#666': '#fff',
                   y: 0,
                   delay: 0.1
                 })
@@ -412,6 +413,7 @@ export default class Slider {
             }, {
               autoAlpha: 0,
               filter: 'blur(' + t.animationBlur + 'px)',
+              color: t.nextSlide === 3 ? '#666': '#fff',
               y: t.animationY,
               ease: 'Expo.easeIn',
               onComplete: function () {
