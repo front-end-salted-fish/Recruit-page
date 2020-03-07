@@ -10,14 +10,13 @@ html {
 // iconfont 字体图标的引用
 @font-face {
   font-family: 'iconfont';  /* project id 1613212 */
-  src: url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.eot');
-  src: url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1613212_az7i1r9vkvd.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.eot');
+  src: url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1613212_yu4ajtgvsns.svg#iconfont') format('svg');
 }
-
 .iconfont {
   font-family: "iconfont" !important;
   font-size: 16px;
@@ -516,7 +515,7 @@ img {
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
-  background: rgb(217, 225, 243);
+  background: #edf0f8;
 
   #mq-luxy-wrapper {
     .per-one {
@@ -552,7 +551,7 @@ img {
     .per-two {
       z-index: 3;
       width: 100%;
-      background-color: rgb(217, 225, 243);
+      background: #edf0f8;
 
       img {
         opacity: .8;
@@ -591,14 +590,14 @@ img {
       }
 
       .flex-box2 {
-        margin-top: 2%;
-        align-items: flex-end;
-
+        align-content:center;
+        margin:8% auto 3% auto;
+        position:relative;
         .mq-txt-container2 {
           position: relative;
-          width: 50%;
-          padding-left: 12%;
-          padding-bottom: 100px;
+          width:55%;
+          padding-left:10%;
+          padding-bottom:10%;
 
           span {
             text-align: start;
@@ -608,13 +607,14 @@ img {
         .mq-img2 {
           width: 31vw;
           margin-left: 12%;
-          padding-top: 100px;
+          margin-top:7%;
+          // padding-top: 100px;
         }
 
         // 详情页进入表单的按钮样式
         .c-btn {
           position: absolute;
-          left: 52%; //按页面需要适当修改
+          left: 49%; //按页面需要适当修改
           top: 80%; //按页面需要适当修改
 
           .c-btn__inner {
@@ -850,7 +850,7 @@ img {
       background-color: #ffeae7;
       overflow: hidden;
       box-shadow: 0px 0px 20px #2f1e1e;
-
+      position: relative;
       .c-btn {
         left: 42%; //按页面需要适当修改
 
@@ -1153,7 +1153,7 @@ img {
       }
 
       .flex-box2 {
-        margin-top: 6%;
+        margin-top: 8%;
         z-index: 2;
         align-items: center;
         justify-content: center;
@@ -1162,12 +1162,12 @@ img {
           position: relative;
           // width: 50%;
           padding-left: 5%;
-          padding-top: 10%;
+          // padding-top: 10%;
         }
 
         .rj-img-container2 {
           width: 35%;
-          padding-right: 2%;
+          padding-right: 4%;
 
           .img2 {
             z-index: 2;
@@ -1177,7 +1177,7 @@ img {
       }
 
       .txt-container3 {
-        margin-top: 100px;
+        margin-top: 120px;
         position: relative;
         padding-bottom: 70px;
         z-index: 2;
@@ -1266,7 +1266,7 @@ img {
           flex: 3;
           width: 50vw;
           position: relative;
-          padding-right: 4vw;
+          padding-right: 8vw;
           // padding-top: 45px;
           // left: 47%;
           // transform: translate(-50%);
@@ -1461,7 +1461,7 @@ img {
       position: absolute;
       z-index: 2;
       width: 22vw;
-      transform: translate(-50%, -50%);
+      // transform: translate(-50%, -50%);
     }
   }
 
@@ -1471,18 +1471,18 @@ img {
   }
 
   .pers-two {
+    background-color: #defaed;
     z-index: 2;
     position: relative;
     // transform: translate3d(0, 200%, -2px) scale(3);
     width: 100%;
-    height: 100vh;
+    height: auto;
 
     .flex-box1 {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 40vh;
-
+      padding-top: 15vh;
     }
 
     .zl-content-one {
@@ -1520,8 +1520,9 @@ img {
   }
 
   .pers-three {
-    margin-top: 30vh;
+    margin-top: 7vh;
     margin-bottom: 45px;
+    background-color: #defaed;
 
     .flex-box3 {
       display: flex;
@@ -3604,4 +3605,10 @@ img {
 }
 .wangchai {
 	width: 16px;
+}
+.per-two,
+.pers-two,
+.pers-three {
+  z-index: 4 !important;
+  position: relative;
 }
