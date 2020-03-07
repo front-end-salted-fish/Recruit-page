@@ -4,17 +4,55 @@ import '../css/index.less'
 import Luxy from '../src/js/luxy.js'
 import 'prefixfree'
 import anime from 'animejs'
-// import bannerImg1 from '../img/front-end/轮播图.jpg'
 import '../css/modal.css'
-// import bannerImg2 from '../img/android/轮播图.jpg'
-// import bannerImg2 from '../img/android/timg-(1).jpg'
-// import bannerImg2 from '../img/android/rain.jpeg'
-// import bannerImg3 from '../img/back-stage/轮播图.png'
-// import bannerImg4 from '../img/ios/轮播图.jpeg'
-// import bannerImg5 from '../img/machine-learning/轮播图.jpg'
 import filterXSS, { FilterXSS } from 'xss'
 import Slider from './Slider'
 import './gt'
+// 如果是谷歌浏览器才用Luxy插件
+if(navigator.userAgent.toLowerCase().indexOf("chrome") !== -1 && navigator.userAgent.toLowerCase().indexOf("edge") === -1) {
+  console.log('使用luxy');
+  
+  let zlLuxy = new Luxy();
+  let cfLucy = new Luxy();
+  let wfLuxy = new Luxy();
+  let mqLuxy = new Luxy();
+  let rjLuxy = new Luxy();
+  rjLuxy.init({
+    wrapper: '#rj-luxy-wrapper',
+    targets: '.rj-luxy',
+    wrapperSpeed: 0.08,
+    targetSpeed: 0.01,
+    targetPercentage: 0.1
+  });
+  mqLuxy.init({
+    wrapper: '#mq-luxy-wrapper',
+    targets: '.mq-luxy',
+    wrapperSpeed: 0.08,
+    targetSpeed: 0.01,
+    targetPercentage: 0.1
+  });
+  wfLuxy.init({
+    wrapper: '#wf-luxy-wrapper',
+    targets: '.wf-luxy',
+    wrapperSpeed: 0.08,
+    targetSpeed: 0.01,
+    targetPercentage: 0.1
+  });
+  cfLucy.init({
+    wrapper: '#cf-luxy-wrapper',
+    targets: '.cf-luxy',
+    wrapperSpeed: 0.08,
+    targetSpeed: 0.01,
+    targetPercentage: 0.1
+  });
+  zlLuxy.init({
+    wrapper: '#zl-luxy-wrapper',
+    targets: '.zl-luxy',
+    wrapperSpeed: 0.08,
+    targetSpeed: 0.01,
+    targetPercentage: 0.1
+  });
+}
 // 轮播图模块
 var slider = new Slider();
 slider.initialize();
@@ -227,15 +265,8 @@ $(function () {
     const $fontBg = $('#android .font-bg');
     const $persOne = $('#android .pers-one');
     const $close = $('.rj-detail-page-close-btn');
-    let zlLuxy = new Luxy()
-
-    zlLuxy.init({
-      wrapper: '#zl-luxy-wrapper',
-      targets: '.zl-luxy',
-      wrapperSpeed: 0.08,
-      targetSpeed: 0.01,
-      targetPercentage: 0.1
-    });
+    let vh = $(window).height();
+    let winTop = $(window).scrollTop();
 
     splitTxt($($(".zl-content-one")[0]), "TopView Android组专注于有创意、@有特色的主流App开发、@Android高新技术探索以及Android系统源代码的研究。", "left");
     splitTxt($($(".zl-content-two")[0]), "Android组自成立以来，@一直有大量的师兄涌入@阿里、腾讯、网易等一线互联网公司。@每年各位毕业的优秀师兄都会回来@分享Android的前沿技术以及发展趋势。@Android组得益于大量的优秀师兄指导，@目前已经成为广东工业大学优秀的Android开发小组之一。", "left");
@@ -253,15 +284,15 @@ $(function () {
       } else {
         pMoveAnimate($($(".zl-content-one")[0]), "down");
       }
-      if ($android.scrollTop() > 468) {
+      if($($(".zl-content-two")[0]).offset().top - winTop < vh) {
         pMoveAnimate($($(".zl-content-two")[0]), "up");
         showImg($(".detail-img2"));
       } else {
         pMoveAnimate($($(".zl-content-two")[0]), "down");
       }
-      if ($android.scrollTop() > 682)
+      if ($(".detail-img3").offset().top - winTop < vh)
         showImg($(".detail-img3"));
-      if ($android.scrollTop() > 730) {
+      if ($($(".zl-content-three")[0]).offset().top - winTop < vh) {
         pMoveAnimate($($(".zl-content-three")[0]), "up");
       } else {
         pMoveAnimate($($(".zl-content-three")[0]), "down");
@@ -297,14 +328,7 @@ $(function () {
   })();
   //backstage
   (() => {
-    let cfLucy = new Luxy();
-    cfLucy.init({
-      wrapper: '#cf-luxy-wrapper',
-      targets: '.cf-luxy',
-      wrapperSpeed: 0.08,
-      targetSpeed: 0.01,
-      targetPercentage: 0.1
-    });
+
     let $backState = $('#back-stage')
     let $svg1 = $('#back-stage svg')
     let $paths = $('#back-stage path');
@@ -686,14 +710,7 @@ $(function () {
 
   //front-end
   (() => {
-    let wfLuxy = new Luxy()
-    wfLuxy.init({
-      wrapper: '#wf-luxy-wrapper',
-      targets: '.wf-luxy',
-      wrapperSpeed: 0.08,
-      targetSpeed: 0.01,
-      targetPercentage: 0.1
-    });
+
     let $frontEnd = $("#front-end")
     let $headerFont = $($('#front-end .per-one .header-font')[0]);
     splitTxt($($('.wf-txt-container1')[0]), "TopView 前端组主要基于@HTML，CSS，JavaScript等@基础web前端编程语言进行开发，@同时引入前端领域前沿技术进一步构建项目。", "left");
@@ -727,18 +744,11 @@ $(function () {
 
   // ios
   (() => {
-    let mqLuxy = new Luxy()
-    mqLuxy.init({
-      wrapper: '#mq-luxy-wrapper',
-      targets: '.mq-luxy',
-      wrapperSpeed: 0.08,
-      targetSpeed: 0.01,
-      targetPercentage: 0.1
-    });
+
     let $iosDiv = $("#ios");
     let $headerFont = $($("#ios .per-one .header-font")[0]);
-    splitTxt($($(".mq-txt-container1")[0]), "TopView iOS组主要基于iOS系统进行主流App开发，专注于为用户提供流畅与优雅的极致体验。@除此之外，基于目前主流大公司对跨平台开发人员的需求，我们小组成员也对跨平台开发进行学习，定期开展有关知识的讨论与交流。@作为TopView的主要开发组之一，自成立来。不断有师兄师姐在毕业后就职于阿里，腾讯，字节跳动等互联网大厂。@我们拥有不定期的分享会机制与丰富多彩的内建活动，已毕业的优秀师兄师姐在空闲之余都会回来分享iOS的底层架构与前沿技术，只要学习认真，还有机会获得师兄师姐所在互联网大厂的内推资格。", "left");
-    splitTxt($($(".mq-txt-container2")[0]), "加入我们，相信你一定能得到锻炼与成长。@只要你有c语言基础，热爱学习，有责任心就加入iOS组吧!", "left");
+    splitTxt($($(".mq-txt-container1")[0]), "TopView iOS组主要基于iOS系统进行主流App开发，专注于为用户提供流畅与优雅的极致体验。@除此之外，基于目前主流大公司对跨平台开发人员的需求，我们小组成员也对跨平台开发进行学习，定期开展有关知识的讨论与交流。@作为TopView的主要开发组之一，自成立来。不断有师兄师姐在毕业后就职于阿里，腾讯，字节跳动等互联网大厂。", "left");
+    splitTxt($($(".mq-txt-container2")[0]), "@我们拥有不定期的分享会机制与丰富多彩的内建活动，已毕业的优秀师兄师姐在空闲之余都会回来分享iOS的底层架构与前沿技术，只要学习认真，还有机会获得师兄师姐所在互联网大厂的内推资格。@加入我们，相信你一定能得到锻炼与成长。@只要你有c语言基础，热爱学习，有责任心就加入iOS组吧!", "left");
     // 出现图片
     function showImg(obj) {
       obj.removeClass("mq-skewImg");
@@ -770,14 +780,7 @@ $(function () {
 
   // 机器学习
   (() => {
-    let rjLuxy = new Luxy()
-    rjLuxy.init({
-      wrapper: '#rj-luxy-wrapper',
-      targets: '.rj-luxy',
-      wrapperSpeed: 0.08,
-      targetSpeed: 0.01,
-      targetPercentage: 0.1
-    });
+
     let $machineDiv = $("#machine-learning");
     let $headerFont = $($("#machine-learning .per-one .banner-font-container")[0]);
     let $machineP1 = $($("#machine-learning .per-one")[0]);
