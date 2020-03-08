@@ -9,9 +9,7 @@ import filterXSS, { FilterXSS } from 'xss'
 import Slider from './Slider'
 import './gt'
 // 如果是谷歌浏览器才用Luxy插件
-if(navigator.userAgent.toLowerCase().indexOf("chrome") !== -1 && navigator.userAgent.toLowerCase().indexOf("edge") === -1) {
-  console.log('使用luxy');
-  
+if(navigator.userAgent.toLowerCase().indexOf("chrome") !== -1 && navigator.userAgent.indexOf('MicroMessenger') === -1&& navigator.userAgent.indexOf("Safari") > -1&& window.chrome && navigator.userAgent.toLowerCase().indexOf("edge") === -1) {
   let zlLuxy = new Luxy();
   let cfLucy = new Luxy();
   let wfLuxy = new Luxy();
