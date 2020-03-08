@@ -68,7 +68,7 @@ module.exports = {
             },     
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader','postcss-loader']
             },
 
             {
@@ -78,6 +78,8 @@ module.exports = {
                 }, {
                     loader: "css-loader" // translates CSS into CommonJS
                 }, {
+                    loader: "postcss-loader"
+                },{
                     loader: "less-loader" // compiles Less to CSS
                 }]
             },
