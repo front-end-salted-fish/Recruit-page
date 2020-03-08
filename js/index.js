@@ -1301,9 +1301,13 @@ $(function () {
     })
     // 返回首页的刷新按钮
     $('#zl-reload-btn').click(function() {
-        // setTimeout(function() {
+      let flag = confirm('注：返回首页将会刷新页面，请确保已经扫码二维码或者保存图片！')
+      if (flag) {
+        setTimeout(function() {
           location.reload() //刷新页面
-        // }, 2000)
+        }, 1000)
+      }
+      
     })
     // 提交按钮
     $submit.on('click', function () {
