@@ -1084,6 +1084,7 @@ $(function () {
     const $ewmImg = $('#ewm-img'); // 获取存放小程序二维码的元素
     let backBannerFlag = true // 标记此时默认是从轮播图的按钮进入表单界面的
     let flag = false; // 是否提交的标识
+    let directionText = '前端'
     // 初始化表单数据,用于发给后台的表单数据
     // let formData = {
     //   username: '', // 姓名
@@ -1239,6 +1240,7 @@ $(function () {
     // 方向下拉框
     $option.on('click', function (ev) {
       $direction.val($(ev.target).text());
+      directionText = $(ev.target).text()
       // formData.direction = $(ev.target).text();
       formData.direction = $(ev.target).attr('data-index');
     })
@@ -1349,6 +1351,7 @@ $(function () {
       $('.modal_1 .check-phone').text(formData.phone)
       $('.modal_1 .check-id').text(formData.schoolId)
       $('.modal_1 .check-name').text(formData.name)
+      $('.modal_1 .check-direction').text(directionText)
       $('.modal_1').show(0, () => {
         $('.modal_1 article').css({
           '-webkit-transform': 'translateX(0) translateY(0) scale(1, 1)',
