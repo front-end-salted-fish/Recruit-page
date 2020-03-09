@@ -1121,11 +1121,7 @@ $(function () {
       backBannerFlag = true;
       $formPages.removeClass('zl-form-out')
       $formPages.addClass('zl-form-in')
-      // banner.isLeaveBanner = true;
-      // banner.stopBanner();
       directionText = matchDirection(slider.currentSlide)
-      formData.direction = slider.currentSlide
-
       $direction.val(directionText);
       slider.stopSlider();
       event.stopPropagation()
@@ -1172,9 +1168,8 @@ $(function () {
       $detailPages.each((i, value) => {
         if ($(value).hasClass('active')) {
           let index = $(value).attr('data-index')*1
-      directionText = matchDirection(index)
-      // formData.direction = index
-      $direction.val(directionText);
+          directionText = matchDirection(index)
+          $direction.val(directionText);
 
           
         }
@@ -1364,6 +1359,7 @@ $(function () {
           formData.direction = 4;
           break;
       }
+      console.log(formData)
       /* 
       flag = true;
       // $('.modal').hide() // 隐藏整个对话框和模板
