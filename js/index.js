@@ -1082,6 +1082,7 @@ $(function () {
     const $detailToFormBtns = $('.c-btn'); //获取详情页前往表单的按钮
     const $time = $('.zl-third-book .time');// 获取倒计时的秒数
     const $ewmImg = $('#ewm-img'); // 获取存放小程序二维码的元素
+    const $detailPages = $('#detail-pages .page')
     let backBannerFlag = true // 标记此时默认是从轮播图的按钮进入表单界面的
     let flag = false; // 是否提交的标识
     let directionText = '前端'
@@ -1122,9 +1123,32 @@ $(function () {
       $formPages.addClass('zl-form-in')
       // banner.isLeaveBanner = true;
       // banner.stopBanner();
+      directionText = matchDirection(slider.currentSlide)
+      formData.direction = slider.currentSlide
+
+      $direction.val(directionText);
       slider.stopSlider();
       event.stopPropagation()
     })
+    function matchDirection (num) {
+      switch (num) {
+        case 0:
+          return '前端';
+          break;
+          case 1:
+          return 'android';
+          break;
+          case 2:
+          return '后台';
+          break;
+          case 3:
+          return 'iOS';
+          break;
+          case 4:
+          return '机器学习';
+          break;
+      }
+    }
     // 给返回轮播图/详情页按钮绑定单击响应函数
     $backBtn.on('click', function () {
       $formPages.removeClass('zl-form-in')
@@ -1141,6 +1165,24 @@ $(function () {
         }, 1000, function () {
         })
       }
+    })
+     // 给详情页前往表单的多个按钮绑定单击响应事件
+     $detailToFormBtns.on('click', function () {
+      backBannerFlag = false; //代表此时是从详情页进入表单的
+      $detailPages.each((i, value) => {
+        if ($(value).hasClass('active')) {
+          let index = $(value).attr('data-index')*1
+      directionText = matchDirection(index)
+      formData.direction = index
+      $direction.val(directionText);
+
+          
+        }
+      })
+
+      $formPages.removeClass('zl-form-out')
+      $formPages.addClass('zl-form-in')
+      event.stopPropagation()
     })
     function myTrim(x) {
       return x.replace(/^\s+|\s+$/gm, '');
@@ -1249,13 +1291,7 @@ $(function () {
       $academy.val($(ev.target).text());
       formData.institute = $(ev.target).text();
     })
-    // 给详情页前往表单的多个按钮绑定单击响应事件
-    $detailToFormBtns.on('click', function () {
-      backBannerFlag = false; //代表此时是从详情页进入表单的
-      $formPages.removeClass('zl-form-out')
-      $formPages.addClass('zl-form-in')
-      event.stopPropagation()
-    })
+   
     // 对话框的'x'按钮
     $('.modal .close').click(function () {
       flag = false;
