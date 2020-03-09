@@ -9,9 +9,7 @@ import filterXSS, { FilterXSS } from 'xss'
 import Slider from './Slider'
 import './gt'
 // 如果是谷歌浏览器才用Luxy插件
-if (navigator.userAgent.toLowerCase().indexOf("chrome") !== -1 && navigator.userAgent.toLowerCase().indexOf("edge") === -1) {
-  console.log('使用luxy');
-
+if(navigator.userAgent.toLowerCase().indexOf("chrome") !== -1 && navigator.userAgent.indexOf('MicroMessenger') === -1&& navigator.userAgent.indexOf("Safari") > -1&& window.chrome && navigator.userAgent.toLowerCase().indexOf("edge") === -1) {
   let zlLuxy = new Luxy();
   let cfLucy = new Luxy();
   let wfLuxy = new Luxy();
@@ -351,7 +349,7 @@ $(function () {
     let $backState = $('#back-stage')
     let $svg1 = $('#back-stage svg')
     let $paths = $('#back-stage path');
-    splitTxt($($(".cf-text-container1")[0]), 'TopView 后台组是与数据和信息打交道的方向，@是 Android、iOS、前端的”坚实后盾"是每@个工作室的核心方向。TopView后台组基于@Java语言，自成立以来，一直致力于政府级@ 、企业级项目的实现和优化，如此大型的项目@成就了一代又一代的优秀师兄师姐。@目前已有多位师兄在腾讯、阿里、@百度、美团等一线互联网公司工作。', "left");
+    splitTxt($($(".cf-text-container1")[0]), 'TopView 后台组是与数据和信息打交道的方向，@是 Android、iOS、前端的“坚实后盾”是每@个工作室的核心方向。TopView后台组基于@Java语言，自成立以来，一直致力于政府级@ 、企业级项目的实现和优化，如此大型的项目@成就了一代又一代的优秀师兄师姐。@目前已有多位师兄在腾讯、阿里、@百度、美团等一线互联网公司工作。', "left");
 
 
     splitTxt($($(".cf-text-container2")[0]), "现在后台组开发了众多优秀的事务管理系统以及 P2P@服务平台，如海口应急指挥调度系统，优校云等等。这些@大型的项目使我们得到历练，快速成长。优秀@而又热情的你可以用扎实的C语言@编程基础武装自己，加入后台组吧！", "right");
@@ -1508,69 +1506,71 @@ $(function () {
       type: "get",
       dataType: "json",
       success: function (data) {
-        // 请检测data的数据结构， 保证data.gt, data.challenge, data.success有值
-        initGeetest({
-          product: 'bind',
-          lang: 'zh-cn',
-          // 以下配置参数来自服务端 SDK
-          gt: data.gt,
-          challenge: data.challenge,
-          offline: !data.success,
-          new_captcha: true,
-        }, function (captchaObj) {
-          document.getElementById('rj-jy-btn').addEventListener('click', function () {
-            // if (check()) { // 检查是否可以进行提交
-            captchaObj.verify();
-            modalHide(); // 隐藏整个对话框和模板
-            // }
-          });
-          captchaObj.onSuccess(function () {
-            // 用户验证成功后，进行实际的提交行为
-            var result = captchaObj.getValidate();
-            $.ajax({
-              url: '/api/captcha/verify',
-              type: 'post',
-              data: {
-                geetest_challenge: result.geetest_challenge,
-                geetest_validate: result.geetest_validate,
-                geetest_seccode: result.geetest_seccode,
-              },
-              dataType: "text",
-              success: function (data) {
-                if (data === '') {     // 空字符串则验证失败
-                  captchaObj.reset(); // 调用该接口进行重置
-                } else {
-                  formData.captchaToken = data;  // 获取到token
-                }
-                // TODO: 在此发送ajax请求之类的
+          // 请检测data的数据结构， 保证data.gt, data.challenge, data.success有值
+          initGeetest({
+            product: 'bind',
+            lang: 'zh-cn',
+            // 以下配置参数来自服务端 SDK
+            gt: data.gt,
+            challenge: data.challenge,
+            offline: !data.success,
+            new_captcha: true,
+          }, function (captchaObj) {
+            document.getElementById('rj-jy-btn').addEventListener('click', function () {
+              // if (check()) { // 检查是否可以进行提交
+              captchaObj.verify();
+              modalHide(); // 隐藏整个对话框和模板
+              // }
+            });
+            captchaObj.onSuccess(function () {
+                // 用户验证成功后，进行实际的提交行为
+                var result = captchaObj.getValidate();
+                $('#rj-loading').fadeIn();
                 $.ajax({
-                  method: "post",
-                  url: '/api/student/submitSignUp',
-                  data: JSON.stringify(formData),
-                  dataType: "json",
-                  contentType: "application/json",
-                  success: function (data) {
-
-                    if (data.success == true && data.code == 200) {
-                      flag = true;
-                      // $('.modal').hide() // 隐藏整个对话框和模板
-                      if (flag) {
-                        $('.scene').css({
-                          margin: '0% 20% 5% 72%'
-                        }) //调整书本位置
-                        $formPageOne.fadeOut()
-                        $formPageTwo.fadeOut()
-                        nextPage() //翻页
-                        setTimeout(() => {
-                          $('.zl-second-book .front').remove();
-                          $('.zl-first-book').remove();
-                        }, 1500);
-                        // 
-                        $('.book').off() // 解除书本的事件监听
-                        $('.zl-second-book').off()
-                        $('.zl-form-page-close-btn').hide() //隐藏回退按钮
-                        // 设置二维码
-                        $ewmImg.get(0).src = data.message
+                  url: '/api/captcha/verify',
+                  type: 'post',
+                  data: {
+                    geetest_challenge: result.geetest_challenge,
+                    geetest_validate: result.geetest_validate,
+                    geetest_seccode: result.geetest_seccode,
+                  },
+                  dataType: "text",
+                  success: function(data) {
+                      if(data === '') {     // 空字符串则验证失败
+                        captchaObj.reset(); // 调用该接口进行重置
+                      } else {
+                        formData.captchaToken = data;  // 获取到token
+                        }
+                        // TODO: 在此发送ajax请求之类的
+                        $.ajax({
+                          method: "post",
+                          url:'/api/student/submitSignUp',
+                          data: JSON.stringify(formData),
+                          dataType: "json",
+                          contentType: "application/json",
+                          success: function (data) {
+                            $('#rj-loading').fadeOut();
+                            if (data.success == true && data.code == 200) {
+                              flag = true;
+                              // $('.modal').hide() // 隐藏整个对话框和模板
+                              if (flag) {
+                                $('.scene').css({
+                                  margin: '0% 20% 5% 72%'
+                                }) //调整书本位置
+                                $formPageOne.fadeOut()
+                                $formPageTwo.fadeOut()
+                                nextPage() //翻页
+                                setTimeout(()=>{
+                                  $('.zl-second-book .front').remove();
+                                  $('.zl-first-book').remove();
+                                },1500);
+                                // 
+                                $('.book').off() // 解除书本的事件监听
+                                $('.zl-second-book').off()
+                                $('.zl-form-page-close-btn').hide() //隐藏回退按钮
+                                // 设置二维码
+                                $ewmImg.get(0).src = data.message
+                    
                       }
                     } else {
                       $('.modal_2').show(0, () => {
