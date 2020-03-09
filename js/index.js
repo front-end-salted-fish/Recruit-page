@@ -1557,6 +1557,9 @@ $(function () {
                                 $('.scene').css({
                                   margin: '0% 20% 5% 72%'
                                 }) //调整书本位置
+                                $('.book').css({
+                                  'box-shadow': 'none'
+                                })
                                 $formPageOne.fadeOut()
                                 $formPageTwo.fadeOut()
                                 nextPage() //翻页
