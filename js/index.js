@@ -1173,7 +1173,7 @@ $(function () {
         if ($(value).hasClass('active')) {
           let index = $(value).attr('data-index')*1
       directionText = matchDirection(index)
-      formData.direction = index
+      // formData.direction = index
       $direction.val(directionText);
 
           
@@ -1347,6 +1347,23 @@ $(function () {
     })
     // 提交按钮
     $submit.on('click', function () {
+      switch (directionText) {
+        case '前端':
+          formData.direction = 0;
+          break;
+          case '后台':
+          formData.direction = 1;
+          break;
+          case 'android':
+          formData.direction = 2;
+          break;
+          case 'iOS':
+          formData.direction = 3;
+          break;
+          case '机器学习':
+          formData.direction = 4;
+          break;
+      }
       /* 
       flag = true;
       // $('.modal').hide() // 隐藏整个对话框和模板
